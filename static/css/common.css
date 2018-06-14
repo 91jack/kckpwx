@@ -55,7 +55,7 @@ input[type="text"], textarea { -webkit-appearance: none; -moz-appearance: none; 
 	width: 0.833333rem;
 	height: 1.5rem;
 	background: url(../images/common/icon_left.png) no-repeat;
-	background-position: center;
+	background-position: center center;
 	background-size:100% 100% ;
 	vertical-align: middle;
 }
