@@ -1,0 +1,149 @@
+/*通用样式*/
+* { -webkit-tap-highlight-color: transparent; outline: 0; margin: 0; padding: 0; vertical-align: baseline; }
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin: 0; padding: 0; vertical-align: baseline; }
+img { border: 0 none; vertical-align: top; }
+i, em { font-style: normal; }
+ol, ul { list-style: none; }
+input, select, button, h1, h2, h3, h4, h5, h6 { font-size: 100%; font-family: inherit; }
+table { border-collapse: collapse; border-spacing: 0; }
+a { text-decoration: none; color: #666; }
+html {font-size: 62.5%;font-family: "PingFang-SC-Regular";}
+body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; font-size: 1rem; font-family: -apple-system,Helvetica,sans-serif; line-height: 1.5; color: #666; -webkit-text-size-adjust: 100% !important; text-size-adjust: 100% !important; }
+input[type="text"], textarea { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
+
+
+.bg-f {
+	background: #fff;
+}
+.bg-red {
+	background: #D11426!important;
+}
+.mt2 {
+	margin-top: 2rem;
+}
+.fl {
+	float:left;
+}
+.fr {
+	float: right;
+}
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+/*顶部标题栏*/
+.header-top {
+	height: 3.708333rem;
+	line-height: 3.708333rem;
+	border-bottom: 1px solid #d9d9d9;
+	font-size: 1.333333rem;
+	overflow: hidden;
+	padding:  0 1rem;
+	
+}
+.header-top .goback {
+	display: block;
+	
+}
+.header-top .icon-goback {
+	display: inline-block;
+	width: 0.833333rem;
+	height: 1.5rem;
+	background: url(../images/common/icon_left.png) no-repeat;
+	background-position: center;
+	background-size:100% 100% ;
+	vertical-align: middle;
+}
+.header-top .goback-text {
+	display: inline-block;
+	color: #333;
+	line-height: 3.708333rem;
+	padding:  0 .5rem;
+}
+.header-top-title {
+	width: 100%;
+	color: #333;
+	font-weight: bold;
+	text-align: center;
+	position: absolute;
+	top:0;
+	left:0;
+}
+
+.btn {
+	
+}
+
+
+.bgcolor-blue {
+	background: #38ADFF;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*表单*/
+.form {
+	
+}
+.form-group {
+    margin-bottom: 1.5rem;
+}
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+    font-weight: 700;
+    font-size: 1.166666rem;
+    color:#999;
+}
+input[type="text"] {
+	display: block;
+    width: 100%;
+    height: 3.75rem;
+    text-indent: 1rem;
+    font-size: 1.6rem;
+    line-height: 1.6rem;
+    color: #555;
+    vertical-align: middle;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: .5rem;
+    /*-webkit-appearance: none;
+    -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;*/
+}
+::-moz-placeholder {
+	color:#ccc;
+	font-size: 1.166666rem;
+}
+::-ms-input-placeholder {
+	color:#ccc;
+	font-size: 1.166666rem;
+}
+::-webkit-input-placeholder {
+	color:#ccc;
+	font-size: 1.166666rem;
+}
