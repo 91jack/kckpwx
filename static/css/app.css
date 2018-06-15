@@ -1,3 +1,82 @@
+/*用户信息 user.html
+ ------------------------------*/
+.user-page {
+	
+}
+.user-page .user-info {
+	height:14.666666rem;
+	padding: 1rem;
+	background: #fff;
+	overflow: hidden;
+	position: relative;
+}
+.user-page .user-avatar {
+	width: 6.666666rem;
+	height: 6.666666rem;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: 1rem auto;
+}
+
+.user-page .user-avatar img{
+	width: 100%;
+	height: 100%;
+}
+
+.user-page .user-info p {
+	text-align: center;
+	font-size: 1rem;
+	color: #333;
+}
+.user-page .user-info-footer {
+	width: 100%;
+	position: absolute;
+	left: 0;
+	bottom: 1.791666rem;
+}
+.user-page .user-info-footer p {
+	font-size: 1.25rem;
+	text-align: center;
+}
+.user-page .user-info-footer span{
+	font-size: 1.25rem;
+	color: #38ADFF;
+}
+.user-list {
+	margin: 0.833333rem 0;
+}
+.user-list li {
+	height: 4.166666rem;
+	line-height: 4.166666rem;
+	background: #fff;
+	border-bottom: 1px solid #f4f4f4;
+	clear: both;
+}
+.user-list li span:first-child {
+	color:#333;
+	font-size: 1.25rem;
+}
+.user-list li span:nth-child(2) {
+	padding: 0 1rem;
+	color:#38ADFF;
+	font-size: 1.083333rem;
+}
+.user-list li .select {
+	color:#F56954;
+	font-size: 1.083333rem;
+}
+.user-list li .select i{
+	display: inline-block;
+	width: 0.708333rem;
+	height: 1.25rem;
+	background: url(../images/common/icon_right.png) no-repeat;
+	background-position: center center;
+	background-size: 100% 100%;
+	vertical-align: middle;
+	margin-left: 1rem;
+}
+
+
 /*修改手机号 editpw.html
  ------------------------------*/
 .editphone-page .form-group em {
