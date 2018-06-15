@@ -1,1 +1,30 @@
+/*修改手机号 editpw.html
+ ------------------------------*/
+.editphone-page .form-group em {
+	display: inline-block;
+}
+.editphone-page .icon-phone {
+	display: inline-block;
+	width:0.833333rem;
+	height: 1.416666rem;
+	background: url(../images/icon_phone.png) no-repeat;
+	background-position:center center;
+	background-size:100% 100% ;
+	vertical-align: middle;
+	margin-right: .5rem;
+}
+.editphone-page .current-phone {
+	color:#ccc;
+}
 
+/*意见反馈 opinion.html
+ ------------------------------*/
+.opinion-page {
+	
+}
+.opinion-wrap {
+	
+}
+.opinion-wrap textarea {
+	
+}

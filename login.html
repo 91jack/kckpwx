@@ -10,6 +10,7 @@
 	
 </head>
 <body class="bg-f4">
+	<!--顶部标题栏-->
 	<div class="header-top">
 		<div class="fl">
 			<a href="javascript:;" class="goback">
@@ -35,18 +36,36 @@
 			</div>
 			
 		</form>
-		
 	</div>
 	
-	div.footer
+	<div class="blue-btn-default">
+		<a href="javascript:;" id="login-btn">登录</a>
+	</div>
+	
+	
 	
 
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
+	// 获取验证码
 	$('.yzm-btn').on('click',function(){
 		// 倒计时60s
+		var time = 3;
+		console.log(time)
+		var timer = null;
+		timer = setInterval(function(){
+			time--;
+			$('.yzm-btn').html(time + '&nbsp;S');
+			if(time < 0){
+				$('.yzm-btn').html('重新发送');
+				time = 0;
+				clearInterval(timer)
+			}
+		},1000)
+		
+		// 获取验证码
 		$.ajax({
 	    type: "POST",
 	    url: yzcodeUrl,
@@ -60,8 +79,41 @@
 					$('#yzmcode').val(data.obj)
 				}
 	    }
+		})
 	})
+	
+	// 登录
+	$('#login-btn').on('click', function(){
+//		var token = localStorage.getItem('token');
+//		var accidentId = localStorage.getItem('accidentId');
+//		console.log(token)
+//		console.log(accidentId)
+//		if(token){
+//			window.location.href = 'step2.html';
+//		}else{
+			$.ajax({
+			    type: "POST",
+			    url: loginUrl,
+			  	data:{
+						loginType:'2',
+						phoneType:'2',
+						userName:$('#phone').val(),
+						yzcode: $('#yzmcode').val()
+					},
+			    success: function(data){
+			   		//服务器返回响应，根据响应结果，分析是否登录成功；
+					if(data.status == 2000){
+						console.log(data)
+						// 登录后 将token存在本地
+						localStorage.setItem('token',data.obj);
 		
+						window.location.href = 'user.html';
+					}else{
+						console.log(data)
+					}
+			    }
+			})	
+//		}
 	})
 </script>
 

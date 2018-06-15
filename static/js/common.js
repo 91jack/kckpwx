@@ -17,3 +17,24 @@
 })();
 
 
+// 返回上一页
+$('.goback').on('click', function(){
+	window.history.back();
+})
+
+// jQueryAjax 封装
+function commonAjax(url,data){
+	$.ajax({
+	    type: "POST",
+	    url: url,
+	  	data: data,
+	    success: function(res){
+			if(res.status == 2000){
+				return res;
+			}else{
+				console.log(res)
+			}
+	    }
+	})	
+}
+
