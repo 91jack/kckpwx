@@ -8,9 +8,9 @@ input, select, button, h1, h2, h3, h4, h5, h6 { font-size: 100%; font-family: in
 table { border-collapse: collapse; border-spacing: 0; }
 a { text-decoration: none; color: #666; }
 html {font-size: 62.5%;font-family: "PingFang-SC-Regular";}
-body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; font-size: 1rem; font-family: -apple-system,Helvetica,sans-serif; line-height: 1.5; color: #666; -webkit-text-size-adjust: 100% !important; text-size-adjust: 100% !important; }
+body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; font-size: 1rem; font-family: -apple-system,Helvetica,sans-serif; line-height: 1.5; color: #666; -webkit-text-size-adjust: 100% !important; text-size-adjust: 100% !important;overflow: hidden; }
 input[type="text"], textarea { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
-
+div,ul,ol {m}
 
 
 .fl {
@@ -27,7 +27,10 @@ input[type="text"], textarea { -webkit-appearance: none; -moz-appearance: none; 
 .clearfix:after {
   clear: both;
 }
-
+.container {
+	padding: 0 1rem;
+	margin: 0 auto;
+}
 .bg-f {
 	background: #fff;
 }
@@ -90,16 +93,26 @@ input[type="text"], textarea { -webkit-appearance: none; -moz-appearance: none; 
 	top:0;
 	left:0;
 	z-index: 1;
+/*	display: none;*/
 }
 
-/*.btn {
-	display: inline-block;
-}
-
-
-.bgcolor-blue {
+.blue-btn-default{
+	width: 16.666666rem;
+	height: 3.75rem;
+	margin: 3.333333rem auto;
+} 
+.blue-btn-default a {
+	display: block;
+	height: 3.75rem;
+	line-height: 3.75rem;
+	text-align: center;
 	background: #38ADFF;
-}*/
+	color: #fff;
+	font-size: 1.25rem;
+	border-radius: 1.875rem;
+	box-shadow: 0px 0px 2px rgba(56,173,255,0.2);
+}
+
 
 
 
@@ -124,14 +137,17 @@ input[type="text"], textarea { -webkit-appearance: none; -moz-appearance: none; 
 	/*overflow: hidden;*/
 	position: relative;
 }
+.form-group:last-child {
+	border-bottom: none;
+}
 .form-group span {
 	display: block;
-	width: 20%;
+	width: 30%;
 	float:left;
 }
 .form-group input {
 	display: inline-block;
-	width: 50%;
+	width: 40%;
 	float: right;
 	
 	height: 2.166666rem;
@@ -144,6 +160,26 @@ input[type="text"], textarea { -webkit-appearance: none; -moz-appearance: none; 
     font-size: 1.25rem;
   	margin-right: 1rem;
 }
+.form-group .select {
+	float: right;
+	color:#ccc;
+	text-align: right;
+	margin-right: 1rem;
+}
+.form-group .select em {
+	/*line-height: ;*/
+}
+.form-group .select i{
+	display: inline-block;
+	width: 0.708333rem;
+	height: 1.25rem;
+	background: url(../images/common/icon_right.png) no-repeat;
+	background-position: center center;
+	background-size: 100% 100%;
+	vertical-align: middle;
+}
+
+
 ::-moz-placeholder {
 	color:#ccc;
 	 font-size: 1.25rem;

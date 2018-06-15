@@ -1,0 +1,97 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>绑定驾驶证</title>
+  <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+ <link rel="stylesheet" href="static/css/app.css" />
+	
+</head>
+<body class="bg-f4">
+	<!--顶部标题栏-->
+	<div class="header-top">
+		<div class="fl">
+			<a href="javascript:;" class="goback">
+				<em class="icon-goback"></em>
+				<span class="goback-text">返回</span>
+			</a>
+		</div>
+		<h2 class="header-top-title">绑定驾驶证</h2>
+	</div>
+	
+	<div class="card-wrap">
+		<div class="ocr-wrap">
+			<div class="ocr-wrap-notice" >
+				<em></em>
+				<span>采用OCR图像识别技术,拍照或者录入照片自动识别信息</span>
+			</div>
+			
+			<div class="ocr-wrap-imgbox">
+				<p>驾驶证拍摄</p>
+				<div class="ocr-wrap-imginner">
+					<img src="" alt="" onerror="this.src='static/images/common/card_driver.png'" class="ocr-img"/>
+					<em class="icon-takephoto"></em>
+				<!--	<img src="static/images/icon_photo.png" alt=""  />-->
+				</div>
+			</div>
+		</div>
+		
+		<div class="from-wrap">
+			<form class="form">
+			
+			<div class="form-group">
+				<span>姓名</span>
+				<input type="text" placeholder="请输入姓名"/>
+			</div>
+			
+			<div class="form-group">
+				<span>身份证号码</span>
+				<input type="text" placeholder="请输入身份证号码" />
+			</div>
+			
+			<div class="form-group">
+				<span>初次领证日期</span>
+				<span class="select">
+					<em>请选择</em>
+					<i></i>
+				</span>
+			</div>
+			
+		</form>
+		</div>
+	</div>
+	
+	
+	<div class="blue-btn-default">
+		<a href="javascript:;" id="bind-btn">立即绑定</a>
+	</div>
+	
+	<!--时间选择组件-->
+
+	
+
+<script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/datePicker.js" type="text/javascript" charset="utf-8"></script>
+<!--当前页面交互-->
+<script type="text/javascript">
+		var calendar = new datePicker();
+		calendar.init({
+			'trigger': '.select', /*按钮选择器，用于触发弹出插件*/
+			'type': 'date',/*模式：date日期；datetime日期时间；time时间；ym年月；*/
+			'minDate':'1900-1-1',/*最小日期*/
+			'maxDate':'2100-12-31',/*最大日期*/
+			'onSubmit':function(){/*确认时触发事件*/
+				console.log(calendar.value);
+				$('.select em').text(calendar.value);
+			},
+			'onClose':function(){/*取消时触发事件*/
+			}
+		})
+</script>
+
+</body>
+</html>
