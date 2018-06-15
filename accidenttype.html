@@ -62,7 +62,25 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
-	// 
+	// 创建事故
+$('#createAccident').on('click', function(){
+	$.ajax({
+	   type: "POST",
+	   url: createAccidentUrl,
+	   data: {
+	   	type:'2',
+	   	token: token,
+	   },
+	   success: function(data){
+
+	   	console.log(data)
+	   	// 事故id
+		localStorage.setItem('accidentId',data.obj);
+	   	window.location.href = 'step5.html'
+	   }
+	})
+	 
+});
 	
 </script>
 

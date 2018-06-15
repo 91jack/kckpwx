@@ -60,6 +60,7 @@
 	padding: 0 1rem;
 	color:#38ADFF;
 	font-size: 1.083333rem;
+	display: none;
 }
 .user-list li .select {
 	color:#F56954;

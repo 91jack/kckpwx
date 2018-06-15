@@ -33,7 +33,7 @@
 				<div class="ocr-wrap-imginner">
 					<img src="" alt="" onerror="this.src='static/images/common/card_xingshizheng.png'" class="ocr-img"/>
 					<em class="icon-takephoto"></em>
-				<!--	<img src="static/images/icon_photo.png" alt=""  />-->
+					<input type="file" accept="image/*"  id="takephoto"/>
 				</div>
 			</div>
 		</div>
@@ -43,17 +43,17 @@
 			
 			<div class="form-group">
 				<span>号牌号码</span>
-				<input type="text" placeholder="请输入车牌号"/>
+				<input type="text" placeholder="请输入车牌号" class="plate-num"/>
 			</div>
 			
 			<div class="form-group">
 				<span>车辆识别号码</span>
-				<input type="text" placeholder="请输入车辆识别号码" />
+				<input type="text" placeholder="请输入车辆识别号码" class=""/>
 			</div>
 			
 			<div class="form-group">
 				<span>发动机号</span>
-				<input type="text" placeholder="请输入发动机号" />
+				<input type="text" placeholder="请输入发动机号" class="motor-num"/>
 			</div>
 			
 			<div class="form-group">
@@ -72,10 +72,6 @@
 	<div class="blue-btn-default">
 		<a href="javascript:;" id="bind-btn">立即绑定</a>
 	</div>
-	
-	<!--时间选择组件-->
-
-	
 
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
@@ -83,6 +79,7 @@
 <script src="static/js/datePicker.js" type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
+	// 时间组件
 		var calendar = new datePicker();
 		calendar.init({
 			'trigger': '.select', /*按钮选择器，用于触发弹出插件*/
@@ -96,6 +93,43 @@
 			'onClose':function(){/*取消时触发事件*/
 			}
 		})
+		
+	// 行驶证拍照识别
+	$('#takephoto').change(function(){
+		var that = $(this)
+		var token = localStorage.getItem('token')
+		var formData = new FormData();	
+		formData.append('files',that[0].files[0]);
+		formData.append('imgType','2');
+		formData.append('token',token);
+		
+		$.ajax({
+			type:"post",
+			url:AnalysisUrl,
+			data: formData,
+			processData: false,
+	    contentType: false,
+	    dataType: "json",
+			success: function(data){
+				if(data.status == 2000){
+					console.log(data)
+					$('.ocr-img').attr('src',data.list[0])
+					
+					
+				}
+			}
+		});
+	});
+	
+	
+
+	
+	
+	
+	// 绑定行驶证
+	
+	
+	
 </script>
 
 </body>
