@@ -1,0 +1,126 @@
+/*首页index.html*/
+html{
+	width: 100%;
+	height: 100%;
+}
+.index-page{
+	height: 100%;
+	width: 100%;
+	background: url('../images/index/index-bg.png');
+	background-size: 100% 100%;
+}
+.index-page .header-top{
+	background: none;
+	box-shadow: none;
+	border: none;
+}
+.index-page .header-top div,
+.index-page .header-top em,
+.index-page .header-top span,
+.index-page .header-top h2{
+	color: #fff;
+}
+.index-page .header-top em{
+	background: url('../images/index/return.png');
+	background-size: 100% 100%;
+}
+.index-page .content-weather{
+	height: 10rem;
+	width: 100%;
+	font-size: 2.916666rem;
+}
+.index-page .content-weather .date,
+.index-page .content-weather .weather{
+	margin-top: 2.833333rem;
+}
+.index-page .content-weather .date span{
+	font-size: 2.916666rem;
+	color: #fff;
+	margin-left: 1.666666rem;
+}
+.index-page .content-weather .date em{
+	color: #fff;
+	font-size: 1.25rem;
+	margin-left: -0.4rem;
+}
+.index-page .content-weather .date p{
+	font-size: 0.833333rem;
+	margin-left: 1.666666rem;
+	color: #fff;
+}
+.index-page .content-weather .weather img{
+	width: 2.583333rem;
+	height: 2.083333rem;
+	vertical-align: middle;
+}
+.index-page .content-weather .weather span{
+	font-size: 0.833333rem;
+	margin-right: 1.625rem;
+	color: #fff;
+}
+.index-page .content-weather .weather p{
+	font-size: 0.833333rem;
+	color: #fff;
+}
+.index-page .content-info{
+	margin-top: 6.75rem;
+}
+.index-page .content-info ul{
+	display: flex;
+	justify-content:space-around
+}
+.index-page .content-info li{
+	text-align: center;
+	width: 4rem;
+	height: 4.833333rem;
+}
+.index-page .content-info li:nth-child(2){
+	margin-top: -1.625rem;
+}
+.index-page .content-info li img{
+	width: 4rem;
+	height: 4.833333rem;
+}
+.index-page .content-deal{
+	height: 28.666666rem;
+	margin-top: 0.541666rem;
+}
+.index-page .content-deal .deal-accident{
+	width: 13.333333rem;
+	height: 13.333333rem;
+	background: url('../images/index/btn2.png');
+	background-size: 100% 100%;
+	margin: auto;
+	margin-top: 5.416666rem;
+}
+.index-page .content-deal .deal-accident img{
+	display: block;
+	width: 5.5rem;
+	height: 3.333333rem;
+	margin: auto;
+	padding-top: 4.166666rem;
+}
+.index-page .content-deal .deal-accident p{
+	text-align: center;
+	font-size: 1rem;
+	color: #1E8FCF;
+	margin-top: 0.541666rem;
+}
+.index-page .content-deal .deal-intro{
+	width: 17.5rem;
+	height: 2.5rem;
+	background: #fff;
+	margin: auto;
+	margin-top: 1.666666rem;
+	text-align: center;
+}
+.index-page .content-deal .deal-intro img{
+	width: 2rem;
+	height: 1.416666rem;
+	vertical-align: middle;
+	margin-right: 0.791666rem;
+}
+.index-page .content-deal .deal-intro span{
+	line-height: 2.5rem;
+	vertical-align: middle;
+}
