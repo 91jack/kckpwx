@@ -258,7 +258,20 @@ div,ul,ol {m}
 	border-radius: 0.333333rem;
 }
 
-
+/**/
+.action-modal {
+	width: 80%;
+	margin: 0 auto;
+	background: rgba(0,0,0,.5);
+	border-radius: 0.416666rem;
+	transition: all 0.2s;
+}
+.action-modal p {
+	line-height: 2rem;
+	text-align: center;
+	color: #fff;
+	padding: 1rem 0;
+}
 
 
 

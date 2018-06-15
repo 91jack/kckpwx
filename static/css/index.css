@@ -20,10 +20,24 @@ html{
 .index-page .header-top h2{
 	color: #fff;
 }
-.index-page .header-top em{
+.index-page .header-top .icon-goback{
 	background: url('../images/index/return.png');
 	background-size: 100% 100%;
 }
+.index-page .fr a {
+	display: block;
+	position: relative;
+	z-index: 10;
+}
+.index-page .icon-user{
+	display: block;
+	width: 1.291666rem;
+	height: 1.5rem;
+	background: url('../images/index/icon_user.png');
+	background-size: 100% 100%;
+	margin-top: 0.958333rem;
+}
+
 .index-page .content-weather{
 	height: 10rem;
 	width: 100%;
