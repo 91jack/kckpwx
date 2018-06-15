@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>意见反馈</title>
+  <title>本方信息</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  <link rel="stylesheet" href="static/css/app.css" />
 	
 </head>
-<body class="bg-f4 opinion-page">
+<body class="bg-f4 card-driver-page">
 	<!--顶部标题栏-->
 	<div class="header-top">
 		<div class="fl">
@@ -18,25 +18,28 @@
 				<span class="goback-text">返回</span>
 			</a>
 		</div>
-		<h2 class="header-top-title">意见反馈</h2>
+		<h2 class="header-top-title">本方信息</h2>
 	</div>
 	
-	<!--用户意见-->
-	<div class="opinion-wrap">
-		<textarea name="opinion-content" placeholder="请详细描述您遇到的问题或建议，我们将及时跟进。"></textarea>
-	</div>	
-	
-	<div class="user-contact">
-		<div class="container">
-			<span>联系方式&nbsp;:</span>
-			<input type="text" placeholder="你的电话或邮箱" id="phone" />
-		</div>
+	<!--本方信息表单-->
+	<div>
+		<form class="form">
 			
+			<div class="form-group">
+				<span>手机号码</span>
+				<input type="text" placeholder="请输入手机号码" id="phone"/>
+			</div>
+			
+			<div class="form-group">
+				<span>验证码</span>
+				<input type="text" placeholder="请输入验证码" class="fl" id="yzmcode"/>
+				<a href="javascript:;" class="yzm-btn">获取验证码</a>
+			</div>
+			
+		</form>
 	</div>
 	
-	<div class="blue-btn-default">
-		<a href="javascript:;" id="submit-btn">提交反馈</a>
-	</div>
+	
 	
 	
 	
