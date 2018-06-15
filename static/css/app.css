@@ -84,3 +84,144 @@
 	color: #333;
 }
 
+
+/*证件拍照识别  bind_car.html/bind_drivercard.html */
+.ocr-wrap {
+	height: 18.75rem;
+	background: #fff;
+	border-bottom: 1px solid #f4f4f4;
+}
+.ocr-wrap-notice {
+	height: 3rem;
+	line-height: 3rem;
+	padding: 0 2rem;
+}
+.ocr-wrap-notice em {
+	display: inline-block;
+	width: 1.25rem;
+	height: 1.041666rem;
+	background: url(../images/icon_ocr.png) no-repeat;
+	background-position:center center;
+	background-size:100% 100% ;
+	vertical-align: middle;
+}
+.ocr-wrap-notice span {
+	text-align: center;
+	padding-left: .5rem;
+}
+.ocr-wrap-imgbox {
+	width: 27.583333rem;
+	height: 14.583333rem;
+	border: 1px solid #ccc;
+	margin: 0 auto;
+	border-radius: 0.333333rem;
+}
+
+.ocr-wrap-imgbox p {
+	text-align: center;
+	font-size: 1rem;
+	line-height: 2.625rem;
+	font-weight: bold;
+}
+
+.ocr-wrap-imgbox .ocr-wrap-imginner{
+	width:18.666666rem;
+	height: 10.791666rem;
+	overflow: hidden;
+	margin: 0 auto;
+	position: relative;
+}
+.ocr-wrap .ocr-img {
+	width:18.666666rem;
+	height: 10.791666rem;
+}
+.ocr-wrap .icon-takephoto {
+	display: block;
+	width: 2.541666rem;
+	height: 2.25rem;
+	background: url(../images/icon_photo.png) no-repeat;
+	background-position:center center;
+	background-size:100% 100% ;
+	vertical-align: middle;
+	position: absolute;
+	top: 4.291666rem;
+	left: 8.083333rem;
+	z-index: 10;
+}
+
+/* 车辆列表 驾驶证列表   my_carinfo.html/ my_drivercard.html*/
+.info-list {
+	
+}
+
+.info-list .info-item{
+	width: 100%;
+	background: #fff;
+	margin-bottom: 0.833333rem;
+	color: #333;
+}
+.info-item-info {
+	height: 4.166666rem;
+	line-height: 4.166666rem;
+	font-size: 1.25rem;
+	border-bottom: 1px solid #f4f4f4;
+}
+
+
+.item-action {
+	height: 3.333333rem;
+	line-height:3.333333rem;
+	font-size: 1rem;
+	
+}
+.item-action a {
+	display: inline-block;
+	/*height: 1.333333rem;
+	line-height:1.333333rem;*/
+}
+
+.item-action .select {
+	
+}
+
+.item-action .select .icon-select{
+	display: inline-block;
+	width: 1.25rem;
+	height: 1.25rem;
+	margin-right:1rem;
+	background: url(../images/icon_selected.png) no-repeat;
+	background-position:center;
+	background-size:100% 100% ;
+	vertical-align: middle;
+}
+.item-action .select .icon-null{
+	display: inline-block;
+	width: 1.25rem;
+	height: 1.25rem;
+	margin-right:1rem;
+	background: url(../images/icon_null.png) no-repeat;
+	background-position:center;
+	background-size:100% 100% ;
+	vertical-align: middle;
+}
+.item-action .edit em{
+	display: inline-block;
+	width: 1rem;
+	height: 1rem;
+	margin: 0 1rem;
+	background: url(../images/icon_edit.png) no-repeat;
+	background-position:center;
+	background-size:100% 100% ;
+	vertical-align: middle;
+}
+.item-action .del em{
+	display: inline-block;
+	width: 1rem;
+	height: 1rem;
+	margin: 0 1rem;
+	background: url(../images/icon_del.png) no-repeat;
+	background-position:center;
+	background-size:100% 100% ;
+	vertical-align: middle;
+}
+
