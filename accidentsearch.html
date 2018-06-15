@@ -1,0 +1,106 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>事故查询</title>
+  <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+  <link rel="stylesheet" type="text/css" href="static/css/common1.css"/>
+ 	<link rel="stylesheet" href="static/css/app.css" />
+ 	<link rel="stylesheet" type="text/css" href="static/css/app1.css"/>
+	
+</head>
+<body class="bg-f4 accident-search-page">
+	<!--顶部标题栏-->
+	<div class="header-top">
+		<div class="fl">
+			<a href="javascript:;" class="goback">
+				<em class="icon-goback"></em>
+				<span class="goback-text">返回</span>
+			</a>
+		</div>
+		<h2 class="header-top-title">事故查询</h2>
+	</div>
+	
+	<!--tab切换-->
+	<div class="tab-btn">
+		<a href="#undeal" class="fl">未完成事故</a>
+		<a href="#deal" class="active fr">已完成事故</a>
+	</div>
+	
+	<!--tab切换内容-->
+	<!--已完成事故-->
+	<div class="tab-content active" id="deal">
+		<div class="tab-content-item clearfix">
+			<ul class="fl">
+				<li><span>事故编号：</span><span class="accident-info">HZS20170510205447</span></li>
+				<li><span>事故时间：</span><span class="accident-info">2017-11-12 17:55</span></li>
+				<li><span>事故地点：</span><span class="accident-info">重庆市渝北区爱琴海</span></li>
+				<li><span>事故形态：</span><span class="accident-info">已定责</span></li>
+			</ul>
+			<div class="accident-status fr">
+				<img src="static/images/already.png" alt="" />
+			</div>
+		</div>
+		<div class="tab-content-item clearfix">
+			<ul class="fl">
+				<li><span>事故编号：</span><span class="accident-info">HZS20170510205447</span></li>
+				<li><span>事故时间：</span><span class="accident-info">2017-11-12 17:55</span></li>
+				<li><span>事故地点：</span><span class="accident-info">重庆市渝北区爱琴海</span></li>
+				<li><span>事故形态：</span><span class="accident-info">已定责</span></li>
+			</ul>
+			<div class="accident-status fr">
+				<img src="static/images/already.png" alt="" />
+			</div>
+		</div>
+	</div>
+	
+	<!--未完成事故-->
+	<div class="tab-content" id="undeal">
+		<div class="tab-content-item clearfix">
+			<ul class="fl">
+				<li><span>事故编号：</span><span class="accident-info">HZS20170510205447</span></li>
+				<li><span>事故时间：</span><span class="accident-info">2017-11-12 17:55</span></li>
+				<li><span>事故地点：</span><span class="accident-info">重庆市渝北区爱琴海</span></li>
+				<li><span>事故形态：</span><span class="accident-info">未定责</span></li>
+			</ul>
+			<div class="accident-status fr">
+				<a href="javascript:;">上传证件照片</a>
+			</div>
+		</div>
+		<div class="tab-content-item clearfix">
+			<ul class="fl">
+				<li><span>事故编号：</span><span class="accident-info">HZS20170510205447</span></li>
+				<li><span>事故时间：</span><span class="accident-info">2017-11-12 17:55</span></li>
+				<li><span>事故地点：</span><span class="accident-info">重庆市渝北区爱琴海</span></li>
+				<li><span>事故形态：</span><span class="accident-info">未定责</span></li>
+			</ul>
+			<div class="accident-status fr">
+				<a href="javascript:;">上传证件照片</a>
+			</div>
+		</div>
+	</div>
+	
+	<!--录入事件-->
+	<div class="tab-content-btn">
+		 <span>录入事故</span>
+	</div>
+
+<script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
+<!--当前页面交互-->
+<script type="text/javascript">
+	// 
+	$('.tab-btn a').click(function(){
+		$(this).siblings('a').removeClass('active')
+		$(this).addClass('active');
+		var type = $(this).attr('href');
+		$('.tab-content').removeClass('active');
+		$(type).addClass('active');
+	})
+</script>
+
+</body>
+</html>

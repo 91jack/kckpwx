@@ -11,7 +11,7 @@
  	<link rel="stylesheet" type="text/css" href="static/css/app1.css"/>
 	
 </head>
-<body class="index-page">
+<body class="warmtip-page">
 	<!--顶部标题栏-->
 	<div class="header-top">
 		<div class="fl">
@@ -20,55 +20,59 @@
 				<span class="goback-text">返回</span>
 			</a>
 		</div>
-		<h2 class="header-top-title">快处快赔</h2>
+		<h2 class="header-top-title">温馨提示</h2>
 	</div>
 	
-	<!--天气时间信息-->
-	<div class="content-weather clearfix">
-		<div class="date fl">
-			<span>10</span>
-			<em>℃</em>
-			<p>1月24日 星期三</p>
-		</div>
-		<div class="weather fr">
-			<img src="static/images/index/weather.png"/>
-			<span>多云</span>
-			<p>空气质量差</p>
+	<!--顶部警察提示-->
+	<div class="police">
+		<img class="fl" src="static/images/common/police2.png"/>
+		<div class="police-content">
+			<span>温馨提示</span>
+			<p>有以下行为之一应该立即报警，然后在现场等待交警处理！</p>
 		</div>
 	</div>
 	
-	<!--客服查询使用说明-->
-	<div class="content-info">
+	<!--图片内容区-->
+	<div class="warmtip-content">
+		<p>情况列举</p>
 		<ul>
 			<li>
-				<a href="javascript:;">
-					<img src="static/images/index/kfserver.png"/>
-				</a>
+				<img src="static/images/main/warmcar.png"/>
+				<span>任意一方车辆无号牌</span>
 			</li>
 			<li>
-				<a href="javascript:;">
-					<img src="static/images/index/copy.png"/>
-				</a>
+				<img src="static/images/main/certificate.png"/>
+				<span>任意一方驾驶人无驾驶证</span>
 			</li>
 			<li>
-				<a href="javascript:;">
-					<img src="static/images/index/useintro.png"/>
-				</a>
+				<img src="static/images/main/warmcar.png"/>
+				<span>任意一方驾驶人有酒驾毒驾嫌疑</span>
+			</li>
+			<li>
+				<img src="static/images/main/warmcar.png"/>
+				<span>任意一方有人伤亡</span>
+			</li>
+			<li>
+				<img src="static/images/main/warmcar.png"/>
+				<span>任意一方车辆无法移动</span>
+			</li>
+			<li>
+				<img src="static/images/main/warmcar.png"/>
+				<span>本次事故造成公共财产损失</span>
 			</li>
 		</ul>
+		<div class="warm-accident"></div>
 	</div>
-	
-	<!--快速处理事件-->
-	<div class="content-deal">
-		<div class="deal-accident">
+	<div class="warm-btn">
+		<div class="btn">
 			<a href="javascript:;">
-			 	<img src="static/images/index/accident.png"/>
-			 	<p>快速事故处理</p>
+				已确认，下一步
 			</a>
 		</div>
-		<div class="deal-intro">
-			<img src="static/images/index/jtaccident.png"/>
-			<span>如何快速判断事故责任</span>
+		<div class="btn">
+			<a href="javascript:;">
+				立即报警
+			</a>
 		</div>
 	</div>
 	
@@ -79,6 +83,7 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 
+	
 </script>
 
 </body>
