@@ -140,3 +140,130 @@
 .subcards-page .btn{
 	margin-top: 5.5rem;
 }
+
+/*上传事故照片upload.html*/
+.upload-page .upload-content .msg li{
+	height: 4.166666rem;
+	width: 100%;
+	line-height: 4.166666rem;
+	border-bottom: 1px solid #CCCCCC;
+}
+.upload-page .upload-content .msg li span:first-child{
+	font-size: 1.25rem;
+	margin-left: 1.666666rem;
+	color: #333;
+}
+.upload-page .upload-content .msg li span:nth-child(2){
+	color: #333;
+	font-size: 1.25rem;
+	margin-left: 1.666666rem;
+}
+.upload-page .upload-content .msg li em{
+	background: url('../images/common/next.png');
+	width: 0.708333rem;
+	height: 1.25rem;
+	background-size: 100% 100%;
+	margin-top: 1.458333rem;
+	margin-right: 1.666666rem;
+}
+.upload-page .upload-content .msg li:nth-child(2) span:nth-child(2n){
+	margin-left: 0.958333rem;
+	display: inline-block;
+	width: 1.333333rem;
+	height: 1.333333rem;
+	background: url('../images/common/right.png');
+	background-size: 100% 100%;	
+}
+.upload-page .upload-content .msg li:nth-child(2) span:nth-child(2n).active{
+	background: url('../images/common/bigo.png');
+	background-size: 100% 100%;	
+}
+.upload-page .upload-content .msg li:nth-child(2) span:nth-child(4){
+	display: inline-block;
+	width: 1.333333rem;
+	height: 1.333333rem;
+	margin-left: 2.083333rem;
+}
+.upload-page .upload-content .msg li:nth-child(2) span:nth-child(3),
+.upload-page .upload-content .msg li:nth-child(2) span:nth-child(5){
+	margin-left: 0.666666rem;
+	font-size: 1.25rem;
+}
+.upload-page .upload-content .msg li:nth-child(3) span:nth-child(2){
+	position: relative;
+}
+
+.upload-page .upload-content .msg li:nth-child(3) span:nth-child(2):after{
+	content: '';
+	position: absolute;
+	top: 0;
+	right: -1.958333rem;
+	height: 1.666666rem;
+	width: 1px;
+	background: #ccc;
+}
+.upload-page .upload-content .msg li:nth-child(3) span:last-child{
+	color: #333;
+	font-size:1.25rem;
+	margin-left: 3.75rem;
+}
+.upload-page .upload-content .uploadpicture{
+	margin-bottom: 2.083333rem;
+}
+.upload-page .upload-content .uploadpicture:last-child{
+	margin-bottom: 3.333333rem;
+}
+.upload-page .upload-content .uploadpicture li{
+	width: 13.75rem;
+	height: 8.333333rem;
+	text-align: center;
+	position: relative;
+	float: left;
+	margin-left: 1.333333rem;
+	margin-top: 1.333333rem;
+}
+.upload-page .upload-content .uploadpicture li:last-child{
+	margin-left: 1rem;
+}
+.upload-page .upload-content .uploadpicture li>p{
+	font-size: 1.25rem;
+	color: #999;
+	margin-top: 0.625rem;
+	margin-bottom: 0.708333rem;
+}
+.upload-page .upload-content .uploadpicture li>.box{
+	height: 8.333333rem;
+	border: 1px solid #ccc;
+	border-radius: 0.25rem;
+	position: relative;
+}
+.upload-page .upload-content .uploadpicture li>.box em{
+	position: absolute;
+	display: block;
+	width: 3rem;
+	height: 2.916666rem;
+	background: url('../images/main/must.png');
+	background-size: 100% 100%;
+	top: 0;
+	right: 0;
+}
+.upload-page .upload-content .uploadpicture li>.box>img{
+	display:inline-block;
+	width: 10.291666rem;
+	height: 3.791666rem;
+	margin-top: 2.625rem;
+}
+.upload-page .upload-content .uploadpicture .upload-msg{
+	position: absolute;
+	width: 2.5rem;
+	height: 2.25rem;
+	background: url('../images/main/camera.png');
+	background-size: 100% 100%;
+	top: 50%;
+	left: 50%;
+	margin-left: -1.25rem;
+	margin-top: -1.125rem;
+}
+.upload-page .upload-content .uploadpicture .upload-msg input{
+	opacity: 0;
+}
