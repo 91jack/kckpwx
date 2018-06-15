@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>本方信息</title>
+  <title>我的驾驶证</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  <link rel="stylesheet" href="static/css/app.css" />
 	
@@ -18,25 +18,57 @@
 				<span class="goback-text">返回</span>
 			</a>
 		</div>
-		<h2 class="header-top-title">本方信息</h2>
+		<h2 class="header-top-title">我的驾驶证</h2>
 	</div>
 	
-	<!--本方信息表单-->
-	<div>
-		<form class="form">
-			
-			<div class="form-group">
-				<span>手机号码</span>
-				<input type="text" placeholder="请输入手机号码" id="phone"/>
+	<!--车辆信息列表-->
+	<div class="info-list">
+		<div class="info-item">
+			<div class="info-item-info clearfix">
+				<div class="container">
+					<span class="fl">何继文</span>
+					<span class="fr">LFNAFUJM4C1E28823</span>
+				</div>
+				
 			</div>
-			
-			<div class="form-group">
-				<span>验证码</span>
-				<input type="text" placeholder="请输入验证码" class="fl" id="yzmcode"/>
-				<a href="javascript:;" class="yzm-btn">获取验证码</a>
+			<div class="item-action clearfix">
+				<div class="container">
+					<div class="fl">
+						<a href="javascript:;" class="select"> <em class="icon-select"></em>设为默认</a>
+					</div>
+					<div class="fr">
+						<a href="javascript:;" class="edit"><em class="icon"></em>编辑</a>
+						<a href="javascript:;" class="del"><em class="icon"></em>删除</a>
+					</div>
+				</div>
 			</div>
-			
-		</form>
+		</div>
+		
+		<div class="info-item">
+			<div class="info-item-info clearfix">
+				<div class="container">
+					<span class="fl">邓琪</span>
+					<span class="fr">LFNAFUJM4C1E28823</span>
+				</div>
+				
+			</div>
+			<div class="item-action clearfix">
+				<div class="container">
+					<div class="fl">
+						<a href="javascript:;" class="select"><em class="icon-null"></em>设为默认</a>
+					</div>
+					<div class="fr">
+						<a href="javascript:;" class="edit"><em class="icon"></em>编辑</a>
+						<a href="javascript:;" class="del"><em class="icon"></em>删除</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--按钮-->
+	<div class="blue-btn-default">
+		<a href="bind_car.html" id="bind-btn">添加驾驶证</a>
 	</div>
 	
 	
