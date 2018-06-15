@@ -12,17 +12,9 @@ body { margin: 0 auto; min-width: 320px; max-width: 640px; height: 100%; font-si
 input[type="text"], textarea { -webkit-appearance: none; -moz-appearance: none; appearance: none; }
 
 
-.bg-f {
-	background: #fff;
-}
-.bg-red {
-	background: #D11426!important;
-}
-.mt2 {
-	margin-top: 2rem;
-}
+
 .fl {
-	float:left;
+	float:left!important;
 }
 .fr {
 	float: right;
@@ -36,6 +28,22 @@ input[type="text"], textarea { -webkit-appearance: none; -moz-appearance: none; 
   clear: both;
 }
 
+.bg-f {
+	background: #fff;
+}
+.bg-f4 {
+	background: #f4f4f4;
+}
+.bg-red {
+	background: #D11426!important;
+}
+.mt2 {
+	margin-top: 2rem;
+}
+
+
+
+
 /*顶部标题栏*/
 .header-top {
 	height: 3.708333rem;
@@ -44,11 +52,14 @@ input[type="text"], textarea { -webkit-appearance: none; -moz-appearance: none; 
 	font-size: 1.333333rem;
 	overflow: hidden;
 	padding:  0 1rem;
-	
+	background: #fff;
 }
 .header-top .goback {
 	display: block;
-	
+	height: 3.708333rem;
+	line-height: 3.708333rem;
+	position: relative;
+	z-index: 999;
 }
 .header-top .icon-goback {
 	display: inline-block;
@@ -58,37 +69,106 @@ input[type="text"], textarea { -webkit-appearance: none; -moz-appearance: none; 
 	background-position: center center;
 	background-size:100% 100% ;
 	vertical-align: middle;
+	position: absolute;
+	top: 50%;
+	margin-top: -0.75rem;
+	left: 0;
 }
 .header-top .goback-text {
 	display: inline-block;
 	color: #333;
 	line-height: 3.708333rem;
-	padding:  0 .5rem;
+	padding-left:  2rem;
 }
 .header-top-title {
 	width: 100%;
 	color: #333;
 	font-weight: bold;
+	line-height: 3.708333rem;
 	text-align: center;
 	position: absolute;
 	top:0;
 	left:0;
+	z-index: 1;
 }
 
-.btn {
-	
+/*.btn {
+	display: inline-block;
 }
 
 
 .bgcolor-blue {
 	background: #38ADFF;
+}*/
+
+
+
+
+
+.content-wrap {
+	margin-top: 0.833333rem;
 }
-
-
-
-
-
-
+.form {
+/*	width: 100%;*/
+	background: #fff;
+	padding-left: 1rem;
+	/*overflow: hidden;*/
+}
+.form-group {
+	/*width: 100%;*/
+	height: 2.166666rem;
+	padding: 1rem 0;
+	font-size: 1.25rem;
+	line-height: 2.166666rem;
+	border-bottom: 1px solid #f4f4f4;
+	/*overflow: hidden;*/
+	position: relative;
+}
+.form-group span {
+	display: block;
+	width: 20%;
+	float:left;
+}
+.form-group input {
+	display: inline-block;
+	width: 50%;
+	float: right;
+	
+	height: 2.166666rem;
+	line-height: 2.166666rem;
+	vertical-align: middle;
+    background-color: #fff;
+    background-image: none;
+  	border: none;
+    text-align: right;
+    font-size: 1.25rem;
+  	margin-right: 1rem;
+}
+::-moz-placeholder {
+	color:#ccc;
+	 font-size: 1.25rem;
+}
+::-ms-input-placeholder {
+	color:#ccc;
+	 font-size: 1.25rem;
+}
+::-webkit-input-placeholder {
+	color:#ccc;
+	 font-size: 1.25rem;
+}
+.form-group .yzm-btn {
+	display: inline-block;
+	width: 6.666666rem;
+	height: 2.5rem;
+	font-size: 1rem;
+	line-height: 2.5rem;
+	text-align: center;
+	float: right;
+	margin-right: 1rem;
+	background: #38ADFF;
+	color: #fff;
+	border-radius: 0.333333rem;
+}
 
 
 
@@ -103,13 +183,13 @@ input[type="text"], textarea { -webkit-appearance: none; -moz-appearance: none; 
 
 
 /*表单*/
-.form {
+/*.form {
 	
 }
 .form-group {
     margin-bottom: 1.5rem;
 }
-label {
+.form .form-group span{
     display: inline-block;
     margin-bottom: 5px;
     font-weight: 700;
@@ -127,13 +207,8 @@ input[type="text"] {
     vertical-align: middle;
     background-color: #fff;
     background-image: none;
-    border: 1px solid #ccc;
+    border: none;
     border-radius: .5rem;
-    /*-webkit-appearance: none;
-    -webkit-transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;*/
 }
 ::-moz-placeholder {
 	color:#ccc;
@@ -146,4 +221,4 @@ input[type="text"] {
 ::-webkit-input-placeholder {
 	color:#ccc;
 	font-size: 1.166666rem;
-}
+}*/
