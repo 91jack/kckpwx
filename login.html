@@ -54,92 +54,88 @@
 <script type="text/javascript">
 	// 获取验证码
 	var on = true;
+	
+
 	$('.yzm-btn').on('click',function(){
+	if(on){
 		// 手机号验证
 		var phone = $('#phone').val();
 		var regphone = /^1\d{10}$/;
 		if(!regphone.test(phone)){
-			alert('对不起，你的手机号有无')
-			$('.modal p').html('您的手机号有误，请重新输入！')
-		}
-		var yzmcode = $('#yzmcode').val();
-//		if( phone=='' &&  ){
-//			
-//		}
-		
-	
-		
-		if(on){
+			$('.action-modal').show()
+			$('.action-modal p').html('您的手机号有误，请重新输入！')
+			setTimeout(function(){
+				$('.action-modal').hide()
+			},500)	
+		}else{
 			// 倒计时60s
-			var time = 10;
+			var time = 5;
 			console.log(time)
 			var timer = null;
-			timer = setInterval(function(){
-				time--;
-				$('.yzm-btn').html(time + '&nbsp;S');
-				$('.yzm-btn').css('background','#ccc');
-				
-				if(time < 0){
-					$('.yzm-btn').html('重新发送');
-					$('.yzm-btn').css('background','red');
-					time = 0;
-					clearInterval(timer)
-				}
-			},1000)
-		}
+			clearInterval(timer);
+			
+			
 		
-		
-		// 获取验证码
-		$.ajax({
-	    type: "POST",
-	    url: yzcodeUrl,
-	  	data:{
-				phone:$('#phone').val(),
-				type:'4'
-			},
-	    success: function(data){
-	   		//服务器返回响应，根据响应结果，分析是否登录成功；
-				if(data.status == 2000){
-					$('#yzmcode').val(data.obj)
-				}
-	    }
-		})
-	})
-	
-	// 登录
-	$('#login-btn').on('click', function(){
-//		var token = localStorage.getItem('token');
-//		var accidentId = localStorage.getItem('accidentId');
-//		console.log(token)
-//		console.log(accidentId)
-//		if(token){
-//			window.location.href = 'step2.html';
-//		}else{
-			$.ajax({
+				// 获取验证码
+				$.ajax({
 			    type: "POST",
-			    url: loginUrl,
+			    url: yzcodeUrl,
 			  	data:{
-						loginType:'2',
-						phoneType:'2',
-						userName:$('#phone').val(),
-						yzcode: $('#yzmcode').val()
+						phone:$('#phone').val(),
+						type:'4'
 					},
 			    success: function(data){
 			   		//服务器返回响应，根据响应结果，分析是否登录成功；
-					if(data.status == 2000){
-						console.log(data)
-						// 登录后 将token存在本地
-						localStorage.setItem('token',data.obj);
-		
-						window.location.href = 'user.html';
-					}else{
-						console.log(data)
-					}
+						if(data.status == 2000){
+							$('#yzmcode').val(data.obj)
+						}
 			    }
-			})	
-			
-//		}
-	})
+				})
+				
+				timer = setInterval(function(){
+				time--;
+				$('.yzm-btn').html(time + '&nbsp;S');
+				$('.yzm-btn').css('background','#ccc');
+				// 按钮禁用
+				
+				if(time < 0){
+						$('.yzm-btn').html('重新发送');
+						$('.yzm-btn').css('background','red');
+						time = 0;
+						clearInterval(timer);
+						on = true;
+					}else{
+						on = false;
+					}
+				},1000)
+		}
+	}
+})
+
+
+// 登录
+$('#login-btn').on('click', function(){
+		$.ajax({
+		    type: "POST",
+		    url: loginUrl,
+		  	data:{
+					loginType:'2',
+					phoneType:'2',
+					userName:$('#phone').val(),
+					yzcode: $('#yzmcode').val()
+				},
+		    success: function(data){
+		   		//服务器返回响应，根据响应结果，分析是否登录成功；
+				if(data.status == 2000){
+					// 登录后 将token存在本地
+					localStorage.setItem('token',data.obj);
+					window.location.href = 'user.html';
+				}else{
+					//console.log(data)
+				}
+		  }
+		})	
+})
 </script>
 
 </body>
