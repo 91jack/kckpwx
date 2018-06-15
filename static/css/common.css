@@ -137,6 +137,9 @@ input[type="text"], textarea { -webkit-appearance: none; -moz-appearance: none; 
 	/*overflow: hidden;*/
 	position: relative;
 }
+.form-group:last-child {
+	border-bottom: none;
+}
 .form-group span {
 	display: block;
 	width: 30%;
@@ -169,7 +172,7 @@ input[type="text"], textarea { -webkit-appearance: none; -moz-appearance: none; 
 .form-group .select i{
 	display: inline-block;
 	width: 0.708333rem;
-	height: 1.35rem;
+	height: 1.25rem;
 	background: url(../images/common/icon_right.png) no-repeat;
 	background-position: center center;
 	background-size: 100% 100%;
