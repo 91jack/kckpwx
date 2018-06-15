@@ -39,10 +39,10 @@
 				<div class="container">
 					<div class="fl">
 						<span>我的驾驶证</span>
-						<span>50038219930725323</span>
+						<span></span>
 					</div>
 					<div class="fr">
-						<a href="" class="select">	<em>未绑定</em><i></i></a>
+						<a href="bind_car.html" class="select">	<em>未绑定</em><i></i></a>
 					</div>
 				</div>
 			</li>
@@ -51,10 +51,10 @@
 				<div class="container">
 					<div class="fl">
 						<span>我的机动车</span>
-						<span>50038219930725323</span>
+						<span></span>
 					</div>
 					<div class="fr">
-						<a href="" class="select">	<em>未绑定</em><i></i></a>
+						<a href="bind_drivercard.html" class="select">	<em>未绑定</em><i></i></a>
 					</div>
 				</div>
 			</li>
@@ -63,10 +63,10 @@
 				<div class="container">
 					<div class="fl">
 						<span>我的手机号</span>
-						<span>15023241228</span>
+						<span class="phone"></span>
 					</div>
 					<div class="fr">
-						<a href="" class="select">	<em>未绑定</em><i></i></a>
+						<a href="" class="select">	<em class="phone-status">未绑定</em><i></i></a>
 					</div>
 				</div>
 			</li>
@@ -109,7 +109,34 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
-
+$(function(){
+	var token = localStorage.getItem('token')
+	if(!token){
+		window.location.href="login.html"
+	}else{
+		// 如果存在token 则通过token获取用户数据
+		$.ajax({
+			type:'post',
+			url:getUserInfoUrl,
+			data: {
+				token:token
+			},
+			success: function(res){
+				if(res.status == 2000){
+					var data = res.pagination;
+					console.log(data)
+					if(data.phone){
+						$('.phone').show().text(data.phone);
+						$('.phone-status').text('修改').css('color','#ccc')
+					}
+					
+					
+				}
+			
+			}
+		})
+	}
+})
 </script>
 
 </body>
