@@ -1,0 +1,142 @@
+/*选择事故类型choosetype.html*/
+.choose-type-page .police{
+	background: #fff;
+}
+.choose-type-page .choose-type-content>div{
+	background: url('../images/main/self.png');
+	width: 28.625rem;
+	height: 11.958333rem;
+	background-size: 100% 100%;
+	margin: auto;
+	margin-top: 1.458333rem;
+}
+.choose-type-page .choose-type-content .choose-online{
+	background: url('../images/main/online.png');
+	background-size: 100% 100%;
+	margin-top: 1.291666rem;
+}
+.choose-type-page .choose-type-content .self-content{
+	margin-right: 1.833333rem;
+}
+.choose-type-page .choose-type-content .self-content p{
+	color: #48B4FF;
+	font-size: 1.166666rem;
+	text-align: center;
+	margin-top: 3.791666rem;
+	margin-bottom: 1.458333rem;
+}
+.choose-type-page .choose-type-content .self-content span{
+	display: block;
+	width: 11.666666rem;
+	height: 1.666666rem;
+	background: #48B4FF;
+	color: #fff;
+	text-align: center;
+	border-radius:0.833333rem ;
+	line-height: 1.666666rem;
+}
+.choose-type-page .choose-type-content .online-content{
+	margin-left: 2.708333rem;
+}
+.choose-type-page .choose-type-content .online-content p{
+	color: #F37765;
+	font-size: 1.166666rem;
+	text-align: center;
+	margin-top: 3.791666rem;
+	margin-bottom: 1.458333rem;
+}
+.choose-type-page .choose-type-content .online-content span{
+	display: block;
+	width: 11.666666rem;
+	height: 1.666666rem;
+	background: #F37765;
+	color: #fff;
+	text-align: center;
+	border-radius:0.833333rem ;
+	line-height: 1.666666rem;
+}
+
+
+/*输入证件信息entrymsg.html*/
+.entry-content img{
+	display: block;
+	width: 13.125rem;
+	height: 7.958333rem;
+	margin: auto;
+	margin-top: 8rem;
+}
+.entry-content p{
+	font-size: 1.333333rem;
+	color: #333;
+	text-align: center;
+	margin-top: 1.166666rem;
+}
+.entry-content .btn{
+	margin-top: 2.375rem;
+}
+.entry-content .btn img{
+	display: inline-block;
+	width: 1.333333rem;
+	height: 1.333333rem;
+	margin: 0;
+	vertical-align: middle;
+	margin-right: 0.208333rem;
+	margin-bottom: 0.32rem;
+}
+.entry-content .btn span{
+	display: inline-block;
+}
+
+/*上传证件照片subcards.html*/
+.subcards-page .subcards-content{
+	width: 100%;
+	box-sizing: border-box;
+	padding: 1.458333rem 1.458333rem 0;
+}
+.subcards-page .subcards-content .sub-pic{
+	position: relative;
+	box-sizing: border-box;
+	width: 28.533333rem;
+	height: 20.833333rem;
+	padding: 1.083333rem 0.75rem;
+	border: 1px solid #E5E5E5;
+	border-radius: 0.166666rem;
+}
+.subcards-page .subcards-content .sub-pic li{
+	width: 13.041666rem;
+	float: left;
+}
+.subcards-page .subcards-content .sub-pic li:nth-child(2n){
+	margin-left: 0.75rem;
+}
+.subcards-page .subcards-content .sub-pic li img{
+	width: 13.041666rem;
+	height: 7.541666rem;
+	border-radius:0.25rem;
+}
+.subcards-page .subcards-content .sub-pic li p{
+	text-align: center;
+	color: #48B4FF;
+	font-size: 0.916666rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.541666rem;
+}
+.subcards-page .subcards-content .sub-picture{
+	background: url('../images/common/up.png');
+	position: absolute;
+	width: 5rem;
+	height: 4.541666rem;
+	background-size: 100% 100%;
+	top:50%;
+	left: 50%;
+	margin-left: -2.5rem;
+	margin-top: -2.083333rem;
+}
+.subcards-page .subcards-content .sub-picture input{
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+}
+.subcards-page .btn{
+	margin-top: 5.5rem;
+}

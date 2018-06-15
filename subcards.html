@@ -4,13 +4,13 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>输入证件信息</title>
+  <title>上传证件照片</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  	<link rel="stylesheet" href="static/css/app.css" />
  	<link rel="stylesheet" type="text/css" href="static/css/app1.css"/>
 	
 </head>
-<body class="choose-type-page">
+<body class="subcards-page">
 	<!--顶部标题栏-->
 	<div class="header-top">
 		<div class="fl">
@@ -19,28 +19,40 @@
 				<span class="goback-text">返回</span>
 			</a>
 		</div>
-		<h2 class="header-top-title">输入证件信息</h2>
+		<h2 class="header-top-title">上传证件照片</h2>
 	</div>
 	
-	<!--顶部警察提示-->
-	<div class="police">
-		<img class="fl" src="static/images/common/police2.png"/>
-		<div class="police-content">
-			<span>温馨提示</span>
-			<p>请您在保证自身安全的情况下操作，请选择事故类型！</p>
-		</div>
-	</div>
 	
 	<!--图片内容区-->
-	<div class="entry-content">
-		<img src="static/images/main/obj.png"/>
-		<p>添加当事人</p>
-		<div class="btn">
-			<a href="javascript:;">
-				<img src="static/images/main/plus.png"/>
-				<span>添加当事人</span>
-			</a>
+	<div class="subcards-content">
+		<div class="sub-pic">
+			<ul>
+				<li>
+					<img src="static/images/common/card_driver.png"/>
+					<p>行驶证A</p>
+				</li>
+				<li>
+					<img src="static/images/common/card_driver.png"/>
+					<p>行驶证B</p>
+				</li>
+				<li>
+					<img src="static/images/common/card_driver.png"/>
+					<p>驾驶证A</p>
+				</li>
+				<li>
+					<img src="static/images/common/card_driver.png"/>
+					<p>驾驶证B</p>
+				</li>
+			</ul>
+			<div class="sub-picture">
+				<input type="file"/>
+			</div>
 		</div>
+	</div>
+	<div class="btn">
+		<a href="javascript:;">
+			提交照片
+		</a>
 	</div>
 
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
