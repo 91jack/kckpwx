@@ -225,7 +225,7 @@ div,ul,ol {m}
 	display: inline-block;
 	width: 0.708333rem;
 	height: 1.25rem;
-	background: url(../images/common/icon_right.png) no-repeat;
+	background: url('../images/common/icon_right.png') no-repeat;
 	background-position: center center;
 	background-size: 100% 100%;
 	vertical-align: middle;
@@ -292,7 +292,82 @@ input[type=file] {
 	opacity: 0;
 }
 
-
-
-
-
+/*自己对方信息模态框*/
+.msg-modal{
+	height: 100%;
+	width: 100%;
+	background: rgba(0,0,0,0.1);
+	position: absolute;
+	top: 0;
+	left: 0;
+	display: none;
+}
+.msg-modal .modal-content{
+	width: 22.5rem;
+	background: #fff;
+	margin: auto;
+	margin-top: 15.958333rem;
+	padding-top: 1.125rem;
+	border-radius: 0.666666rem;
+}
+.msg-modal .modal-content p{
+	text-align: center;
+	color: #48B4FF;
+	font-size: 1.083333rem;
+}
+.msg-modal .modal-content ul li{
+	height: 1.083333rem;
+	line-height: 1.083333rem;
+	margin-left: 1.875rem;
+	margin-bottom: 0.791666rem;
+	font-size: 1.083333rem;
+	color: #333;
+}
+.msg-modal .modal-content ul li:last-child{
+	color: #F56954;
+	margin-bottom: 1.333333rem;
+}
+.msg-modal .modal-content .modal-btn{
+	height: 3.333333rem;
+	width: 100%;
+	border-top: 1px solid #D9D9D9;
+}
+.msg-modal .modal-content .modal-btn a{
+	width: 50%;
+	float: left;
+	text-align: center;
+	line-height: 3.75rem;
+	font-size: 1.25rem;
+	color: #48B4FF;
+}
+.msg-modal .modal-content .modal-btn a:first-child{
+	position: relative;
+}
+.msg-modal .modal-content .modal-btn a:first-child:after{
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 3.75rem;
+	width: 1px;
+	background: #D9D9D9;
+}
+.msg-modal .msg-img{
+	width: 18.666666rem;
+	height: 10.791666rem;
+}
+.msg-modal .modal-content span{
+	margin-left: 1.875rem;
+	display: block;
+	font-size:1.083333rem;
+	margin-bottom: 0.708333rem;
+}
+.msg-modal .msg-img img{
+	height: 100%;
+	width: 100%;
+	margin-left: 1.875rem;
+	display: block;
+}
+.msg-modal.drive .modal-btn{
+	margin-top: 0.916666rem;
+}

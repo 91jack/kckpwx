@@ -1,0 +1,159 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>本方信息</title>
+  <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+ 	<link rel="stylesheet" href="static/css/app.css" />
+ 	<link rel="stylesheet" type="text/css" href="static/css/app1.css"/>
+</head>
+<body class="mymsg-page bg-f4">
+	<!--顶部标题栏-->
+	<div class="header-top">
+		<div class="fl">
+			<a href="javascript:;" class="goback">
+				<em class="icon-goback"></em>
+				<span class="goback-text">返回</span>
+			</a>
+		</div>
+		<h2 class="header-top-title">本方信息</h2>
+	</div>
+	
+	
+	<!--内容区-->
+	<div class="mymsg-content">
+		<form class="form">
+			<div class="form-group">
+				<em>本方信息</em>
+			</div>
+			
+			<div class="form-group">
+				<span>姓名</span>
+				<input type="text" placeholder="请输入姓名" class="fl" id="yzmcode"/>
+				<a href="javascript:;" class="yzm-btn">
+					<input type="file"/>
+				</a>
+			</div>
+			
+			<div class="form-group">
+				<span>身份证号码</span>
+				<input type="text" placeholder="请输入身份证号码" id="sfzcode"/>
+			</div>
+			
+			<div class="form-group">
+				<span>手机号码</span>
+				<input type="text" placeholder="请输入手机号码" id="phone"/>
+			</div>
+			
+			<div class="form-group">
+				<span>号牌号码</span>
+				<input type="text" placeholder="车牌号" class="fl" id="cpcode"/>
+				<a href="javascript:;" class="yzm-btn">
+					<input type="file"/>
+				</a>
+			</div>
+			<div class="form-group">
+				<span>好牌种类</span>
+				<span class="fr">小型汽车</span>
+				<em class="fr"></em>
+			</div>
+			
+			<div class="form-group">
+				<span>保险公司</span>
+				<span class="fr">请选择(非必选)</span>
+				<em class="fr"></em>
+			</div>
+			
+		</form>
+	</div>
+	
+	<div class="mymsg-btn">
+		<div class="box">
+			<a href="javascript:;">
+				删除
+			</a>
+		</div>
+		<div class="box">
+			<a href="javascript:;">
+				完成
+			</a>
+		</div>
+	</div>
+	<!--确认信息模态框-->
+	<div class="msg-modal total">
+		<div class="modal-content">
+			<p>本方信息确认</p>
+			<ul>
+				<li>姓名：张三</li>
+				<li>身份证号码：500382199305212314</li>
+				<li>手机号码：18680735886</li>
+				<li>号牌号码：渝C163w6</li>
+				<li>号牌种类：小车</li>
+				<li>保险公司：平安保险</li>
+				<li>请认证核实你的信息</li>
+			</ul>
+			<div class="modal-btn clearfix">
+				<a href="javascript:;">
+					取消
+				</a>
+				<a href="javascript:;">
+					确定
+				</a>
+			</div>
+		</div>
+	</div>
+	
+	<!--绑定驾驶证模态框-->
+	<div class="msg-modal drive">
+		<div class="modal-content">
+			<p>拍摄本方的驾驶证</p>
+			<span>拍摄自己的驾驶证,自动识别信息!</span>
+			<div class="msg-img">
+				<img src="static/images/common/card_driver.png"/>
+			</div>
+			<div class="modal-btn clearfix">
+				<a href="javascript:;">
+					取消
+				</a>
+				<a href="javascript:;">
+					确定
+					<input type="file"/>
+				</a>
+			</div>
+		</div>
+	</div>
+	
+	<!--绑定行驶证-->
+	<div class="msg-modal drive">
+		<div class="modal-content">
+			<p>拍摄本方的驾驶证</p>
+			<span>拍摄自己的驾驶证,自动识别信息!</span>
+			<div class="msg-img">
+				<img src="static/images/common/card_xingshizheng.png"/>
+			</div>
+			<div class="modal-btn clearfix">
+				<a href="javascript:;">
+					取消
+				</a>
+				<a href="javascript:;">
+					确定
+					<input type="file"/>
+				</a>
+			</div>
+		</div>
+	</div>
+	
+
+<script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
+<!--当前页面交互-->
+<script type="text/javascript">
+	// 
+	
+</script>
+
+</body>
+</html>

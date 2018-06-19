@@ -99,9 +99,6 @@
 
 /*意见反馈 opinion.html
  ------------------------------*/
-.opinion-page {
-	
-}
 .opinion-page .opinion-wrap {
 	width: 29.25rem;
 	height: 15.833333rem;
@@ -307,17 +304,14 @@
 
 /*事故查询 accident-search.html
  ------------------------------*/
-.accident-search-page {
-	
-}
-.accident-search-page .tab-btn{
+.tab-btn{
 	height: 4.166666rem;
 	line-height: 4.166666rem;
 	text-align: center;
 	background: #fff;
 	font-size: 1.25rem;
 }
-.accident-search-page .tab-btn a{
+.tab-btn a{
 	margin: 0;
 	padding: 0;
 	color: #333;
@@ -325,7 +319,7 @@
 	text-align: center;
 	position: relative;
 }
-.accident-search-page .tab-btn a.active:after{
+.tab-btn a.active:after{
 	content: '';
 	position: absolute;
 	bottom: -0.1rem;
