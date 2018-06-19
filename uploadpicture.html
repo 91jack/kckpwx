@@ -60,7 +60,28 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 
-	
+	$.ajax({
+		type:"post",
+		url:getFourInOnePicUrl,
+		data:{
+			token:localStorage.getItem('token'),
+			accidentId:localStorage.getItem('accidentId')
+		},
+		success:function(data){
+			console.log(data)
+			if (data.status==2000) {
+				var Len = data.list.length;
+				for (var i=0;i<Len;i++) {
+					$('.uploadpicture-content ul li').eq(i).children('img').attr('src',data.list[i])
+				}
+				if(data.num==0){
+					window.location.href='certificate_pass.html'
+				}else{
+					window.location.href='certificate_unpass.html'
+				}
+			}
+		}
+	});
 </script>
 
 </body>

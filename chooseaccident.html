@@ -25,27 +25,6 @@
 	<!--内容区图片区-->
 	<div class="chooseaccident-content">
 		<ul>
-			<li>
-				<img class="fl" src="static/images/accident-item.png"/>
-				<span class="fl">
-					在同车道行驶中，不按规定与前车保持必要的安全距离的（追尾）
-				</span>
-				<em class="fr active"></em>
-			</li>
-			<li>
-				<img class="fl" src="static/images/accident-item.png"/>
-				<span class="fl">
-					在同车道行驶中，不按规定与前车保持必要的安全距离的（追尾）
-				</span>
-				<em class="fr"></em>
-			</li>
-			<li>
-				<img class="fl" src="static/images/accident-item.png"/>
-				<span class="fl">
-					在同车道行驶中，不按规定与前车保持必要的安全距离的（追尾）
-				</span>
-				<em class="fr"></em>
-			</li>
 		</ul>
 	</div>
 	
@@ -62,13 +41,13 @@
 			</div>
 			<img src="static/images/accident-item.png"/>
 			<div class="modal-btn">
-				<a href="" class="fl active">A方</a>
-				<a href="" class="fl">B方</a>
+				<a href="javascript:;" class="fl active">A方</a>
+				<a href="javascript:;" class="fl">B方</a>
 			</div>
 		</div>
 	</div>
 	<div class="btn">
-		<a href="javascript:;">
+		<a href="fix-duty.html">
 			下一步
 		</a>
 	</div>
@@ -80,7 +59,36 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 
-	
+	$.ajax({
+		type:"post",
+		url:getAccidentTypeUrl,
+		success:function(data){
+			console.log(data)
+			var Len = data.list.length;
+			var str='';
+			for(var i=0;i<Len;i++){
+				str+='<li>'
+							+'<img class="fl" src="'+data.list[i].url+'"/>'
+							+'<span class="fl">'+data.list[i].name+'</span>'
+							+'<em class="fr" data="'+data.list[i].code+'" bigurl="'+data.list[i].bigurl+'"></em>'
+						+'</li>'
+			}
+			$('.chooseaccident-content ul').html('');
+			$('.chooseaccident-content ul').html(str);
+		}
+	});
+	$('.chooseaccident-content ul').on('click','li',function(){
+		$(this).siblings().children('em').removeClass('active');
+		$(this).children('em').addClass('active');
+		$('.chooseaccident-modal').css('display','block');
+		$('.chooseaccident-modal .modal-content img').attr('src',$(this).children('em.active').attr('bigurl'))
+		$('.chooseaccident-modal').click(function(){
+			$(this).css('display','none');
+		})
+		$('.chooseaccident-modal .modal-content .modal-btn a').click(function(){
+			console.log(11111111111)
+		})
+	})
 </script>
 
 </body>

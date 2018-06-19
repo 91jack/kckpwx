@@ -76,7 +76,26 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 
-	
+	$.ajax({
+		type:"post",
+		url:accidentAuthStatusUrl,
+		async:true,
+		data:{
+			id:localStorage.getItem('accidentId'),
+			token:localStorage.getItem('token')
+		},
+		success:function(data){
+			console.log(data);
+			if (data.status==2000) {
+				$('.form .form-group').eq(0).children('em').html(data.obj.id);
+				$('.form .form-group').eq(1).children('em').html(data.obj.datetime);
+				$('.form .form-group').eq(2).children('em').html(data.obj.address);
+				$('.accident-img img').eq(0).attr('src',data.obj.main_pic1);
+				$('.accident-img img').eq(1).attr('src',data.obj.main_pic2);
+				$('.accident-img img').eq(2).attr('src',data.obj.main_pic3);
+			}
+		}
+	});
 </script>
 
 </body>

@@ -41,7 +41,7 @@
 				
 			</li>
 			<li>
-				<a href="upload.html">
+				<a href="javascript:;">
 					<img src="static/images/main/two.png"/>
 					<span>双车事故</span>
 				</a>
@@ -63,20 +63,22 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 创建事故
-$('#createAccident').on('click', function(){
+$('.accident-type-content').on('click', function(){
 	$.ajax({
 	   type: "POST",
 	   url: createAccidentUrl,
 	   data: {
 	   	type:'2',
-	   	token: token,
+	   	token:localStorage.getItem('token'),
 	   },
 	   success: function(data){
-
+			if(data.status==2000){
+				
+			  // 事故id
+				localStorage.setItem('accidentId',data.obj);
+				window.location.href = 'upload.html'
+			}
 	   	console.log(data)
-	   	// 事故id
-		localStorage.setItem('accidentId',data.obj);
-	   	window.location.href = 'step5.html'
 	   }
 	})
 	 

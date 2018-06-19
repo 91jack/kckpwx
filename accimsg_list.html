@@ -117,7 +117,27 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 
-	
+	$.ajax({
+		type:"post",
+		url:accidentAuthStatusUrl,
+		async:true,
+		data:{
+			id:localStorage.getItem('accidentId'),
+			token:localStorage.getItem('token')
+		},
+		success:function(data){
+			console.log(data);
+			if (data.status==2000) {
+				for (var i=0;i<data.list.length;i++) {
+					$('.form').eq(i).children('.form-group').eq(1).children('em').html(data.list[i].name);
+					$('.form').eq(i).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
+					$('.form').eq(i).children('.form-group').eq(3).children('em').html(data.list[i].phone);
+					$('.form').eq(i).children('.form-group').eq(4).children('em').html(data.list[i].id_card);
+					$('.form').eq(i).children('.form-group').eq(5).children('em').html(data.list[i].insurer_id);
+				}
+			}
+		}
+	});
 </script>
 
 </body>

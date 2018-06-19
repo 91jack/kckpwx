@@ -6,7 +6,6 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
   <title>选择事故类型</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
-  <link rel="stylesheet" type="text/css" href="static/css/common1.css"/>
  	<link rel="stylesheet" href="static/css/app.css" />
  	<link rel="stylesheet" type="text/css" href="static/css/app1.css"/>
 	
@@ -59,6 +58,24 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 
+	$('.choose-type-content span').click(function(){
+		console.log($(this).attr('data'));
+		$.ajax({
+			type:'POST',
+			url:choseHandleTypeUrl,
+			data:{
+				token:localStorage.getItem('token'),
+				accidentId:localStorage.getItem('accidentId'),
+				handleType:$(this).attr('data')
+			},
+			success:function(data){
+				console.log(data)
+				if (data.status==2000) {
+					window.location.href='entrymsg.html';
+				}
+			}
+		})
+	})
 	
 </script>
 

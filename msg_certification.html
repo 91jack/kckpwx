@@ -90,13 +90,14 @@
 			</div>
 			
 			<div class="form-group">
-				<span>车损部位</span>
-				<strong class="fr"></strong>
-				<em class="fr">请选择</em>
+				<span>验证码</span>
+				<em class="fr msg-btn">获取验证码</em>
+				<input type="text" class="fr" placeholder="请输入验证码">
 			</div>
+			
 			<div class="form-group">
-				<span>事故责任</span>
-				<em class="fr active">无责</em>
+				<span>签字</span>
+				<em class="fr msg-btn">签字</em>
 			</div>
 			
 		</form>
@@ -113,8 +114,40 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
-	// 
+	// 获取当前页面数据
+	$.ajax({
+		type:"post",
+		url:accidentAuthStatusUrl,
+		data:{
+			token:localStorage.getItem('token'),
+			accidentId:localStorage.getItem('accidentId')
+		},
+		success:function(data){
+			console.log(data)
+			if (data.status==2000) {
+				var Len = data.list.length;
+				for (var i=0;i<Len;i++) {
+					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(1).children('em').html(data.list[i].name);
+					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
+					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(3).children('em').html(data.list[i].phone);
+				}
+			}
+		}
+	});
+	$('.form').each(function(){
+		$(this).children('.form-group').eq(5).children('em').click(function(){
+			window.location.href='signature.html';
+		})
+	})
 	
+	$('.msg-certificati-page .btn').click(function(){
+//		$.ajax({
+//			type:"post",
+//			url:"",
+//			async:true
+//		});
+		window.location.href='fastfixduty_pass.html'
+	})
 </script>
 
 </body>
