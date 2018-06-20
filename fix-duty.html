@@ -115,21 +115,21 @@
 	// 
 	$.ajax({
 		type:"post",
-		url:accidentAuthStatusUrl,
+		url:getAccidentUserInfoUrl,
 		data:{
 			token:localStorage.getItem('token'),
 			accidentId:localStorage.getItem('accidentId')
 		},
 		success:function(data){
 			console.log(data)
-			if (data.status==2000) {
-				var Len = data.list.length;
-				for (var i=0;i<Len;i++) {
-					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(1).children('em').html(data.list[i].name);
-					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
-					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(3).children('em').html(data.list[i].phone);
-				}
-			}
+//			if (data.status==2000) {
+//				var Len = data.list.length;
+//				for (var i=0;i<Len;i++) {
+//					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(1).children('em').html(data.list[i].name);
+//					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
+//					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(3).children('em').html(data.list[i].phone);
+//				}
+//			}
 		}
 	});
 //	$('.chooseaccident-page .btn').click(function(){
