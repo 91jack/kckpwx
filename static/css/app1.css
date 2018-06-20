@@ -172,11 +172,11 @@
 	width: 1.333333rem;
 	height: 1.333333rem;
 	background: url('../images/common/right.png');
-	background-size: 100% 100%;	
+	background-size: 100% 100%;
 }
 .upload-page .upload-content .msg li:nth-child(2) span:nth-child(2n).active{
 	background: url('../images/common/bigo.png');
-	background-size: 100% 100%;	
+	background-size: 100% 100%;
 }
 .upload-page .upload-content .msg li:nth-child(2) span:nth-child(4){
 	display: inline-block;
@@ -280,10 +280,10 @@
 }
 
 /*事故地点定位map.html*/
-.map-page .map-content{
-	height: 42.958333rem;
+/* .map-page .map-content{
+	height: 42.208333rem;
 	width: 100%;
-}
+} */
 .map-page #map{
 	height: 38.583333rem;
 	width: 100%;

@@ -20,28 +20,28 @@
 		</div>
 		<h2 class="header-top-title">事故地点定位</h2>
 	</div>
-		
-		<div class="">
-			<div id="map">
-				
-			</div>
-		    <ul class="info">
-		    	<li class="adreess">
-		    		<strong class="color-33 font-30">
-		    			事故地址
-		    		</strong>
-		    		<span class="color-66 font-30" id="addr">重庆市渝北区金开大道</span>
-		    		<a href="" class="fr">
-		    			<span></span>
-		    		</a>
-		    	</li>
-		    </ul>
-		    <div class="map-btn" id="submap">
-		    	<p class="color-white">完成</p>
-		    </div>
+
+	<div class="map-content">
+		<div id="map">
+
 		</div>
-				    
-	    <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=wqB7npvF7DsDGlFG2oYhih93K5iEqsou"></script>
+	    <ul class="info">
+	    	<li class="adreess">
+	    		<strong class="color-33 font-30">
+	    			事故地址
+	    		</strong>
+	    		<span class="color-66 font-30" id="addr">重庆市渝北区金开大道</span>
+	    		<a href="" class="fr">
+	    			<span></span>
+	    		</a>
+	    	</li>
+	    </ul>
+	    <div class="map-btn" id="submap">
+	    	<p class="color-white">完成</p>
+	    </div>
+		</div>
+
+	  <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=wqB7npvF7DsDGlFG2oYhih93K5iEqsou"></script>
 		<script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
@@ -52,9 +52,9 @@
 			// 地图初始化
 			var map = new BMap.Map("map"); // 创建Map实例
 			var point = new BMap.Point(106.552278, 29.571751);
-			map.centerAndZoom(point, 18); // 初始化地图,设置中心点坐标和地图级别	  
+			map.centerAndZoom(point, 18); // 初始化地图,设置中心点坐标和地图级别
 			map.addControl(new BMap.GeolocationControl()); // 定位
-			
+
 			// 当前定位
 			var geolocation = new BMap.Geolocation();
 			geolocation.getCurrentPosition(function(r) {
@@ -64,12 +64,12 @@
 					alert('failed' + this.getStatus());
 				}
 			});
-			
+
 			function showInfo(e) {
 				position(e)
 			}
 			map.addEventListener("click", showInfo);
-			
+
 			function position(e) {
 				var mk = new BMap.Marker(e.point);
 				map.addOverlay(mk);
@@ -95,6 +95,6 @@
 			})
 		</script>
 	</body>
-	
+
 
 </html>

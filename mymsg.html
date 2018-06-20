@@ -20,31 +20,31 @@
 		</div>
 		<h2 class="header-top-title">本方信息</h2>
 	</div>
-	
-	
+
+
 	<!--内容区-->
 	<div class="mymsg-content">
 		<form class="form">
 			<div class="form-group">
 				<em>本方信息</em>
 			</div>
-			
+
 			<div class="form-group">
 				<span>姓名</span>
 				<input type="text" placeholder="请输入姓名" class="fl" id="name"/>
 				<a href="javascript:;" class="yzm-btn"></a>
 			</div>
-			
+
 			<div class="form-group">
 				<span>身份证号码</span>
 				<input type="text" placeholder="请输入身份证号码" id="sfzcode"/>
 			</div>
-			
+
 			<div class="form-group">
 				<span>手机号码</span>
 				<input type="text" placeholder="请输入手机号码" id="phone"/>
 			</div>
-			
+
 			<div class="form-group">
 				<span>号牌号码</span>
 				<input type="text" placeholder="车牌号" class="fl" id="cpcode"/>
@@ -55,16 +55,16 @@
 				<span class="fr">小型汽车</span>
 				<em class="fr"></em>
 			</div>
-			
+
 			<div class="form-group">
 				<span>保险公司</span>
 				<span class="fr">请选择(非必选)</span>
 				<em class="fr"></em>
 			</div>
-			
+
 		</form>
 	</div>
-	
+
 	<div class="mymsg-btn">
 		<div class="box">
 			<a href="javascript:;">
@@ -93,14 +93,14 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!--绑定驾驶证模态框-->
 	<div class="msg-modal drive">
 		<div class="modal-content">
 			<p>拍摄本方的驾驶证</p>
 			<span>拍摄自己的驾驶证,自动识别信息!</span>
 			<div class="msg-img">
-				<img class="pictures" data='1' src="static/images/common/card_driver.png"/>
+				<img id="picrun" data='1' src="static/images/common/card_driver.png"/>
 				<div class="camera">
 					<input type="file"/>
 				</div>
@@ -115,14 +115,14 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!--绑定行驶证-->
 	<div class="msg-modal drive">
 		<div class="modal-content">
 			<p>拍摄本方的驾驶证</p>
 			<span>拍摄自己的驾驶证,自动识别信息!</span>
 			<div class="msg-img">
-				<img class="pictures" data='2' src="static/images/common/card_xingshizheng.png"/>
+				<img id="picdrive" data='2' src="static/images/common/card_xingshizheng.png"/>
 				<div class="camera">
 					<input type="file"/>
 				</div>
@@ -137,7 +137,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
@@ -147,7 +147,7 @@
 	//上传自己信息
 	$('.mymsg-btn .box a').eq(1).click(function(){
 		$('.msg-modal.total').show();
-		
+
 		var name = $('#name').val();
 		var cardNo = $('#sfzcode').val();
 		var phone = $('#phone').val();
@@ -157,7 +157,7 @@
 		var insurance =$('.form-group').eq(6).children('span').eq(1).html();
 		var insuranceId =$('.form-group').eq(6).children('span').eq(1).attr('data');
 		var firstpic = $('.msg-modal.drive').eq(0).children('.modal-content').children('.msg-img').children('img').attr('src');
-		var secondpic = $('.msg-modal.drive').eq(1).children('.modal-content').children('.msg-img').children('img').attr('src'); 
+		var secondpic = $('.msg-modal.drive').eq(1).children('.modal-content').children('.msg-img').children('img').attr('src');
 		var str = '<li>姓名：'+name+'</li>'
 							+'<li>身份证号码：'+cardNo+'</li>'
 							+'<li>手机号码：'+phone+'</li>'
@@ -170,13 +170,13 @@
 		$('.msg-modal.total').click(function(){
 			$(this).css('display','none')
 		});
-		
-		
-		
+
+
+
 		$('.msg-modal.total .modal-btn').children('a').eq(1).click(function(){
 			$.ajax({
 			type:"post",
-			url:addAccidentUserUrl, // 
+			url:addAccidentUserUrl, //
 			data:{
 				token:localStorage.getItem('token'),
 				accidentId:localStorage.getItem('accidentId'),
@@ -213,8 +213,8 @@
 //			})
 		})
 	})
-	
-	
+
+
 		$('.msg-modal.drive .modal-btn a').click(function(){
 			$('.msg-modal.drive').hide();
 		})
@@ -243,13 +243,13 @@
 			});
 		})
 	})
-	
-	
+
+
 
 	function uploadImg(that,i){
 		console.log(i);
 		var accidentId = localStorage.getItem('accidentId');
-		var formData = new FormData();	
+		var formData = new FormData();
 		console.log(that[0].files)
 		formData.append('files',that[0].files[0]);
 		formData.append('accidentId',accidentId);
@@ -265,12 +265,15 @@
 			success: function(data){
 				console.log(data);
 				if(data.status == 2000){
-					that.parent('.camera').siblings('img[data="'+i+'"]').attr("src",data.list[0]);
+					that.parent('.camera').siblings('img').attr("src",data.list[0]);
 					that.parent().css('background','none');
 					if (i==1) {
+            $('#picrun').attr("src",data.list[0]);
+  					that.parent().css('background','none');
 						$('#name').val(data.obj.name);
 					}
 					if(i==2){
+            $('#picdrive').attr("src",data.list[0]);
 						$('#cpcode').val(data.obj.plate_no);
 					}
 				}
