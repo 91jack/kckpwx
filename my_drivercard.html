@@ -23,7 +23,7 @@
 	
 	<!--车辆信息列表-->
 	<div class="info-list">
-		<div class="info-item">
+		<!--<div class="info-item">
 			<div class="info-item-info clearfix">
 				<div class="container">
 					<span class="fl">何继文</span>
@@ -37,7 +37,7 @@
 						<a href="javascript:;" class="select"> <em class="icon-select"></em>设为默认</a>
 					</div>
 					<div class="fr">
-						<a href="javascript:;" class="edit"><em class="icon"></em>编辑</a>
+						<a href="bind_drivercard.html" class="edit"><em class="icon"></em>编辑</a>
 						<a href="javascript:;" class="del"><em class="icon"></em>删除</a>
 					</div>
 				</div>
@@ -58,12 +58,12 @@
 						<a href="javascript:;" class="select"><em class="icon-null"></em>设为默认</a>
 					</div>
 					<div class="fr">
-						<a href="javascript:;" class="edit"><em class="icon"></em>编辑</a>
+						<a href="bind_drivercard.html" class="edit"><em class="icon"></em>编辑</a>
 						<a href="javascript:;" class="del"><em class="icon"></em>删除</a>
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>-->
 	</div>
 
 	<!--按钮-->
@@ -71,7 +71,15 @@
 		<a href="bind_car.html" id="bind-btn">添加驾驶证</a>
 	</div>
 	
-	
+	<div class="modal">
+		<div class="modal-content">
+			<p>亲,您确定要删除该驾驶证?</p>
+			<div class="modal-btn">
+				<a href="javascript:;">取消</a>
+				<a class="active" href="javascript:;">确定</a>
+			</div>
+		</div>
+	</div>
 	
 	
 	
@@ -81,25 +89,86 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
-var token = localStorage.getItem('token')
+	var token =localStorage.getItem('token');
+	loadcard();
+	
+	$('.info-list').on('click','.icon-select',function(){
+		$('.icon-select').css({
+			'background':'url(static/images/common/right.png) no-repeat',
+			'backgroundSize':'100% 100%'
+		})
+		$(this).css({
+			'background':'url(static/images/common/bigo.png) no-repeat',
+			'backgroundSize':'100% 100%'
+		});
+	})
+	
+	$('.info-list').on('click','.del',function(){
+		$('.modal').show();
+		$('.modal').click(function(){
+			$(this).hide();
+		})
+		var i =$(this).attr('data');
+		$('.modal-btn a.active').click(function(){
+			var driverId = '';
+			driverId = $('.info-item[data='+i+']').children('.info-item-info').children('.container').children('span').eq(1).html();
+			console.log(driverId);
+			$.ajax({
+				type:"post",
+				url:removeBindingDriverUrl,
+				data:{
+					token:token,
+					driverId:driverId
+				},
+				success:function(data){
+					console.log(data);
+					if (data.status==2000) {
+						$('.info-item[data='+i+']').remove();
+					}
+				}
+			});
+		})
+	})
+	function loadcard(){
 		$.ajax({
-			type:"post",
-			url: getBindingCarUrl,
-			data: {
-				token: token,	
-			},
-			
-	    dataType: "json",
-			success: function(data){
-				if(data.status == 2000){
-					console.log(data)
-					//window.location.href="user.html"
- 				}else{
- 					// 绑定失败
- 					
- 				}
+		type:"post",
+		url:getBindingDriverUrl,
+		data:{
+			token:token
+		},
+		success:function(data){
+			console.log(data)
+			var Len = data.list.length;
+			var listData =data.list;
+			if(data.status==2000){
+				var str='';
+				for (var i=0;i<Len;i++) {
+					str+='<div class="info-item" data="'+i+'">'
+								+'<div class="info-item-info clearfix">'
+									+'<div class="container">'
+										+'<span class="fl">'+listData[i].name+'</span>'
+										+'<span class="fr">'+listData[i].id+'</span>'
+									+'</div>'
+								+'</div>'
+								+'<div class="item-action clearfix">'
+									+'<div class="container">'
+										+'<div class="fl">'
+											+'<a href="javascript:;" class="select"> <em class="icon-select"></em>设为默认</a>'
+										+'</div>'
+										+'<div class="fr">'
+											+'<a href="javascript:;" class="edit"><em class="icon"></em>编辑</a>'
+											+'<a href="javascript:;" class="del" data="'+i+'"><em class="icon"></em>删除</a>'
+										+'</div>'
+									+'</div>'
+								+'</div>'
+							+'</div>'	;
+					$('.info-list').html('');
+					$('.info-list').html(str);
+					}
+				}
 			}
 		});
+	}
 </script>
 
 </body>
