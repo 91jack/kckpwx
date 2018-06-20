@@ -81,7 +81,25 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
-
+var token = localStorage.getItem('token')
+		$.ajax({
+			type:"post",
+			url: getBindingDriverUrl,
+			data: {
+				token: token,	
+			},
+			
+	    dataType: "json",
+			success: function(data){
+				if(data.status == 2000){
+					console.log(data)
+					//window.location.href="user.html"
+ 				}else{
+ 					// 绑定失败
+ 					
+ 				}
+			}
+		});
 </script>
 
 </body>

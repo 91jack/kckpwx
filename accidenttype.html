@@ -33,21 +33,21 @@
 	<!--图片内容区-->
 	<div class="accident-type-content">
 		<ul>
-			<li>
+			<li data-value="1">
 				<a href="javascript:;">
 					<img src="static/images/main/one.png"/>
 					<span>单车事故</span>
 				</a>
 				
 			</li>
-			<li>
+			<li data-value="2">
 				<a href="javascript:;">
 					<img src="static/images/main/two.png"/>
 					<span>双车事故</span>
 				</a>
 				
 			</li>
-			<li>
+			<li data-value="3">
 				<a href="javascript:;">
 					<img src="static/images/main/more.png"/>
 					<span>多车事故</span>
@@ -55,7 +55,10 @@
 			</li>
 		</ul>
 	</div>
-	
+
+<div class="action-modal">
+	<p>您的手机号有误，请重新输入！</p>
+</div>
 
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
@@ -63,26 +66,47 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 创建事故
-$('.accident-type-content').on('click', function(){
-	$.ajax({
-	   type: "POST",
-	   url: createAccidentUrl,
-	   data: {
-	   	type:'2',
-	   	token:localStorage.getItem('token'),
-	   },
-	   success: function(data){
-			if(data.status==2000){
-				
-			  // 事故id
-				localStorage.setItem('accidentId',data.obj);
-				window.location.href = 'upload.html'
-			}
-	   	console.log(data)
-	   }
-	})
-	 
+$('.accident-type-content li').each(function(){
+	$(this).on('click', function(){
+		var type = $(this).attr('data-value');
+		console.log(type)
+		if(type == 2){// 双车事故
+			$.ajax({
+			   type: "POST",
+			   url: createAccidentUrl,
+			   data: {
+			   	type:'2',
+			   	token:localStorage.getItem('token'),
+			   },
+			   success: function(data){
+					if(data.status==2000){
+						console.log(data)
+					  // 事故id
+						localStorage.setItem('accidentId',data.obj);
+						
+						$('.action-modal').show()
+						$('.action-modal p').html(data.msg)
+						setTimeout(function(){
+							$('.action-modal').hide()
+							window.location.href = 'upload.html'
+						},1000)	
+					}else{
+						// 事故创建失败
+						$('.action-modal').show()
+						$('.action-modal p').html(data.msg)
+						setTimeout(function(){
+							$('.action-modal').hide()
+						},1000)	
+					}
+			   
+			   }
+			})
+		}
+		
+	}) 
 });
+
+
 	
 </script>
 
