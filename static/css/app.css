@@ -1,6 +1,12 @@
 #yzmcode {
-	width: 30%;
-	float: right;
+	/*width: 30%;*/
+	/*float: right;*/
+	padding-right: 7.5rem;
+}
+.yzm-btn {
+	position: absolute;
+	top: 0.875rem;
+	right: 0;
 }
 
 /*用户信息 user.html
@@ -95,8 +101,15 @@
 	background: url(../images/icon_phone.png) no-repeat;
 	background-position:center center;
 	background-size:100% 100% ;
-	vertical-align: middle;
-	margin-right: .5rem;
+	/*vertical-align: middle;*/
+/*	margin-right: .5rem;*/
+	position: absolute;
+	top: 1.25rem;
+	left:0;
+	
+}
+.form-group .ml-1 {
+	margin-left: 1.5em;
 }
 .editphone-page .current-phone {
 	color:#ccc;

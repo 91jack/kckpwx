@@ -247,9 +247,9 @@ div,ul,ol {m}
 .form-group .yzm-btn {
 	display: inline-block;
 	width: 6.666666rem;
-	height: 2.5rem;
+	/*height: 2.5rem;*/
 	font-size: 1rem;
-	line-height: 2.5rem;
+/*	line-height: 2.5rem;*/
 	text-align: center;
 	float: right;
 	margin-right: 1rem;
