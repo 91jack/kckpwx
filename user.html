@@ -28,7 +28,7 @@
 		</div>
 		<p>MOON</p>
 		<div class="user-info-footer">
-			<p>您当前已经绑定<span>0</span>辆车</p>
+			<p>您当前已经绑定<span class="carcount">0</span>辆车</p>
 		</div>
 	</div>
 	
@@ -39,10 +39,10 @@
 				<div class="container">
 					<div class="fl">
 						<span>我的驾驶证</span>
-						<span></span>
+						<span class="drivecards"></span>
 					</div>
 					<div class="fr">
-						<a href="bind_drivercard.html" class="select">	<em>未绑定</em><i></i></a>
+						<a href="bind_drivercard.html" class="select" id="drivecard">	<em class="drivecards-status">未绑定</em><i></i></a>
 					</div>
 				</div>
 			</li>
@@ -51,10 +51,10 @@
 				<div class="container">
 					<div class="fl">
 						<span>我的机动车</span>
-						<span></span>
+						<span class="mycar"></span>
 					</div>
 					<div class="fr">
-						<a href="bind_car.html" class="select">	<em>未绑定</em><i></i></a>
+						<a href="bind_car.html" class="select" id="mycar">	<em class="mycar-status">未绑定</em><i></i></a>
 					</div>
 				</div>
 			</li>
@@ -66,7 +66,7 @@
 						<span class="phone"></span>
 					</div>
 					<div class="fr">
-						<a href="javascript:;" class="select">	<em class="phone-status">未绑定</em><i></i></a>
+						<a href="javascript:;" class="select" id="phone">	<em class="phone-status">未绑定</em><i></i></a>
 					</div>
 				</div>
 			</li>
@@ -130,11 +130,22 @@ $(function(){
 					if(data.phone){
 						$('.phone').show().text(data.phone);
 						$('.phone-status').text('修改').css('color','#ccc')
+						$('#phone').attr('href','editphone.html')
 					}
-					
-					
+					if (data.driverCard) {
+						$('.drivecards').show().text(data.driverCard);
+						$('.drivecards-status').text('修改').css('color','#ccc')
+						$('#drivecard').attr('href','my_drivercard.html')
+					}
+					if (data.carNo) {
+						$('.mycar').show().text(data.carNo);
+						$('.mycar-status').text('修改').css('color','#ccc')
+						$('#mycar').attr('href','my_carinfo.html')
+					}
+					if(data.carCount){
+						$('.carcount').text(data.carCount)
+					}
 				}
-			
 			}
 		})
 	}
