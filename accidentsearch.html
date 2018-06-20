@@ -30,7 +30,7 @@
 	<!--tab切换内容-->
 	<!--已完成事故-->
 	<div class="tab-content" id="deal">
-		<div class="tab-content-item clearfix">
+		<!--<div class="tab-content-item clearfix">
 			<ul class="fl">
 				<li><span>事故编号：</span><span class="accident-info">HZS20170510205447</span></li>
 				<li><span>事故时间：</span><span class="accident-info">2017-11-12 17:55</span></li>
@@ -51,12 +51,12 @@
 			<div class="accident-status fr">
 				<img src="static/images/already.png" alt="" />
 			</div>
-		</div>
+		</div>-->
 	</div>
 	
 	<!--未完成事故-->
 	<div class="tab-content active" id="undeal">
-		<div class="tab-content-item clearfix">
+		<!--<div class="tab-content-item clearfix">
 			<ul class="fl">
 				<li><span>事故编号：</span><span class="accident-info">HZS20170510205447</span></li>
 				<li><span>事故时间：</span><span class="accident-info">2017-11-12 17:55</span></li>
@@ -77,7 +77,7 @@
 			<div class="accident-status fr">
 				<a href="javascript:;">上传证件照片</a>
 			</div>
-		</div>
+		</div>-->
 	</div>
 	
 	<!--录入事件-->
@@ -121,6 +121,7 @@
 			},
 			success:function(data){
 					if (data.status==2000) {
+						console.log(data)
 						var str='';
 						var Len = data.list.length;
 						for (var i=0;i<Len;i++) {
@@ -130,7 +131,7 @@
 												+'<li><span>事故编号：</span><span class="accident-info">'+data.list[i].id+'</span></li>'
 												+'<li><span>事故时间：</span><span class="accident-info">'+data.list[i].datetime+'</span></li>'
 												+'<li><span>事故地点：</span><span class="accident-info">'+data.list[i].address+'</span></li>'
-												+'<li><span>事故形态：</span><span class="accident-info">'+data.list.statusStr+'</span></li>'
+												+'<li><span>事故形态：</span><span class="accident-info">'+data.list[i].statusStr+'</span></li>'
 											+'</ul>'
 											+'<div class="accident-status fr">'
 												+'<a href="javascript:;">上传证件照片</a>'
@@ -142,7 +143,7 @@
 												+'<li><span>事故编号：</span><span class="accident-info">'+data.list[i].id+'</span></li>'
 												+'<li><span>事故时间：</span><span class="accident-info">'+data.list[i].datetime+'</span></li>'
 												+'<li><span>事故地点：</span><span class="accident-info">'+data.list[i].address+'</span></li>'
-												+'<li><span>事故形态：</span><span class="accident-info">'+data.list.statusStr+'</span></li>'
+												+'<li><span>事故形态：</span><span class="accident-info">'+data.list[i].statusStr+'</span></li>'
 											+'</ul>'
 											+'<div class="accident-status fr">'
 												+'<img src="static/images/already.png" alt="" />'
@@ -157,7 +158,37 @@
 			});
 		}
 		
+		function linkhref(status){
+			var href = '';
+			switch(status){
+				case 1:
+				 	href = '11111'
+				  break;
+				case 2:
+				  href = '222'
+				  break;
+				default:
+			}
+			
+			
+		}
 </script>
 
 </body>
 </html>
+
+<!--状态（事故完成状态
+1 创建事故成功 --开始上传事故照片 
+2、上传事故照片成功 --开始审核照片 
+3、事故照片审核成功 --选择处理方式 -
+3、事故照片审核失败 不通过照片序号
+4、选择处理方式成功 --开始添加当事人 
+5、添加当事人成功  --添加成功 开始提交证件照 
+6、提交证件照片审核成功   --开始审核中 
+7、证件照片审核成功 -
+7、证件照片审核失败 
+8、选择事故情形成功 
+9、事故定责成功（自行协商，在线定责跳过该步骤）
+10、验证操作成功 提交审核中
+11、后台审核成功-
+11、后台审核失败-->

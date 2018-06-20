@@ -1365,7 +1365,7 @@
 	margin-top: 0.958333rem;
 	margin-right: 2.583333rem;
 }
-.fix-duty-content .mymsg-content .form:first-child .form-group span{
+.fix-duty-content .mymsg-content .form:first-child .form-group a{
 	width: 0.708333rem;
 	height: 1.25rem;
 	background: url('../images/common/next.png');
