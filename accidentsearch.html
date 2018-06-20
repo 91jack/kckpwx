@@ -23,13 +23,13 @@
 	
 	<!--tab切换-->
 	<div class="tab-btn">
-		<a href="#undeal" class="fl">未完成事故</a>
-		<a href="#deal" class="active fr">已完成事故</a>
+		<a href="#undeal" data='2' class="active fl">未完成事故</a>
+		<a href="#deal" data='1' class="fr">已完成事故</a>
 	</div>
 	
 	<!--tab切换内容-->
 	<!--已完成事故-->
-	<div class="tab-content active" id="deal">
+	<div class="tab-content" id="deal">
 		<div class="tab-content-item clearfix">
 			<ul class="fl">
 				<li><span>事故编号：</span><span class="accident-info">HZS20170510205447</span></li>
@@ -55,7 +55,7 @@
 	</div>
 	
 	<!--未完成事故-->
-	<div class="tab-content" id="undeal">
+	<div class="tab-content active" id="undeal">
 		<div class="tab-content-item clearfix">
 			<ul class="fl">
 				<li><span>事故编号：</span><span class="accident-info">HZS20170510205447</span></li>
@@ -90,14 +90,73 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
-	// 
-	$('.tab-btn a').click(function(){
-		$(this).siblings('a').removeClass('active')
-		$(this).addClass('active');
-		var type = $(this).attr('href');
-		$('.tab-content').removeClass('active');
-		$(type).addClass('active');
-	})
+		var token = localStorage.getItem('token');
+		var num=1;
+	// tab页的跳转
+		loadmsg(2);
+		$('.tab-btn a').click(function(){
+			$(this).siblings('a').removeClass('active')
+			$(this).addClass('active');
+			var state = $('.tab-btn a.active').attr('data');
+			loadmsg(state);
+			var type = $(this).attr('href');
+			$('.tab-content').removeClass('active');
+			$(type).addClass('active');
+			if($('#undeal').hasClass('active')){
+				$('.tab-content-btn').css('display','block')
+			}else{
+				$('.tab-content-btn').css('display','none')
+			}
+		});
+		
+		function loadmsg(state){
+			$.ajax({
+			type:"post",
+			url:accidentsDealInfoUrl,
+			data:{
+				pageSize:30,
+				pageNo:1,
+				state:state,
+				token:token
+			},
+			success:function(data){
+					if (data.status==2000) {
+						var str='';
+						var Len = data.list.length;
+						for (var i=0;i<Len;i++) {
+						if (data.list[i].statusStr=='未定责') {
+							str+='<div class="tab-content-item clearfix">'
+											+'<ul class="fl">'
+												+'<li><span>事故编号：</span><span class="accident-info">'+data.list[i].id+'</span></li>'
+												+'<li><span>事故时间：</span><span class="accident-info">'+data.list[i].datetime+'</span></li>'
+												+'<li><span>事故地点：</span><span class="accident-info">'+data.list[i].address+'</span></li>'
+												+'<li><span>事故形态：</span><span class="accident-info">'+data.list.statusStr+'</span></li>'
+											+'</ul>'
+											+'<div class="accident-status fr">'
+												+'<a href="javascript:;">上传证件照片</a>'
+											+'</div>'	
+										+'</div>'
+						}else{
+							str+='<div class="tab-content-item clearfix">'
+											+'<ul class="fl">'
+												+'<li><span>事故编号：</span><span class="accident-info">'+data.list[i].id+'</span></li>'
+												+'<li><span>事故时间：</span><span class="accident-info">'+data.list[i].datetime+'</span></li>'
+												+'<li><span>事故地点：</span><span class="accident-info">'+data.list[i].address+'</span></li>'
+												+'<li><span>事故形态：</span><span class="accident-info">'+data.list.statusStr+'</span></li>'
+											+'</ul>'
+											+'<div class="accident-status fr">'
+												+'<img src="static/images/already.png" alt="" />'
+											+'</div>'
+										+'</div>'
+							}
+						}
+						$('.tab-content.active').html('');
+						$('.tab-content.active').html(str);
+					}
+				}
+			});
+		}
+		
 </script>
 
 </body>
