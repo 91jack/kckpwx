@@ -253,6 +253,11 @@
 	height: 3.791666rem;
 	margin-top: 2.625rem;
 }
+.upload-page .upload-content .uploadpicture.sec li:first-child .box img.bigpic{
+	width: 7.875rem;
+	height: 6.833333rem;
+	margin-top: 0.75rem;
+}
 .upload-page .upload-content .uploadpicture .upload-msg{
 	position: absolute;
 	width: 2.5rem;
@@ -373,10 +378,14 @@
 	width: 0.166666rem;
 	height: 1.666666rem;
 }
+.mymsg-content .form .form-group:first-child em{
+	margin-left: 2.083333rem;
+}
 .mymsg-content .form .form-group span{
 	margin-left: 0;
 	font-size: 1.25rem;
 	color: #333;
+	margin-left: 1.666666rem;
 }
 .mymsg-content .form .form-group span:nth-child(2){
 	margin-left: 22%;
@@ -449,8 +458,18 @@
 .input-msg-content .form .form-group:first-child{
 	height: 5rem;
 	line-height: 5rem;
+	position: relative;
+	border-bottom: none;
 }
-
+.input-msg-content .form .form-group:first-child:after{
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: -1.666666rem;
+	height: 1px;
+	width: 31.25rem;
+	background: #F4F4F4;
+}
 .input-msg-content .form .form-group:first-child span{
 	margin-left: 0.416666rem;
 	position: relative;
@@ -866,4 +885,52 @@
 	border-radius: 1.875rem;
 	line-height: 3.75rem;
 	color: #fff;
+}
+/*地图map.html*/
+#map{
+	height: 34.916666rem;
+	height: 100%;
+}
+.map-page .info li{
+	width: 100%;
+	height: 4.166666rem;
+	font-size: 1.25rem;
+	border-bottom: 1px solid #F4F4F4;
+}
+.map-page .info li strong{
+	color: #333333;
+	line-height: 4.166666rem;
+	margin-left: 1.666666rem;
+}
+.map-page .info li>span{
+	color: #666;
+	line-height: 4.166666rem;
+	margin-left: 3.75rem;
+}
+.map-page .info li a{
+	width: 0.708333rem;
+	height: 1.25rem;
+	margin-top: 1.458333rem;
+	margin-right: 1.666666rem;
+}
+.map-page .info li a span{
+	display: block;
+	width: 0.708333rem;
+	height: 1.25rem;
+	background: url('../images/common/next.png');
+	background-size: 100% 100%;
+}
+#submap{
+	width: 29.25rem;
+	height: 3.75rem;
+	background: #38ADFF;
+	border-radius: 0.166666rem;
+	margin: auto;
+	margin-top: 1.833333rem;
+}
+#submap p{
+	text-align: center;
+	font-size: 1.25rem;
+	color: #fff;
+	line-height: 3.75rem;
 }

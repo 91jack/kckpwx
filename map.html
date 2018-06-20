@@ -9,7 +9,7 @@
  	<link rel="stylesheet" href="static/css/app.css" />
 	<link rel="stylesheet" type="text/css" href="static/css/app1.css"/>
 </head>
-<body class="upload-page">
+<body class="map-page">
 	<!--顶部标题栏-->
 	<div class="header-top">
 		<div class="fl">
@@ -22,7 +22,7 @@
 	</div>
 		
 		<div class="">
-			<div id="map" style="width:100%;height:300px">
+			<div id="map">
 				
 			</div>
 		    <ul class="info">
@@ -31,8 +31,8 @@
 		    			事故地址
 		    		</strong>
 		    		<span class="color-66 font-30" id="addr">重庆市渝北区金开大道</span>
-		    		<a href="">
-		    			<span class="mui-pull-right"></span>
+		    		<a href="" class="fr">
+		    			<span></span>
 		    		</a>
 		    	</li>
 		    </ul>
@@ -91,7 +91,7 @@
 			$('#submap').click(function() {
 				add= $('#addr').html();
 				localStorage.setItem('add',add);
-				window.location.href='step5.html'
+				window.location.href='upload.html';
 			})
 		</script>
 	</body>

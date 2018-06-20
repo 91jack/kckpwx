@@ -74,19 +74,19 @@
 			</li>
 			<li>
 				<div class="box">
-					<img src="" onerror="this.src='static/images/main/carfront.png'"/>
+					<img src="" onerror="this.src='static/images/main/carside.png'"/>
 					<em></em>
 				</div>
 				<div class="upload-msg">
 					<input type="file"/>
 				</div>
-				<p>侧前方</p>
+				<p>侧后方</p>
 			</li>
 		</ul>
-		<ul class="uploadpicture clearfix">
+		<ul class="uploadpicture sec clearfix">
 			<li>
 				<div class="box">
-					<img src="" onerror="this.src='static/images/main/carfront.png'"/>
+					<img class="bigpic" src="" onerror="this.src='static/images/main/acpart.png'"/>
 					<em></em>
 				</div>
 				<div class="upload-msg">
@@ -140,6 +140,7 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 选择是否为高速/高架
+	$('.upload-content .msg li').eq(0).children('a').children('span').eq(1).html(localStorage.getItem('add'))
 	$('.upload-content .msg li .choose-box').click(function(){
 		if (!$(this).hasClass('active')) {
 			$(this).addClass('active');
@@ -204,7 +205,7 @@ calendar.init({
 		});
 	})
 	$('.btn').click(function(){
-		var address = $('.upload-content .msg li').eq(0).children('a').children('span').eq(1).html();
+		var address = localStorage.getItem('add');
 		var fastRoad = $('.upload-content .msg li').eq(1).children('.choose-box.active').next('span').attr('data');
 		var accidentDate = $('.upload-content .msg li').eq(2).children('span').eq(1).html()+"  "+$('.upload-content .msg li').eq(2).children('span').eq(2).html()
 		var weather = $('.upload-content .msg li').eq(3).children('span').eq(1).html();
@@ -224,7 +225,7 @@ calendar.init({
 				token:localStorage.getItem('token'),
 				accidentId:localStorage.getItem('accidentId'),
 				address:address,
-				address_xy:('0','0'),
+				address_xy:(localStorage.getItem('lat'),localStorage.getItem('lng')),
 				isExpressway:fastRoad,
 				datetime:accidentDate,
 				weather:weather,
