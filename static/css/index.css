@@ -40,13 +40,14 @@ html{
 }
 
 .index-page .content-weather{
-	/*height: 10rem;*/
 	width: 100%;
+	height: 7.5rem;
 	font-size: 2.916666rem;
+	background: #F37765;
 }
 .index-page .content-weather .date,
 .index-page .content-weather .weather{
-	margin-top: 2.833333rem;
+	/*margin-top: 2.833333rem;*/
 }
 .index-page .content-weather .date span{
 	font-size: 2.916666rem;
@@ -78,7 +79,9 @@ html{
 	color: #fff;
 }
 .index-page .content-info{
-	margin-top: 6.75rem;
+	margin-top: 2.541666rem;
+	height: 7.5rem;
+	background: aqua;
 }
 .index-page .content-info ul{
 	display: flex;
@@ -97,8 +100,8 @@ html{
 	height: 4.833333rem;
 }
 .index-page .content-deal{
-	height: 28.666666rem;
-	margin-top: 0.541666rem;
+	/*height: 28.666666rem;*/
+	margin-top: 5.666666rem;
 }
 .index-page .content-deal .deal-accident{
 	width: 13.333333rem;

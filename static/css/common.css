@@ -49,8 +49,8 @@ div,ul,ol {m}
 
 /*顶部标题栏*/
 .header-top {
-	height: 3.708333rem;
-	line-height: 3.708333rem;
+	height: 3.666666rem;
+	line-height: 3.666666rem;
 	border-bottom: 1px solid #d9d9d9;
 	font-size: 1.333333rem;
 	overflow: hidden;
@@ -59,8 +59,8 @@ div,ul,ol {m}
 }
 .header-top .goback {
 	display: block;
-	height: 3.708333rem;
-	line-height: 3.708333rem;
+	height: 3.666666rem;
+	line-height: 3.666666rem;
 	position: relative;
 	z-index: 999;
 }
@@ -79,14 +79,14 @@ div,ul,ol {m}
 .header-top .goback-text {
 	display: inline-block;
 	color: #333;
-	line-height: 3.708333rem;
+	line-height: 3.666666rem;
 	padding-left:  2rem;
 }
 .header-top-title {
 	width: 100%;
 	color: #333;
 	font-weight: bold;
-	line-height: 3.708333rem;
+	line-height: 3.666666rem;
 	text-align: center;
 	position: absolute;
 	top:0;
@@ -97,13 +97,13 @@ div,ul,ol {m}
 
 .blue-btn-default{
 	width: 16.666666rem;
-	height: 3.75rem;
+	height: 3.666666rem;
 	margin: 3.333333rem auto;
 } 
 .blue-btn-default a {
 	display: block;
-	height: 3.75rem;
-	line-height: 3.75rem;
+	height: 3.666666rem;
+	line-height: 3.666666rem;
 	text-align: center;
 	background: #38ADFF;
 	color: #fff;
