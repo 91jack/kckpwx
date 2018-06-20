@@ -74,11 +74,13 @@
 				for (var i=0;i<Len;i++) {
 					$('.uploadpicture-content ul li').eq(i).children('img').attr('src',data.list[i])
 				}
-				if(data.num==0){
-					window.location.href='certificate_pass.html'
-				}else{
-					window.location.href='certificate_unpass.html'
-				}
+				
+				window.location.href='certificate_status.html'
+//				if(data.num==0){
+//					
+//				}else{
+//					window.location.href='certificate_unpass.html'
+//				}
 			}
 		}
 	});

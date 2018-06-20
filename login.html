@@ -85,6 +85,7 @@
 						type:'4'
 					},
 			    success: function(data){
+			    	//alert(data)
 			   		//服务器返回响应，根据响应结果，分析是否登录成功；
 						if(data.status == 2000){
 							$('#yzmcode').val(data.obj)
@@ -130,7 +131,7 @@ $('#login-btn').on('click', function(){
 				if(data.status == 2000){
 					// 登录后 将token存在本地
 					localStorage.setItem('token',data.obj);
-					window.location.href = 'user.html';
+					window.location.href = 'index.html';
 				}else{
 					//console.log(data)
 				}

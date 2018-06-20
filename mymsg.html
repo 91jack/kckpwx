@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>对方信息</title>
+  <title>本方信息</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  	<link rel="stylesheet" href="static/css/app.css" />
  	<link rel="stylesheet" type="text/css" href="static/css/app1.css"/>
@@ -18,7 +18,7 @@
 				<span class="goback-text">返回</span>
 			</a>
 		</div>
-		<h2 class="header-top-title">对方信息</h2>
+		<h2 class="header-top-title">本方信息</h2>
 	</div>
 	
 	
@@ -138,13 +138,12 @@
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
-<script src="static/js/weather.js"  type="text/javascript" charset="utf-8"></script>
-<script src="static/js/picker.min.js"  type="text/javascript" charset="utf-8"></script>
-<script src="static/js/select.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
 	//上传自己信息
 	$('.mymsg-btn .box a').eq(1).click(function(){
+		$('.msg-modal.total').show()
+		
 		var name = $('#name').val();
 		var cardNo = $('#sfzcode').val();
 		var phone = $('#phone').val();
@@ -167,9 +166,13 @@
 		$('.msg-modal.total').click(function(){
 			$(this).css('display','none')
 		});
-		$.ajax({
+		
+		
+		
+		$('.msg-modal.total .modal-btn').children('a').eq(1).click(function(){
+			$.ajax({
 			type:"post",
-			url:addAccidentUserUrl,
+			url:addAccidentUserUrl, // 
 			data:{
 				token:localStorage.getItem('token'),
 				accidentId:localStorage.getItem('accidentId'),
@@ -177,7 +180,7 @@
 				cardNo:cardNo,
 				phone:phone,
 				carNo:carNo,
-				carType:carTypeId,
+				carType: '小轿车',//carTypeId
 				insuranceId:insuranceId,
 				firstpic:'',
 				secondpic:''
@@ -186,24 +189,24 @@
 				console.log(data);
 				if (data.status==2000) {
 					$('.msg-modal.total').css('display','block');
+					window.location.href='inputmsg.html'
 				}
 			}
 		});
-		$('.msg-modal.total .modal-btn').children('a').eq(1).click(function(){
-			$.ajax({
-				type:"post",
-				url:addAccidentUserFinishUrl,
-				data:{
-					token:localStorage.getItem('token'),
-					accidentId:localStorage.getItem('accidentId')
-				},
-				success:function(data){
-					console.log(data);
-					if (data.status==2000) {
-						window.location.href='inputmsg.html'
-					}
-				}
-			})
+//			$.ajax({
+//				type:"post",
+//				url:addAccidentUserFinishUrl,
+//				data:{
+//					token:localStorage.getItem('token'),
+//					accidentId:localStorage.getItem('accidentId')
+//				},
+//				success:function(data){
+//					console.log(data);
+//					if (data.status==2000) {
+//						window.location.href='inputmsg.html'
+//					}
+//				}
+//			})
 		})
 	})
 	
@@ -264,7 +267,6 @@
 //			}
 //		});
 	}
-	
 </script>
 
 </body>

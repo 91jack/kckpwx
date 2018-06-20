@@ -64,7 +64,7 @@
 		<ul class="uploadpicture clearfix">
 			<li>
 				<div class="box">
-					<img src="static/images/main/carfront.png"/>
+					<img src=""  onerror="this.src='static/images/main/carfront.png'"/>
 					<em></em>
 				</div>
 				<div class="upload-msg">
@@ -74,7 +74,7 @@
 			</li>
 			<li>
 				<div class="box">
-					<img src="static/images/main/carfront.png"/>
+					<img src="" onerror="this.src='static/images/main/carfront.png'"/>
 					<em></em>
 				</div>
 				<div class="upload-msg">
@@ -86,7 +86,7 @@
 		<ul class="uploadpicture clearfix">
 			<li>
 				<div class="box">
-					<img src="static/images/main/carfront.png"/>
+					<img src="" onerror="this.src='static/images/main/carfront.png'"/>
 					<em></em>
 				</div>
 				<div class="upload-msg">
@@ -96,7 +96,7 @@
 			</li>
 			<li>
 				<div class="box">
-					<img src="static/images/main/carfront.png"/>
+					<img src="" onerror="this.src='static/images/main/carfront.png'"/>
 				</div>
 				<div class="upload-msg">
 					<input type="file"/>
@@ -107,7 +107,7 @@
 		<ul class="uploadpicture clearfix">
 			<li>
 				<div class="box">
-					<img src="static/images/main/carfront.png"/>
+					<img src="" onerror="this.src='static/images/main/carfront.png'"/>
 				</div>
 				<div class="upload-msg">
 					<input type="file"/>
@@ -116,7 +116,7 @@
 			</li>
 			<li>
 				<div class="box">
-					<img src="static/images/main/carfront.png"/>
+					<img src="" onerror="this.src='static/images/main/carfront.png'"/>
 				</div>
 				<div class="upload-msg">
 					<input type="file"/>
@@ -135,7 +135,6 @@
 
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/datePicker.js" type="text/javascript" charset="utf-8"></script>
-<script src="static/plguin/iosSelect/iosSelect.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
@@ -166,54 +165,7 @@ calendar.init({
 	
 	
 	// 地点天气
-	$('.select-weather').on('click', function(){
-		var weather = [
-			{'id': '10001', 'value': '工商银行'},
-	    {'id': '10002', 'value': '农业银行'},
-	    {'id': '10003', 'value': '建设银行'},
-	    {'id': '10004', 'value': '中国银行'},
-	    {'id': '10005', 'value': '交通银行'},
-	    {'id': '10006', 'value': '浦发银行'},
-	    {'id': '10007', 'value': '上海银行'},
-	    {'id': '10008', 'value': '汇丰银行'},
-	
-	    {'id': '10009', 'value': '光大银行'},
-	    {'id': '10010', 'value': '招商银行'},
-	    {'id': '10011', 'value': '中信银行'},
-	    {'id': '10012', 'value': '民生银行'},
-	    {'id': '10013', 'value': '平安银行'},
-	    {'id': '10014', 'value': '华夏银行'},
-	    {'id': '10015', 'value': '广发银行'},
-	    {'id': '10016', 'value': '北京银行'}
-		]
-		    
-//		var bankId = $(this).dataset['id'];
-//	  var bankName = $(this).dataset['value'];
-	    
-	    var bankSelect = new IosSelect(1, 
-	        [weather],
-	        {
-	            container: '.select-weather',
-	            title: '天气选择',
-	            itemHeight: 50,
-	            itemShowCount: 3,
-	           // oneLevelId: bankId,
-	            callback: function (selectOneObj) {
-	            	console.log(selectOneObj)
-//	                bankIdDom.value = selectOneObj.id;
-//	                showBankDom.innerHTML = selectOneObj.value;
-//	                showBankDom.dataset['id'] = selectOneObj.id;
-//	                showBankDom.dataset['value'] = selectOneObj.value;
-	            },
-	            fallback: function () {
-	                console.log(1);
-	            },
-	            maskCallback: function () {
-	                console.log(2);
-	            }
-	    });
-	})
-	
+
     
     
 	
@@ -259,9 +211,12 @@ calendar.init({
 		var picOne = $('.upload-content .uploadpicture li').eq(0).children('.box').children('img').attr('src');
 		var picTwo = $('.upload-content .uploadpicture li').eq(1).children('.box').children('img').attr('src');
 		var picThree = $('.upload-content .uploadpicture li').eq(2).children('.box').children('img').attr('src');
-		var otherOne = $('.upload-content .uploadpicture li').eq(3).children('.box').children('img').attr('src')||'';
-		var otherTwo = $('.upload-content .uploadpicture li').eq(4).children('.box').children('img').attr('src')||'';
-		var otherThree = $('.upload-content .uploadpicture li').eq(5).children('.box').children('img').attr('src')||'';
+//		var otherOne = $('.upload-content .uploadpicture li').eq(3).children('.box').children('img').attr('src')||'';
+//		var otherTwo = $('.upload-content .uploadpicture li').eq(4).children('.box').children('img').attr('src')||'';
+//		var otherThree = $('.upload-content .uploadpicture li').eq(5).children('.box').children('img').attr('src')||'';
+		var otherOne = '';
+		var otherTwo = '';
+		var otherThree = '';
 		$.ajax({
 			type:"post",
 			url:accidentImgUrl,
@@ -269,7 +224,7 @@ calendar.init({
 				token:localStorage.getItem('token'),
 				accidentId:localStorage.getItem('accidentId'),
 				address:address,
-				address_xy:('',''),
+				address_xy:('0','0'),
 				isExpressway:fastRoad,
 				datetime:accidentDate,
 				weather:weather,
@@ -282,12 +237,11 @@ calendar.init({
 			},
 			success: function(data){
 				console.log(data);
+				
 				if(data.status == 2000){
-					if (data.num=='0') {
-						window.location.href='accidentaudit.html';
-					} else{
-						window.location.href='accidentaudit_pass.html';
-					}
+				
+						window.location.href='accidentstatus.html';
+					
 				}
 			}
 		});

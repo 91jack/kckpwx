@@ -41,8 +41,8 @@
 			</div>
 			<img src="static/images/accident-item.png"/>
 			<div class="modal-btn">
-				<a href="javascript:;" class="fl active">A方</a>
-				<a href="javascript:;" class="fl">B方</a>
+				<a href="javascript:;" class="fl active" data-select = '0'>A方</a>
+				<a href="javascript:;" class="fl" data-select = '1'>B方</a>
 			</div>
 		</div>
 	</div>
@@ -58,7 +58,7 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
-	// 
+	// 获取
 	$.ajax({
 		type:"post",
 		url:getAccidentTypeUrl,
@@ -77,6 +77,9 @@
 			$('.chooseaccident-content ul').html(str);
 		}
 	});
+	
+	
+	
 	$('.chooseaccident-content ul').on('click','li',function(){
 		$(this).siblings().children('em').removeClass('active');
 		$(this).children('em').addClass('active');
@@ -85,6 +88,7 @@
 		$('.chooseaccident-modal').click(function(){
 			$(this).css('display','none');
 		})
+		
 		$('.chooseaccident-modal .modal-content .modal-btn a').click(function(){
 			console.log(11111111111)
 		})

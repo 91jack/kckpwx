@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>证件照片审核</title>
+  <title>事故照片审核</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  	<link rel="stylesheet" href="static/css/app.css" />
  	<link rel="stylesheet" type="text/css" href="static/css/app1.css"/>
@@ -19,19 +19,19 @@
 				<span class="goback-text">返回</span>
 			</a>
 		</div>
-		<h2 class="header-top-title">证件照片审核</h2>
+		<h2 class="header-top-title">事故照片审核</h2>
 	</div>
 	
 	<!--事故审核结果-->
 	<div class="audit-content">
 		<div class="audit-no">
-			<img src="static/images/main/right.png"/>
-			<p>审核通过</p>
+			<img src="static/images/main/cha.png"/>
+			<p>审核中</p>
 		</div>
 		<span></span>
 	</div>
-	<p>你的证件照片照片审核通过!</p>
-	<p class="pla">您可以继续下面的操作</p>
+	<p>请您耐心等待</p>
+	<p class="pla">快处中心正在审核您的事故照片</p>
 	
 	
 	
@@ -42,9 +42,30 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 
-	setTimeout(function(){
-		window.location.href = 'chooseaccident.html'
-	},1000)
+	var token = localStorage.getItem('token');
+	var accidentId = localStorage.getItem('accidentId');
+	
+	$.ajax({
+		    type: "POST",
+		    url:  getAccidentStatusUrl,
+		  	data:{
+					token: token,
+					accidentId: accidentId
+				},
+		    success: function(data){
+		   		
+				if(data.status == 2000){
+					if(data.obj == 0 ){
+						// 审核失败
+						window.location.href = 'accidentaudit.html';
+					}else{
+						// 审核成功
+						window.location.href = 'accidentaudit_pass.html';
+					}
+					
+				}
+		  }
+		})	
 	
 </script>
 

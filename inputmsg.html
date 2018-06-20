@@ -60,7 +60,7 @@
 			添加当事人
 		</a>
 	</div>
-	<div class="btn">
+	<div class="btn" id="finished">
 		<a href="javascript:;">
 			完成
 		</a>
@@ -73,9 +73,16 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	//获取当事人信息
+	
 	$(function(){
+		var token = localStorage.getItem('token');
+		var accidentId = localStorage.getItem('accidentId');
 		$.ajax({
 			type:"post",
+			data: {
+				token: token,
+				accidentId: accidentId
+			},
 			url:getAccidentUserInfoUrl,
 			success:function(data){
 				console.log(data)
@@ -99,7 +106,8 @@
 											+'<span>手机号码</span>'
 											+'<p class="fr">'+data.list[0].phone+'</p>'
 										+'</div>'	;
-						$('.input-msg-content .form').eq(1).html()+=str1;
+						//$('.input-msg-content .form').eq(1).html()+=str1;
+						$('.input-msg-content .form').eq(0).html(str1)
 						$('.inputmsg-btn').removeClass('active');
 						$('.btn').removeClass('active');
 					}else if(Len==2){
@@ -137,8 +145,8 @@
 											+'<span>手机号码</span>'
 											+'<p class="fr">'+data.list[1].phone+'</p>'
 										+'</div>';
-						$('.input-msg-content .form').eq(1).html()+=str1;
-						$('.input-msg-content .form').eq(2).html()+=str1;
+						$('.input-msg-content .form').eq(0).html(str1);
+						$('.input-msg-content .form').eq(1).html(str2);
 						$('.inputmsg-btn').addClass('active');
 						$('.btn').addClass('active');
 					}
@@ -148,8 +156,23 @@
 	})
 	//添加对方当事人信息
 	
-	$('.btn.active').click(function(){
-		window.location.href='uploadpicture.html';
+	$('#finished').click(function(){
+		$.ajax({
+			type:"post",
+			url:addAccidentUserFinishUrl,
+			data:{
+				token:localStorage.getItem('token'),
+				accidentId:localStorage.getItem('accidentId')
+			},
+			success:function(data){
+				console.log(data);
+				if (data.status==2000) {
+					window.location.href='uploadpicture.html';
+				}
+			}
+		})
+		
+		//
 	})
 </script>
 
