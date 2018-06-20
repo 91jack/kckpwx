@@ -23,7 +23,7 @@
 	
 	<!--车辆信息列表-->
 	<div class="info-list">
-		<div class="info-item">
+		<!--<div class="info-item">
 			<div class="info-item-info clearfix">
 				<div class="container">
 					<span class="fl">何继文</span>
@@ -63,7 +63,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>-->
 	</div>
 
 	<!--按钮-->
@@ -110,7 +110,9 @@
 		})
 		var i =$(this).attr('data');
 		$('.modal-btn a.active').click(function(){
-			var driverId = $('.info-item[data='+i+']').children('.info-item-info').children('.container').children('span').eq(1).html();
+			var driverId = '';
+			driverId = $('.info-item[data='+i+']').children('.info-item-info').children('.container').children('span').eq(1).html();
+			console.log(driverId);
 			$.ajax({
 				type:"post",
 				url:removeBindingDriverUrl,

@@ -46,7 +46,24 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
-
+	var token = localStorage.getItem('token');
+		$('.blue-btn-default').click(function(){
+			$.ajax({
+			type:"post",
+			url:addFeedback,
+			data:{
+				token:token,
+				content:$('.opinion-wrap textarea').val(),
+				contactInfo:$('#phone').val()
+			},
+			success:function(data){
+				console.log(data);
+					if (data.status==2000) {
+						$('.opinion-wrap textarea').val('').attr('placeholder','已提交您的建议，请点击返回按钮返回')
+					}
+				}
+			});
+		})
 </script>
 
 </body>

@@ -44,12 +44,12 @@
 			
 			<div class="form-group">
 				<span>姓名</span>
-				<input type="text" placeholder="请输入姓名"/>
+				<input type="text" placeholder="请输入姓名" class="name"/>
 			</div>
 			
 			<div class="form-group">
 				<span>身份证号码</span>
-				<input type="text" placeholder="请输入身份证号码" />
+				<input type="text" placeholder="请输入身份证号码" class="cardnum"/>
 			</div>
 			
 			<div class="form-group">
@@ -93,13 +93,13 @@
 			}
 		})
 		
-		// 行驶证拍照识别
+		// 驾驶证拍照识别
 	$('#takephoto').change(function(){
 		var that = $(this)
 		var token = localStorage.getItem('token')
 		var formData = new FormData();	
 		formData.append('files',that[0].files[0]);
-		formData.append('imgType','2');
+		formData.append('imgType','1');
 		formData.append('token',token);
 		
 		$.ajax({
@@ -113,17 +113,40 @@
 				if(data.status == 2000){
 					console.log(data)
 					$('.ocr-img').attr('src',data.list[0])
-					var carinfo = data.obj;
-					
-					
-					$('.plate-num').val(carinfo.plate_no) // 号牌号码
-					$('.vin').val(carinfo.vin)			// 车辆识别号码
-					$('.motor-num').val(carinfo.motor_num); // 发动机号
-					$('.select em').text(carinfo.register_date); // 注册日期
+					$('.name').val(data.obj.name);
+					$('.cardnum').val(data.obj.id_card_number);
+					$('.select em').text(data.obj.id_card_date);
  				}
 			}
 		});
 	});
+	
+	
+	// 绑定驾驶证
+	$('#bind-btn').on('click',function(){
+		var token = localStorage.getItem('token')
+		$.ajax({
+			type:"post",
+			url: addBindingDriverUrl,
+			data: {
+				token: token,	
+				name: $('.name').val(),
+				card:	$('.cardnum').val(),
+				date:	$('.select em').text()
+			},
+			
+	    dataType: "json",
+			success: function(data){
+				if(data.status == 2000){
+					console.log(data)
+					//window.location.href="user.html"
+ 				}else{
+ 					// 绑定失败
+ 					
+ 				}
+			}
+		});
+	})
 		
 </script>
 

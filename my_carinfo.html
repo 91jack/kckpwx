@@ -23,7 +23,7 @@
 	
 	<!--车辆信息列表-->
 	<div class="info-list">
-		<div class="info-item">
+		<!--<div class="info-item">
 			<div class="info-item-info clearfix">
 				<div class="container">
 					<span class="fl">渝A66666</span>
@@ -63,7 +63,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div>-->
 	</div>
 
 	<!--按钮-->
@@ -111,10 +111,12 @@
 			})
 			var i =$(this).attr('data');
 			$('.modal-btn a.active').click(function(){
-				var carId = $('.info-item[data='+i+']').children('.info-item-info').children('.container').children('span').eq(1).html();
+				var carId = '';
+				carId = $('.info-item[data='+i+']').children('.info-item-info').children('.container').children('span').eq(1).html();
+				console.log(carId);
 				$.ajax({
 					type:"post",
-					url:removeBindingDriverUrl,
+					url:removeBindingCarUrl,
 					data:{
 						token:token,
 						carId:carId
@@ -136,6 +138,7 @@
 				token:token
 			},
 			success:function(data){
+				console.log(data);
 				var Len = data.list.length;
 				var listData =data.list;
 				if(data.status==2000){
