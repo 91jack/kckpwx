@@ -71,10 +71,9 @@ div,ul,ol {m}
 	background: url(../images/common/icon_left.png) no-repeat;
 	background-position: center center;
 	background-size:100% 100% ;
-	vertical-align: middle;
+	/*vertical-align: middle;*/
 	position: absolute;
-	top: 50%;
-	margin-top: -0.75rem;
+	top: 1.041666rem;
 	left: 0;
 }
 .header-top .goback-text {
