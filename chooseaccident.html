@@ -46,7 +46,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="btn">
+	<div class="btn" >
 		<a href="fix-duty.html">
 			下一步
 		</a>
@@ -58,7 +58,7 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
-	// 获取
+	// 获取事故情形
 	$.ajax({
 		type:"post",
 		url:getAccidentTypeUrl,
@@ -79,7 +79,7 @@
 	});
 	
 	
-	
+	// 选择事故情形
 	$('.chooseaccident-content ul').on('click','li',function(){
 		$(this).siblings().children('em').removeClass('active');
 		$(this).children('em').addClass('active');
@@ -89,10 +89,45 @@
 			$(this).css('display','none');
 		})
 		
-		$('.chooseaccident-modal .modal-content .modal-btn a').click(function(){
-			console.log(11111111111)
+		$('.chooseaccident-modal .modal-content .modal-btn a').bind('click',function(){
+			console.log($(this).attr('data-select'))
 		})
 	})
+	
+	// 下一步
+	// 判断是否选择事故
+	// 传责任方
+	// 获取事故人信息
+	$.ajax({
+		type:"post",
+		url: getAccidentUserInfoUrl,
+		data: {
+			token:localStorage.getItem('token'),
+			accidentId:localStorage.getItem('accidentId')
+		},
+		success:function(data){
+			console.log(data)
+			
+		}
+	});
+	
+	
+	// 自行协商事故定责
+//	$.ajax({
+//		type:"post",
+//		url: choseAccidentDutyUrl,
+//		data: {
+//			token:localStorage.getItem('token'),
+//			accidentId:localStorage.getItem('accidentId'),
+//			user: {
+//				
+//			}
+//		},
+//		success:function(data){
+//			console.log(data)
+//			
+//		}
+//	});
 </script>
 
 </body>

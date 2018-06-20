@@ -6,7 +6,7 @@ html{
 .index-page{
 	height: 100%;
 	width: 100%;
-	background: url('../images/index/index-bg.png');
+	background: url('../images/index/index-bg.png') no-repeat;
 	background-size: 100% 100%;
 	overflow: hidden;
 }
@@ -40,7 +40,7 @@ html{
 }
 
 .index-page .content-weather{
-	height: 10rem;
+	/*height: 10rem;*/
 	width: 100%;
 	font-size: 2.916666rem;
 }
