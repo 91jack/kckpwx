@@ -48,7 +48,7 @@
 			
 			<div class="form-group">
 				<span>车辆识别号码</span>
-				<input type="text" placeholder="请输入车辆识别号码" class=""/>
+				<input type="text" placeholder="请输入车辆识别号码" class="vin"/>
 			</div>
 			
 			<div class="form-group">
@@ -114,9 +114,14 @@
 				if(data.status == 2000){
 					console.log(data)
 					$('.ocr-img').attr('src',data.list[0])
+					var carinfo = data.obj;
 					
 					
-				}
+					$('.plate-num').val(carinfo.plate_no) // 号牌号码
+					$('.vin').val(carinfo.vin)			// 车辆识别号码
+					$('.motor-num').val(carinfo.motor_num); // 发动机号
+					$('.select em').text(carinfo.register_date); // 注册日期
+ 				}
 			}
 		});
 	});
@@ -126,8 +131,32 @@
 	
 	
 	
-	// 绑定行驶证
-	
+	// 绑定行驶证 机动车
+	$('#bind-btn').on('click',function(){
+		var token = localStorage.getItem('token')
+		$.ajax({
+			type:"post",
+			url: addBindingCarUrl,
+			data: {
+				token: token,	
+				carNo: $('.plate-num').val(),
+				identityNum:	$('.vin').val(),
+				motorNum: $('.motor-num').val(),
+				registerDate:	$('.select em').text()
+			},
+			
+	    dataType: "json",
+			success: function(data){
+				if(data.status == 2000){
+					console.log(data)
+					window.location.href="user.html"
+ 				}else{
+ 					// 绑定失败
+ 					
+ 				}
+			}
+		});
+	})
 	
 	
 </script>

@@ -33,8 +33,9 @@
 				<div class="ocr-wrap-imginner">
 					<img src="" alt="" onerror="this.src='static/images/common/card_driver.png'" class="ocr-img"/>
 					<em class="icon-takephoto"></em>
-				<!--	<img src="static/images/icon_photo.png" alt=""  />-->
+					<input type="file" accept="image/*"  id="takephoto"/>
 				</div>
+			
 			</div>
 		</div>
 		
@@ -91,6 +92,39 @@
 			'onClose':function(){/*取消时触发事件*/
 			}
 		})
+		
+		// 行驶证拍照识别
+	$('#takephoto').change(function(){
+		var that = $(this)
+		var token = localStorage.getItem('token')
+		var formData = new FormData();	
+		formData.append('files',that[0].files[0]);
+		formData.append('imgType','2');
+		formData.append('token',token);
+		
+		$.ajax({
+			type:"post",
+			url:AnalysisUrl,
+			data: formData,
+			processData: false,
+	    contentType: false,
+	    dataType: "json",
+			success: function(data){
+				if(data.status == 2000){
+					console.log(data)
+					$('.ocr-img').attr('src',data.list[0])
+					var carinfo = data.obj;
+					
+					
+					$('.plate-num').val(carinfo.plate_no) // 号牌号码
+					$('.vin').val(carinfo.vin)			// 车辆识别号码
+					$('.motor-num').val(carinfo.motor_num); // 发动机号
+					$('.select em').text(carinfo.register_date); // 注册日期
+ 				}
+			}
+		});
+	});
+		
 </script>
 
 </body>
