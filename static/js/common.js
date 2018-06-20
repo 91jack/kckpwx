@@ -9,7 +9,7 @@
 //			}else{
 				document.documentElement.style.fontSize = deviceWidth / 31.25 + 'px';
 //			}
-		console.log(desinWidth)
+		alert(deviceWidth)
 		
 	   }, false);
 	   
