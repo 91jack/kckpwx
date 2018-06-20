@@ -42,6 +42,7 @@ html{
 .index-page .content-weather{
 	width: 100%;
 	height: 7.5rem;
+	margin-top: 1rem;
 	font-size: 2.916666rem;
 }
 .index-page .content-weather .date,

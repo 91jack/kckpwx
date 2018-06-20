@@ -484,12 +484,12 @@
 
 /*温馨提示warmtip.html*/
 .warmtip-page .warmtip-content{
-	padding: 1.458333rem 0 0 1.75rem;
+	padding: 1rem 0 0 1.75rem;
 }
 .warmtip-page .warmtip-content p{
 	color: #F56954;
 	font-size: 1.166666rem;
-	margin-bottom: 1.458333rem;
+	margin-bottom: 1rem;
 }
 .warmtip-page .warmtip-content li{
 	height: 1.333333rem;
