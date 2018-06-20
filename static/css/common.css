@@ -356,6 +356,18 @@ input[type=file] {
 .msg-modal .msg-img{
 	width: 18.666666rem;
 	height: 10.791666rem;
+	position: relative;
+}
+.msg-modal .msg-img .camera{
+	position: absolute;
+	width: 2.541666rem;
+	height: 2.25rem;
+	top: 50%;
+	left: 50%;
+	margin-left: 0.604166rem;
+	margin-top: -1.125rem;
+	background: url('../images/icon_photo.png');
+	background-size: 100% 100%;
 }
 .msg-modal .modal-content span{
 	margin-left: 1.875rem;

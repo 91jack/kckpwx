@@ -61,7 +61,30 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 
-	
+	var token = localStorage.getItem('token');
+	var accidentId = localStorage.getItem('accidentId');
+	$.ajax({
+		type:"post",
+		url:getFourInOnePicUrl,
+		data:{
+			token:token,
+			accidentId:accidentId
+		},
+		success:function(data){
+			console.log(data);
+			if (data.status==2000) {
+				var Len = data.list.length;
+				var imgData = data.list;
+				if (data.list!='') {
+					for (var i=0;i<Len;i++) {
+						$('.sub-pic ul li').eq(i).children('img').attr('src',)
+					}
+				} else{
+					
+				}
+			}
+		}
+	});
 </script>
 
 </body>
