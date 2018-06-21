@@ -22,49 +22,7 @@
 	</div>
 	
 	<!--车辆信息列表-->
-	<div class="info-list">
-		<!--<div class="info-item">
-			<div class="info-item-info clearfix">
-				<div class="container">
-					<span class="fl">渝A66666</span>
-					<span class="fr">LFNAFUJM4C1E28823</span>
-				</div>
-				
-			</div>
-			<div class="item-action clearfix">
-				<div class="container">
-					<div class="fl">
-						<a href="javascript:;" class="select"> <em class="icon-select"></em>设为默认</a>
-					</div>
-					<div class="fr">
-						<a href="javascript:;" class="edit"><em class="icon"></em>编辑</a>
-						<a href="javascript:;" class="del"><em class="icon"></em>删除</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="info-item">
-			<div class="info-item-info clearfix">
-				<div class="container">
-					<span class="fl">渝A66666</span>
-					<span class="fr">LFNAFUJM4C1E28823</span>
-				</div>
-				
-			</div>
-			<div class="item-action clearfix">
-				<div class="container">
-					<div class="fl">
-						<a href="javascript:;" class="select"><em class="icon-null"></em>设为默认</a>
-					</div>
-					<div class="fr">
-						<a href="javascript:;" class="edit"><em class="icon"></em>编辑</a>
-						<a href="javascript:;" class="del"><em class="icon"></em>删除</a>
-					</div>
-				</div>
-			</div>
-		</div>-->
-	</div>
+	<div class="info-list"></div>
 
 	<!--按钮-->
 	<div class="blue-btn-default">
@@ -158,7 +116,7 @@
 												+'<a href="javascript:;" class="select"> <em class="icon-select"></em>设为默认</a>'
 											+'</div>'
 											+'<div class="fr">'
-												+'<a href="bind_car.html" class="edit"><em class="icon"></em>编辑</a>'
+												+'<a class="edit" data-carid="'+listData[i].carId+'"><em class="icon"></em>编辑</a>'
 												+'<a href="javascript:;" class="del" data-carid="'+listData[i].carId+'"><em class="icon"></em>删除</a>'
 											+'</div>'
 										+'</div>'
@@ -167,6 +125,10 @@
 						$('.info-list').html('');
 						$('.info-list').html(str);
 						}
+					$('.edit').on('click',function(){
+						localStorage.setItem('carId',$(this).attr('data-carid'))
+						window.location.href='bind_car.html';
+						})
 					}
 				}
 			});
