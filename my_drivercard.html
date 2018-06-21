@@ -125,6 +125,11 @@
 					localStorage.setItem('cardId',$(this).attr('data'));
 					window.location.href='bind_drivercard.html';
 				})
+				$('.info-list .icon-select').eq(0).addClass('active');
+				$('.info-list').on('click','.icon-select',function(){
+					$('.icon-select').removeClass('active');
+					$(this).addClass('active');
+				})
 				}
 			}
 		});

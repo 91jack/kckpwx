@@ -104,7 +104,6 @@ $(function(){
 													+'<li><span>事故形态：</span><span class="accident-info">'+data.list[i].statusStr+'</span></li>'
 												+'</ul>'
 												+'<div class="accident-status fr">'
-													//+'<a class="returnto" href="'+linkhrefs+'" data="'+data.list[i].id+'">'+hrefinfos+'</a>'
 													+'<a class="returnto" href="javascript:;" data-accidentId="'+data.list[i].id+'" data-href="'+ linkhrefs +'">'+hrefinfos+'</a>'
 
 												+'</div>'	
@@ -127,7 +126,6 @@ $(function(){
 						$('.tab-content.active').html(str);
 						
 							$('.returnto').on('click', function(){
-								//console.log($(this).attr('data'))
 								localStorage.setItem('accidentId',$(this).attr('data-accidentId'));
 								window.location.href = $(this).attr('data-href')
 							})

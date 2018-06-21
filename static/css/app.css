@@ -332,7 +332,17 @@
 	width: 1.25rem;
 	height: 1.25rem;
 	margin-right:1rem;
-	background: url(../images/icon_selected.png) no-repeat;
+	background: url('../images/common/right.png') no-repeat;
+	background-position:center;
+	background-size:100% 100% ;
+	vertical-align: middle;
+}
+.item-action .select .icon-select.active{
+	display: inline-block;
+	width: 1.25rem;
+	height: 1.25rem;
+	margin-right:1rem;
+	background: url('../images/common/bigo.png') no-repeat;
 	background-position:center;
 	background-size:100% 100% ;
 	vertical-align: middle;

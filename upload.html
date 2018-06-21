@@ -210,21 +210,38 @@
 							$('.upload-content .uploadpicture li').eq(5).children('.box').children('img').attr('src',uploadData.other_pic3);
 						};
 						// 判断图片审核状态
-						if(uploadData.mainStatus1==0){
-							$('.upload-content .uploadpicture li').eq(0).children('.box').children('em').css('background-image','url(static/images/main/repic.png)');
+//						if () {
+//							
+//						}
+						if (uploadData.main_pic1) {
+							if(uploadData.mainStatus1==1){
+								$('.upload-content .uploadpicture li').eq(0).children('.box').children('em').css('background-image','url(static/images/main/pass.png)');
+							}else{
+								$('.upload-content .uploadpicture li').eq(0).children('.box').children('em').css('background-image','url(static/images/main/repic.png)');
+							};
 						}else{
-							$('.upload-content .uploadpicture li').eq(0).children('.box').children('em').css('background-image','url(static/images/main/pass.png)');
+							$('.upload-content .uploadpicture li').eq(0).children('.box').children('em').css('background-image','url(static/images/main/must.png)')
 						};
-						if(uploadData.mainStatus2==0){
-							$('.upload-content .uploadpicture li').eq(1).children('.box').children('em').css('background-image','url(static/images/main/repic.png)');
+						
+						if (uploadData.main_pic2) {
+							if(uploadData.mainStatus2==1){
+								$('.upload-content .uploadpicture li').eq(1).children('.box').children('em').css('background-image','url(static/images/main/pass.png)');
+							}else{
+								$('.upload-content .uploadpicture li').eq(1).children('.box').children('em').css('background-image','url(static/images/main/repic.png)');
+							};
 						}else{
-							$('.upload-content .uploadpicture li').eq(1).children('.box').children('em').css('background-image','url(static/images/main/pass.png)');
+							$('.upload-content .uploadpicture li').eq(1).children('.box').children('em').css('background-image','url(static/images/main/must.png)')
 						};
-						if(uploadData.mainStatus3==0){
-							$('.upload-content .uploadpicture li').eq(2).children('.box').children('em').css('background-image','url(static/images/main/repic.png)');
+						
+						if (uploadData.main_pic3) {
+							if(uploadData.mainStatus3==0){
+								$('.upload-content .uploadpicture li').eq(2).children('.box').children('em').css('background-image','url(static/images/main/repic.png)');
+							}else{
+								$('.upload-content .uploadpicture li').eq(2).children('.box').children('em').css('background-image','url(static/images/main/pass.png)');
+							};
 						}else{
-							$('.upload-content .uploadpicture li').eq(2).children('.box').children('em').css('background-image','url(static/images/main/pass.png)');
-						};
+							$('.upload-content .uploadpicture li').eq(2).children('.box').children('em').css('background-image','url(static/images/main/must.png)')
+						}
 				}
 			}
 		});
