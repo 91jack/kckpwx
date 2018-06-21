@@ -312,11 +312,13 @@ input[type=file] {
 	display: none;
 }
 .msg-modal .modal-content{
+	box-sizing: border-box;
 	width: 22.5rem;
 	background: #fff;
 	margin: auto;
 	margin-top: 15.958333rem;
 	padding-top: 1.125rem;
+	padding-right: 1.875rem;
 	border-radius: 0.666666rem;
 }
 .msg-modal .modal-content p{
@@ -325,12 +327,15 @@ input[type=file] {
 	font-size: 1.083333rem;
 }
 .msg-modal .modal-content ul li{
-	height: 1.083333rem;
+	min-height: 1.083333rem;
 	line-height: 1.083333rem;
 	margin-left: 1.875rem;
 	margin-bottom: 0.791666rem;
 	font-size: 1.083333rem;
 	color: #333;
+}
+.msg-modal .modal-content ul li:nth-child(6){
+	line-height: 1.708333rem;
 }
 .msg-modal .modal-content ul li:last-child{
 	color: #F56954;

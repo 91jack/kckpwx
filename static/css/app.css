@@ -1167,28 +1167,11 @@
 	box-sizing: border-box;
 	position: relative;
 }
-.uploadpicture-content ul li{
-	float: left;
-}
-.uploadpicture-content ul li img{
-	width: 13.041666rem;
-	height: 7.541666rem;
+.uploadpicture-content>img{
+	width: 26.833333rem;
+	height: 18.458333rem;
 	display: block;
-}
-.uploadpicture-content ul li p{
-	text-align: center;
-	color: #48B4FF;
-	font-size: 0.916666rem;
-	margin-top: 0.5rem;
-	margin-left: 0.5rem;
-}
-.uploadpicture-content ul li:nth-child(1),
-.uploadpicture-content ul li:nth-child(3){
-	margin-right: 0.75rem;
-	margin-left: 0.75rem;
-}
-.uploadpicture-content ul li:nth-child(1),
-.uploadpicture-content ul li:nth-child(2){
+	margin: auto;
 	margin-top: 1.083333rem;
 }
 .uploadpicture-content .upload-btn{
@@ -1620,4 +1603,13 @@
 }
 #select-weather em{
 	margin-right: 0;
+}
+#Insurance{
+	margin-left: 0.625rem;
+	width: 15.875rem;
+	text-align: right;
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis
 }
