@@ -147,22 +147,30 @@
 
 <!--当前页面交互-->
 <script type="text/javascript">
-	var addr = localStorage.getItem('addr');
-	console.log(addr)
-	//获取事故地址
-	$('.addr').text()
-	
-	// 选择是否为高速/高架
-	$('.upload-content .msg li').eq(0).children('a').children('span').eq(1).html(localStorage.getItem('add'))
-	$('.upload-content .msg li .choose-box').click(function(){
-		if (!$(this).hasClass('active')) {
-			$(this).addClass('active');
-			$(this).siblings().removeClass('active');
-		} else if($(this).hasClass('active')){
-			$(this).siblings('active').addClass('active');
-			$(this).removeClass('jctive');
-		}
+	$(function(){
+		// 地址
+		var addr = localStorage.getItem('addr');
+		console.log(addr)
+		//获取事故地址
+		$('.addr').text(addr)
+		
+		// 选择是否为高速/高架
+		$('.upload-content .msg li').eq(0).children('a').children('span').eq(1).html(localStorage.getItem('add'))
+		$('.upload-content .msg li .choose-box').click(function(){
+			if (!$(this).hasClass('active')) {
+				$(this).addClass('active');
+				$(this).siblings().removeClass('active');
+			} else if($(this).hasClass('active')){
+				$(this).siblings('active').addClass('active');
+				$(this).removeClass('jctive');
+			}
+		})
+		
+		
 	})
+
+	
+
 	
 	// 事故时间
 var calendar = new datePicker();
