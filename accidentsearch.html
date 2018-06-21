@@ -176,6 +176,7 @@
 			switch(status){
 				case 1:
 				 	href = 'upload.html'
+				 	
 				  break;
 				case 2:
 				  href = 'accidentstatus.html'
@@ -270,8 +271,10 @@
 			}
 			return msg;
 		}
+		
 		$('#deal').on('click','.return',function(){
-			localStorage.setItem('accidentIdsearch',$(this).attr(data));
+			alert(1111)
+			localStorage.setItem('accidentId',$(this).attr(data));
 		})
 		
 </script>
