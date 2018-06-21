@@ -128,32 +128,35 @@
 					if (data.status==2000) {
 						console.log(data)
 						var str='';
+						var linkhrefs ='';
 						var Len = data.list.length;
 						for (var i=0;i<Len;i++) {
-						if (data.list[i].statusStr=='未定责') {
-							str+='<div class="tab-content-item clearfix">'
-											+'<ul class="fl">'
-												+'<li><span>事故编号：</span><span class="accident-info">'+data.list[i].id+'</span></li>'
-												+'<li><span>事故时间：</span><span class="accident-info">'+data.list[i].datetime+'</span></li>'
-												+'<li><span>事故地点：</span><span class="accident-info">'+data.list[i].address+'</span></li>'
-												+'<li><span>事故形态：</span><span class="accident-info">'+data.list[i].statusStr+'</span></li>'
-											+'</ul>'
-											+'<div class="accident-status fr">'
-												+'<a href="javascript:;">上传证件照片</a>'
-											+'</div>'	
-										+'</div>'
-						}else{
-							str+='<div class="tab-content-item clearfix">'
-											+'<ul class="fl">'
-												+'<li><span>事故编号：</span><span class="accident-info">'+data.list[i].id+'</span></li>'
-												+'<li><span>事故时间：</span><span class="accident-info">'+data.list[i].datetime+'</span></li>'
-												+'<li><span>事故地点：</span><span class="accident-info">'+data.list[i].address+'</span></li>'
-												+'<li><span>事故形态：</span><span class="accident-info">'+data.list[i].statusStr+'</span></li>'
-											+'</ul>'
-											+'<div class="accident-status fr">'
-												+'<img src="static/images/already.png" alt="" />'
+							linkhrefs = linkhref(data.list[i].status)
+							console.log(linkhrefs)
+							if (data.list[i].statusStr=='未定责') {
+								str+='<div class="tab-content-item clearfix">'
+												+'<ul class="fl">'
+													+'<li><span>事故编号：</span><span class="accident-info">'+data.list[i].id+'</span></li>'
+													+'<li><span>事故时间：</span><span class="accident-info">'+data.list[i].datetime+'</span></li>'
+													+'<li><span>事故地点：</span><span class="accident-info">'+data.list[i].address+'</span></li>'
+													+'<li><span>事故形态：</span><span class="accident-info">'+data.list[i].statusStr+'</span></li>'
+												+'</ul>'
+												+'<div class="accident-status fr">'
+													+'<a href="'+linkhrefs+'">上传证件照片</a>'
+												+'</div>'	
 											+'</div>'
-										+'</div>'
+							}else{
+								str+='<div class="tab-content-item clearfix">'
+												+'<ul class="fl">'
+													+'<li><span>事故编号：</span><span class="accident-info">'+data.list[i].id+'</span></li>'
+													+'<li><span>事故时间：</span><span class="accident-info">'+data.list[i].datetime+'</span></li>'
+													+'<li><span>事故地点：</span><span class="accident-info">'+data.list[i].address+'</span></li>'
+													+'<li><span>事故形态：</span><span class="accident-info">'+data.list[i].statusStr+'</span></li>'
+												+'</ul>'
+												+'<div class="accident-status fr">'
+													+'<img src="static/images/already.png" alt="" />'
+												+'</div>'
+											+'</div>'
 							}
 						}
 						$('.tab-content.active').html('');
@@ -197,10 +200,12 @@
 				  href = 'msg-certification.html'
 				  break;
 				case 11:
-				 	href = 'certificate_pass.html'
+				 	href = 'police_audit.html'
 				  break;
 				default:
 			}
+			return href;
+			console.log(href)
 		}
 </script>
 

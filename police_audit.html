@@ -1,0 +1,90 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>交警审核</title>
+  <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+ 	<link rel="stylesheet" href="static/css/app.css" />
+</head>
+<body class="audit-page police-audit">
+	<!--顶部标题栏-->
+	<div class="header-top">
+		<div class="fl">
+			<a href="javascript:;" class="goback">
+				<em class="icon-goback"></em>
+				<span class="goback-text">返回</span>
+			</a>
+		</div>
+		<h2 class="header-top-title">交警审核</h2>
+	</div>
+	
+	<!--事故审核结果-->
+	<div class="audit-content accident-status">
+		<div class="audit-no">
+			<p>审核中</p>
+		</div>
+		<span></span>
+	</div>
+	<p>请您耐心等待</p>
+	<p class="pla">快处中心正在审核您的照片</p>
+	
+	<div class="audit-btn">
+		<div class="btn">
+			<a href="javascript:;">
+				审核中
+			</a>
+		</div>
+		<a href="tel:13512345678">如有疑问，联系客服</a>
+	</div>
+	
+
+<script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
+<!--当前页面交互-->
+<script type="text/javascript">
+	// 
+	var token = localStorage.getItem('token');
+	var accidentId = localStorage.getItem('accidentId');
+	
+	setInterval(function(){
+		$.ajax({
+	    type: "POST",
+	    url:  getAccidentStatusUrl,
+	  	data:{
+				token: token,
+				accidentId: accidentId
+			},
+	    success: function(data){
+	   		
+				if(data.status == 2000){
+					if(data.obj == 0 ){
+						// 审核失败
+						window.location.href = 'police_audit_unpass.html';
+					}else if(data.obj == 1){
+						// 审核成功
+						window.location.href = 'police_audit_pass.html';
+					}
+					
+				}
+	  	}
+		})	
+	},5000)
+	
+	
+//	    content: '';
+//  display: block;
+//  width: 48px;
+//  height: 48px;
+//  background: transparent;
+//  border: 10px solid rgba(255, 255, 255, 0.1);
+//  border-left: 10px solid #ffffff;
+//  border-radius: 100%;
+//  -webkit-animation: spin 0.6s linear infinite;
+//  animation: spin 0.6s linear infinite;
+</script>
+
+</body>
+</html>
