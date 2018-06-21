@@ -168,8 +168,8 @@
 							$('.isexpressway span[data="0"]').addClass('active')
 							$('.isexpressway span[data="1"]').removeClass('active')
 						}
-						$('.date').html(uploadData.datetime.split(' ')[0]);
-						$('.time').html(uploadData.datetime.split(' ')[1].substring(0,5));
+						//$('.date').html(uploadData.datetime.split(' ')[0]);
+						//$('.time').html(uploadData.datetime.split(' ')[1].substring(0,5));
 						$('#select-weather span').html(uploadData.weather);
 						$('.upload-content .uploadpicture li').eq(0).children('.box').children('img').attr('src',uploadData.main_pic1).css({
 						'width':'100%',
