@@ -270,8 +270,6 @@
 }
 .item-action a {
 	display: inline-block;
-	/*height: 1.333333rem;
-	line-height:1.333333rem;*/
 }
 
 .modal{
@@ -790,11 +788,11 @@
 	width: 1.333333rem;
 	height: 1.333333rem;
 	background: url('../images/common/right.png');
-	background-size: 100% 100%;	
+	background-size: 100% 100%;
 }
 .upload-page .upload-content .msg li:nth-child(2) span:nth-child(2n).active{
 	background: url('../images/common/bigo.png');
-	background-size: 100% 100%;	
+	background-size: 100% 100%;
 }
 .upload-page .upload-content .msg li:nth-child(2) span:nth-child(4){
 	display: inline-block;
@@ -898,12 +896,12 @@
 }
 
 /*事故地点定位map.html*/
-.map-page .map-content{
-	height: 42.958333rem;
+/* .map-page .map-content{
+	height: 42.208333rem;
 	width: 100%;
-}
+} */
 .map-page #map{
-	height: 38.583333rem;
+	height: 34.916666rem;
 	width: 100%;
 }
 .map-page .map-content .accident-address{
@@ -1365,7 +1363,7 @@
 	margin-top: 0.958333rem;
 	margin-right: 2.583333rem;
 }
-.fix-duty-content .mymsg-content .form:first-child .form-group a{
+.fix-duty-content .mymsg-content .form:first-child .form-group span{
 	width: 0.708333rem;
 	height: 1.25rem;
 	background: url('../images/common/next.png');
@@ -1505,10 +1503,10 @@
 	color: #fff;
 }
 /*地图map.html*/
-#map{
+/*#map{
 	height: 34.916666rem;
 	height: 100%;
-}
+}*/
 .map-page .info li{
 	width: 100%;
 	height: 4.166666rem;

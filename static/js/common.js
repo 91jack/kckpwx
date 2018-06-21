@@ -2,7 +2,7 @@
 (function () {
 	document.addEventListener('DOMContentLoaded', function () {
 		var deviceWidth = document.documentElement.clientWidth;
-			document.documentElement.style.fontSize = deviceWidth / 31.25 + 'px';
+		document.documentElement.style.fontSize = deviceWidth / 31.25 + 'px';
 	   }, false);
 	   
 	window.onresize = function(){
@@ -16,5 +16,8 @@ $('.goback').on('click', function(){
 	window.history.back();
 })
 
+// 判断是否存在token
+var token = localStorage.getItem('token');
+console.log(token)
 
 

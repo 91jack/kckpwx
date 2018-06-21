@@ -7,8 +7,6 @@
   <title>上传事故照片</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  	<link rel="stylesheet" href="static/css/app.css" />
-	<link rel="stylesheet" type="text/css" href="static/css/app1.css"/>
-	<link rel="stylesheet" href="static/plguin/iosSelect/iosSelect.css">
 </head>
 <body class="upload-page">
 	<!--顶部标题栏-->
@@ -38,7 +36,7 @@
 				<a href="map.html">
 					<span>事故地址</span>
 					
-					<span>重庆市渝北区金开大道</span>
+					<span class="addr">重庆市渝北区金开大道</span>
 					<em class="fr"></em>
 					
 				</a>
@@ -149,8 +147,10 @@
 
 <!--当前页面交互-->
 <script type="text/javascript">
+	var addr = localStorage.getItem('addr');
+	console.log(addr)
 	//获取事故地址
-	
+	$('.addr').text()
 	
 	// 选择是否为高速/高架
 	$('.upload-content .msg li').eq(0).children('a').children('span').eq(1).html(localStorage.getItem('add'))
