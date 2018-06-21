@@ -130,6 +130,7 @@
 			switch(status){
 				case 1:
 				 	href = 'upload.html'
+				 	
 				  break;
 				case 2:
 				  href = 'accidentstatus.html'
@@ -224,8 +225,14 @@
 			}
 			return msg;
 		}
+<<<<<<< HEAD
+		
+		$('#deal').on('click','.return',function(){
+			alert(1111)
+=======
 //		
 		$('#undeal').on('click','.returnto',function(){
+>>>>>>> 963554a41223dc8698ff5580cae6a3895aec17b2
 			localStorage.setItem('accidentId',$(this).attr(data));
 		})
 </script>
