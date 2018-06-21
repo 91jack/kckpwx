@@ -53,13 +53,13 @@
 			
 			<div class="form-group">
 				<span>手机号码</span>
-				<em class="fr">18680745771</em>
+				<em class="fr phone1">18716288752</em>
 			</div>
 			
 			<div class="form-group">
 				<span>验证码</span>
-				<em class="fr msg-btn">获取验证码</em>
-				<input type="text" class="fr" placeholder="请输入验证码">
+				<em class="fr msg-btn getcode1">获取验证码</em>
+				<input type="text" class="fr yzmcode1" placeholder="请输入验证码">
 			</div>
 			
 			<div class="form-group">
@@ -85,13 +85,13 @@
 			
 			<div class="form-group">
 				<span>手机号码</span>
-				<em class="fr">18680745771</em>
+				<em class="fr phone2">13650543568</em>
 			</div>
 			
 			<div class="form-group">
 				<span>验证码</span>
-				<em class="fr msg-btn">获取验证码</em>
-				<input type="text" class="fr" placeholder="请输入验证码">
+				<em class="fr msg-btn getcode2">获取验证码</em>
+				<input type="text" class="fr yzmcode2" placeholder="请输入验证码">
 			</div>
 			
 			<div class="form-group">
@@ -107,7 +107,9 @@
 			完成
 		</a>
 	</div>
-
+	<div class="action-modal">
+		<p>您的手机号有误，请重新输入！</p>
+	</div>
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
@@ -117,9 +119,67 @@ $(function(){
 	// 获取事故人信息
 	
 	
-	
+	getcode('.getcode1','.phone1','.yzmcode1')
+	getcode('.getcode2','.phone2','.yzmcode2')
 	// 短信验证码
+	function getcode(obj,item1,item2){
+		var on = true;
 	
+
+	$(obj).on('click',function(){
+	if(on){
+		// 手机号验证
+		var phone = $(item1).html();
+		var regphone = /^1\d{10}$/;
+		if(!regphone.test(phone)){
+			$('.action-modal').show()
+			$('.action-modal p').html('您的手机号有误，请重新输入！')
+			setTimeout(function(){
+				$('.action-modal').hide()
+			},500)	
+		}else{
+			// 倒计时60s
+			var time = 60;
+			var timer = null;
+			clearInterval(timer);
+		
+				// 获取验证码
+				$.ajax({
+			    type: "POST",
+			    url: yzcodeUrl,
+			  	data:{
+						phone:$(item1).html(),
+						type:'4'
+					},
+			    success: function(data){
+			    	//alert(data)
+			   		//服务器返回响应，根据响应结果，分析是否登录成功；
+						if(data.status == 2000){
+							$(item2).val(data.obj)
+						}
+			    }
+				})
+				
+				timer = setInterval(function(){
+				time--;
+				$(obj).html(time + '&nbsp;S');
+				$(obj).css('background','#ccc');
+				// 按钮禁用
+				
+				if(time < 0){
+						$(obj).html('重新发送');
+						$(obj).css('background','red');
+						time = 0;
+						clearInterval(timer);
+						on = true;
+					}else{
+						on = false;
+					}
+				},1000)
+		}
+	}
+})
+	}
 	
 	
 	// 点击签字
