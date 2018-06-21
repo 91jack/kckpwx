@@ -7,8 +7,6 @@
   <title>证件照片审核</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  	<link rel="stylesheet" href="static/css/app.css" />
- 	<link rel="stylesheet" type="text/css" href="static/css/app1.css"/>
-	
 </head>
 <body class="audit-page">
 	<!--顶部标题栏-->
@@ -23,15 +21,14 @@
 	</div>
 	
 	<!--事故审核结果-->
-	<div class="audit-content">
+	<div class="audit-content accident-status">
 		<div class="audit-no">
-			<img src="static/images/main/right.png"/>
 			<p>审核中</p>
 		</div>
 		<span></span>
 	</div>
-	<p>你的证件照片照片审核通过!</p>
-	<p class="pla">您可以继续下面的操作</p>
+	<p>请您耐心等待</p>
+	<p class="pla">快处中心正在审核您的证件照片</p>
 	
 	
 	
@@ -41,35 +38,45 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
-	// getAccidentStatusUrl
-	$(function(){
-		var token = localStorage.getItem('token');
-		var accidentId = localStorage.getItem('accidentId');
+	// 
+	var token = localStorage.getItem('token');
+	var accidentId = localStorage.getItem('accidentId');
+	
+	setInterval(function(){
 		$.ajax({
-			type:"post",
-			url:getAccidentStatusUrl,
-			data:{
-				token:localStorage.getItem('token'),
-				accidentId:localStorage.getItem('accidentId')
+	    type: "POST",
+	    url:  getAccidentStatusUrl,
+	  	data:{
+				token: token,
+				accidentId: accidentId
 			},
-			success:function(data){
-				console.log(data)
-				if (data.status==2000) {
-					
-					if(data.obj == 0){
+	    success: function(data){
+	   		
+				if(data.status == 2000){
+					if(data.obj == 0 ){
 						// 审核失败
-						window.location.href='certificate_unpass.html'
+						window.location.href = 'accidentaudit.html';
 					}else if(data.obj == 1){
 						// 审核成功
-						window.location.href='certificate_pass.html'
+						window.location.href = 'accidentaudit_pass.html';
 					}
 					
 				}
-			}
-		});
-	})
+	  	}
+		})	
+	},5000)
 	
 	
+//	    content: '';
+//  display: block;
+//  width: 48px;
+//  height: 48px;
+//  background: transparent;
+//  border: 10px solid rgba(255, 255, 255, 0.1);
+//  border-left: 10px solid #ffffff;
+//  border-radius: 100%;
+//  -webkit-animation: spin 0.6s linear infinite;
+//  animation: spin 0.6s linear infinite;
 </script>
 
 </body>
