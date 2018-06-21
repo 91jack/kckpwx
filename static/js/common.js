@@ -19,7 +19,7 @@ $('.goback').on('click', function(){
 // 判断是否存在token
 var token = localStorage.getItem('token');
 console.log(token)
-
+var accidentId = localStorage.getItem('accidentId');
 
 // 时间
 // 日期换算

@@ -147,6 +147,25 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	$(function(){
+		// 获取事故信息
+		$.ajax({
+			type:"post",
+			url:getAccidentInfoUrl,
+			data: {
+				token: token,
+				accidentId : accidentId
+			},
+			success: function(data){
+				console.log(data)
+				if(data.status == 2000){
+						// 将结果渲染至页面
+						// 判断图片审核状态
+				}
+			}
+		});
+		
+		
+		
 		// 地址
 		var addr = localStorage.getItem('addr');
 		console.log(addr)
@@ -259,7 +278,7 @@ $('.select-weather').on('click', function(){
 	
 //	上传图片
 	function uploadImg(that){
-		var accidentId = localStorage.getItem('accidentId');
+	
 		var formData = new FormData();	
 		formData.append('files',that[0].files[0]);
 		formData.append('accidentId',accidentId)
