@@ -184,7 +184,7 @@ for(var i=0;i<60;i++){
 }
 var timePicker = new Picker({
 		data: [hours,min],
-		selectedIndex: [2,0],// 定位到当前时间
+		selectedIndex: [h,minutes],// 定位到当前时间
 		title:''
 });
 timePicker.on('picker.select', function (selectedVal, selectedIndex) {
