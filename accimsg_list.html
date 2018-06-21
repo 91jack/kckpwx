@@ -115,14 +115,14 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
-	// 
+	// 获取事故人信息
 	$.ajax({
 		type:"post",
-		url:accidentAuthStatusUrl,
+		url:getAccidentUserInfoUrl,
 		async:true,
 		data:{
-			id:localStorage.getItem('accidentId'),
-			token:localStorage.getItem('token')
+			accidentId:accidentId,
+			token:token
 		},
 		success:function(data){
 			console.log(data);
