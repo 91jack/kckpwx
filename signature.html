@@ -26,42 +26,49 @@
 		<!--签字区域-->
 		<div class="signature-content">
 			
-			<div class="container">
+			<!--<div class="container">
 				<div class="js-signature" data-width="750" data-height="200" data-border="1px solid black" data-line-color="#bc0000" data-auto-fit="true">
 					
 				</div>
-			</div>
+			</div>-->
+			<canvas></canvas>
 		</div>            
 		
 		
 		<script src="static/js/jquery-1.11.0.min.js"  type="text/javascript" charset="utf-8"></script>
-		<script src="static/js/jq-signature.js" type="text/javascript" charset="utf-8"></script>
+		<!--<script src="static/js/jq-signature.js" type="text/javascript" charset="utf-8"></script>-->
+		<script src="static/js/draw.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
+		
 		<script type="text/javascript">
-			$(document).on('ready', function() {
-				if ($('.js-signature').length) {
-					$('.js-signature').jqSignature();
-				}
-			});
-
-		function clearCanvas() {
-			$('#signature').html('<p><em>Your signature will appear here when you click "Save Signature"</em></p>');
-			$('.js-signature').eq(1).jqSignature('clearCanvas');
-			$('#saveBtn').attr('disabled', true);
-		}
-
-		function saveSignature() {
-			$('#signature').empty();
-			var dataUrl = $('.js-signature').eq(1).jqSignature('getDataURL');
-			var img = $('<img>').attr('src', dataUrl);
-			$('#signature').append($('<p>').text("Here's your signature:"));
-			$('#signature').append(img);
-		}
-
-		$('.js-signature').eq(1).on('jq.signature.changed', function() {
-			$('#saveBtn').attr('disabled', false);
-		});
+			const canvas = document.querySelector('canvas');
+      		this.draw = new Draw(canvas, 90);
+			
+			
+//			$(document).on('ready', function() {
+//				if ($('.js-signature').length) {
+//					$('.js-signature').jqSignature();
+//				}
+//			});
+//
+//			function clearCanvas() {
+//				$('#signature').html('<p><em>Your signature will appear here when you click "Save Signature"</em></p>');
+//				$('.js-signature').eq(1).jqSignature('clearCanvas');
+//				$('#saveBtn').attr('disabled', true);
+//			}
+//	
+//			function saveSignature() {
+//				$('#signature').empty();
+//				var dataUrl = $('.js-signature').eq(1).jqSignature('getDataURL');
+//				var img = $('<img>').attr('src', dataUrl);
+//				$('#signature').append($('<p>').text("Here's your signature:"));
+//				$('#signature').append(img);
+//			}
+//	
+//			$('.js-signature').eq(1).on('jq.signature.changed', function() {
+//				$('#saveBtn').attr('disabled', false);
+//			});
 		
 		
 		// 签字生成图片上传服务器

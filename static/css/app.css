@@ -1639,6 +1639,12 @@
 	background: #38ADFF;
 	/*margin-left: 5rem;*/
 }
+canvas {
+  flex: 1;
+  cursor: crosshair;
+  width: 100%;
+  height: 100%;
+}
 /*.signature-content {
 	height: 27.083333rem;
 	width: 100%;
