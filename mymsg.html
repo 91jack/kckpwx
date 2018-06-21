@@ -50,14 +50,14 @@
 				<a href="javascript:;" class="yzm-btn"></a>
 			</div>
 			<div class="form-group">
-				<span>好牌种类</span>
+				<span>号牌种类</span>
 				<span id="cartype" class="fr">小型汽车</span>
 				<em class="fr"></em>
 			</div>
 
 			<div class="form-group">
 				<span>保险公司</span>
-				<span id="insurance" class="fr">请选择(非必选)</span>
+				<span id="Insurance" class="fr">请选择(非必选)</span>
 				<em class="fr"></em>
 			</div>
 
@@ -139,10 +139,83 @@
 
 
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/picker.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
+	$(function(){
+		// 号牌种类
+		$.ajax({
+			type:"get",
+			url: getCarTypeUrl,
+			success: function(res){
+				console.log(res)
+				var carType = [];
+				for(var i=0;i<res.list.length;i++){
+					carType.push({'value': res.list[i].code,'text':res.list[i].name})
+				}
+				var cartypePicker = new Picker({
+					data: [carType],
+					selectedIndex: [1],// 
+					title:''
+				});
+				
+				cartypePicker.on('picker.select', function (selectedVal, selectedIndex) {
+					console.log(selectedVal)
+					console.log(selectedIndex)
+					var selectcarType = carType[selectedIndex].text;
+					$('#cartype').text(selectcarType)
+				})
+				
+				$('#cartype').on('click',function(){
+					cartypePicker.show();
+				})
+			}
+		});
+		
+	
+		// 保险公司
+		$.ajax({
+			type:"get",
+			url: getInsuranceUrl,
+			success: function(res){
+				console.log(res)
+				var Insurance = [];
+				for(var i=0;i<res.list.length;i++){
+					Insurance.push({'value': res.list[i].code,'text':res.list[i].name})
+				}
+				var InsurancePicker = new Picker({
+					data: [Insurance],
+					selectedIndex: [1],// 
+					title:''
+				});
+				
+				InsurancePicker.on('picker.select', function (selectedVal, selectedIndex) {
+					console.log(selectedVal)
+					console.log(selectedIndex)
+					var selectInsurance = Insurance[selectedIndex].text;
+					$('#Insurance').text(selectInsurance)
+				})
+				
+				$('#Insurance').on('click',function(){
+					InsurancePicker.show();
+				})
+			}
+		});
+		
+	})
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	//上传自己信息
 	$('.mymsg-btn .box a').eq(1).click(function(){
 		$('.msg-modal.total').show();

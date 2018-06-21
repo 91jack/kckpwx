@@ -58,7 +58,8 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
-	// 
+$(function(){
+	// 获取四合一照片
 	$.ajax({
 		type:"post",
 		url:getFourInOnePicUrl,
@@ -70,19 +71,24 @@
 			console.log(data)
 			if (data.status==2000) {
 				var Len = data.list.length;
+				// 此处是一张合成图片 不应该循环
 				for (var i=0;i<Len;i++) {
 					$('.uploadpicture-content ul li').eq(i).children('img').attr('src',data.list[i])
 				}
-				
-				window.location.href='certificate_status.html'
-//				if(data.num==0){
-//					
-//				}else{
-//					window.location.href='certificate_unpass.html'
-//				}
 			}
 		}
 	});
+	
+	// 四合一照片拍照上传
+	
+	
+	// 提交照片
+	
+	
+	
+	
+})
+	
 </script>
 
 </body>
