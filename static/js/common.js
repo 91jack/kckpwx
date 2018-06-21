@@ -35,7 +35,7 @@ var m = nowdate.getMonth()+1;
 var d = nowdate.getDate();
 var w = nowdate.getDay();
 var h = nowdate.getHours();
-var min = nowdate.getMinutes();
+var minutes = nowdate.getMinutes();
 
 var indexTime = m + '月' + d + '日' + '&nbsp;&nbsp;星期'+week(w);
 console.log(indexTime)
@@ -45,6 +45,6 @@ var accidentTime = y + '-' + m + '-' + d;
 console.log(accidentTime)
 
 h = h < 10 ? '0' + h : h; 
-min = min < 10 ? '0' + min : min; 
-var nowTime = h + ':' + min;
+minutes = minutes < 10 ? '0' + minutes : minutes; 
+var nowTime = h + ':' + minutes;
 console.log(nowTime)
