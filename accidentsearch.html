@@ -131,7 +131,8 @@
 						var linkhrefs ='';
 						var Len = data.list.length;
 						for (var i=0;i<Len;i++) {
-							linkhrefs = linkhref(data.list[i].status)
+							linkhrefs = linkhref(data.list[i].status);
+							hrefinfos = hrefinfo(data.list[i].status);
 							console.log(linkhrefs)
 							if (data.list[i].statusStr=='未定责') {
 								str+='<div class="tab-content-item clearfix">'
@@ -142,7 +143,7 @@
 													+'<li><span>事故形态：</span><span class="accident-info">'+data.list[i].statusStr+'</span></li>'
 												+'</ul>'
 												+'<div class="accident-status fr">'
-													+'<a href="'+linkhrefs+'">上传证件照片</a>'
+													+'<a href="'+linkhrefs+'">'+hrefinfos+'</a>'
 												+'</div>'	
 											+'</div>'
 							}else{
@@ -178,6 +179,9 @@
 				case 3:
 				 	href = 'choosetype.html'
 				  break;
+				case -3:
+				 	href = 'upload.html'
+				  break;
 				case 4:
 				  href = 'mymsg.html'
 				  break;
@@ -189,6 +193,9 @@
 				  break;
 				case 7:
 				 	href = 'accidentaudit_pass.html'
+				  break;
+				case -7:
+				 	href = 'uploadpicture.html'
 				  break;
 				case 8:
 				  href = 'chooseaccident.html'
@@ -202,10 +209,62 @@
 				case 11:
 				 	href = 'police_audit.html'
 				  break;
+				case -11:
+				 	href = 'msg-certification.html'
+				  break;
 				default:
 			}
 			return href;
-			console.log(href)
+		}
+		
+		function hrefinfo(status){
+			var msg = '';
+			switch(status){
+				case 1:
+				 	msg = '上传事故图片'
+				  break;
+				case 2:
+				  msg = '事故图片审核中'
+				  break;
+				case 3:
+				 	msg = '选择处理方式'
+				  break;
+				case -3:
+				 	msg = '事故图片审核失败'
+				  break;
+				case 4:
+				  msg = '添加当事人'
+				  break;
+				case 5:
+				 	msg = '提交证件信息'
+				  break;
+				case 6:
+				  msg = '证件信息审核中'
+				  break;
+				case 7:
+				 	msg = '证件审核成功'
+				  break;
+				case -7:
+				 	msg = '证件审核失败'
+				  break;
+				case 8:
+				  msg = '请选择事故情形'
+				  break;
+				case 9:
+				 	msg = '事故定责成功'
+				  break;
+				case 10:
+				  msg = '请进行短信验证'
+				  break;
+				case 11:
+				 	msg = '交警在线审核中'
+				  break;
+				case -11:
+				 	msg = '交警审核失败'
+				  break;
+				default:
+			}
+			return msg;
 		}
 </script>
 
