@@ -79,6 +79,31 @@
 <script src="static/js/datePicker.js" type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
+	
+	$(function(){
+			var carId = localStorage.getItem('carId');
+			var token = localStorage.getItem('token');
+			$.ajax({
+				type:"post",
+				url:getBindingCarUrl,
+				data:{
+					token:token
+				},
+				success:function(data){
+					console.log(data)
+					if (data.list) {
+						for (var i=0;i<data.list.length;i++) {
+							if(data.list[i].carId==carId){
+								$('.plate-num').val(data.list[i].identityNum);
+								$('.vin').val(data.list[i].carNo);
+								$('.motor-num').val(data.list[i].motorNum);
+								$('.select em').html(data.list[i].registerDate)
+							}
+						}
+					}
+				}
+			});
+		})
 	// 时间组件
 		var calendar = new datePicker();
 		calendar.init({
@@ -115,7 +140,6 @@
 					console.log(data)
 					$('.ocr-img').attr('src',data.list[0])
 					var carinfo = data.obj;
-					
 					
 					$('.plate-num').val(carinfo.plate_no) // 号牌号码
 					$('.vin').val(carinfo.vin)			// 车辆识别号码

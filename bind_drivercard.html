@@ -81,6 +81,30 @@
 
 <!--当前页面交互-->
 <script type="text/javascript">
+	
+		$(function(){
+			var cardId = localStorage.getItem('cardId');
+			var token = localStorage.getItem('token');
+			$.ajax({
+				type:"post",
+				url:getBindingDriverUrl,
+				data:{
+					token:token
+				},
+				success:function(data){
+					if (data.list) {
+						for (var i=0;i<data.list.length;i++) {
+							if(data.list[i].id==cardId){
+								$('.name').val(data.list[i].name);
+								$('.cardnum').val(data.list[i].card);
+								$('.select em').html(data.list[i].date)
+							}
+						}
+					}
+				}
+			});
+		})
+		
 		var calendar = new datePicker();
 		calendar.init({
 			'trigger': '.select', /*按钮选择器，用于触发弹出插件*/
@@ -146,7 +170,7 @@
 			success: function(data){
 				if(data.status == 2000){
 					console.log(data)
-					//window.location.href="user.html"
+					window.location.href="user.html"
  				}else{
  					// 绑定失败
  					
