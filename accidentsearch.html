@@ -47,6 +47,9 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
+$(function(){
+		
+
 	if(!token){
 		// 如果token不存在 则跳转至登录页面
 		window.location.href = 'login.html';
@@ -102,7 +105,8 @@
 												+'</ul>'
 												+'<div class="accident-status fr">'
 //													+'<a>11111111<a/>'
-													+'<a class="returnto" href="'+linkhrefs+'" data="'+data.list[i].id+'">'+hrefinfos+'</a>'
+													//+'<a class="returnto" href="'+linkhrefs+'" data="'+data.list[i].id+'">'+hrefinfos+'</a>'
+													+'<a class="returnto" href="javascript:;" data-accidentId="'+data.list[i].id+'" data-href="'+ linkhrefs +'">'+hrefinfos+'</a>'
 												+'</div>'	
 											+'</div>'
 							}else{
@@ -121,6 +125,13 @@
 						}
 						$('.tab-content.active').html('');
 						$('.tab-content.active').html(str);
+						
+							$('.returnto').on('click', function(){
+								//console.log($(this).attr('data'))
+								localStorage.setItem('accidentId',$(this).attr('data-accidentId'));
+								window.location.href = $(this).attr('data-href')
+							})
+		
 					}
 				}
 			});
@@ -226,16 +237,17 @@
 			}
 			return msg;
 		}
-<<<<<<< HEAD
-		
-		$('#deal').on('click','.return',function(){
-			alert(1111)
-=======
+
+	
+
+	
+//		$('#undeal').on('click','.returnto',function(){
+//
+//			//localStorage.setItem('accidentId',$(this).attr(data));
+//		})
 //		
-		$('#undeal').on('click','.returnto',function(){
->>>>>>> 963554a41223dc8698ff5580cae6a3895aec17b2
-			localStorage.setItem('accidentId',$(this).attr(data));
-		})
+	
+})
 </script>
 
 </body>

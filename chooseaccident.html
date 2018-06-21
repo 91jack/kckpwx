@@ -109,29 +109,26 @@
 		
 			}
 		});
-	})
-	
-	// 下一步
-	// 判断是否选择事故
-	// 传责任方
-	// 获取事故人信息
-	$.ajax({
-		type:"post",
-		url: getAccidentUserInfoUrl,
-		data: {
-			token:localStorage.getItem('token'),
-			accidentId:localStorage.getItem('accidentId')
-		},
-		success:function(data){
-			console.log(data)
-			
-		}
-	});
-	
-	// 下一步
-	$('.btn').on('click', function(){
 		
-	});
+		
+		// 下一步
+		$('.btn').on('click', function(){
+			$.ajax({
+				type:"post",
+				url: ,
+				data: {
+					token: token,
+					accidentId: accidentId,
+					accidentType : accidentType
+				},
+				success:function(data){
+					console.log(data)
+			
+				}
+			});
+		});
+	})
+
 	
 	// 自行协商事故定责
 //	$.ajax({

@@ -128,7 +128,7 @@ var addFeedback = host+'/kyp/applogin/currencyController/addFeedback';
 
 // 选择事故情形
 
-var choseAccidentTypeUrl= '/kyp/applogin/accidentController/choseAccidentType';
+var choseAccidentTypeUrl=  host+'/kyp/applogin/accidentController/choseAccidentType';
 
 // 信息查询
 // 信息查询主页面
