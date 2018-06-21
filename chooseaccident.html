@@ -40,13 +40,13 @@
 			</div>
 			<img src="static/images/accident-item.png"/>
 			<div class="modal-btn">
-				<a href="javascript:;" class="fl active" data-select = '0'>A方</a>
-				<a href="javascript:;" class="fl" data-select = '1'>B方</a>
+				<a href="javascript:;" class="fl active" data-select = 'A'>A方</a>
+				<a href="javascript:;" class="fl" data-select = 'B'>B方</a>
 			</div>
 		</div>
 	</div>
 	<div class="btn" >
-		<a href="fix-duty.html">
+		<a href="javascript:;">
 			下一步
 		</a>
 	</div>
@@ -88,45 +88,36 @@
 		$('.chooseaccident-modal').click(function(){
 			$(this).css('display','none');
 		})
-		
+		var duty = '';
 		$('.chooseaccident-modal .modal-content .modal-btn a').bind('click',function(){
 			// 责任方
 			console.log($(this).attr('data-select'))
+			duty = $(this).attr('data-select');
 		})
 		
 		// 事故情形code
 		var accidentType = $(this).attr('data-code');
-		$.ajax({
-			type:"post",
-			url:choseAccidentTypeUrl,
-			data: {
-				token: token,
-				accidentId: accidentId,
-				accidentType : accidentType
-			},
-			success:function(data){
-				console.log(data)
 		
-			}
-		});
-		
-		
+		console.log(duty)
 		// 下一步
-//		$('.btn').on('click', function(){
-//			$.ajax({
-//				type:"post",
-//				url: ,
-//				data: {
-//					token: token,
-//					accidentId: accidentId,
-//					accidentType : accidentType
-//				},
-//				success:function(data){
-//					console.log(data)
-//			
-//				}
-//			});
-//		});
+		$('.btn').on('click', function(){
+			$.ajax({
+				type:"post",
+				url: choseAccidentTypeUrl,
+				data: {
+					token: token,
+					accidentId: accidentId,
+					accidentType : accidentType,
+					duty: duty
+				},
+				success:function(res){
+					console.log(res)
+					if(res.status == 2000){
+						window.location.href = 'fix-duty.html'
+					}
+				}
+			});
+		});
 	})
 
 	

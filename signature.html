@@ -17,8 +17,8 @@
 				</a>
 			</div>
 			<h2 class="header-top-title">
-				<a class="reset" href="">重置</a>
-				<a class="sure" href="">确定</a>
+				<a class="reset" href="javascript:;">重置</a>
+				<a class="sure" href="javascript:;">确定</a>
 			</h2>
 		</div>
 		
@@ -43,7 +43,25 @@
 		
 		<script type="text/javascript">
 			const canvas = document.querySelector('canvas');
-      		this.draw = new Draw(canvas, 0);
+      		var draw = new Draw(canvas, 0);
+			
+			
+			// 重置
+			$('.reset').on('click', function(){
+				// 清除画布
+				draw.clear()
+			})
+			
+			// 确定
+			$('.sure').on('click', function(){
+				// 生成图片 
+				//draw.downloadPNGImage(draw.getPNGImage())
+				var image = draw.getPNGImage();
+				// base64转图片
+				console.log(image)
+      			var blob = draw.dataURLtoBlob(image);
+      			console.log(blob)
+			});
 			
 //			  const d = document;
 //		      const w = window.innerWidth || d.documentElement.clientWidth || d.body.clientWidth;
