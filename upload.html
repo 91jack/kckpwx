@@ -293,7 +293,7 @@ $('.select-weather').on('click', function(){
 	})
 	
 	$('.btn').click(function(){
-		var address = localStorage.getItem('add');
+		var address = localStorage.getItem('addr');
 		var fastRoad = $('.upload-content .msg li').eq(1).children('.choose-box.active').next('span').attr('data');
 		var accidentDate = $('.upload-content .msg li').eq(2).children('span').eq(1).html()+"  "+$('.upload-content .msg li').eq(2).children('span').eq(2).html()
 		var weather = $('.upload-content .msg li').eq(3).children('span').eq(1).html();
