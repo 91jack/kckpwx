@@ -36,6 +36,7 @@ function position(e) {
 	})
 	p = e.point;
 	console.log(p);
+	
 	// 存json
 	localStorage.setItem('lat',p.lat);
 	localStorage.setItem('lng',p.lng);

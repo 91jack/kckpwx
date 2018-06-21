@@ -58,11 +58,15 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 获取事故情形
+	var allAccidentType = []
 	$.ajax({
 		type:"post",
 		url:getAccidentTypeUrl,
 		success:function(data){
 			console.log(data)
+			allAccidentType = data.list;
+			// 本地存儲所有事故情形
+			localStorage.setItem('allAccidentType',allAccidentType);
 			var Len = data.list.length;
 			var str='';
 			for(var i=0;i<Len;i++){
@@ -97,7 +101,10 @@
 		
 		// 事故情形code
 		var accidentType = $(this).attr('data-code');
-		
+		console.log(accidentType)
+		console.log(allAccidentType)
+		// 本地存儲當前事故情形
+		localStorage.setItem('accidentType',accidentType);
 		console.log(duty)
 		// 下一步
 		$('.btn').on('click', function(){

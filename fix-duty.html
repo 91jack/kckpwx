@@ -177,28 +177,25 @@
 	
 	
 	$('.chooseaccident-page .btn').click(function(){
+		var user = [
+			{'id': '201','damagecode': '01','dutycode': '5'},
+			{'id': '202','damagecode': '02','dutycode': '1'}
+		]
+		user = JSON.stringify(user)
+		console.log(user)
 		$.ajax({
 			type:"post",
-			url:'http://192.168.1.34:8080/kyp/applogin/accidentController/choseAccidentDuty',
+			url: choseAccidentDutyUrl,
 			data: {
 				token: token,
 				accidentId:accidentId,
-				user:[
-					{
-						'id': '201',
-						'damagecode': '01',
-						'dutycode': '5'
-					},
-					{
-						'id': '202',
-						'damagecode': '02',
-						'dutycode': '1'
-					}
-				]
+				user: user
 			},
 			dataType: "json",
 			success: function(res){
-				console.log(res)
+				if(res.status == 2000){
+					window.location.href = 'msg_certification.html'
+				}
 			}
 		});
 	})
