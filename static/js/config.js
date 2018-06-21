@@ -119,11 +119,16 @@ var getFourInOneStatusUrl = host + '/kyp/applogin/accidentController/getFourInOn
 
 // 获取证件四合一照片
 var getFourInOnePicUrl = host + '/kyp/applogin/accidentController/getFourInOnePic';
+
 // 获取事故认证状态
 var accidentAuthStatusUrl = host + '/kyp/applogin/accidentController/accidentAuthStatus';
 
 //提交意见信息
 var addFeedback = host+'/kyp/applogin/currencyController/addFeedback';
+
+// 选择事故情形
+
+var choseAccidentTypeUrl= '/kyp/applogin/accidentController/choseAccidentType';
 
 // 信息查询
 // 信息查询主页面

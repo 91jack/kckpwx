@@ -82,6 +82,7 @@
 	$('.chooseaccident-content ul').on('click','li',function(){
 		$(this).siblings().children('em').removeClass('active');
 		$(this).children('em').addClass('active');
+		
 		$('.chooseaccident-modal').css('display','block');
 		$('.chooseaccident-modal .modal-content img').attr('src',$(this).children('em.active').attr('bigurl'))
 		$('.chooseaccident-modal').click(function(){
@@ -89,8 +90,25 @@
 		})
 		
 		$('.chooseaccident-modal .modal-content .modal-btn a').bind('click',function(){
+			// 责任方
 			console.log($(this).attr('data-select'))
 		})
+		
+		// 事故情形code
+		var accidentType = $(this).attr('data-code');
+		$.ajax({
+			type:"post",
+			url:choseAccidentTypeUrl,
+			data: {
+				token: token,
+				accidentId: accidentId,
+				accidentType : accidentType
+			},
+			success:function(data){
+				console.log(data)
+		
+			}
+		});
 	})
 	
 	// 下一步
@@ -110,6 +128,10 @@
 		}
 	});
 	
+	// 下一步
+	$('.btn').on('click', function(){
+		
+	});
 	
 	// 自行协商事故定责
 //	$.ajax({
