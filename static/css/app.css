@@ -1625,6 +1625,7 @@
 	display: inline-block;
 	height: 2.5rem;
 	/*width: 6.666666rem;*/
+	padding: 0 2rem;
 	text-align: center;
 	background: #F56954;
 	line-height: 2.5rem;
