@@ -22,6 +22,8 @@ function Draw(canvas, degree, config = {}) {
   // 根据设备像素比优化canvas绘图
   const devicePixelRatio = window.devicePixelRatio;
   if (devicePixelRatio) {
+  	console.log(width);
+  	console.log(height)
     canvas.style.width = `${width}px`;
     canvas.style.height = `${height}px`;
     canvas.height = height * devicePixelRatio;
@@ -32,7 +34,7 @@ function Draw(canvas, degree, config = {}) {
     canvas.height = height;
   }
 
-  context.lineWidth = 6;
+  context.lineWidth = 2;
   context.strokeStyle = 'black';
   context.lineCap = 'round';
   context.lineJoin = 'round';
