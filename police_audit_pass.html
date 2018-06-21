@@ -4,11 +4,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>上传证件照片</title>
+  <title>事故照片审核</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  	<link rel="stylesheet" href="static/css/app.css" />
+	
 </head>
-<body class="uploadpicture-page">
+<body class="audit-page">
 	<!--顶部标题栏-->
 	<div class="header-top">
 		<div class="fl">
@@ -17,23 +18,21 @@
 				<span class="goback-text">返回</span>
 			</a>
 		</div>
-		<h2 class="header-top-title">上传证件照片</h2>
+		<h2 class="header-top-title">事故照片审核</h2>
 	</div>
 	
-	
-	<!--内容区图片区-->
-	<div class="uploadpicture-content">
-		<img src="static/images/main/fourpic.png"/>
-		<div class="upload-btn">
-			<input type="file"/>
+	<!--事故审核结果-->
+	<div class="audit-content">
+		<div class="audit-no">
+			<img src="static/images/main/right.png"/>
+			<p>审核通过</p>
 		</div>
+		<span></span>
 	</div>
+	<p>事故交警已远程定责</p>
+	<p class="pla">何洁全责，张三无责</p>
 	
-	<div class="btn">
-		<a href="javascript:;">
-			提交照片
-		</a>
-	</div>
+	
 	
 
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
@@ -41,33 +40,10 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
-$(function(){
-	// 获取四合一照片
-	$.ajax({
-		type:"post",
-		url:getFourInOnePicUrl,
-		data:{
-			token:localStorage.getItem('token'),
-			accidentId:localStorage.getItem('accidentId')
-		},
-		success:function(data){
-			console.log(data)
-//			if (data.status==2000) {
-//				
-//			}
-		}
-	});
-	
-	// 四合一照片拍照上传
-	
-	
-	// 提交照片
-	
-	
-	
-	
-})
-	
+	// 
+	setTimeout(function(){
+		window.location.href = 'accimsg_list.html'
+	}, 5000)
 </script>
 
 </body>

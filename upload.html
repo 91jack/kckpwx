@@ -58,8 +58,10 @@
 			<li>
 				<span>地点天气</span>
 				
-				<span class="select-weather">雨</span>
-				<em class="fr"></em>
+				<div id="select-weather" class="fr select-weather">
+					<span>雨</span>
+					<em class="fr"></em>
+				</div>
 				
 			</li>
 		</ul>
@@ -104,7 +106,7 @@
 				<div class="upload-msg">
 					<input type="file"/>
 				</div>
-				<p>侧前方</p>
+				<p>补充照片</p>
 			</li>
 		</ul>
 		<ul class="uploadpicture clearfix">
@@ -115,7 +117,7 @@
 				<div class="upload-msg">
 					<input type="file"/>
 				</div>
-				<p>侧前方</p>
+				<p>补充照片</p>
 			</li>
 			<li>
 				<div class="box">
@@ -124,7 +126,7 @@
 				<div class="upload-msg">
 					<input type="file"/>
 				</div>
-				<p>侧前方</p>
+				<p>补充照片</p>
 			</li>
 		</ul>
 	</div>
@@ -246,7 +248,7 @@ var weatherPicker = new Picker({
 	});
 weatherPicker.on('picker.select', function (selectedVal, selectedIndex) {
 	console.log(selectedVal)
-		$('.select-weather').text(weather[selectedIndex].text)
+		$('.select-weather span').text(weather[selectedIndex].text)
 })
 
 $('.select-weather').on('click', function(){
@@ -294,13 +296,10 @@ $('.select-weather').on('click', function(){
 		var address = localStorage.getItem('addr');
 		var fastRoad = $('.upload-content .msg li').eq(1).children('.choose-box.active').next('span').attr('data');
 		var accidentDate = $('.upload-content .msg li').eq(2).children('span').eq(1).html()+"  "+$('.upload-content .msg li').eq(2).children('span').eq(2).html()
-		var weather = $('.upload-content .msg li').eq(3).children('span').eq(1).html();
+		var weather = $('#select-weather span').html();
 		var picOne = $('.upload-content .uploadpicture li').eq(0).children('.box').children('img').attr('src');
 		var picTwo = $('.upload-content .uploadpicture li').eq(1).children('.box').children('img').attr('src');
 		var picThree = $('.upload-content .uploadpicture li').eq(2).children('.box').children('img').attr('src');
-//		var otherOne = $('.upload-content .uploadpicture li').eq(3).children('.box').children('img').attr('src')||'';
-//		var otherTwo = $('.upload-content .uploadpicture li').eq(4).children('.box').children('img').attr('src')||'';
-//		var otherThree = $('.upload-content .uploadpicture li').eq(5).children('.box').children('img').attr('src')||'';
 		var otherOne = '';
 		var otherTwo = '';
 		var otherThree = '';

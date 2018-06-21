@@ -226,7 +226,7 @@
 		var carNo = $('#cpcode').val();
 		var carType = $('#cartype').html();
 		var carTypeId = $('#cartype').attr('data');
-		var insurance =$('#insurance').html();
+		var insurance =$('#Insurance').html();
 		var insuranceId =$('#insurance').attr('data');
 		var firstpic = $('#picrun').attr('src');
 		var secondpic = $('#picdrive').attr('src');
@@ -246,7 +246,6 @@
 
 
 		$('.msg-modal.total .modal-btn').children('a').eq(1).click(function(){
-			console.log(111111111)
 			$.ajax({
 			type:"post",
 			url:addAccidentUserUrl, //
@@ -266,23 +265,9 @@
 				if (data.status==2000) {
 					$('.msg-modal.total').css('display','block');
 					window.location.href='inputmsg.html'
+					}
 				}
-			}
-		});
-//			$.ajax({
-//				type:"post",
-//				url:addAccidentUserFinishUrl,
-//				data:{
-//					token:localStorage.getItem('token'),
-//					accidentId:localStorage.getItem('accidentId')
-//				},
-//				success:function(data){
-//					console.log(data);
-//					if (data.status==2000) {
-//						window.location.href='inputmsg.html'
-//					}
-//				}
-//			})
+			});
 		})
 	})
 
@@ -292,7 +277,6 @@
 		})
 	//上传证件(驾驶证)照片  1
 	$('.form-group .yzm-btn').eq(0).click(function(){
-		console.log(111111111)
 		$('.msg-modal.drive').eq(0).show();
 		$('.camera input[type="file"]').click(function(){
 			$(this).change(function(){
@@ -304,7 +288,6 @@
 	})
 	//上传证件(行驶证)照片  2
 	$('.form-group .yzm-btn').eq(1).click(function(){
-		console.log(222222222)
 		$('.msg-modal.drive').eq(1).show();
 		$('.msg-modal.drive .modal-btn a').click(function(){
 			$('.msg-modal.drive').hide();
