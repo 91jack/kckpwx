@@ -20,11 +20,11 @@
   var pluginName = 'jqSignature',
       defaults = {
         lineColor: '#222222',
-        lineWidth: 1,
+        lineWidth: 3,
         border: '1px dashed #AAAAAA',
         background: '#FFFFFF',
         width: 300,
-        height: 100,
+        height: 500,
         autoFit: false
       },
       canvasFixture = '<canvas></canvas>';
