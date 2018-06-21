@@ -95,20 +95,28 @@ var addAccidentUserFinishUrl = host + '/kyp/applogin/accidentController/addAccid
 
 // 添加证件信息
 var addFourInOneUrl = host + '/kyp/applogin/accidentController/addFourInOne';
+
 // 选择事故情形
 var choseAccidentType = host + '/kyp/applogin/accidentController/choseAccidentType';
+
 // 获取事故人信息
 var getAccidentUserInfoUrl = host + '/kyp/applogin/accidentController/getAccidentUserInfo';
+
 // 自行协商事故定责
 var choseAccidentDutyUrl = host + '/kyp/applogin/accidentController/choseAccidentDuty';
+
 // 获取事故信息
 var getAccidentInfoUrl = host + '/kyp/applogin/accidentController/getAccidentInfo';
+
 // 事故认证
 var accidentAuthUrl = host + '/kyp/applogin/accidentController/accidentAuth';
+
 // 获取事故照片审核结果
 var getAccidentStatusUrl = host + '/kyp/applogin/accidentController/getAccidentStatus';
+
 // 获取四合一证件审核状态
 var getFourInOneStatusUrl = host + '/kyp/applogin/accidentController/getFourInOneStatus';
+
 // 获取证件四合一照片
 var getFourInOnePicUrl = host + '/kyp/applogin/accidentController/getFourInOnePic';
 // 获取事故认证状态

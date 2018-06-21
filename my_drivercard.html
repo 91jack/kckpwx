@@ -108,10 +108,10 @@
 		$('.modal').click(function(){
 			$(this).hide();
 		})
-		var i =$(this).attr('data');
+		var driverId =$(this).attr('data-id');
 		$('.modal-btn a.active').click(function(){
-			var driverId = '';
-			driverId = $('.info-item[data='+i+']').children('.info-item-info').children('.container').children('span').eq(1).html();
+			//var driverId = '';
+			//driverId = $('.info-item[data='+i+']').children('.info-item-info').children('.container').children('span').eq(1).html();
 			console.log(driverId);
 			$.ajax({
 				type:"post",
@@ -123,7 +123,7 @@
 				success:function(data){
 					console.log(data);
 					if (data.status==2000) {
-						$('.info-item[data='+i+']').remove();
+						window.location.href='my_drivercard.html'
 					}
 				}
 			});
@@ -143,7 +143,7 @@
 			if(data.status==2000){
 				var str='';
 				for (var i=0;i<Len;i++) {
-					str+='<div class="info-item" data="'+i+'">'
+					str+='<div class="info-item" data-id="'+listData[i].id+'">'
 								+'<div class="info-item-info clearfix">'
 									+'<div class="container">'
 										+'<span class="fl">'+listData[i].name+'</span>'
@@ -157,7 +157,7 @@
 										+'</div>'
 										+'<div class="fr">'
 											+'<a href="javascript:;" class="edit"><em class="icon"></em>编辑</a>'
-											+'<a href="javascript:;" class="del" data="'+i+'"><em class="icon"></em>删除</a>'
+											+'<a href="javascript:;" class="del" data-id="'+listData[i].id+'"><em class="icon"></em>删除</a>'
 										+'</div>'
 									+'</div>'
 								+'</div>'
