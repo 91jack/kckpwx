@@ -43,8 +43,8 @@ function position(e) {
 
 //	获取地址
 $('#submap').click(function() {
-	add= $('#addr').html();
-	localStorage.setItem('add',add);
+	addr= $('#addr').html();
+	localStorage.setItem('addr',addr);
 	window.location.href='upload.html';
 })
 

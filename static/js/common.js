@@ -21,3 +21,30 @@ var token = localStorage.getItem('token');
 console.log(token)
 
 
+// 时间
+// 日期换算
+var allWeek= ["日","一","二","三","四","五","六","日"];
+function week(w){
+	return allWeek[w];
+}
+
+// 获取本地时间
+var nowdate = new Date();
+var y = nowdate.getFullYear();
+var m = nowdate.getMonth()+1;
+var d = nowdate.getDate();
+var w = nowdate.getDay();
+var h = nowdate.getHours();
+var min = nowdate.getMinutes();
+
+var indexTime = m + '月' + d + '日' + '&nbsp;&nbsp;星期'+week(w);
+console.log(indexTime)
+m = m < 10 ? '0' + m : m; 
+d = d < 10 ? '0' + d : d; 
+var accidentTime = y + '-' + m + '-' + d;
+console.log(accidentTime)
+
+h = h < 10 ? '0' + h : h; 
+min = min < 10 ? '0' + min : min; 
+var nowTime = h + ':' + min;
+console.log(nowTime)

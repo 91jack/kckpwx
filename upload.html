@@ -35,10 +35,8 @@
 			<li>
 				<a href="map.html">
 					<span>事故地址</span>
-					
-					<span class="addr">重庆市渝北区金开大道</span>
+					<span class="addr"></span>
 					<em class="fr"></em>
-					
 				</a>
 			</li>
 			<li>
@@ -53,7 +51,7 @@
 			<li>
 				<span>事故时间</span>
 				
-				<span>2018-01-26</span>
+				<span class="date">2018-01-26</span>
 				<span class="time">11:08</span>
 				
 			</li>
@@ -139,7 +137,6 @@
 	
 
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
-<script src="static/js/datePicker.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/picker.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
@@ -153,9 +150,7 @@
 		console.log(addr)
 		//获取事故地址
 		$('.addr').text(addr)
-		
 		// 选择是否为高速/高架
-		$('.upload-content .msg li').eq(0).children('a').children('span').eq(1).html(localStorage.getItem('add'))
 		$('.upload-content .msg li .choose-box').click(function(){
 			if (!$(this).hasClass('active')) {
 				$(this).addClass('active');
@@ -166,28 +161,46 @@
 			}
 		})
 		
+		// 事故默认时间
+		$('.date').text(accidentTime);
+		$('.time').text(nowTime)
 		
 	})
 
 	
 
+
 	
-	// 事故时间
-var calendar = new datePicker();
-calendar.init({
-      'trigger': '.time', /*选择器，触发弹出插件*/
-      'type': 'time',/*date 调出日期选择 datetime 调出日期时间选择 time 调出时间选择 ym 调出年月选择*/
-      'onSubmit':function(){/*确认时触发事件*/
-          var theSelectData=calendar.value;
-          console.log(theSelectData)
-          $('.time').text(theSelectData)
-      },
-      'onClose':function(){/*取消时触发事件*/
-      }
+// 事故时间
+var hours = []
+for(var i=0;i<24;i++){
+	var text = i<10 ? '0'+i : String(i)
+	hours.push({value:i,text:text})
+}
+var min = []
+for(var i=0;i<60;i++){
+	var text = i<10 ? '0'+i : String(i)
+	min.push({value:i,text:text})
+}
+var timePicker = new Picker({
+		data: [hours,min],
+		selectedIndex: [2,0],
+		title:''
 });
-	
-	
-	// 地点天气
+timePicker.on('picker.select', function (selectedVal, selectedIndex) {
+	console.log(selectedVal)
+	console.log(selectedIndex)
+	var selectHour = hours[selectedIndex[0]].text;
+	var selectMin = min[selectedIndex[1]].text;
+	var time = selectHour + ':' +selectMin;
+	$('.time').text(time)
+})
+
+$('.time').on('click', function(){
+	timePicker.show();
+})
+
+// 地点天气
 var weather = [
 	{
 		value: "1",
@@ -226,30 +239,18 @@ var weather = [
 		text: "其它"
 	}
 ];
-
-var picker = new Picker({
+var weatherPicker = new Picker({
 			data: [weather],
 			selectedIndex: [0],
 			title:''
 	});
-picker.on('picker.select', function (selectedVal, selectedIndex) {
+weatherPicker.on('picker.select', function (selectedVal, selectedIndex) {
 	console.log(selectedVal)
 		$('.select-weather').text(weather[selectedIndex].text)
 })
 
-//picker.on('picker.change', function (index, selectedIndex) {
-//	console.log(weather[index]);
-//	console.log(weather[selectedIndex]);
-//});
-//
-//picker.on('picker.valuechange', function (selectedVal, selectedIndex) {
-//	console.log(selectedVal);
-//	console.log(selectedIndex);
-//});
-
 $('.select-weather').on('click', function(){
-
-	picker.show();
+	weatherPicker.show();
 })
     
     
@@ -288,6 +289,7 @@ $('.select-weather').on('click', function(){
 			uploadImg(that);
 		});
 	})
+	
 	$('.btn').click(function(){
 		var address = localStorage.getItem('add');
 		var fastRoad = $('.upload-content .msg li').eq(1).children('.choose-box.active').next('span').attr('data');

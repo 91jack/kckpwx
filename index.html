@@ -31,7 +31,7 @@
 		<div class="date fl">
 			<span>10</span>
 			<em>℃</em>
-			<p>1月24日 星期三</p>
+			<p class="indextime">1月24日 星期三</p>
 		</div>
 		<div class="weather fr">
 			<img src="static/images/index/weather.png"/>
@@ -82,6 +82,8 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 $(function(){
+	$('.indextime').html(indexTime)
+	
 	if(!token){
 		// 如果token不存在 则跳转至登录页面
 		window.location.href = 'login.html';
