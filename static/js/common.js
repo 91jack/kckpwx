@@ -38,11 +38,11 @@ var h = nowdate.getHours();
 var minutes = nowdate.getMinutes();
 
 var indexTime = m + '月' + d + '日' + '&nbsp;&nbsp;星期'+week(w);
-console.log(indexTime)
+//console.log(indexTime)
 m = m < 10 ? '0' + m : m; 
 d = d < 10 ? '0' + d : d; 
 var accidentTime = y + '-' + m + '-' + d;
-console.log(accidentTime)
+//console.log(accidentTime)
 
 h = h < 10 ? '0' + h : h; 
 minutes = minutes < 10 ? '0' + minutes : minutes; 

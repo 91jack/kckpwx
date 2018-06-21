@@ -147,7 +147,7 @@
 													+'<li><span>事故形态：</span><span class="accident-info">'+data.list[i].statusStr+'</span></li>'
 												+'</ul>'
 												+'<div class="accident-status fr">'
-													+'<a href="'+linkhrefs+'?accidentId='+data.list[i].id+'">'+hrefinfos+'</a>'
+													+'<a class="return" href="'+linkhrefs+'" data="'+data.list[i].id+'">'+hrefinfos+'</a>'
 												+'</div>'	
 											+'</div>'
 							}else{
@@ -270,6 +270,10 @@
 			}
 			return msg;
 		}
+		$('#deal').on('click','.return',function(){
+			localStorage.setItem('accidentIdsearch',$(this).attr(data));
+		})
+		
 </script>
 
 </body>
