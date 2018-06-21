@@ -29,56 +29,10 @@
 	
 	<!--tab切换内容-->
 	<!--已完成事故-->
-	<div class="tab-content" id="deal">
-		<!--<div class="tab-content-item clearfix">
-			<ul class="fl">
-				<li><span>事故编号：</span><span class="accident-info">HZS20170510205447</span></li>
-				<li><span>事故时间：</span><span class="accident-info">2017-11-12 17:55</span></li>
-				<li><span>事故地点：</span><span class="accident-info">重庆市渝北区爱琴海</span></li>
-				<li><span>事故形态：</span><span class="accident-info">已定责</span></li>
-			</ul>
-			<div class="accident-status fr">
-				<img src="static/images/already.png" alt="" />
-			</div>
-		</div>
-		<div class="tab-content-item clearfix">
-			<ul class="fl">
-				<li><span>事故编号：</span><span class="accident-info">HZS20170510205447</span></li>
-				<li><span>事故时间：</span><span class="accident-info">2017-11-12 17:55</span></li>
-				<li><span>事故地点：</span><span class="accident-info">重庆市渝北区爱琴海</span></li>
-				<li><span>事故形态：</span><span class="accident-info">已定责</span></li>
-			</ul>
-			<div class="accident-status fr">
-				<img src="static/images/already.png" alt="" />
-			</div>
-		</div>-->
-	</div>
+	<div class="tab-content" id="deal"></div>
 	
 	<!--未完成事故-->
-	<div class="tab-content active" id="undeal">
-		<!--<div class="tab-content-item clearfix">
-			<ul class="fl">
-				<li><span>事故编号：</span><span class="accident-info">HZS20170510205447</span></li>
-				<li><span>事故时间：</span><span class="accident-info">2017-11-12 17:55</span></li>
-				<li><span>事故地点：</span><span class="accident-info">重庆市渝北区爱琴海</span></li>
-				<li><span>事故形态：</span><span class="accident-info">未定责</span></li>
-			</ul>
-			<div class="accident-status fr">
-				<a href="javascript:;">上传证件照片</a>
-			</div>
-		</div>
-		<div class="tab-content-item clearfix">
-			<ul class="fl">
-				<li><span>事故编号：</span><span class="accident-info">HZS20170510205447</span></li>
-				<li><span>事故时间：</span><span class="accident-info">2017-11-12 17:55</span></li>
-				<li><span>事故地点：</span><span class="accident-info">重庆市渝北区爱琴海</span></li>
-				<li><span>事故形态：</span><span class="accident-info">未定责</span></li>
-			</ul>
-			<div class="accident-status fr">
-				<a href="javascript:;">上传证件照片</a>
-			</div>
-		</div>-->
-	</div>
+	<div class="tab-content active" id="undeal"></div>
 	
 	<!--录入事件-->
 	<div class="tab-content-btn">
@@ -270,8 +224,8 @@
 			}
 			return msg;
 		}
-		$('#deal').on('click','.return',function(){
-			localStorage.setItem('accidentIdsearch',$(this).attr(data));
+		$('#undeal').on('click','#undeal .accident-status',function(){
+			localStorage.setItem('accidentId',$(this).children('.return').attr(data));
 		})
 		
 </script>
