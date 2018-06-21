@@ -74,9 +74,11 @@
 	
 
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/picker.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/datePicker.js" type="text/javascript" charset="utf-8"></script>
+
 <!--当前页面交互-->
 <script type="text/javascript">
 		var calendar = new datePicker();
@@ -92,6 +94,8 @@
 			'onClose':function(){/*取消时触发事件*/
 			}
 		})
+
+
 		
 		// 驾驶证拍照识别
 	$('#takephoto').change(function(){
@@ -101,6 +105,9 @@
 		formData.append('files',that[0].files[0]);
 		formData.append('imgType','1');
 		formData.append('token',token);
+		
+	//	$('.ocr-img').attr('src','static/images/loading.gif')
+//		$('.ocr-img').css({'width':'64px'},{'height':'64px'},{'margin':'0 auto'})
 		
 		$.ajax({
 			type:"post",
@@ -116,7 +123,7 @@
 					$('.name').val(data.obj.name);
 					$('.cardnum').val(data.obj.id_card_number);
 					$('.select em').text(data.obj.id_card_date);
- 				}
+   				}
 			}
 		});
 	});
