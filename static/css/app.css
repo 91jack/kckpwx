@@ -1613,3 +1613,17 @@
 	overflow: hidden;
 	text-overflow: ellipsis
 }
+
+/*签字页面*/
+.signature {
+	width: 31.25rem;
+	height: 100%;
+	transform: rotate(90deg);
+}
+.signature-content {
+	
+	/*display: block;
+	width: 100%;
+	height: 27.083333rem;
+	background: red;*/
+}

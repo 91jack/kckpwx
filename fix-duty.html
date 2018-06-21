@@ -57,7 +57,7 @@
 				<div class="form-group">
 					<span>车损部位</span>
 					<strong class="fr"></strong>
-					<em class="fr">请选择</em>
+					<em class="fr cardestory">请选择</em>
 				</div>
 				<div class="form-group">
 					<span>事故责任</span>
@@ -89,7 +89,7 @@
 				<div class="form-group">
 					<span>车损部位</span>
 					<strong class="fr"></strong>
-					<em class="fr">请选择</em>
+					<em class="fr cardestory">请选择</em>
 				</div>
 				<div class="form-group">
 					<span>事故责任</span>
@@ -116,7 +116,38 @@
 <script type="text/javascript">
 	$(function(){
 		// 车损部位
-		
+			$.ajax({
+				type:"post",
+				url:getAccidentDamageUrl,
+				success:function(res){
+					
+					
+					console.log(res)
+					var AccidentDamage = [];
+					for(var i=0;i<res.list.length;i++){
+						AccidentDamage.push({'value': res.list[i].code,'text':res.list[i].name})
+					}
+					var AccidentDamagePicker = new Picker({
+						data: [AccidentDamage],
+						selectedIndex: [1],// 
+						title:''
+					});
+					
+					AccidentDamagePicker.on('picker.select', function (selectedVal, selectedIndex) {
+						console.log(selectedVal)
+						console.log(selectedIndex)
+						var selectCarDestory = AccidentDamage[selectedIndex].text;
+						console.log(selectCarDestory)
+					})
+					
+					$('.cardestory').each(function(){
+						$(this).on('click',function(){
+							//alert(11)
+							AccidentDamagePicker.show();
+						})
+					});
+				}
+			})
 	})
 	
 	// 
