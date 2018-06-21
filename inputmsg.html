@@ -25,8 +25,10 @@
 	<div class="input-msg-content">
 		<form class="form">
 			<div class="form-group">
-				<span>本方信息</span>
-				<em class="fr"></em>
+				<a href="mymsg.html">
+					<span>对方信息</span>
+					<em class="fr"></em>
+				</a>
 			</div>
 			
 			<!--<div class="form-group">
@@ -46,8 +48,11 @@
 		
 		<form class="form">
 			<div class="form-group">
-				<span>对方信息</span>
-				<em class="fr"></em>
+				<a href="othermsg.html">
+					<span>对方信息</span>
+					<em class="fr"></em>
+				</a>
+			
 			</div>
 			
 		</form>
@@ -56,7 +61,7 @@
 	<div class="inputmsg-btn">
 		<a href="othermsg.html">
 			<img src="static/images/main/plus.png"/>
-			添加当事人
+			添加对方当事人
 		</a>
 	</div>
 	<div class="btn" id="finished">
@@ -89,10 +94,12 @@
 					var Len = data.list.length;
 					if(Len==1){
 						var str1 = '';
-						str1 ='<div class="form-group">'
-											+'<span>本方信息</span>'
-											+'<em class="fr"></em>'
-										+'</div>'
+						str1 =`<div class="form-group">
+											<a href="mymsg.html">
+												<span>对方信息</span>
+												<em class="fr"></em>
+											</a>
+										</div>`
 										+'<div class="form-group">'
 											+'<span>姓名</span>'
 											+'<p class="fr">'+data.list[0].name+'</p>'
@@ -105,17 +112,19 @@
 											+'<span>手机号码</span>'
 											+'<p class="fr">'+data.list[0].phone+'</p>'
 										+'</div>'	;
-						//$('.input-msg-content .form').eq(1).html()+=str1;
+						
 						$('.input-msg-content .form').eq(0).html(str1)
 						$('.inputmsg-btn').removeClass('active');
 						$('.btn').removeClass('active');
 					}else if(Len==2){
 						var str1 = '';
 						var str2 = '';
-						str1 ='<div class="form-group">'
-											+'<span>本方信息</span>'
-											+'<em class="fr"></em>'
-										+'</div>'
+						str1 =`<div class="form-group">
+											<a href="mymsg.html">
+												<span>本方信息</span>
+												<em class="fr"></em>
+											</a>
+										</div>`
 										+'<div class="form-group">'
 											+'<span>姓名</span>'
 											+'<p class="fr">'+data.list[0].name+'</p>'
@@ -128,10 +137,12 @@
 											+'<span>手机号码</span>'
 											+'<p class="fr">'+data.list[0].phone+'</p>'
 										+'</div>'	;
-						str2 = '<div class="form-group">'
-											+'<span>对方信息</span>'
-											+'<em class="fr"></em>'
-										+'</div>'
+						str2 = `<div class="form-group">
+											<a href="othermsg.html">
+												<span>对方信息</span>
+												<em class="fr"></em>
+											</a>
+										</div>`
 										+'<div class="form-group">'
 											+'<span>姓名</span>'
 											+'<p class="fr">'+data.list[1].name+'</p>'
