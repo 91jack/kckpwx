@@ -82,6 +82,32 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	
+<<<<<<< HEAD
+		$(function(){
+			var cardId = localStorage.getItem('cardId');
+			var token = localStorage.getItem('token');
+			$.ajax({
+				type:"post",
+				url:getBindingDriverUrl,
+				data:{
+					token:token
+				},
+				success:function(data){
+					if (data.list) {
+						for (var i=0;i<data.list.length;i++) {
+							if(data.list[i].id==cardId){
+								$('.name').val(data.list[i].name);
+								$('.cardnum').val(data.list[i].card);
+								$('.select em').html(data.list[i].date);
+								$('.ocr-img').attr('src',data.list[i].imgurl)
+							}
+						}
+					}
+				}
+			});
+		})
+=======
+>>>>>>> 530eb3a2f9c88f515bea84470bcd1ffc7c40d73d
 		
 		var calendar = new datePicker();
 		calendar.init({
@@ -141,8 +167,13 @@
 				token: token,	
 				name: $('.name').val(),
 				card:	$('.cardnum').val(),
+<<<<<<< HEAD
 				imgurl:$('.ocr-img img').attr('src'),
 				date:	$('.select em').text()
+=======
+				date:	$('.select em').text(),
+				imgurl: $('.ocr-img').attr('src')
+>>>>>>> 7e93cd810d16ce43df85e0a69fa1eb813aa7117c
 			},
 			
 	    dataType: "json",
