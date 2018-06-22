@@ -210,9 +210,6 @@
 							$('.upload-content .uploadpicture li').eq(5).children('.box').children('img').attr('src',uploadData.other_pic3);
 						};
 						// 判断图片审核状态
-//						if () {
-//							
-//						}
 						if (uploadData.main_pic1) {
 							if(uploadData.mainStatus1==1){
 								$('.upload-content .uploadpicture li').eq(0).children('.box').children('em').css('background-image','url(static/images/main/pass.png)');
@@ -424,7 +421,9 @@ $('.select-weather').on('click', function(){
 			success: function(data){
 				console.log(data);
 				if(data.status == 2000){
-						window.location.href='accidentstatus.html';
+					window.location.href='accidentstatus.html';
+				}else if(data.status == 2002){
+					window.location.href='accidentstatus.html';
 				}
 			}
 		});

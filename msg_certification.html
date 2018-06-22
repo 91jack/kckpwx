@@ -117,14 +117,92 @@
 <script type="text/javascript">
 $(function(){
 	// 获取事故信息
-	//getAccidentInfoUrl
-	
+	$.ajax({
+    type: "post",
+    url: getAccidentInfoUrl,
+  	data:{
+			token: token,
+			accidentId: accidentId
+		},
+    success: function(res){
+    	console.log(res)
+    	var data = res.pagination;
+    	
+			if(res.status == 2000){
+				$('.police-content ul li').eq(0).html('事故时间：' + data.create_time);
+				$('.police-content ul li').eq(1).html('事故地点：：' + data.address);
+				$('.police-content ul li').eq(2).html('事故天气：' + data.weather);
+				$('.police-content ul li').eq(3).html('事故情形：' + data.viewname);
+			}
+    }
+	})
 	
 	// 获取事故人信息
-	getAccidentUserInfoUrl
-	
+	$.ajax({
+    type: "post",
+    url: getAccidentUserInfoUrl,
+		data:{
+			token: token,
+			accidentId: accidentId
+		},
+    success: function(res){
+    	console.log(res)
+    	var data = res.list;
+			if(res.status == 2000){
+				var Len = data.length;
+				for (var i=0;i<Len;i++) {
+					$('.msg-certification-content .form').eq(i).children('.form-group').eq(1).children('em').html(data[i].name);
+					$('.msg-certification-content .form').eq(i).children('.form-group').eq(2).children('em').html(data[i].car_no);
+					$('.msg-certification-content .form').eq(i).children('.form-group').eq(3).children('em').html(data[i].phone);
+					
+					
+				}
+			}
+    }
+	})
+
+	// 点击签字
+	$('.form').each(function(){
+		$(this).children('.form-group').eq(5).children('em').click(function(){
+			window.location.href='signature.html';
+		})
+	})
 	
 	// 提交的時候 accidentAuthUrl
+	
+	
+	
+	
+	
+	
+	// 点击完成
+	$('.msg-certificati-page .btn').click(function(){
+		var user = [
+			{'uid':'111','ycode': '201','phone': '01','pic': '5'},
+			{'uid':'111','ycode': '202','phone': '02','pic': '1'}
+		]
+		user = JSON.stringify(user)
+		$.ajax({
+	    type: "POST",
+	    url: accidentAuthUrl,
+	  	data:{
+				token: token,
+				accidentId: accidentId,
+				user: user
+			},
+	    success: function(data){
+				if(data.status == 2000){
+					console.log(data)
+					window.location.href='accimsg_list.html'
+				}
+	    }
+		})
+		
+	})
+	
+	
+	
+	
 	
 	
 	getcode('.getcode1','.phone1','.yzmcode1')
@@ -190,51 +268,10 @@ $(function(){
 	}
 	
 	
-	// 点击签字
 	
-	
-	
-	// 点击完成
 	
 	
 })
-	
-	
-	// 获取当前页面数据
-	// 获取事故人信息
-	$.ajax({
-		type:"post",
-		url:accidentAuthStatusUrl,
-		data:{
-			token:localStorage.getItem('token'),
-			accidentId:localStorage.getItem('accidentId')
-		},
-		success:function(data){
-			console.log(data)
-			if (data.status==2000) {
-				var Len = data.list.length;
-				for (var i=0;i<Len;i++) {
-					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(1).children('em').html(data.list[i].name);
-					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
-					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(3).children('em').html(data.list[i].phone);
-				}
-			}
-		}
-	});
-	$('.form').each(function(){
-		$(this).children('.form-group').eq(5).children('em').click(function(){
-			window.location.href='signature.html';
-		})
-	})
-	
-	$('.msg-certificati-page .btn').click(function(){
-//		$.ajax({
-//			type:"post",
-//			url:"",
-//			async:true
-//		});
-		window.location.href='fastfixduty_pass.html'
-	})
 </script>
 
 </body>
