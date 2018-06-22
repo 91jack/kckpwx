@@ -28,7 +28,7 @@
 			<form class="form">
 				<div class="form-group">
 					<em>事故情形</em>
-					<p class="fr">在同车道行驶中，不按规定与前车保持必要的安全距离的（追尾）</p>
+					<p class="fr accidentInfo">在同车道行驶中，不按规定与前车保持必要的安全距离的（追尾）</p>
 					<!--<span></span>-->
 					<a href="chooseaccident.html"></a>
 				</div>
@@ -133,7 +133,9 @@
 				function selectFn(n){
 					AccidentDamagePicker.on('picker.select', function (selectedVal, selectedIndex) {
 						selectCarDestory = AccidentDamage[selectedIndex].text;
+//						selectCarDestoryCode = AccidentDamage[selectedVal].text;
 						$('.cardestory').eq(n).text(selectCarDestory)
+//						$('.cardestory').eq(n).attr('data-index',selectCarDestoryCode)
 					})
 				}
 			
@@ -163,45 +165,47 @@
 					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(1).children('em').html(data.list[i].name);
 					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
 					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(3).children('em').html(data.list[i].phone);
-					
+					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(5).children('em').html(data.list[i].dutyname);
 					// 事故责任判定
-					if(data.list[0].dutycode == 5){
-						
+					if(data.list[i].dutycode == 5){
+						$('.mymsg-content .form').eq(i+1).children('.form-group').eq(5).children('em').css('background','#38ADFF');
+					}else if(data.list[i].dutycode == 1){
+						$('.mymsg-content .form').eq(i+1).children('.form-group').eq(5).children('em').css('background','#F43C3C');
 					}
 				}
 				
-				// 
+				$('.chooseaccident-page .btn').click(function(){
+					var user = [
+						{'id': data.list[0].id,'damagecode': '01','dutycode': data.list[0].dutycode},
+						{'id': data.list[1].id,'damagecode': '02','dutycode': data.list[1].dutycode}
+					]
+					user = JSON.stringify(user)
+					console.log(user)
+					$.ajax({
+						type:"post",
+						url: choseAccidentDutyUrl,
+						data: {
+							token: token,
+							accidentId:accidentId,
+							user: user
+						},
+						dataType: "json",
+						success: function(res){
+							if(res.status == 2000){
+								window.location.href = 'msg_certification.html'
+							}
+						}
+					});
+				})
 			}
 		}
 	});
 	
-	var dataList = localStorage.getItem('allAccidentType');
-//	var dataL = JSON.parse(dataList);
-//	console.log(dataList.parseJSON())
-//	console.log(dataList.parseJSON());
-	$('.chooseaccident-page .btn').click(function(){
-		var user = [
-			{'id': '201','damagecode': '01','dutycode': '5'},
-			{'id': '202','damagecode': '02','dutycode': '1'}
-		]
-		user = JSON.stringify(user)
-		console.log(user)
-		$.ajax({
-			type:"post",
-			url: choseAccidentDutyUrl,
-			data: {
-				token: token,
-				accidentId:accidentId,
-				user: user
-			},
-			dataType: "json",
-			success: function(res){
-				if(res.status == 2000){
-					window.location.href = 'msg_certification.html'
-				}
-			}
-		});
-	})
+	//获取事故情形
+	var dataInfo = localStorage.getItem('accidentTypeInfo');
+	$('.accidentInfo').html(dataInfo);
+	
+	
 </script>
 
 </body>

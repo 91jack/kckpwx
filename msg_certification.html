@@ -65,6 +65,9 @@
 			<div class="form-group">
 				<span>签字</span>
 				<em class="fr msg-btn">签字</em>
+				<div class="fr sinate1">
+					<img src="static/images/common/card_xingshizheng.png"/>
+				</div>
 			</div>
 		</form>
 			
@@ -97,6 +100,9 @@
 			<div class="form-group">
 				<span>签字</span>
 				<em class="fr msg-btn">签字</em>
+				<div class="fr sinate2">
+					<img src="static/images/common/card_xingshizheng.png"/>
+				</div>
 			</div>
 			
 		</form>
@@ -154,8 +160,7 @@ $(function(){
 					$('.msg-certification-content .form').eq(i).children('.form-group').eq(1).children('em').html(data[i].name);
 					$('.msg-certification-content .form').eq(i).children('.form-group').eq(2).children('em').html(data[i].car_no);
 					$('.msg-certification-content .form').eq(i).children('.form-group').eq(3).children('em').html(data[i].phone);
-					
-					
+					$('.form').eq(i).attr('data',data[i].id)
 				}
 			}
     }
@@ -178,8 +183,8 @@ $(function(){
 	// 点击完成
 	$('.msg-certificati-page .btn').click(function(){
 		var user = [
-			{'uid':'111','ycode': '201','phone': '01','pic': '5'},
-			{'uid':'111','ycode': '202','phone': '02','pic': '1'}
+			{'uid':$('.form').eq(0).attr('data'),'ycode': $('.yzmcode1').val(),'phone': $('.phone1').html(),'pic': $('.sinate1 img').attr('src')},
+			{'uid':$('.form').eq(1).attr('data'),'ycode': $('.yzmcode2').val(),'phone': $('.phone2').html(),'pic': $('.sinate2 img').attr('src')}
 		]
 		user = JSON.stringify(user)
 		$.ajax({
@@ -191,23 +196,23 @@ $(function(){
 				user: user
 			},
 	    success: function(data){
+	    	console.log(data);
 				if(data.status == 2000){
 					console.log(data)
 					window.location.href='accimsg_list.html'
 				}
 	    }
 		})
-		
 	})
 	
 	
 	
 	
 	
-	
+	// 短信验证码
 	getcode('.getcode1','.phone1','.yzmcode1')
 	getcode('.getcode2','.phone2','.yzmcode2')
-	// 短信验证码
+
 	function getcode(obj,item1,item2){
 		var on = true;
 	
