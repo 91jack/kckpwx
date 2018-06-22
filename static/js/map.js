@@ -40,6 +40,8 @@ function position(e) {
 	// 存json
 	localStorage.setItem('lat',p.lat);
 	localStorage.setItem('lng',p.lng);
+	
+	localStorage.setItem('address_xy',JSON.stringify(r.point))
 }
 
 //	获取地址

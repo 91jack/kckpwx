@@ -136,7 +136,7 @@ $(function(){
     	
 			if(res.status == 2000){
 				$('.police-content ul li').eq(0).html('事故时间：' + data.create_time);
-				$('.police-content ul li').eq(1).html('事故地点：：' + data.address);
+				$('.police-content ul li').eq(1).html('事故地点：' + data.address);
 				$('.police-content ul li').eq(2).html('事故天气：' + data.weather);
 				$('.police-content ul li').eq(3).html('事故情形：' + data.viewname);
 			}
@@ -160,6 +160,7 @@ $(function(){
 					$('.msg-certification-content .form').eq(i).children('.form-group').eq(1).children('em').html(data[i].name);
 					$('.msg-certification-content .form').eq(i).children('.form-group').eq(2).children('em').html(data[i].car_no);
 					$('.msg-certification-content .form').eq(i).children('.form-group').eq(3).children('em').html(data[i].phone);
+					$('.msg-certification-content .form').eq(i).children('.form-group').eq(4).children('em').attr('data-uid',data[i].id);
 					$('.form').eq(i).attr('data',data[i].id)
 				}
 			}
@@ -198,7 +199,14 @@ $(function(){
 	    success: function(data){
 				if(data.status == 2000){
 					console.log(data)
-					window.location.href='accimsg_list.html'
+					
+					var handleType = localStorage.getItem('handleType')
+					console.log(handleType)
+					if(handleType == 1){
+						window.location.href='accimsg_list.html'
+					}else{
+						window.location.href = 'msg_certification.html'
+					}
 				}
 	    }
 		})
@@ -208,15 +216,18 @@ $(function(){
 	
 	
 	
+	
 	// 短信验证码
-	getcode('234','.getcode1','.phone1','.yzmcode1')
-	getcode('235','.getcode2','.phone2','.yzmcode2')
+	getcode('.getcode1','.phone1','.yzmcode1')
+	getcode('.getcode2','.phone2','.yzmcode2')
 
-	function getcode(uid,obj,item1,item2){
+	function getcode(obj,item1,item2){
 		var on = true;
 		 
 
 	$(obj).on('click',function(){
+		var uid = $(this).attr('data-uid');
+		console.log(uid)
 	if(on){
 		// 手机号验证
 		var phone = $(item1).html();
@@ -241,11 +252,7 @@ $(function(){
 			  		token: token,
 						phone:$(item1).html(),
 						accidentId:accidentId,
-<<<<<<< HEAD
 						uid: uid,
-=======
-						uid:'',
->>>>>>> 585b916febb5be2536c01136345e98261da06484
 						type:'3'
 					},
 			    success: function(data){

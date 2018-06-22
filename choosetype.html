@@ -58,13 +58,15 @@
 	// 
 	$('.choose-type-content span').click(function(){
 		console.log($(this).attr('data'));
+		var handleType = $(this).attr('data');
+		localStorage.setItem('handleType',handleType)
 		$.ajax({
 			type:'POST',
 			url:choseHandleTypeUrl,
 			data:{
-				token:localStorage.getItem('token'),
-				accidentId:localStorage.getItem('accidentId'),
-				handleType:$(this).attr('data')
+				token:token,
+				accidentId:accidentId,
+				handleType:handleType
 			},
 			success:function(data){
 				console.log(data)

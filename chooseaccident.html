@@ -122,7 +122,14 @@
 				success:function(res){
 					console.log(res)
 					if(res.status == 2000){
-						window.location.href = 'fix-duty.html'
+						var handleType = localStorage.getItem('handleType')
+						console.log(handleType)
+						if(handleType == 1){
+							window.location.href = 'fix-duty.html'
+						}else{
+							window.location.href = 'police_audit_status.html'
+						}
+						
 					}
 				}
 			});

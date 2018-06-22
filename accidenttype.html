@@ -85,6 +85,7 @@ geolocation.getCurrentPosition(function(r) {
 			console.log(address);
 			
 			localStorage.setItem('addr',address);
+			localStorage.setItem('address_xy',JSON.stringify(r.point))
 		})
 	} else {
 		alert('failed' + this.getStatus());

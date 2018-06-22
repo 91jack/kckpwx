@@ -404,10 +404,10 @@ $('.select-weather').on('click', function(){
 			type:"post",
 			url:accidentImgUrl,
 			data: {
-				token:localStorage.getItem('token'),
-				accidentId:localStorage.getItem('accidentId'),
+				token:token,
+				accidentId:accidentId,
 				address:address,
-				address_xy:(localStorage.getItem('lat'),localStorage.getItem('lng')),
+				address_xy: localStorage.getItem('address_xy'),
 				isExpressway:fastRoad,
 				datetime:accidentDate,
 				weather:weather,
