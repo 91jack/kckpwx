@@ -196,7 +196,6 @@ $(function(){
 				user: user
 			},
 	    success: function(data){
-	    	console.log(data);
 				if(data.status == 2000){
 					console.log(data)
 					window.location.href='accimsg_list.html'
@@ -240,6 +239,8 @@ $(function(){
 			    url: yzcodeUrl,
 			  	data:{
 						phone:$(item1).html(),
+						accidentId:accidentId,
+						uid:'',
 						type:'4'
 					},
 			    success: function(data){

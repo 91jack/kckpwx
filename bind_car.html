@@ -29,7 +29,7 @@
 			</div>
 			
 			<div class="ocr-wrap-imgbox">
-				<p>行驶驶证拍摄</p>
+				<p>行驶证拍摄</p>
 				<div class="ocr-wrap-imginner">
 					<img src="" alt="" onerror="this.src='static/images/common/card_xingshizheng.png'" class="ocr-img"/>
 					<em class="icon-takephoto"></em>
@@ -171,6 +171,7 @@
 			
 	    dataType: "json",
 			success: function(data){
+				console.log(data);
 				if(data.status == 2000){
 					console.log(data)
 					window.location.href="user.html"
