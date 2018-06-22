@@ -4,12 +4,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>绑定驾驶证</title>
+  <title>修改机动车</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  <link rel="stylesheet" href="static/css/app.css" />
 	
 </head>
-<body class="bg-f4">
+<body class="bg-f4 card-driver-page">
 	<!--顶部标题栏-->
 	<div class="header-top">
 		<div class="fl">
@@ -18,7 +18,7 @@
 				<span class="goback-text">返回</span>
 			</a>
 		</div>
-		<h2 class="header-top-title">绑定驾驶证</h2>
+		<h2 class="header-top-title">修改机动车</h2>
 	</div>
 	
 	<div class="card-wrap">
@@ -29,13 +29,12 @@
 			</div>
 			
 			<div class="ocr-wrap-imgbox">
-				<p>驾驶证拍摄</p>
+				<p>行驶证拍摄</p>
 				<div class="ocr-wrap-imginner">
-					<img src="" alt="" onerror="this.src='static/images/common/card_driver.png'" class="ocr-img"/>
+					<img src="" alt="" onerror="this.src='static/images/common/card_xingshizheng.png'" class="ocr-img"/>
 					<em class="icon-takephoto"></em>
 					<input type="file" accept="image/*"  id="takephoto"/>
 				</div>
-			
 			</div>
 		</div>
 		
@@ -43,17 +42,22 @@
 			<form class="form">
 			
 			<div class="form-group">
-				<span>姓名</span>
-				<input type="text" placeholder="请输入姓名" class="name"/>
+				<span>号牌号码</span>
+				<input type="text" placeholder="请输入车牌号" class="plate-num"/>
 			</div>
 			
 			<div class="form-group">
-				<span>身份证号码</span>
-				<input type="text" placeholder="请输入身份证号码" class="cardnum"/>
+				<span>车辆识别号码</span>
+				<input type="text" placeholder="请输入车辆识别号码" class="vin"/>
 			</div>
 			
 			<div class="form-group">
-				<span>初次领证日期</span>
+				<span>发动机号</span>
+				<input type="text" placeholder="请输入发动机号" class="motor-num"/>
+			</div>
+			
+			<div class="form-group">
+				<span>注册日期</span>
 				<span class="select">
 					<em>请选择</em>
 					<i></i>
@@ -66,49 +70,69 @@
 	
 	
 	<div class="blue-btn-default">
-		<a href="javascript:;" id="bind-btn">立即绑定</a>
+		<a href="javascript:;" id="bind-btn">确认修改</a>
 	</div>
-	
-	<!--时间选择组件-->
-
-	
 
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
-<script src="static/js/picker.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/datePicker.js" type="text/javascript" charset="utf-8"></script>
-
 <!--当前页面交互-->
 <script type="text/javascript">
 	
-<<<<<<< HEAD
-		$(function(){
-			var cardId = localStorage.getItem('cardId');
+	$(function(){
+			var carId = localStorage.getItem('carId');
 			var token = localStorage.getItem('token');
 			$.ajax({
 				type:"post",
-				url:getBindingDriverUrl,
+				url:getBindingCarUrl,
 				data:{
 					token:token
 				},
 				success:function(data){
+					console.log(data)
 					if (data.list) {
 						for (var i=0;i<data.list.length;i++) {
-							if(data.list[i].id==cardId){
-								$('.name').val(data.list[i].name);
-								$('.cardnum').val(data.list[i].card);
-								$('.select em').html(data.list[i].date);
-								$('.ocr-img').attr('src',data.list[i].imgurl)
+							if(data.list[i].carId==carId){
+								$('.plate-num').val(data.list[i].identityNum);
+								$('.vin').val(data.list[i].carNo);
+								$('.motor-num').val(data.list[i].motorNum);
+								$('.select em').html(data.list[i].registerDate)
 							}
 						}
 					}
+					$('#bind-btn').on('click',function(){
+						var token = localStorage.getItem('token')
+						$.ajax({
+							type:"post",
+							url: editBindingCarUrl,
+							data: {
+								token: token,	
+								carId:data.list[0].carId,
+								isdefault:data.list[0].isdefault,
+								imgurl:data.list[0].imgurl,
+								carNo: $('.plate-num').val(),
+								identityNum:	$('.vin').val(),
+								motorNum: $('.motor-num').val(),
+								registerDate:	$('.select em').text()
+							},
+					    dataType: "json",
+							success: function(data){
+								console.log(data);
+								if(data.status == 2000){
+									console.log(data)
+									window.location.href="user.html"
+				 				}else{
+				 					// 绑定失败
+				 					
+				 				}
+							}
+						});
+					})
 				}
 			});
 		})
-=======
->>>>>>> 530eb3a2f9c88f515bea84470bcd1ffc7c40d73d
-		
+	// 时间组件
 		var calendar = new datePicker();
 		calendar.init({
 			'trigger': '.select', /*按钮选择器，用于触发弹出插件*/
@@ -122,20 +146,15 @@
 			'onClose':function(){/*取消时触发事件*/
 			}
 		})
-
-
 		
-		// 驾驶证拍照识别
+	// 行驶证拍照识别
 	$('#takephoto').change(function(){
 		var that = $(this)
 		var token = localStorage.getItem('token')
 		var formData = new FormData();	
 		formData.append('files',that[0].files[0]);
-		formData.append('imgType','1');
+		formData.append('imgType','2');
 		formData.append('token',token);
-		
-//	$('.ocr-img').attr('src','static/images/loading.gif')
-//	$('.ocr-img').css({'width':'64px'},{'height':'64px'},{'margin':'0 auto'})
 		
 		$.ajax({
 			type:"post",
@@ -148,42 +167,25 @@
 				if(data.status == 2000){
 					console.log(data)
 					$('.ocr-img').attr('src',data.list[0])
-					$('.name').val(data.obj.name);
-					$('.cardnum').val(data.obj.id_card_number);
-					$('.select em').text(data.obj.id_card_date);
-   				}
+					var carinfo = data.obj;
+					$('.plate-num').val(carinfo.plate_no) // 号牌号码
+					$('.vin').val(carinfo.vin)			// 车辆识别号码
+					$('.motor-num').val(carinfo.motor_num); // 发动机号
+					$('.select em').text(carinfo.register_date); // 注册日期
+ 				}
 			}
 		});
 	});
 	
 	
-	// 绑定驾驶证
-	$('#bind-btn').on('click',function(){
-		var token = localStorage.getItem('token')
-		$.ajax({
-			type:"post",
-			url: addBindingDriverUrl,
-			data: {
-				token: token,	
-				name: $('.name').val(),
-				card:	$('.cardnum').val(),
-				date:	$('.select em').text(),
-				imgurl: $('.ocr-img').attr('src')
-			},
-			
-	    dataType: "json",
-			success: function(data){
-				if(data.status == 2000){
-					console.log(data)
-					window.location.href="user.html"
- 				}else{
- 					// 绑定失败
- 					
- 				}
-			}
-		});
-	})
-		
+
+	
+	
+	
+	// 修改行驶证 机动车
+
+	
+	
 </script>
 
 </body>
