@@ -91,7 +91,7 @@
 			
 			<div class="form-group">
 				<span>事故责任</span>
-				<em class="fr msg-btn bg-red">全责</em>
+				<em class="fr msg-btn">全责</em>
 			</div>
 			
 			<div class="form-group">
@@ -109,7 +109,19 @@
 			<span>完成</span>
 		</a>
 	</div>
-
+	
+	
+	
+	
+	<div class="modal">
+		<div class="modal-content">
+			<p>感谢您的使用！！！</p>
+			<div class="modal-btn">
+				<a href="javascript:;">取消</a>
+				<a class="active" href="javascript:;">确定</a>
+			</div>
+		</div>
+	</div>
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
@@ -132,7 +144,13 @@
 					$('.form').eq(i).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
 					$('.form').eq(i).children('.form-group').eq(3).children('em').html(data.list[i].phone);
 					$('.form').eq(i).children('.form-group').eq(4).children('em').html(data.list[i].id_card);
-					$('.form').eq(i).children('.form-group').eq(5).children('em').html(data.list[i].insurer_id);
+					$('.form').eq(i).children('.form-group').eq(5).children('em').html(data.list[i].dutyname);
+					$('.form').eq(i).children('.form-group').eq(6).children('em').html(data.list[i].insurancename);
+					if (data.list[i].dutycode=='5') {
+						$('.form').eq(i).children('.form-group').eq(5).children('em').css('background','#38ADFF');
+					} else if(data.list[i].dutycode=='1'){
+						$('.form').eq(i).children('.form-group').eq(5).children('em').css('background','#F43C3C');
+					}
 				}
 			}
 		}
@@ -152,7 +170,13 @@
 		success:function(data){
 			console.log(data);
 			if (data.status==2000) {
-				window.location.href = 'index.html';
+				$('.modal').show();
+				$('.modal-btn a').eq(1).click(function(){
+					window.location.href = 'index.html';
+				})
+				$('.modal-btn a').click(function(){
+					$('.modal').hide();
+				})
 			}
 		}
 	});

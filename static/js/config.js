@@ -140,7 +140,8 @@ var accidentAuthStatusUrl = host + '/kyp/applogin/accidentController/accidentAut
 //获取事故人信息
 var getAccidentUserUrl = host + '/kyp/applogin/accidentController/getAccidentUser';
 
-
+//修改当事人信息
+var AccidentUserUrl = host +'/kyp/applogin/accidentController/modifyAccidentUser'
 
 
 

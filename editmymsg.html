@@ -187,7 +187,12 @@
 				success:function(data){
 					console.log(data);
 					var dataList = data.pagination;
-					$('#name').val(dataList.name)
+					$('#name').val(dataList.name);
+					$('#sfzcode').val(dataList.id_card);
+					$('#phone').val(dataList.phone);
+					$('#cpcode').val(dataList.car_no);
+					$('#cartype').html(dataList.car_type);
+					$('#Insurance').html(dataList.insurer_id)
 				}
 			});
 		})
@@ -267,25 +272,25 @@
 		$('.msg-modal.total .modal-btn').children('a').eq(1).click(function(){
 			$.ajax({
 			type:"post",
-			url:addAccidentUserUrl, //
+			url:AccidentUserUrl, 
 			data:{
 				token:localStorage.getItem('token'),
+				id:localStorage.getItem('accidentpersonId2'),
+				idCard:cardNo,
 				accidentId:localStorage.getItem('accidentId'),
 				name:name,
-				cardNo:cardNo,
 				phone:phone,
 				carNo:carNo,
-				carType: carType,
+				carType: carTypeId,
 				insuranceId:insuranceId,
 				firstpic:firstpic,
-				secondpic:secondpic,
-				type: '1'
+				secondpic:secondpic
 			},
 			success:function(data){
-				console.log(data)
 				if (data.status==2000) {
+					console.log(data);
 					$('.msg-modal.total').css('display','block');
-					window.location.href='inputmsg.html'
+						window.location.href='inputmsg.html';
 					}
 				}
 			});

@@ -68,6 +68,16 @@
 		</a>
 	</div>
 	
+	
+	<div class="modal">
+		<div class="modal-content">
+			<p>感谢您的使用！！！</p>
+			<div class="modal-btn">
+				<a href="javascript:;">取消</a>
+				<a class="active" href="javascript:;">确定</a>
+			</div>
+		</div>
+	</div>
 
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
@@ -77,24 +87,34 @@
 	// 
 	$.ajax({
 		type:"post",
-		url:accidentAuthStatusUrl,
+		url:getAccidentUserUrl,
 		async:true,
 		data:{
-			accidentId:accidentId,
+			id:accidentId,
 			token:token
 		},
 		success:function(data){
 			console.log(data);
+			var dataList = data.obj
 			if (data.status==2000) {
-				$('.form .form-group').eq(0).children('em').html(data.obj.id);
-				$('.form .form-group').eq(1).children('em').html(data.obj.datetime);
-				$('.form .form-group').eq(2).children('em').html(data.obj.address);
-				$('.accident-img img').eq(0).attr('src',data.obj.main_pic1);
-				$('.accident-img img').eq(1).attr('src',data.obj.main_pic2);
-				$('.accident-img img').eq(2).attr('src',data.obj.main_pic3);
+				$('.form .form-group').eq(0).children('em').html(dataList.id);
+				$('.form .form-group').eq(1).children('em').html(dataList.datetime);
+				$('.form .form-group').eq(2).children('em').html(dataList.address);
+				$('.accident-img img').eq(0).attr('src',dataList.main_pic1);
+				$('.accident-img img').eq(1).attr('src',dataList.main_pic2);
+				$('.accident-img img').eq(2).attr('src',dataList.main_pic3);
 			}
 		}
 	});
+	$('.basic-msg-btn').click(function(){
+		$('.modal').show();
+				$('.modal-btn a').eq(1).click(function(){
+					window.location.href = 'index.html';
+				})
+				$('.modal-btn a').click(function(){
+					$('.modal').hide();
+				})
+	})
 </script>
 
 </body>

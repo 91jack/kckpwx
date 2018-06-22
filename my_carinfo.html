@@ -102,7 +102,7 @@
 									+'<div class="item-action clearfix">'
 										+'<div class="container">'
 											+'<div class="fl">'
-												+'<a href="javascript:;" class="select"> <em class="icon-select"></em>设为默认</a>'
+												+'<a href="javascript:;" class="select"> <em data-carid="'+listData[i].carId+'" isdefault="'+listData[i].isdefault+'" class="icon-select"></em>设为默认</a>'
 											+'</div>'
 											+'<div class="fr">'
 												+'<a class="edit" data-carid="'+listData[i].carId+'"><em class="icon"></em>编辑</a>'
@@ -120,7 +120,7 @@
 						})
 					}
 				//默认的判断
-				$('.info-list .icon-select').eq(0).addClass('active');
+//				$('.info-list .icon-select').eq(0).addClass('active');
 				$('.info-list').on('click','.icon-select',function(){
 					$('.icon-select').removeClass('active');
 					$(this).addClass('active');

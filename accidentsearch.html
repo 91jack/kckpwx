@@ -125,11 +125,13 @@ $(function(){
 						$('.tab-content.active').html('');
 						$('.tab-content.active').html(str);
 						
-							$('.returnto').on('click', function(){
-								localStorage.setItem('accidentId',$(this).attr('data-accidentId'));
-								window.location.href = $(this).attr('data-href')
-							})
-		
+						$('.returnto').on('click', function(){
+							localStorage.setItem('accidentId',$(this).attr('data-accidentId'));
+							window.location.href = $(this).attr('data-href')
+						})
+						$('#deal .tab-content-item').on('click',function(){
+							window.location.href='accimsg_list.html';
+						})
 					}
 				}
 			});
@@ -235,16 +237,6 @@ $(function(){
 			}
 			return msg;
 		}
-
-	
-
-	
-//		$('#undeal').on('click','.returnto',function(){
-//
-//			//localStorage.setItem('accidentId',$(this).attr(data));
-//		})
-//		
-	
 })
 </script>
 

@@ -1046,7 +1046,7 @@
 .mymsg-btn{
 	width: 100%;
 	height: 3.75rem;
-	margin-top: 13.958333rem;
+	margin-top: 10.291666rem;
 }
 .mymsg-btn .box{
 	float: left;
@@ -1674,4 +1674,11 @@ canvas {
 .sinate2 img{
 	width: 6.666666rem;
 	height: 2.5rem;
+}
+
+/*.accident-list-page .modal{
+	display: block;
+}*/
+.mymsg-page .msg-modal .modal-content{
+	padding-right: 0;
 }
