@@ -112,7 +112,7 @@
 											+'<a href="javascript:;" class="select"> <em class="icon-select"></em>设为默认</a>'
 										+'</div>'
 										+'<div class="fr">'
-											+'<a data="'+listData[i].id+'" class="edit"><em class="icon"></em>编辑</a>'
+											+'<a isdefault="0" data="'+listData[i].id+'" class="edit"><em class="icon"></em>编辑</a>'
 											+'<a href="javascript:;" class="del" data-id="'+listData[i].id+'"><em class="icon"></em>删除</a>'
 										+'</div>'
 									+'</div>'
@@ -124,7 +124,15 @@
 				$('.edit').on('click',function(){
 					localStorage.setItem('cardId',$(this).attr('data'));
 					window.location.href='edit_drivercard.html';
+					if($(this).eq(0).hasClass('active')){
+						$('.edit').attr('isdefault','1')
+					}else{
+						$('.edit').attr('isdefault','0')
+					}
 				})
+				
+				//默认的判断
+				
 				$('.info-list .icon-select').eq(0).addClass('active');
 				$('.info-list').on('click','.icon-select',function(){
 					$('.icon-select').removeClass('active');
