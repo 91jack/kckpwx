@@ -25,7 +25,7 @@
 	<div class="input-msg-content">
 		<form class="form">
 			<div class="form-group">
-				<a href="mymsg.html">
+				<a href="editmymsg.html">
 					<span>对方信息</span>
 					<em class="fr"></em>
 				</a>
@@ -48,7 +48,7 @@
 		
 		<form class="form">
 			<div class="form-group">
-				<a href="othermsg.html">
+				<a href="editothermsg.html">
 					<span>对方信息</span>
 					<em class="fr"></em>
 				</a>
@@ -95,8 +95,8 @@
 					if(Len==1){
 						var str1 = '';
 						str1 =`<div class="form-group">
-											<a href="mymsg.html">
-												<span>对方信息</span>
+											<a href="editmymsg.html">
+												<span>本方信息</span>
 												<em class="fr"></em>
 											</a>
 										</div>`
@@ -116,11 +116,12 @@
 						$('.input-msg-content .form').eq(0).html(str1)
 						$('.inputmsg-btn').removeClass('active');
 						$('.btn').removeClass('active');
+						localStorage.setItem('accidentpersonId1',data.list[0].id);
 					}else if(Len==2){
 						var str1 = '';
 						var str2 = '';
 						str1 =`<div class="form-group">
-											<a href="mymsg.html">
+											<a href="editmymsg.html">
 												<span>本方信息</span>
 												<em class="fr"></em>
 											</a>
@@ -138,7 +139,7 @@
 											+'<p class="fr">'+data.list[0].phone+'</p>'
 										+'</div>'	;
 						str2 = `<div class="form-group">
-											<a href="othermsg.html">
+											<a href="editothermsg.html">
 												<span>对方信息</span>
 												<em class="fr"></em>
 											</a>
@@ -159,6 +160,8 @@
 						$('.input-msg-content .form').eq(1).html(str2);
 						$('.inputmsg-btn').addClass('active');
 						$('.btn').addClass('active');
+						localStorage.setItem('accidentpersonId1',data.list[0].id);
+						localStorage.setItem('accidentpersonId2',data.list[1].id);
 					}
 				}
 			}

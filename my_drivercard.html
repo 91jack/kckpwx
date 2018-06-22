@@ -109,10 +109,10 @@
 								+'<div class="item-action clearfix">'
 									+'<div class="container">'
 										+'<div class="fl">'
-											+'<a href="javascript:;" class="select"> <em class="icon-select"></em>设为默认</a>'
+											+'<a href="javascript:;" class="select"> <em class="icon-select" isdefault="'+data.list[i].isdefault+'"></em>设为默认</a>'
 										+'</div>'
 										+'<div class="fr">'
-											+'<a isdefault="0" data="'+listData[i].id+'" class="edit"><em class="icon"></em>编辑</a>'
+											+'<a data="'+listData[i].id+'" class="edit"><em class="icon"></em>编辑</a>'
 											+'<a href="javascript:;" class="del" data-id="'+listData[i].id+'"><em class="icon"></em>删除</a>'
 										+'</div>'
 									+'</div>'
@@ -124,19 +124,33 @@
 				$('.edit').on('click',function(){
 					localStorage.setItem('cardId',$(this).attr('data'));
 					window.location.href='edit_drivercard.html';
-					if($(this).eq(0).hasClass('active')){
-						$('.edit').attr('isdefault','1')
-					}else{
-						$('.edit').attr('isdefault','0')
-					}
 				})
 				
 				//默认的判断
+//					if (!localStorage.getItem('isdefault')) {
+//						$('.info-list .icon-select').eq(0).addClass('active');
+//					}
+//				if ($('.info-list .icon-select').attr('isdefault')==1) {
+//					$(this).addClass('active');
+//				}
+//				$('.info-list .icon-select').each(function(inx,val){
+//					if (inx.attr('isdefault')==1) {
+//						$(.'info-list .icon-select').eq(inx).addClass('active');
+//					}
+//				})
 				
-				$('.info-list .icon-select').eq(0).addClass('active');
+				
+				
 				$('.info-list').on('click','.icon-select',function(){
 					$('.icon-select').removeClass('active');
 					$(this).addClass('active');
+					if($(this).hasClass('active')){
+						$('.icon-select').attr('isdefault',0)
+						$(this).attr('isdefault',1)
+						localStorage.setItem('isdefault',$(this).attr('isdefault'))
+					}else{
+						$(this).attr('isdefault',0)
+					}
 				})
 				}
 			}

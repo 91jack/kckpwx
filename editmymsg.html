@@ -1,0 +1,366 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>修改本方信息</title>
+  <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+ 	<link rel="stylesheet" href="static/css/app.css" />
+</head>
+<body class="mymsg-page bg-f4">
+	<!--顶部标题栏-->
+	<div class="header-top">
+		<div class="fl">
+			<a href="javascript:;" class="goback">
+				<em class="icon-goback"></em>
+				<span class="goback-text">返回</span>
+			</a>
+		</div>
+		<h2 class="header-top-title">修改本方信息</h2>
+	</div>
+
+
+	<!--内容区-->
+	<div class="mymsg-content">
+		<form class="form">
+			<div class="form-group">
+				<em>本方信息</em>
+			</div>
+
+			<div class="form-group">
+				<span>姓名</span>
+				<input type="text" placeholder="请输入姓名" class="fl" id="name"/>
+				<a href="javascript:;" class="yzm-btn"></a>
+			</div>
+
+			<div class="form-group">
+				<span>身份证号码</span>
+				<input type="text" placeholder="请输入身份证号码" id="sfzcode"/>
+			</div>
+
+			<div class="form-group">
+				<span>手机号码</span>
+				<input type="text" placeholder="请输入手机号码" id="phone"/>
+			</div>
+
+			<div class="form-group">
+				<span>号牌号码</span>
+				<input type="text" placeholder="车牌号" class="fl" id="cpcode"/>
+				<a href="javascript:;" class="yzm-btn"></a>
+			</div>
+			<div class="form-group">
+				<span>号牌种类</span>
+				<span id="cartype" class="fr" data-cartypeId='1'>小型汽车</span>
+				<em class="fr"></em>
+			</div>
+
+			<div class="form-group">
+				<span>保险公司</span>
+				<span id="Insurance" class="fr" data-insuranceId=''>请选择(非必选)</span>
+				<em class="fr"></em>
+			</div>
+
+		</form>
+	</div>
+
+	<div class="mymsg-btn">
+		<div class="box">
+			<a href="javascript:;">
+				删除
+			</a>
+		</div>
+		<div class="box">
+			<a href="javascript:;">
+				完成
+			</a>
+		</div>
+	</div>
+	<!--确认信息模态框-->
+	<div class="msg-modal total">
+		<div class="modal-content">
+			<p>本方信息确认</p>
+			<ul>
+			</ul>
+			<div class="modal-btn clearfix">
+				<a href="javascript:;">
+					取消
+				</a>
+				<a href="javascript:;">
+					确定
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<!--绑定驾驶证模态框-->
+	<div class="msg-modal drive">
+		<div class="modal-content">
+			<p>拍摄本方的驾驶证</p>
+			<span>拍摄自己的驾驶证,自动识别信息!</span>
+			<div class="msg-img">
+				<img id="picrun" data='1' src="static/images/common/card_driver.png"/>
+				<div class="camera">
+					<input type="file"/>
+				</div>
+			</div>
+			<div class="modal-btn clearfix">
+				<a href="javascript:;">
+					取消
+				</a>
+				<a href="javascript:;">
+					确定
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<!--绑定行驶证-->
+	<div class="msg-modal drive">
+		<div class="modal-content">
+			<p>拍摄本方的行驶证</p>
+			<span>拍摄自己的行驶证,自动识别信息!</span>
+			<div class="msg-img">
+				<img id="picdrive" data='2' src="static/images/common/card_xingshizheng.png"/>
+				<div class="camera">
+					<input type="file"/>
+				</div>
+			</div>
+			<div class="modal-btn clearfix">
+				<a href="javascript:;">
+					取消
+				</a>
+				<a href="javascript:;">
+					确定
+				</a>
+			</div>
+		</div>
+	</div>
+
+
+<script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/picker.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
+<!--当前页面交互-->
+<script type="text/javascript">
+	$(function(){
+		// 号牌种类
+		$.ajax({
+			type:"get",
+			url: getCarTypeUrl,
+			success: function(res){
+				console.log(res)
+				var carType = [];
+				for(var i=0;i<res.list.length;i++){
+					carType.push({'value': res.list[i].code,'text':res.list[i].name})
+				}
+				var cartypePicker = new Picker({
+					data: [carType],
+					selectedIndex: [1],// 
+					title:''
+				});
+				
+				cartypePicker.on('picker.select', function (selectedVal, selectedIndex) {
+					console.log(selectedVal)
+					console.log(selectedIndex)
+					var selectcarType = carType[selectedIndex].text;
+					$('#cartype').text(selectcarType)
+					$('#cartype').attr('data-cartypeId',selectedIndex)
+				})
+				
+				$('#cartype').on('click',function(){
+					cartypePicker.show();
+				})
+			}
+		});
+		
+		//本方信息修改
+		$(function(){
+			$.ajax({
+				type:"post",
+				url:getAccidentUserUrl,
+				data:{
+					token:token,
+					id:localStorage.getItem('accidentpersonId1')
+				},
+				success:function(data){
+					console.log(data);
+					var dataList = data.pagination;
+					$('#name').val(dataList.name)
+				}
+			});
+		})
+		
+		
+		// 保险公司
+		$.ajax({
+			type:"get",
+			url: getInsuranceUrl,
+			success: function(res){
+				console.log(res)
+				var Insurance = [];
+				for(var i=0;i<res.list.length;i++){
+					Insurance.push({'value': res.list[i].code,'text':res.list[i].name})
+				}
+				var InsurancePicker = new Picker({
+					data: [Insurance],
+					selectedIndex: [1],// 
+					title:''
+				});
+				
+				InsurancePicker.on('picker.select', function (selectedVal, selectedIndex) {
+					console.log(selectedVal)
+					console.log(selectedIndex)
+					var selectInsurance = Insurance[selectedIndex].text;
+					$('#Insurance').text(selectInsurance)
+					$('#Insurance').attr('data-insuranceId',selectedIndex);
+				})
+				
+				$('#Insurance').on('click',function(){
+					InsurancePicker.show();
+				})
+			}
+		});
+		
+	})
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//上传自己信息
+	$('.mymsg-btn .box a').eq(1).click(function(){
+		$('.msg-modal.total').show();
+
+		var name = $('#name').val();
+		var cardNo = $('#sfzcode').val();
+		var phone = $('#phone').val();
+		var carNo = $('#cpcode').val();
+		var carType = $('#cartype').html();
+		var carTypeId = $('#cartype').attr('data-cartypeId');
+		var insurance =$('#Insurance').html();
+		var insuranceId =$('#Insurance').attr('data-insuranceId');
+		var firstpic = $('#picrun').attr('src');
+		var secondpic = $('#picdrive').attr('src');
+		var str = '<li>姓名：'+name+'</li>'
+							+'<li>身份证号码：'+cardNo+'</li>'
+							+'<li>手机号码：'+phone+'</li>'
+							+'<li>号牌号码：'+carNo+'</li>'
+							+'<li>号牌种类：'+carType+'</li>'
+							+'<li>保险公司：'+insurance+'</li>'
+							+'<li>请认证核实你的信息</li>'
+		$('.msg-modal.total').children('.modal-content').children('ul').html('');
+		$('.msg-modal.total').children('.modal-content').children('ul').append(str);
+		$('.msg-modal.total').click(function(){
+			$(this).css('display','none')
+		});
+
+
+
+		$('.msg-modal.total .modal-btn').children('a').eq(1).click(function(){
+			$.ajax({
+			type:"post",
+			url:addAccidentUserUrl, //
+			data:{
+				token:localStorage.getItem('token'),
+				accidentId:localStorage.getItem('accidentId'),
+				name:name,
+				cardNo:cardNo,
+				phone:phone,
+				carNo:carNo,
+				carType: carType,
+				insuranceId:insuranceId,
+				firstpic:firstpic,
+				secondpic:secondpic,
+				type: '1'
+			},
+			success:function(data){
+				console.log(data)
+				if (data.status==2000) {
+					$('.msg-modal.total').css('display','block');
+					window.location.href='inputmsg.html'
+					}
+				}
+			});
+		})
+	})
+
+
+		$('.msg-modal.drive .modal-btn a').click(function(){
+			$('.msg-modal.drive').hide();
+		})
+	//上传证件(驾驶证)照片  1
+	$('.form-group .yzm-btn').eq(0).click(function(){
+		$('.msg-modal.drive').eq(0).show();
+		$('.camera input[type="file"]').click(function(){
+			$(this).change(function(){
+				var that = $(this);
+				var i = 1;
+				uploadImg(that,i);
+			});
+		})
+	})
+	//上传证件(行驶证)照片  2
+	$('.form-group .yzm-btn').eq(1).click(function(){
+		$('.msg-modal.drive').eq(1).show();
+		$('.msg-modal.drive .modal-btn a').click(function(){
+			$('.msg-modal.drive').hide();
+		})
+		$('.camera input[type="file"]').click(function(){
+			$(this).change(function(){
+				var that = $(this);
+				var i = 2;
+				uploadImg(that,i);
+			});
+		})
+	})
+
+
+// 证件识别
+	function uploadImg(that,i){
+		console.log(i);
+		var accidentId = localStorage.getItem('accidentId');
+		var formData = new FormData();
+		console.log(that[0].files)
+		formData.append('files',that[0].files[0]);
+		formData.append('accidentId',accidentId);
+		formData.append('imgType',i);
+		formData.append('token',localStorage.getItem('token'));
+		$.ajax({
+			type:"post",
+			url:AnalysisUrl,
+			data: formData,
+			processData: false,
+	        contentType: false,
+	        dataType: "json",
+			success: function(data){
+				console.log(data);
+				if(data.status == 2000){
+					that.parent('.camera').siblings('img').attr("src",data.list[0]);
+					that.parent().css('background','none');
+					if (i==1) {
+            $('#picrun').attr("src",data.list[0]);
+  					that.parent().css('background','none');
+						$('#name').val(data.obj.name);
+						$('#sfzcode').val(data.obj.id_card_number)
+					}
+					if(i==2){
+            $('#picdrive').attr("src",data.list[0]);
+						$('#cpcode').val(data.obj.plate_no);
+						$('#cartype').html(data.obj.vehicle_type)
+					}
+				}
+			}
+		});
+	}
+</script>
+
+</body>
+</html>

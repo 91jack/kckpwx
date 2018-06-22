@@ -137,7 +137,8 @@ var accidentsDealInfoUrl = host + '/kyp/applogin/userController/accidentsDealInf
 // 事故信息及当事人列表
 var accidentAuthStatusUrl = host + '/kyp/applogin/accidentController/accidentAuthStatus';
 
-
+//获取事故人信息
+var getAccidentUserUrl = host + '/kyp/applogin/accidentController/getAccidentUser';
 
 
 
