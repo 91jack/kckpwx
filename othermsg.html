@@ -226,8 +226,10 @@
 		var carNo = $('#cpcode').val();
 		var carType = $('#cartype').html();
 		var carTypeId = $('#cartype').attr('data');
+		
 		var insurance =$('#Insurance').html();
-		var insuranceId =$('#insurance').attr('data');
+		//var insuranceId =$('#insurance').html();
+		//console.log(insuranceId)
 		var firstpic = $('#picrun').attr('src');
 		var secondpic = $('#picdrive').attr('src');
 		var str = '<li>姓名：'+name+'</li>'
@@ -256,8 +258,8 @@
 				cardNo:cardNo,
 				phone:phone,
 				carNo:carNo,
-				//carType: carTypeId,//
-				insuranceId:insuranceId,
+				carType: '022',//carTypeId
+				insuranceId:insurance,
 				firstpic:firstpic,
 				secondpic:secondpic,
 				type: '2'
