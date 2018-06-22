@@ -97,7 +97,8 @@
 							if(data.list[i].id==cardId){
 								$('.name').val(data.list[i].name);
 								$('.cardnum').val(data.list[i].card);
-								$('.select em').html(data.list[i].date)
+								$('.select em').html(data.list[i].date);
+								$('.ocr-img').attr('src',data.list[i].imgurl)
 							}
 						}
 					}
@@ -163,7 +164,8 @@
 				token: token,	
 				name: $('.name').val(),
 				card:	$('.cardnum').val(),
-				date:	$('.select em').text()
+				date:	$('.select em').text(),
+				imgurl: $('.ocr-img').attr('src')
 			},
 			
 	    dataType: "json",
