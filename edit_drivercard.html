@@ -82,6 +82,56 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	
+		$(function(){
+			var cardId = localStorage.getItem('cardId');
+			var token = localStorage.getItem('token');
+			$.ajax({
+				type:"post",
+				url:getBindingDriverUrl,
+				data:{
+					token:token
+				},
+				success:function(data){
+					if (data.list) {
+						for (var i=0;i<data.list.length;i++) {
+							if(data.list[i].id==cardId){
+								$('.name').val(data.list[i].name);
+								$('.cardnum').val(data.list[i].card);
+								$('.select em').html(data.list[i].date)
+							}
+						}
+					}
+					// 绑定驾驶证
+					$('#bind-btn').on('click',function(){
+						var token = localStorage.getItem('token')
+						$.ajax({
+							type:"post",
+							url: getBindingDriverUrl,
+							data: {
+								token: token,	
+								carId:data.list[0].carId,
+								isdefault:data.list[0].isdefault,
+								imgurl:data.list[0].imgurl,
+								carNo: $('.plate-num').val(),
+								identityNum:	$('.vin').val(),
+								motorNum: $('.motor-num').val(),
+								registerDate:	$('.select em').text()
+							},
+					    dataType: "json",
+							success: function(data){
+								if(data.status == 2000){
+									console.log(data)
+									window.location.href="user.html"
+				 				}else{
+				 					// 绑定失败
+				 					
+				 				}
+							}
+						});
+					})
+				}
+			});
+		})
 		
 		var calendar = new datePicker();
 		calendar.init({
@@ -131,32 +181,7 @@
 	});
 	
 	
-	// 绑定驾驶证
-	$('#bind-btn').on('click',function(){
-		var token = localStorage.getItem('token')
-		$.ajax({
-			type:"post",
-			url: addBindingDriverUrl,
-			data: {
-				token: token,	
-				name: $('.name').val(),
-				card:	$('.cardnum').val(),
-				date:	$('.select em').text()
-			},
-			
-	    dataType: "json",
-			success: function(data){
-				if(data.status == 2000){
-					console.log(data)
-					window.location.href="user.html"
- 				}else{
- 					// 绑定失败
- 					
- 				}
-			}
-		});
-	})
-		
+	
 </script>
 
 </body>
