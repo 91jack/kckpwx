@@ -12,7 +12,7 @@
 	<!--顶部标题栏-->
 	<div class="header-top">
 		<div class="fl">
-			<a href="javascript:;" class="goback">
+			<a href="index.html" class="goback">
 				<em class="icon-goback"></em>
 				<span class="goback-text">返回</span>
 			</a>
@@ -102,10 +102,10 @@
 	</div>
 	
 	<div class="basic-msg-btn">
-		<a href="javascript:;">
+		<a href="protocol.html">
 			<span>自行协商协议书</span>
 		</a>
-		<a href="index.html">
+		<a href="javascript:;" class="finished">
 			<span>完成</span>
 		</a>
 	</div>
@@ -137,6 +137,26 @@
 			}
 		}
 	});
+	
+	
+	// 点击完成 获取事故认证状态
+	$('.finished').on('click', function(){
+		$.ajax({
+		type:"post",
+		url:accidentAuthStatusUrl,
+		async:true,
+		data:{
+			accidentId:accidentId,
+			token:token
+		},
+		success:function(data){
+			console.log(data);
+			if (data.status==2000) {
+				window.location.href = 'index.html';
+			}
+		}
+	});
+	})
 </script>
 
 </body>

@@ -169,7 +169,7 @@ $(function(){
 	// 点击签字
 	$('.form').each(function(){
 		$(this).children('.form-group').eq(5).children('em').click(function(){
-			window.location.href='signature.html';
+			//window.location.href='signature.html';
 		})
 	})
 	
@@ -183,8 +183,8 @@ $(function(){
 	// 点击完成
 	$('.msg-certificati-page .btn').click(function(){
 		var user = [
-			{'uid':$('.form').eq(0).attr('data'),'ycode': $('.yzmcode1').val(),'phone': $('.phone1').html(),'pic': $('.sinate1 img').attr('src')},
-			{'uid':$('.form').eq(1).attr('data'),'ycode': $('.yzmcode2').val(),'phone': $('.phone2').html(),'pic': $('.sinate2 img').attr('src')}
+			{'uid':$('.form').eq(0).attr('data'),'yzcode': $('.yzmcode1').val(),'phone': $('.phone1').html(),'pic': $('.sinate1 img').attr('src')},
+			{'uid':$('.form').eq(1).attr('data'),'yzcode': $('.yzmcode2').val(),'phone': $('.phone2').html(),'pic': $('.sinate2 img').attr('src')}
 		]
 		user = JSON.stringify(user)
 		$.ajax({
@@ -209,12 +209,12 @@ $(function(){
 	
 	
 	// 短信验证码
-	getcode('.getcode1','.phone1','.yzmcode1')
-	getcode('.getcode2','.phone2','.yzmcode2')
+	getcode('234','.getcode1','.phone1','.yzmcode1')
+	getcode('235','.getcode2','.phone2','.yzmcode2')
 
-	function getcode(obj,item1,item2){
+	function getcode(uid,obj,item1,item2){
 		var on = true;
-	
+		 
 
 	$(obj).on('click',function(){
 	if(on){
@@ -238,10 +238,11 @@ $(function(){
 			    type: "POST",
 			    url: yzcodeUrl,
 			  	data:{
+			  		token: token,
 						phone:$(item1).html(),
 						accidentId:accidentId,
-						uid:'',
-						type:'4'
+						uid: uid,
+						type:'3'
 					},
 			    success: function(data){
 			    	//alert(data)

@@ -61,6 +61,28 @@
 				console.log(image)
       			var blob = draw.dataURLtoBlob(image);
       			console.log(blob)
+      			
+      			
+      			var formData = new FormData();
+				formData.append('image', blob,)
+				
+				$.ajax({
+					type:"post",
+					url:uploadImgUrl,
+					data: formData,
+					processData: false,
+			        contentType: false,
+			        dataType: "json",
+					success: function(data){
+						console.log(data)
+						if(data.status == 2000){
+						
+						}
+					}
+				});
+				
+				var dataUrl = $('.js-signature').eq(1).jqSignature('getDataURL');
+				
 			});
 			
 //			  const d = document;
