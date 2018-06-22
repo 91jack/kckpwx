@@ -97,7 +97,8 @@
 								$('.plate-num').val(data.list[i].identityNum);
 								$('.vin').val(data.list[i].carNo);
 								$('.motor-num').val(data.list[i].motorNum);
-								$('.select em').html(data.list[i].registerDate)
+								$('.select em').html(data.list[i].registerDate),
+								$('.ocr-img').attr('src',data.list[i].imgurl)
 							}
 						}
 					}

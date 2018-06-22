@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>绑定驾驶证</title>
+  <title>修改驾驶证</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  <link rel="stylesheet" href="static/css/app.css" />
 	
@@ -18,7 +18,7 @@
 				<span class="goback-text">返回</span>
 			</a>
 		</div>
-		<h2 class="header-top-title">绑定驾驶证</h2>
+		<h2 class="header-top-title">修改驾驶证</h2>
 	</div>
 	
 	<div class="card-wrap">
@@ -66,7 +66,7 @@
 	
 	
 	<div class="blue-btn-default">
-		<a href="javascript:;" id="bind-btn">立即绑定</a>
+		<a href="javascript:;" id="bind-btn">确认修改</a>
 	</div>
 	
 	<!--时间选择组件-->
@@ -82,7 +82,7 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	
-		$(function(){
+//		$(function(){
 			var cardId = localStorage.getItem('cardId');
 			var token = localStorage.getItem('token');
 			$.ajax({
@@ -92,46 +92,51 @@
 					token:token
 				},
 				success:function(data){
+					console.log(data);
 					if (data.list) {
 						for (var i=0;i<data.list.length;i++) {
 							if(data.list[i].id==cardId){
 								$('.name').val(data.list[i].name);
 								$('.cardnum').val(data.list[i].card);
-								$('.select em').html(data.list[i].date)
+								$('.select em').html(data.list[i].date);
+								$('.ocr-wrap-imgbox img').attr('src',data.list[i].imgurl)
+								
+								
+								// 修改驾驶证
+								var driveId = data.list[i].id;
+								var isdefault = data.list[i].isdefault;
+//								var imgurl = data.list[i].imgurl;
+								
+								$('#bind-btn').on('click',function(){
+									var token = localStorage.getItem('token');
+									$.ajax({
+										type:"post",
+										url:editBindingDriverUrl,
+										data: {
+											token: token,	
+											driverId: driveId,
+											name:$('.name').val(),
+											card:$('.cardnum').val(),
+											date:$('.select em').html(),
+											isdefault:isdefault,
+											imgurl:$('.ocr-wrap-imgbox img').attr('src')
+										},
+								    dataType: "json",
+										success: function(data){
+											console.log(data);
+											if(data.status == 2000){
+												console.log(data);
+												window.location.href="user.html"
+							 				}
+										}
+									});
+								})
 							}
 						}
 					}
-					// 绑定驾驶证
-					$('#bind-btn').on('click',function(){
-						var token = localStorage.getItem('token')
-						$.ajax({
-							type:"post",
-							url: getBindingDriverUrl,
-							data: {
-								token: token,	
-								carId:data.list[0].carId,
-								isdefault:data.list[0].isdefault,
-								imgurl:data.list[0].imgurl,
-								carNo: $('.plate-num').val(),
-								identityNum:	$('.vin').val(),
-								motorNum: $('.motor-num').val(),
-								registerDate:	$('.select em').text()
-							},
-					    dataType: "json",
-							success: function(data){
-								if(data.status == 2000){
-									console.log(data)
-									window.location.href="user.html"
-				 				}else{
-				 					// 绑定失败
-				 					
-				 				}
-							}
-						});
-					})
 				}
 			});
-		})
+//		})
 		
 		var calendar = new datePicker();
 		calendar.init({
