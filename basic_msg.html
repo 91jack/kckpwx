@@ -78,7 +78,8 @@
 			</div>
 		</div>
 	</div>
-
+	<div class="footer-cover"></div>
+	
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
@@ -87,7 +88,7 @@
 	// 
 	$.ajax({
 		type:"post",
-		url:getAccidentUserUrl,
+		url:AccidentsInfoDetailUrl,
 		async:true,
 		data:{
 			id:accidentId,
@@ -95,7 +96,7 @@
 		},
 		success:function(data){
 			console.log(data);
-			var dataList = data.obj
+			var dataList = data.obj;
 			if (data.status==2000) {
 				$('.form .form-group').eq(0).children('em').html(dataList.id);
 				$('.form .form-group').eq(1).children('em').html(dataList.datetime);

@@ -386,6 +386,7 @@
 	text-align: center;
 	background: #fff;
 	font-size: 1.25rem;
+	border-bottom: 1px solid #f4f4f4;
 }
 .tab-btn a{
 	margin: 0;
@@ -772,7 +773,7 @@
 	height: 4.166666rem;
 	width: 100%;
 	line-height: 4.166666rem;
-	border-bottom: 1px solid #CCCCCC;
+	border-bottom: 1px solid #f4f4f4;
 }
 .upload-page .upload-content .msg li span:first-child{
 	font-size: 1.25rem;
@@ -903,6 +904,7 @@
 	bottom: 2.291666rem;
 	left: 50%;
 	margin-left: -8.333333rem;
+	z-index: 5;
 }
 
 /*事故地点定位map.html*/
@@ -996,7 +998,7 @@
 	position: absolute;
 }
 .mymsg-content .form .form-group:first-child em{
-	margin-left: 0.416666rem;
+	margin-left: 2.083333rem;
 	color: #333;
 	font-size: 1.25rem;
 	position: relative;
@@ -1010,14 +1012,16 @@
 	width: 0.166666rem;
 	height: 1.666666rem;
 }
-.mymsg-content .form .form-group:first-child em{
-	margin-left: 2.083333rem;
+.fix-duty-content .mymsg-content .form .form-group:first-child em{
+	margin-left: 0.4166667rem;
 }
-.mymsg-content .form .form-group span{
+.msg-certificati-page .msg-certification-content .form .form-group span{
+	margin-left: 0;
+}
+.fix-duty-content .mymsg-content .form .form-group span{
 	margin-left: 0;
 	font-size: 1.25rem;
 	color: #333;
-	margin-left: 1.666666rem;
 }
 .mymsg-content .form .form-group span:nth-child(2){
 	margin-left: 22%;
@@ -1311,6 +1315,7 @@
 	bottom: 2.291666rem;
 	left: 50%;
 	margin-left: -8.333333rem;
+	z-index: 5;
 }
 /*事故定责fix-duty.html*/
 .fix-duty-content .mymsg-content .form{
@@ -1447,6 +1452,7 @@
 }
 .msg-certificati-page .btn{
 	position: fixed;
+	z-index: 5;
 	bottom: 2.083333rem;
 	left: 50%;
 	margin-left: -8.333333rem;
@@ -1463,6 +1469,7 @@
 .basic-msg-page .basic-msg-content .form .form-group span{
 	font-size: 1.25rem;
 	color: #333;
+	margin-left: 0;
 }
 .basic-msg-page .basic-msg-content .form .form-group:last-child span{
 	width: 100%;
@@ -1487,6 +1494,7 @@
 	left: 0;
 	width: 100%;
 	height: 3.75rem;
+	z-index: 5;
 }
 .basic-msg-btn a{
 	float: left;
@@ -1681,4 +1689,7 @@ canvas {
 }*/
 .mymsg-page .msg-modal .modal-content{
 	padding-right: 0;
+}
+.accident-list-page .msg-certification-content .form .form-group span{
+	margin-left: 0;
 }
