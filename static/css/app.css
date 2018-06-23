@@ -1087,6 +1087,7 @@
 .input-msg-content .form .form-group span{
 	font-size: 1.25rem;
 	color: #333;
+	margin-left: 0;
 }
 .input-msg-content .form .form-group p{
 	font-size: 1.25rem;
@@ -1687,8 +1688,11 @@ canvas {
 /*.accident-list-page .modal{
 	display: block;
 }*/
-.mymsg-page .msg-modal .modal-content{
-	padding-right: 0;
+.mymsg-page .msg-modal .modal-content ul li:nth-child(6){
+	width: 18.75rem;
+}
+.msg-certificati-page .msg-certification-content .form .form-group input{
+	width: 40%;
 }
 .accident-list-page .msg-certification-content .form .form-group span{
 	margin-left: 0;
