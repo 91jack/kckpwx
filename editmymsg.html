@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  	<link rel="stylesheet" href="static/css/app.css" />
 </head>
-<body class="mymsg-page bg-f4">
+<body class="mymsg-page bg-f4 edit-msg">
 	<!--顶部标题栏-->
 	<div class="header-top">
 		<div class="fl">
@@ -166,7 +166,7 @@
 					console.log(selectedIndex)
 					var selectcarType = carType[selectedIndex].text;
 					$('#cartype').text(selectcarType)
-					$('#cartype').attr('data-cartypeId',selectedIndex)
+					$('#cartype').attr('data-cartypeId',selectedVal)
 				})
 				
 				$('#cartype').on('click',function(){
@@ -192,7 +192,7 @@
 					$('#phone').val(dataList.phone);
 					$('#cpcode').val(dataList.car_no);
 					$('#cartype').html(dataList.car_type);
-					$('#Insurance').html(dataList.insurer_id)
+					$('#Insurance').html(dataList.insuranceName)
 				}
 			});
 		})
@@ -275,7 +275,7 @@
 			url:AccidentUserUrl, 
 			data:{
 				token:localStorage.getItem('token'),
-				id:localStorage.getItem('accidentpersonId2'),
+				id:localStorage.getItem('accidentpersonId1'),
 				idCard:cardNo,
 				accidentId:localStorage.getItem('accidentId'),
 				name:name,

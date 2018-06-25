@@ -322,6 +322,12 @@ input[type=file] {
 	padding-right: 1.875rem;
 	border-radius: 0.666666rem;
 }
+.edit-msg .msg-modal .modal-content{
+	padding-right: 0;
+}
+.mymsg-page .msg-modal .modal-content{
+	padding-right: 0;
+}
 .msg-modal .modal-content p{
 	text-align: center;
 	color: #48B4FF;

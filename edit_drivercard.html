@@ -103,7 +103,6 @@
 								
 								
 								// 修改驾驶证
-								var driveId = data.list[i].id;
 								var isdefault = data.list[i].isdefault;
 //								var imgurl = data.list[i].imgurl;
 								
@@ -114,7 +113,7 @@
 										url:editBindingDriverUrl,
 										data: {
 											token: token,	
-											driverId: driveId,
+											driverId: cardId,
 											name:$('.name').val(),
 											card:$('.cardnum').val(),
 											date:$('.select em').html(),

@@ -109,9 +109,9 @@
 							url: editBindingCarUrl,
 							data: {
 								token: token,	
-								carId:data.list[0].carId,
-								isdefault:data.list[0].isdefault,
-								imgurl:data.list[0].imgurl,
+								carId:carId,
+								isdefault:data.list[i].isdefault,
+								imgurl:data.list[i].imgurl,
 								carNo: $('.plate-num').val(),
 								identityNum:	$('.vin').val(),
 								motorNum: $('.motor-num').val(),
