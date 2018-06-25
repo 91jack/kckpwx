@@ -109,7 +109,7 @@
 								+'<div class="item-action clearfix">'
 									+'<div class="container">'
 										+'<div class="fl">'
-											+'<a href="javascript:;" class="select"> <em class="icon-select" isdefault="'+listData[i].isdefault+'" data-carid="'+listData[i].id+'"></em>设为默认</a>'
+											+'<a href="javascript:;" class="select"> <em class="icon-select" isdefault="'+listData[i].isdefault+'" data-driverId="'+listData[i].id+'"></em>设为默认</a>'
 										+'</div>'
 										+'<div class="fr">'
 											+'<a data="'+listData[i].id+'" class="edit"><em class="icon"></em>编辑</a>'
@@ -121,43 +121,34 @@
 					$('.info-list').html('');
 					$('.info-list').html(str);
 					}
+				
+				for (var i=0;i<10;i++) {
+					if ($('.icon-select').eq(i).attr('isdefault')=='1') {
+						$('.icon-select').eq(i).addClass('active');
+					}
+				}
+				
 				$('.edit').on('click',function(){
 					localStorage.setItem('cardId',$(this).attr('data'));
 					window.location.href='edit_drivercard.html';
 				})
 				
 				//默认的判断
-				$(function(){
-						if ($('.edit').attr('isdefault')==1) {
-							$(this).parent().siblings('div').children('a').children('.icon-select').addClass('active');
-						}
-				})
-				
-				
-				
 				$('.info-list').on('click','.icon-select',function(){
 					$.ajax({
 						type:"post",
 						url:editBindingDriverUrl,
 						data:{
 							token:token,
-							carId:$(this).attr('data-carid'),
+							driverId:$(this).attr('data-driverId'),
 							isdefault:$(this).attr('isdefault')
 						},
-						success:function(data){
-							console.log(data)
-//							$(this).attr('data',1);
+						success:function(res){
+							console.log(res)
 						}
 					});
-//					$('.icon-select').removeClass('active');
-//					$(this).addClass('active');
-//					if($(this).hasClass('active')){
-//						$('.icon-select').attr('isdefault',0)
-//						$(this).attr('isdefault',1)
-//						localStorage.setItem('isdefault',$(this).attr('isdefault'))
-//					}else{
-//						$(this).attr('isdefault',0)
-//					}
+					$('.icon-select').removeClass('active');
+					$(this).addClass('active');
 					})
 				}
 			}

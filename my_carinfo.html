@@ -114,20 +114,39 @@
 						$('.info-list').html('');
 						$('.info-list').html(str);
 						}
+					
+					for (var i=0;i<10;i++) {
+						if ($('.icon-select').eq(i).attr('isdefault')=='1') {
+							$('.icon-select').eq(i).addClass('active');
+						}
+					}
 					$('.edit').on('click',function(){
 						localStorage.setItem('carId',$(this).attr('data-carid'))
 						window.location.href='edit_car.html';
 						})
 					}
 				//默认的判断
-//				$('.info-list .icon-select').eq(0).addClass('active');
+				
+				
 				$('.info-list').on('click','.icon-select',function(){
+					$.ajax({
+						type:"post",
+						url:editBindingCarUrl,
+						data:{
+							token:token,
+							carId:$(this).attr('data-carid'),
+							isdefault:$(this).attr('isdefault')
+						},
+						success:function(res){
+							console.log(res);
+						}
+					});
 					$('.icon-select').removeClass('active');
 					$(this).addClass('active');
 				})
-				}
-			});
-		}
+			}
+		});
+	}
 </script>
 
 </body>
