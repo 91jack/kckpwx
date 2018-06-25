@@ -32,7 +32,7 @@
 				<p>驾驶证拍摄</p>
 				<div class="ocr-wrap-imginner">
 					<img src="" alt="" onerror="this.src='static/images/common/card_driver.png'" class="ocr-img"/>
-					<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
+					<div class="loading-cover"><div class="cover-cont"></div><p>图片识别中</p></div>
 					<em class="icon-takephoto"></em>
 					<input type="file" accept="image/*"  id="takephoto"/>
 				</div>
@@ -141,14 +141,14 @@
 	    contentType: false,
 	    dataType: "json",
 			success: function(data){
-				alert(data.msg)
+				//alert(data.msg)
 				if(data.status == 2000){
 					console.log(data)
 					$('.ocr-img').attr('src',data.list[0])
 					$('.name').val(data.obj.name);
 					$('.cardnum').val(data.obj.id_card_number);
 					$('.select em').text(data.obj.id_card_date);
-					that.parent().siblings('.loading-cover').hide();
+					that.siblings('.loading-cover').hide();
 					
    			}
 			}

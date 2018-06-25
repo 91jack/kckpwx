@@ -55,12 +55,12 @@
 			// 确定
 			$('.sure').on('click', function(){
 				// 生成图片 
-				//draw.downloadPNGImage(draw.getPNGImage())
 				var image = draw.getPNGImage();
 				// base64转图片
 				console.log(image)
       			var blob = draw.dataURLtoBlob(image);
       			
+      			// 
       			draw.downloadPNGImage(image)
       			
       			console.log(blob)

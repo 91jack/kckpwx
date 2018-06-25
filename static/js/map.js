@@ -38,10 +38,10 @@ function position(e) {
 	console.log(p);
 	
 	// 存json
-	localStorage.setItem('lat',p.lat);
-	localStorage.setItem('lng',p.lng);
+//	localStorage.setItem('lat',p.lat);
+//	localStorage.setItem('lng',p.lng);
 	
-	localStorage.setItem('address_xy',JSON.stringify(r.point))
+	localStorage.setItem('address_xy',JSON.stringify(e.point))
 }
 
 //	获取地址
