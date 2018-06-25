@@ -3,7 +3,9 @@
 //var host = 'http://192.168.1.34:8080';
 
 // 外网
-var host = 'http://183.230.133.205:30000';
+//var host = 'http://183.230.133.205:30000';
+
+var host = 'https://www.tonggangfw.com'
 
 /* 用户管理模块
 ------------------*/

@@ -74,6 +74,9 @@
 		<a href="javascript:;" id="bind-btn">确认修改</a>
 	</div>
 
+	<div class="upload-error">行驶证识别失败</div>
+	
+	
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
@@ -173,7 +176,13 @@
 					$('.motor-num').val(carinfo.motor_num); // 发动机号
 					$('.select em').text(carinfo.register_date); // 注册日期
 					that.siblings('.loading-cover').hide();
- 				}
+ 				}else{
+					$('.upload-error').show();
+					setTimeout(function(){
+						$('.upload-error').hide();
+					},500)
+			  	that.siblings('.loading-cover').hide();
+				}
 			}
 		});
 	});

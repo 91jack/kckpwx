@@ -126,7 +126,7 @@
 				}
 				var AccidentDamagePicker = new Picker({
 					data: [AccidentDamage],
-					selectedIndex: [1],// 
+					selectedIndex: [1], 
 					title:''
 				});
 				
@@ -141,10 +141,43 @@
 			
 				$('.cardestory').click(function(){
 					var n = $(this).attr('data-index')	
-						console.log(n)
+						console.log(n);
 						AccidentDamagePicker.show();
 						selectFn(n)
 				})
+				
+//				function selectFn1(){
+//					AccidentDamagePicker.on('picker.select', function (selectedVal, selectedIndex) {
+//						selectCarDestory = AccidentDamage[selectedIndex].text;
+//						$('.cardestory').eq(0).text(selectCarDestory)
+//					})
+//				}
+//				
+//				function selectFn2(){
+//					AccidentDamagePicker.on('picker.select', function (selectedVal, selectedIndex) {
+//						selectCarDestory = AccidentDamage[selectedIndex].text;
+//						$('.cardestory').eq(1).text(selectCarDestory)
+//					})
+//				}
+//			
+//				$('.cardestory').eq(0).click(function(){
+//						AccidentDamagePicker.show();
+//						console.log($(this).attr('data-index'));
+//						if ($(this).attr('data-index')==0) {
+//						selectFn1()
+//						}else if ($(this).attr('data-index')==1) {
+//							selectFn2()
+//						}
+//				})
+//				$('.cardestory').eq(1).click(function(){
+//						AccidentDamagePicker.show();
+//						console.log($(this).attr('data-index'));
+//						if ($(this).attr('data-index')==0) {
+//						selectFn2()
+//						}else if ($(this).attr('data-index')==1) {
+//							selectFn2()
+//						}
+//				})
 			}
 		})
 	})
