@@ -143,6 +143,9 @@ var getAccidentUserUrl = host + '/kyp/applogin/accidentController/getAccidentUse
 //修改当事人信息
 var AccidentUserUrl = host +'/kyp/applogin/accidentController/modifyAccidentUser'
 
+//删除当事人信息
+var removeAccidentUserUrl = host + '/kyp/applogin/accidentController/removeAccidentUser';
+
 //获取事故信息及当事人列表
 var AccidentsInfoDetailUrl = host + '/kyp/applogin/userController/AccidentsInfoDetail'
 

@@ -295,10 +295,26 @@
 		})
 	})
 
-
-		$('.msg-modal.drive .modal-btn a').click(function(){
-			$('.msg-modal.drive').hide();
-		})
+	//删除对方信息
+	$('.mymsg-btn .box').eq(0).children('a').eq(0).click(function(){
+		$.ajax({
+			type:"post",
+			url:removeAccidentUserUrl,
+			data:{
+				token:localStorage.getItem('token'),
+				id:localStorage.getItem('accidentpersonId2')
+			},
+			success:function(res){
+				console.log(res);
+				window.localStorage.href = 'mymsg.html';
+			}
+		});
+	})
+	
+	
+	$('.msg-modal.drive .modal-btn a').click(function(){
+		$('.msg-modal.drive').hide();
+	})
 	//上传证件(驾驶证)照片  1
 	$('.form-group .yzm-btn').eq(0).click(function(){
 		$('.msg-modal.drive').eq(0).show();

@@ -365,6 +365,23 @@
 			}
 		});
 	}
+	
+	
+	//删除自己信息
+	$('.mymsg-btn .box').eq(0).children('a').eq(0).click(function(){
+		$.ajax({
+			type:"post",
+			url:removeAccidentUserUrl,
+			data:{
+				token:localStorage.getItem('token'),
+				id:localStorage.getItem('accidentpersonId1')
+			},
+			success:function(res){
+				console.log(res);
+				window.localStorage.href = 'entrymsg.html';
+			}
+		});
+	})
 </script>
 
 </body>
