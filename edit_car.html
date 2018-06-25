@@ -32,6 +32,7 @@
 				<p>行驶证拍摄</p>
 				<div class="ocr-wrap-imginner">
 					<img src="" alt="" onerror="this.src='static/images/common/card_xingshizheng.png'" class="ocr-img"/>
+					<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
 					<em class="icon-takephoto"></em>
 					<input type="file" accept="image/*"  id="takephoto"/>
 				</div>
@@ -94,42 +95,39 @@
 					if (data.list) {
 						for (var i=0;i<data.list.length;i++) {
 							if(data.list[i].carId==carId){
-								$('.plate-num').val(data.list[i].identityNum);
-								$('.vin').val(data.list[i].carNo);
+								$('.plate-num').val(data.list[i].carNo);
+								$('.vin').val(data.list[i].identityNum);
 								$('.motor-num').val(data.list[i].motorNum);
 								$('.select em').html(data.list[i].registerDate),
 								$('.ocr-img').attr('src',data.list[i].imgurl)
+								var isdefault = data.list[i].isdefault;
+								$('#bind-btn').on('click',function(){
+									$.ajax({
+										type:"post",
+										url: editBindingCarUrl,
+										data: {
+											token: token,	
+											carId:carId,
+											isdefault:isdefault,
+											imgurl:$('.ocr-img').attr('src'),
+											carNo: $('.plate-num').val(),
+											identityNum:	$('.vin').val(),
+											motorNum: $('.motor-num').val(),
+											registerDate:	$('.select em').text()
+										},
+								    dataType: "json",
+										success: function(data){
+											console.log(data);
+											if(data.status == 2000){
+												console.log(data)
+												window.location.href="user.html";
+							 				}
+										}
+									});
+								})
 							}
 						}
 					}
-					$('#bind-btn').on('click',function(){
-						var token = localStorage.getItem('token')
-						$.ajax({
-							type:"post",
-							url: editBindingCarUrl,
-							data: {
-								token: token,	
-								carId:carId,
-								isdefault:data.list[i].isdefault,
-								imgurl:data.list[i].imgurl,
-								carNo: $('.plate-num').val(),
-								identityNum:	$('.vin').val(),
-								motorNum: $('.motor-num').val(),
-								registerDate:	$('.select em').text()
-							},
-					    dataType: "json",
-							success: function(data){
-								console.log(data);
-								if(data.status == 2000){
-									console.log(data)
-									window.location.href="user.html"
-				 				}else{
-				 					// 绑定失败
-				 					
-				 				}
-							}
-						});
-					})
 				}
 			});
 		})
@@ -150,6 +148,7 @@
 		
 	// 行驶证拍照识别
 	$('#takephoto').change(function(){
+		$(this).siblings('.loading-cover').show();
 		var that = $(this)
 		var token = localStorage.getItem('token')
 		var formData = new FormData();	
@@ -173,6 +172,7 @@
 					$('.vin').val(carinfo.vin)			// 车辆识别号码
 					$('.motor-num').val(carinfo.motor_num); // 发动机号
 					$('.select em').text(carinfo.register_date); // 注册日期
+					that.siblings('.loading-cover').hide();
  				}
 			}
 		});

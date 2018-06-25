@@ -71,6 +71,7 @@
 				<div class="box">
 					<img src=""  onerror="this.src='static/images/main/carfront.png'"/>
 					<em></em>
+					<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
 				</div>
 				<div class="upload-msg">
 					<input type="file"/>
@@ -81,6 +82,7 @@
 				<div class="box">
 					<img src="" onerror="this.src='static/images/main/carside.png'"/>
 					<em></em>
+					<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
 				</div>
 				<div class="upload-msg">
 					<input type="file"/>
@@ -93,6 +95,7 @@
 				<div class="box">
 					<img class="bigpic" src="" onerror="this.src='static/images/main/acpart.png'"/>
 					<em></em>
+					<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
 				</div>
 				<div class="upload-msg">
 					<input type="file"/>
@@ -102,6 +105,7 @@
 			<li>
 				<div class="box">
 					<img src="" onerror="this.src='static/images/main/carfront.png'"/>
+					<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
 				</div>
 				<div class="upload-msg">
 					<input type="file"/>
@@ -113,6 +117,7 @@
 			<li>
 				<div class="box">
 					<img src="" onerror="this.src='static/images/main/carfront.png'"/>
+					<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
 				</div>
 				<div class="upload-msg">
 					<input type="file"/>
@@ -122,6 +127,7 @@
 			<li>
 				<div class="box">
 					<img src="" onerror="this.src='static/images/main/carfront.png'"/>
+					<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
 				</div>
 				<div class="upload-msg">
 					<input type="file"/>
@@ -392,9 +398,11 @@ $('.select-weather').on('click', function(){
 			}
 		});
 		that.closest('div').css('background','none');
+		that.parent().siblings('.box').children('loading-cover').hide();
 	}
 	
 	$('.uploadpicture .upload-msg input[type="file"]').click(function(){
+		$(this).parent().siblings('.box').children('loading-cover').show();
 		$(this).change(function(){
 			var that = $(this);
 			uploadImg(that);
@@ -451,9 +459,9 @@ $('.select-weather').on('click', function(){
 			success: function(data){
 				console.log(data);
 				if(data.status == 2000){
-//					window.location.href='accidentstatus.html';
+					window.location.href='accidentstatus.html';
 				}else if(data.status == 2002){
-//					window.location.href='accidentstatus.html';
+					window.location.href='accidentstatus.html';
 				}
 			}
 		});

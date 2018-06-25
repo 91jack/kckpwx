@@ -100,6 +100,7 @@
 			<span>拍摄自己的驾驶证,自动识别信息!</span>
 			<div class="msg-img">
 				<img id="picrun" data='1' src="static/images/common/card_driver.png"/>
+				<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
 				<div class="camera">
 					<input type="file"/>
 				</div>
@@ -122,6 +123,7 @@
 			<span>拍摄自己的行驶证,自动识别信息!</span>
 			<div class="msg-img">
 				<img id="picdrive" data='2' src="static/images/common/card_xingshizheng.png"/>
+				<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
 				<div class="camera">
 					<input type="file"/>
 				</div>
@@ -295,6 +297,7 @@
 	$('.form-group .yzm-btn').eq(0).click(function(){
 		$('.msg-modal.drive').eq(0).show();
 		$('.camera input[type="file"]').click(function(){
+			$(this).parent().siblings('.loading-cover').show();
 			$(this).change(function(){
 				var that = $(this);
 				uploadImg1(that);
@@ -308,6 +311,7 @@
 			$('.msg-modal.drive').hide();
 		})
 		$('.camera input[type="file"]').click(function(){
+			$(this).parent().siblings('.loading-cover').show();
 			$(this).change(function(){
 				var that = $(this);
 				uploadImg2(that);
@@ -318,7 +322,6 @@
 
 // 证件识别
 	function uploadImg1(that){
-		console.log(i);
 		var accidentId = localStorage.getItem('accidentId');
 		var formData = new FormData();
 		console.log(that[0].files)
@@ -339,12 +342,12 @@
 					that.parent().css('background','none');
 					$('#name').val(data.obj.name);
 					$('#sfzcode').val(data.obj.id_card_number)
+			  	that.parent().siblings('.loading-cover').hide();
 				}
 			}
 		});
 	}
 	function uploadImg2(that){
-		console.log(i);
 		var accidentId = localStorage.getItem('accidentId');
 		var formData = new FormData();
 		console.log(that[0].files)
@@ -365,6 +368,7 @@
         	$('#picdrive').attr("src",data.list[0]);
 					$('#cpcode').val(data.obj.plate_no);
 					$('#cartype').html(data.obj.vehicle_type)
+			  	that.parent().siblings('.loading-cover').hide();
 				}
 			}
 		});

@@ -32,6 +32,7 @@
 				<p>驾驶证拍摄</p>
 				<div class="ocr-wrap-imginner">
 					<img src="" alt="" onerror="this.src='static/images/common/card_driver.png'" class="ocr-img"/>
+					<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
 					<em class="icon-takephoto"></em>
 					<input type="file" accept="image/*"  id="takephoto"/>
 				</div>
@@ -103,8 +104,8 @@
 								
 								
 								// 修改驾驶证
+								
 								var isdefault = data.list[i].isdefault;
-//								var imgurl = data.list[i].imgurl;
 								
 								$('#bind-btn').on('click',function(){
 									var token = localStorage.getItem('token');
@@ -118,7 +119,7 @@
 											card:$('.cardnum').val(),
 											date:$('.select em').html(),
 											isdefault:isdefault,
-											imgurl:$('.ocr-wrap-imgbox img').attr('src')
+											imgurl:$('.ocr-img').attr('src')
 										},
 								    dataType: "json",
 										success: function(data){
@@ -155,6 +156,7 @@
 		
 		// 驾驶证拍照识别
 	$('#takephoto').change(function(){
+		$(this).siblings('.loading-cover').show();
 		var that = $(this)
 		var token = localStorage.getItem('token')
 		var formData = new FormData();	
@@ -179,7 +181,8 @@
 					$('.name').val(data.obj.name);
 					$('.cardnum').val(data.obj.id_card_number);
 					$('.select em').text(data.obj.id_card_date);
-   				}
+					that.siblings('.loading-cover').hide();
+   			}
 			}
 		});
 	});

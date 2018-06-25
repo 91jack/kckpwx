@@ -32,6 +32,7 @@
 				<p>驾驶证拍摄</p>
 				<div class="ocr-wrap-imginner">
 					<img src="" alt="" onerror="this.src='static/images/common/card_driver.png'" class="ocr-img"/>
+					<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
 					<em class="icon-takephoto"></em>
 					<input type="file" accept="image/*"  id="takephoto"/>
 				</div>
@@ -125,14 +126,12 @@
 		// 驾驶证拍照识别
 	$('#takephoto').change(function(){
 		var that = $(this)
+		$(this).siblings('.loading-cover').show();
 		var token = localStorage.getItem('token')
 		var formData = new FormData();	
 		formData.append('files',that[0].files[0]);
 		formData.append('imgType','1');
 		formData.append('token',token);
-		
-//	$('.ocr-img').attr('src','static/images/loading.gif')
-//	$('.ocr-img').css({'width':'64px'},{'height':'64px'},{'margin':'0 auto'})
 		
 		$.ajax({
 			type:"post",
@@ -149,7 +148,9 @@
 					$('.name').val(data.obj.name);
 					$('.cardnum').val(data.obj.id_card_number);
 					$('.select em').text(data.obj.id_card_date);
-   				}
+					that.parent().siblings('.loading-cover').hide();
+					
+   			}
 			}
 		});
 	});
