@@ -44,7 +44,7 @@
 		<script type="text/javascript">
 			const canvas = document.querySelector('canvas');
       		var draw = new Draw(canvas, 0);
-			
+			console.log(draw)
 			
 			// 重置
 			$('.reset').on('click', function(){
@@ -60,11 +60,15 @@
 				// base64转图片
 				console.log(image)
       			var blob = draw.dataURLtoBlob(image);
+      			
+      			draw.downloadPNGImage(image)
+      			
       			console.log(blob)
       			
-      			
+      			var file = dataURLtoFile(image,'111')
+      			console.log(file)
       			var formData = new FormData();
-				formData.append('image', blob,)
+				formData.append('image', file)
 				
 				$.ajax({
 					type:"post",
@@ -81,7 +85,17 @@
 					}
 				});
 				
-				var dataUrl = $('.js-signature').eq(1).jqSignature('getDataURL');
+				function dataURLtoFile(dataurl, filename) {//将base64转换为文件
+				    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+				    bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+				    while(n--){
+				        u8arr[n] = bstr.charCodeAt(n);
+				    }
+				    return new File([u8arr], filename, {type:mime});
+				}
+				
+				
+				//var dataUrl = $('.js-signature').eq(1).jqSignature('getDataURL');
 				
 			});
 			

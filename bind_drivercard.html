@@ -142,6 +142,7 @@
 	    contentType: false,
 	    dataType: "json",
 			success: function(data){
+				alert(data.msg)
 				if(data.status == 2000){
 					console.log(data)
 					$('.ocr-img').attr('src',data.list[0])
