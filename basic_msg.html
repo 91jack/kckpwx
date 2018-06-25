@@ -86,6 +86,9 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 
+	if (localStorage.getItem('serachId')) {
+		accidentId=localStorage.getItem('serachId');
+	};
 	$.ajax({
 		type:"post",
 		url:AccidentsInfoDetailUrl,

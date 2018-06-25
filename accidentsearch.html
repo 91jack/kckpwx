@@ -109,7 +109,7 @@ $(function(){
 												+'</div>'	
 											+'</div>'
 							}else{
-								str+='<div class="tab-content-item clearfix">'
+								str+='<div class="tab-content-item clearfix" data="'+data.list[i].id+'">'
 												+'<ul class="fl">'
 													+'<li><span>事故编号：</span><span class="accident-info">'+data.list[i].id+'</span></li>'
 													+'<li><span>事故时间：</span><span class="accident-info">'+data.list[i].datetime+'</span></li>'
@@ -130,6 +130,8 @@ $(function(){
 							window.location.href = $(this).attr('data-href')
 						})
 						$('#deal .tab-content-item').on('click',function(){
+							localStorage.setItem('serachId',$(this).attr('data'));
+							console.log(localStorage.getItem('serachId'));
 							window.location.href='accimsg_list.html';
 						})
 					}
