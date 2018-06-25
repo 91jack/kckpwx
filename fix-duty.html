@@ -124,60 +124,37 @@
 				for(var i=0;i<res.list.length;i++){
 					AccidentDamage.push({'value': res.list[i].code,'text':res.list[i].name})
 				}
-				var AccidentDamagePicker = new Picker({
+				var AccidentDamagePicker1 = new Picker({
+					data: [AccidentDamage],
+					//selectedIndex: [1], 
+					title:''
+				});
+				
+				var AccidentDamagePicker2 = new Picker({
 					data: [AccidentDamage],
 					selectedIndex: [1], 
 					title:''
 				});
-				
-				function selectFn(n){
-					AccidentDamagePicker.on('picker.select', function (selectedVal, selectedIndex) {
-						selectCarDestory = AccidentDamage[selectedIndex].text;
-						//selectCarDestoryCode = AccidentDamage[selectedVal].text;
-						$('.cardestory').eq(n).text(selectCarDestory)
-						//$('.cardestory').eq(n).attr('data-index',selectCarDestoryCode)
+
+
+	
+				$('.cardestory').eq(0).click(function(){
+						AccidentDamagePicker1.show();
+						AccidentDamagePicker1.on('picker.select', function (selectedVal, selectedIndex) {
+						var selectCarDestory = AccidentDamage[selectedIndex].text;
+						console.log(selectCarDestory)
+						$('.cardestory').eq(0).text(selectCarDestory)
 					})
-				}
-			
-				$('.cardestory').click(function(){
-					var n = $(this).attr('data-index')	
-						console.log(n);
-						AccidentDamagePicker.show();
-						selectFn(n)
 				})
 				
-//				function selectFn1(){
-//					AccidentDamagePicker.on('picker.select', function (selectedVal, selectedIndex) {
-//						selectCarDestory = AccidentDamage[selectedIndex].text;
-//						$('.cardestory').eq(0).text(selectCarDestory)
-//					})
-//				}
-//				
-//				function selectFn2(){
-//					AccidentDamagePicker.on('picker.select', function (selectedVal, selectedIndex) {
-//						selectCarDestory = AccidentDamage[selectedIndex].text;
-//						$('.cardestory').eq(1).text(selectCarDestory)
-//					})
-//				}
-//			
-//				$('.cardestory').eq(0).click(function(){
-//						AccidentDamagePicker.show();
-//						console.log($(this).attr('data-index'));
-//						if ($(this).attr('data-index')==0) {
-//						selectFn1()
-//						}else if ($(this).attr('data-index')==1) {
-//							selectFn2()
-//						}
-//				})
-//				$('.cardestory').eq(1).click(function(){
-//						AccidentDamagePicker.show();
-//						console.log($(this).attr('data-index'));
-//						if ($(this).attr('data-index')==0) {
-//						selectFn2()
-//						}else if ($(this).attr('data-index')==1) {
-//							selectFn2()
-//						}
-//				})
+				$('.cardestory').eq(1).click(function(){
+						AccidentDamagePicker2.show();
+						AccidentDamagePicker2.on('picker.select', function (selectedVal, selectedIndex) {
+						var selectCarDestory = AccidentDamage[selectedIndex].text;
+						$('.cardestory').eq(1).text(selectCarDestory)
+					})
+				})
+
 			}
 		})
 	})
