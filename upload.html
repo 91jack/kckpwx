@@ -205,21 +205,21 @@
 								'width':'100%',
 								'height':'8.333333rem',
 								'margin-top':'0'
-							});;
+							});
 						};
 						if (uploadData.other_pic2!='') {
 							$('.upload-content .uploadpicture li').eq(4).children('.box').children('img').attr('src',uploadData.other_pic2).css({
 								'width':'100%',
 								'height':'8.333333rem',
 								'margin-top':'0'
-							});;
+							});
 						};
 						if (uploadData.other_pic3!='') {
 							$('.upload-content .uploadpicture li').eq(5).children('.box').children('img').attr('src',uploadData.other_pic3).css({
 								'width':'100%',
 								'height':'8.333333rem',
 								'margin-top':'0'
-							});;
+							});
 						};
 						// 判断图片审核状态
 						if (uploadData.main_pic1) {
@@ -418,15 +418,18 @@ $('.select-weather').on('click', function(){
 			otherOne=$('.upload-content .uploadpicture li').eq(3).children('.box').children('img').attr('src')
 		}
 		if($('.upload-content .uploadpicture li').eq(4).children('.box').children('img').attr('src')=='static/images/main/carfront.png'){
-			otherOne=''
+			otherTwo=''
 		}else{
-			otherOne=$('.upload-content .uploadpicture li').eq(4).children('.box').children('img').attr('src')
+			otherTwo=$('.upload-content .uploadpicture li').eq(4).children('.box').children('img').attr('src')
 		}
 		if($('.upload-content .uploadpicture li').eq(5).children('.box').children('img').attr('src')=='static/images/main/carfront.png'){
-			otherOne=''
+			otherThree=''
 		}else{
-			otherOne=$('.upload-content .uploadpicture li').eq(5).children('.box').children('img').attr('src')
+			otherThree=$('.upload-content .uploadpicture li').eq(5).children('.box').children('img').attr('src')
 		}
+		console.log(otherOne);
+		console.log(otherTwo);
+		console.log(otherThree);
 		$.ajax({
 			type:"post",
 			url:accidentImgUrl,

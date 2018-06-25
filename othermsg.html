@@ -297,8 +297,7 @@
 		$('.camera input[type="file"]').click(function(){
 			$(this).change(function(){
 				var that = $(this);
-				var i = 1;
-				uploadImg(that,i);
+				uploadImg1(that);
 			});
 		})
 	})
@@ -311,22 +310,20 @@
 		$('.camera input[type="file"]').click(function(){
 			$(this).change(function(){
 				var that = $(this);
-				var i = 2;
-				uploadImg(that,i);
+				uploadImg2(that);
 			});
 		})
 	})
 
 
 // 证件识别
-	function uploadImg(that,i){
-		console.log(i);
+	function uploadImg1(that){
 		var accidentId = localStorage.getItem('accidentId');
 		var formData = new FormData();
 		console.log(that[0].files)
 		formData.append('files',that[0].files[0]);
 		formData.append('accidentId',accidentId);
-		formData.append('imgType',i);
+		formData.append('imgType',1);
 		formData.append('token',localStorage.getItem('token'));
 		$.ajax({
 			type:"post",
@@ -338,19 +335,36 @@
 			success: function(data){
 				console.log(data);
 				if(data.status == 2000){
-					that.parent('.camera').siblings('img').attr("src",data.list[0]);
+        	$('#picrun').attr("src",data.list[0]);
 					that.parent().css('background','none');
-					if (i==1) {
-            $('#picrun').attr("src",data.list[0]);
-  					that.parent().css('background','none');
-						$('#name').val(data.obj.name);
-						$('#sfzcode').val(data.obj.id_card_number)
-					}
-					if(i==2){
-            $('#picdrive').attr("src",data.list[0]);
-						$('#cpcode').val(data.obj.plate_no);
-						$('#cartype').html(data.obj.vehicle_type)
-					}
+					$('#name').val(data.obj.name);
+					$('#sfzcode').val(data.obj.id_card_number)
+				}
+			}
+		});
+	}
+	function uploadImg2(that){
+		var accidentId = localStorage.getItem('accidentId');
+		var formData = new FormData();
+		console.log(that[0].files)
+		formData.append('files',that[0].files[0]);
+		formData.append('accidentId',accidentId);
+		formData.append('imgType',2);
+		formData.append('token',localStorage.getItem('token'));
+		$.ajax({
+			type:"post",
+			url:AnalysisUrl,
+			data: formData,
+			processData: false,
+	        contentType: false,
+	        dataType: "json",
+			success: function(data){
+				console.log(data);
+				if(data.status == 2000){
+					that.parent().css('background','none');
+        	$('#picdrive').attr("src",data.list[0]);
+					$('#cpcode').val(data.obj.plate_no);
+					$('#cartype').html(data.obj.vehicle_type)
 				}
 			}
 		});
