@@ -72,6 +72,7 @@
 	
 	<!--时间选择组件-->
 
+	<div class="upload-error">驾驶证识别失败</div>
 	
 
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
@@ -149,8 +150,13 @@
 					$('.cardnum').val(data.obj.id_card_number);
 					$('.select em').text(data.obj.id_card_date);
 					that.siblings('.loading-cover').hide();
-					
-   			}
+   			}else{
+					$('.upload-error').show();
+					setTimeout(function(){
+						$('.upload-error').hide();
+					},500)
+			  	that.siblings('.loading-cover').hide();
+				}
 			}
 		});
 	});

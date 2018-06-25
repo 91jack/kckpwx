@@ -138,7 +138,9 @@
 			</div>
 		</div>
 	</div>
-
+	
+	
+	<div class="upload-error">图片识别失败</div>
 
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/picker.min.js" type="text/javascript" charset="utf-8"></script>
@@ -343,10 +345,18 @@
 					$('#name').val(data.obj.name);
 					$('#sfzcode').val(data.obj.id_card_number)
 			  	that.parent().siblings('.loading-cover').hide();
+				}else{
+					$('.upload-error').show();
+					setTimeout(function(){
+						$('.upload-error').hide();
+					},500)
+			  	that.parent().siblings('.loading-cover').hide();
 				}
 			}
 		});
 	}
+	
+	
 	function uploadImg2(that){
 		var accidentId = localStorage.getItem('accidentId');
 		var formData = new FormData();
@@ -368,6 +378,12 @@
         	$('#picdrive').attr("src",data.list[0]);
 					$('#cpcode').val(data.obj.plate_no);
 					$('#cartype').html(data.obj.vehicle_type)
+			  	that.parent().siblings('.loading-cover').hide();
+				}else{
+					$('.upload-error').show();
+					setTimeout(function(){
+						$('.upload-error').hide();
+					},500)
 			  	that.parent().siblings('.loading-cover').hide();
 				}
 			}
