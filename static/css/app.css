@@ -956,7 +956,43 @@
 }
 .mymsg-content .form:first-child{
 	padding-left: 0;
+	min-height: 5rem;
 }
+.mymsg-content .form-type .form-type-group{
+	background: #fff;
+	margin-bottom: 0.833333rem;
+}
+.mymsg-content .form-type .form-type-group em{
+	float: left;
+	margin-left: 2.083333rem;
+	top: 1.083333rem;
+	position: relative;
+	height: 1.25rem;
+	font-size: 1.25rem;
+	color: #333;
+}
+.mymsg-content .form-type .form-type-group em:before{
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: -0.833333rem;
+	width: 0.166666rem;
+	height: 1.666666rem;
+	margin-top: -0.583333rem;
+	background: #49B4FD;
+}
+.mymsg-content .form-type .form-type-group p{
+	float: left;
+	width: 19.75rem;
+	margin-left: 1.958333rem;
+	font-size: 1.25rem;
+	line-height: 1.875rem;
+	color: #333;
+	margin-top: 0.958333rem;
+	margin-bottom: 0.958333rem;
+}
+
+
 .mymsg-content .form .form-group{
 	margin: 0;
 	padding: 0;
@@ -964,7 +1000,7 @@
 	line-height: 4.166666rem;
 }
 .mymsg-content .form .form-group:first-child{
-	height: 5rem;
+	min-height: 5rem;
 	line-height: 5rem;
 	position: relative;
 	border-bottom: 0;
@@ -1385,8 +1421,8 @@
 }
 
 /*短信认证msg_certificati.html*/
-.msg-certificati-page .police{
-	height: 10.833333rem;
+/*.msg-certificati-page .police{
+	min-height: 10.833333rem;
 }
 .msg-certificati-page .police .police-content li{
 	font-size: 1.166666rem;
@@ -1395,9 +1431,37 @@
 	line-height: 1.166666rem;
 	margin-bottom: 1.25rem;
 }
+.msg-certificati-page .police .police-content li:last-child{
+	min-height: 1.166666rem;
+}
 .msg-certificati-page .police .police-content li:first-child{
 	margin-top: 1rem;
+}*/
+.msg-certificati-page .police-msg{
+	border-bottom: 0.041666rem solid #F56954;
 }
+.msg-certificati-page .police-msg img{
+	float: left;
+	width: 4.208333rem;
+	height: 5.25rem;
+	margin-left: 1.75rem;
+	margin-top: 2.791666rem;
+}
+.msg-certificati-page .police-msg .police-content{
+	float: left;
+	width: 22.083333rem;
+	margin-left: 1.416666rem;
+}
+.msg-certificati-page .police-msg .police-content ul li{
+	font-size: 1.166666rem;
+	line-height: 1.166666rem;
+	margin-bottom: 1.25rem;
+	color: #333;
+}
+.msg-certificati-page .police-msg .police-content li:first-child{
+	margin-top: 1rem;
+}
+
 .msg-certification-content .form{
 	padding-left: 1.666666rem;
 }

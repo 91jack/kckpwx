@@ -8,6 +8,7 @@ var point = new BMap.Point(106.552278, 29.571751);
 map.centerAndZoom(point, 18); // 初始化地图,设置中心点坐标和地图级别
 map.addControl(new BMap.GeolocationControl()); // 定位
 
+var arr =[];
 // 当前定位
 var geolocation = new BMap.Geolocation();
 geolocation.getCurrentPosition(function(r) {
@@ -22,7 +23,6 @@ function showInfo(e) {
 	position(e)
 }
 map.addEventListener("click", showInfo);
-
 function position(e) {
 	var mk = new BMap.Marker(e.point);
 	map.addOverlay(mk);
@@ -36,7 +36,8 @@ function position(e) {
 	})
 	p = e.point;
 	console.log(p);
-	
+	arr.push(mk);
+	console.log(arr.pop())
 	// 存json
 //	localStorage.setItem('lat',p.lat);
 //	localStorage.setItem('lng',p.lng);

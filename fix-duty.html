@@ -25,12 +25,11 @@
 	<!--内容区图片区-->
 	<div class="fix-duty-content">
 		<div class="mymsg-content">
-			<form class="form">
-				<div class="form-group">
+			<form class="form-type">
+				<div class="form-type-group clearfix">
 					<em>事故情形</em>
-					<p class="fr accidentInfo">在同车道行驶中，不按规定与前车保持必要的安全距离的（追尾）</p>
-					<!--<span></span>-->
-					<a href="chooseaccident.html"></a>
+					<p class="accidentInfo">在同车道行驶中，不按规定与前车保持必要的安全距离的（追尾）</p>
+					<!--<a href="chooseaccident.html"></a>-->
 				</div>
 			</form>
 			
@@ -172,15 +171,15 @@
 			if (data.status==2000) {
 				var Len = data.list.length;
 				for (var i=0;i<Len;i++) {
-					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(1).children('em').html(data.list[i].name);
-					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
-					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(3).children('em').html(data.list[i].phone);
-					$('.mymsg-content .form').eq(i+1).children('.form-group').eq(5).children('em').html(data.list[i].dutyname);
+					$('.mymsg-content .form').eq(i).children('.form-group').eq(1).children('em').html(data.list[i].name);
+					$('.mymsg-content .form').eq(i).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
+					$('.mymsg-content .form').eq(i).children('.form-group').eq(3).children('em').html(data.list[i].phone);
+					$('.mymsg-content .form').eq(i).children('.form-group').eq(5).children('em').html(data.list[i].dutyname);
 					// 事故责任判定
 					if(data.list[i].dutycode == 5){
-						$('.mymsg-content .form').eq(i+1).children('.form-group').eq(5).children('em').css('background','#38ADFF');
+						$('.mymsg-content .form').eq(i).children('.form-group').eq(5).children('em').css('background','#38ADFF');
 					}else if(data.list[i].dutycode == 1){
-						$('.mymsg-content .form').eq(i+1).children('.form-group').eq(5).children('em').css('background','#F43C3C');
+						$('.mymsg-content .form').eq(i).children('.form-group').eq(5).children('em').css('background','#F43C3C');
 					}
 				}
 				

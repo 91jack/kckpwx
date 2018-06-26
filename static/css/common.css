@@ -125,7 +125,7 @@ text-decoration: none;
 
 /*顶部警察标语*/
 .police{
-	height: 8.333333rem;
+	height: 8.333333rem; 
 	width: 100%;
 	border-bottom: 0.041666rem solid #F56954;
 }
@@ -212,7 +212,7 @@ text-decoration: none;
 	display: inline-block;
 	width: 45%;
 	float: right;
-	height: 2.166666rem;
+	height: 2.2rem;
 	line-height: 2.166666rem;
 	vertical-align: middle;
     background-color: #fff;
@@ -227,9 +227,11 @@ text-decoration: none;
 	color:#ccc;
 	text-align: right;
 	margin-right: 1rem;
+	position: relative;
 }
 .form-group .select em {
 	/*line-height: ;*/
+	margin-right: 1.083333rem;
 }
 .form-group .select i{
 	display: inline-block;
@@ -239,6 +241,10 @@ text-decoration: none;
 	background-position: center center;
 	background-size: 100% 100%;
 	vertical-align: middle;
+	position: absolute;
+	top: 50%;
+	right: 0;
+	margin-top: -0.625rem;
 }
 
 
