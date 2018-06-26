@@ -102,6 +102,7 @@
 	$('#takephoto').change(function(){
 		$(this).siblings('.loading-cover').show();
 		var that = $(this);
+		
    	var objUrl = getObjectURL(this.files[0]);
 		if(objUrl) {
 			$(".ocr-img").attr("src", objUrl);
@@ -111,41 +112,41 @@
 
     var file = that[0].files[0]; 	
 		var image = new Image();
-			image.src = objUrl;
-			      
-			image.onload = function(){
-			  var img64 = compress(image, 500, 400, 0.7);
-			  //console.log(img64)
-			  
-			  $.ajax({
-					type:"post",
-					url:base64ImgUploadUrl,
-					data: {
-						imgfile: img64,
-						imgType: '2',
-					},
-			    dataType: "json",
-					success: function(data){
-						if(data.status == 2000){
-							//console.log(data)
-							$('.ocr-img').attr('src',data.list[0])
-							var carinfo = data.obj;
-							
-							$('.plate-num').val(carinfo.plate_no) // 号牌号码
-							$('.vin').val(carinfo.vin)			// 车辆识别号码
-							$('.motor-num').val(carinfo.motor_num); // 发动机号
-							$('.select em').text(carinfo.register_date); // 注册日期
-							that.siblings('.loading-cover').hide();
-		 				}else{
-							$('.upload-error').show();
-							setTimeout(function(){
-								$('.upload-error').hide();
-							},500)
-					  	that.siblings('.loading-cover').hide();
-						}
+		image.src = objUrl;
+		      
+		image.onload = function(){
+		  var img64 = compress(image, 500, 400, 0.7);
+		  //console.log(img64)
+		  
+		  $.ajax({
+				type:"post",
+				url:base64ImgUploadUrl,
+				data: {
+					imgfile: img64,
+					imgType: '2',
+				},
+		    dataType: "json",
+				success: function(data){
+					if(data.status == 2000){
+						//console.log(data)
+						$('.ocr-img').attr('src',data.list[0])
+						var carinfo = data.obj;
+						
+						$('.plate-num').val(carinfo.plate_no) // 号牌号码
+						$('.vin').val(carinfo.vin)			// 车辆识别号码
+						$('.motor-num').val(carinfo.motor_num); // 发动机号
+						$('.select em').text(carinfo.register_date); // 注册日期
+						that.siblings('.loading-cover').hide();
+	 				}else{
+						$('.upload-error').show();
+						setTimeout(function(){
+							$('.upload-error').hide();
+						},500)
+				  	that.siblings('.loading-cover').hide();
 					}
-				});
-			}
+				}
+			});
+		}
 
 	});
 	

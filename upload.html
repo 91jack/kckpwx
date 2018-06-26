@@ -374,20 +374,28 @@ $('.select-weather').on('click', function(){
 	
 //	上传图片
 	function uploadImg(that){
-	
-		var formData = new FormData();	
-		formData.append('files',that[0].files[0]);
-		formData.append('accidentId',accidentId)
-	
-		$.ajax({
-			type:"post",
-			url:uploadImgUrl,
-			data: formData,
-			processData: false,
-	        contentType: false,
-	        dataType: "json",
-			success: function(data){
-				if(data.status == 2000){
+
+		var objUrl = getObjectURL(that[0].files[0]);// 临时地址
+
+
+    var file = that[0].files[0]; 	
+		var image = new Image();
+		image.src = objUrl;
+		      
+		image.onload = function(){
+		  var img64 = compress(image, 500, 400, 0.7);
+		  //console.log(img64)
+		  
+		  $.ajax({
+				type:"post",
+				url:base64ImgUploadUrl,
+				data: {
+					imgfile: img64,
+					accidentId: accidentId
+				},
+		    dataType: "json",
+				success: function(data){
+					if(data.status == 2000){
 					console.log(data.list[0])
 					that.parent('div').siblings('div').children('img').attr("src",data.list[0]).css({
 						'width':'100%',
@@ -395,8 +403,32 @@ $('.select-weather').on('click', function(){
 						'margin-top':'0'
 					});
 				}
-			}
-		});
+				}
+			});
+		}
+	
+	
+//		$.ajax({
+//			type:"post",
+//			url:uploadImgUrl,
+//			data: formData,
+//			processData: false,
+//	        contentType: false,
+//	        dataType: "json",
+//			success: function(data){
+//				if(data.status == 2000){
+//					console.log(data.list[0])
+//					that.parent('div').siblings('div').children('img').attr("src",data.list[0]).css({
+//						'width':'100%',
+//						'height':'8.333333rem',
+//						'margin-top':'0'
+//					});
+//				}
+//			}
+//		});
+		
+		
+		
 		that.closest('div').css('background','none');
 		that.parent().siblings('.box').children('loading-cover').hide();
 	}

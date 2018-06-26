@@ -125,7 +125,7 @@
 		
 		// 驾驶证拍照识别
 	$('#takephoto').change(function(){
-			var that = $(this);
+		var that = $(this);
    	var objUrl = getObjectURL(this.files[0]);
 		if(objUrl) {
 			$(".ocr-img").attr("src", objUrl);
@@ -134,37 +134,37 @@
 
     var file = that[0].files[0]; 	
 		var image = new Image();
-			image.src = objUrl;
+		image.src = objUrl;
 			      
-			image.onload = function(){
-			 	var img64 = compress(image, 500, 400, 0.7);
-			  
-			  $.ajax({
-					type:"post",
-					url:base64ImgUploadUrl,
-					data: {
-						imgfile: img64,
-						imgType: '1',
-					},
-			    dataType: "json",
-					success: function(data){
-						if(data.status == 2000){
-							console.log(data)
-							$('.ocr-img').attr('src',data.list[0])
-							$('.name').val(data.obj.name);
-							$('.cardnum').val(data.obj.id_card_number);
-							$('.select em').text(data.obj.id_card_date);
-							that.siblings('.loading-cover').hide();
-		   			}else{
-							$('.upload-error').show();
-							setTimeout(function(){
-								$('.upload-error').hide();
-							},500)
-					  	that.siblings('.loading-cover').hide();
-						}
+		image.onload = function(){
+		 	var img64 = compress(image, 500, 400, 0.7);
+		  
+		  $.ajax({
+				type:"post",
+				url:base64ImgUploadUrl,
+				data: {
+					imgfile: img64,
+					imgType: '1',
+				},
+		    dataType: "json",
+				success: function(data){
+					if(data.status == 2000){
+						console.log(data)
+						$('.ocr-img').attr('src',data.list[0])
+						$('.name').val(data.obj.name);
+						$('.cardnum').val(data.obj.id_card_number);
+						$('.select em').text(data.obj.id_card_date);
+						that.siblings('.loading-cover').hide();
+	   			}else{
+						$('.upload-error').show();
+						setTimeout(function(){
+							$('.upload-error').hide();
+						},500)
+				  	that.siblings('.loading-cover').hide();
 					}
-				});
-			}
+				}
+			});
+		}
 	});
 	
 	
