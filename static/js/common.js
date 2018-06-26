@@ -15,6 +15,13 @@
 $('.goback').on('click', function(){
 	window.history.back();
 })
+$('#goback').on('click', function(){
+	window.history.href='index.html';
+	$('.exit-modal').show();
+	$('.exit-modal a').eq(0).on('click',function(){
+		$(this).hide();
+	})
+})
 
 // 判断是否存在token
 var token = localStorage.getItem('token');

@@ -80,7 +80,11 @@
 					success: function(data){
 						console.log(data)
 						if(data.status == 2000){
-						
+							if (window.localStorage.getItem('signatureMine1')) {
+								window.localStorage.setItem('signatureMine2',data.src)
+							} else{
+								window.localStorage.setItem('signatureMine1',data.src)
+							}
 						}
 					}
 				});

@@ -1077,7 +1077,9 @@
 }
 .mymsg-content .form .form-group>input{
 	margin-top: 1.343333rem;
-	height: 1.5rem;
+	height: 4.166666rem;
+	line-height: 4.166666rem;
+	margin-top: 0;
 }
 .mymsg-content .form .form-group:nth-child(6) em,
 .mymsg-content .form .form-group:nth-child(7) em{

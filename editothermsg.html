@@ -347,9 +347,11 @@
 
 
 
+	// 证件识别
 	function uploadImg1(that){
 		var accidentId = localStorage.getItem('accidentId');
 		var formData = new FormData();
+		console.log(that[0].files)
 		formData.append('files',that[0].files[0]);
 		formData.append('accidentId',accidentId);
 		formData.append('imgType',1);
@@ -362,6 +364,7 @@
 	        contentType: false,
 	        dataType: "json",
 			success: function(data){
+				console.log(data);
 				if(data.status == 2000){
         	$('#picrun').attr("src",data.list[0]);
 					that.parent().css('background','none');
@@ -381,6 +384,7 @@
 	function uploadImg2(that){
 		var accidentId = localStorage.getItem('accidentId');
 		var formData = new FormData();
+		console.log(that[0].files)
 		formData.append('files',that[0].files[0]);
 		formData.append('accidentId',accidentId);
 		formData.append('imgType',2);
@@ -393,6 +397,7 @@
 	        contentType: false,
 	        dataType: "json",
 			success: function(data){
+				console.log(data);
 				if(data.status == 2000){
 					that.parent().css('background','none');
         	$('#picdrive').attr("src",data.list[0]);

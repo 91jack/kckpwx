@@ -74,6 +74,13 @@ text-decoration: none;
 	position: relative;
 	z-index: 999;
 }
+.header-top #goback {
+	display: block;
+	height: 3.666666rem;
+	line-height: 3.666666rem;
+	position: relative;
+	z-index: 999;
+}
 .header-top .icon-goback {
 	display: inline-block;
 	width: 0.833333rem;
@@ -504,4 +511,50 @@ input[type=file] {
 }
 .bind .form{
 	padding-left: 1.666666rem;
+}
+
+.exit-modal{
+	display: none;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.2);
+}
+.exit-modal .exit-cont{
+	background: #fff;
+	height: 10.416666rem;
+	width: 22.5rem;
+	border-radius: 1.666666rem;
+	margin: auto;
+	margin-top: 21.791666rem;
+}
+.exit-modal .exit-cont p{
+	text-align: center;
+	height: 7.041666rem;
+	line-height: 7.041666rem;
+	border-bottom: 1px solid #f4f4f4;
+}
+.exit-modal a{
+	float: left;
+	position: relative;
+	width: 50%;
+	font-size: 1.25rem;
+	color: #333;
+	text-align: center;
+	height: 3.333333rem;
+	line-height: 3.333333rem;
+}
+.exit-modal a.active{
+	color: #5CADE7;
+}
+.exit-modal a.active:before{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 3.333333rem;
+	width: 1px;
+	background: #f4f4f4;
 }
