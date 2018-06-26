@@ -60,85 +60,40 @@
 				console.log(image)
       			var blob = draw.dataURLtoBlob(image);
       			
-      			// 
-      			draw.downloadPNGImage(image)
+      			
       			
       			console.log(blob)
       			
-      			var file = dataURLtoFile(image,'111')
-      			console.log(file)
-      			var formData = new FormData();
-				formData.append('image', file)
+      			
 				
 				$.ajax({
 					type:"post",
-					url:uploadImgUrl,
-					data: formData,
-					processData: false,
-			        contentType: false,
-			        dataType: "json",
+					url:base64ImgUploadUrl,
+					data: {
+						imgfile: image,
+						accidentId: accidentId,
+					},
+				    dataType: "json",
 					success: function(data){
-						console.log(data)
 						if(data.status == 2000){
+<<<<<<< HEAD
 							if (window.localStorage.getItem('signatureMine1')) {
 								window.localStorage.setItem('signatureMine2',data.src)
 							} else{
 								window.localStorage.setItem('signatureMine1',data.src)
 							}
+=======
+							console.log(data)
+							// 将图片存储到本地
+							
+		 				}else{
+							
+>>>>>>> 5d95e3cf7938f1e5eac0fa3577ba37bbb606320e
 						}
 					}
 				});
-				
-				function dataURLtoFile(dataurl, filename) {//将base64转换为文件
-				    var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-				    bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-				    while(n--){
-				        u8arr[n] = bstr.charCodeAt(n);
-				    }
-				    return new File([u8arr], filename, {type:mime});
-				}
-				
-				
-				//var dataUrl = $('.js-signature').eq(1).jqSignature('getDataURL');
-				
+					
 			});
-			
-//			  const d = document;
-//		      const w = window.innerWidth || d.documentElement.clientWidth || d.body.clientWidth;
-//		      const h = window.innerHeight || d.documentElement.clientHeight || d.body.clientHeight;
-//		      let length = (h - w) / 2;
-//		      let width = w;
-//		      let height = h;
-		      
-		      
-		      
-			
-//			$(document).on('ready', function() {
-//				if ($('.js-signature').length) {
-//					$('.js-signature').jqSignature();
-//				}
-//			});
-//
-//			function clearCanvas() {
-//				$('#signature').html('<p><em>Your signature will appear here when you click "Save Signature"</em></p>');
-//				$('.js-signature').eq(1).jqSignature('clearCanvas');
-//				$('#saveBtn').attr('disabled', true);
-//			}
-//	
-//			function saveSignature() {
-//				$('#signature').empty();
-//				var dataUrl = $('.js-signature').eq(1).jqSignature('getDataURL');
-//				var img = $('<img>').attr('src', dataUrl);
-//				$('#signature').append($('<p>').text("Here's your signature:"));
-//				$('#signature').append(img);
-//			}
-//	
-//			$('.js-signature').eq(1).on('jq.signature.changed', function() {
-//				$('#saveBtn').attr('disabled', false);
-//			});
-		
-		
-		// 签字生成图片上传服务器
 		
 		</script>
 	</body>
