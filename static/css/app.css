@@ -1761,6 +1761,12 @@ canvas {
 	width: 6.666666rem;
 	height: 2.5rem;
 }
+.sinate1 .sinate1-cont,
+.sinate2 .sinate2-cont{
+	width: 6.666666rem;
+	height: 2.5rem;
+	background: #fff;
+}
 
 /*.accident-list-page .modal{
 	display: block;

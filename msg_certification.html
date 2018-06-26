@@ -66,7 +66,9 @@
 				<span>签字</span>
 				<em class="fr msg-btn">签字</em>
 				<div class="fr sinate1">
-					<img src="static/images/common/card_xingshizheng.png"/>
+					<div class="sinate1-cont">
+						<img src="static/images/common/card_xingshizheng.png"/>
+					</div>
 				</div>
 			</div>
 		</form>
@@ -101,7 +103,9 @@
 				<span>签字</span>
 				<em class="fr msg-btn">签字</em>
 				<div class="fr sinate2">
-					<img src="static/images/common/card_xingshizheng.png"/>
+					<div class="sinate2-cont">
+						<img src="static/images/common/card_xingshizheng.png"/>
+					</div>
 				</div>
 			</div>
 			
@@ -208,6 +212,8 @@ $(function(){
 					}else{
 						window.location.href = 'msg_certification.html'
 					}
+					localStorage.clear('signatureMine1');
+					localStorage.clear('signatureMine2');
 				}
 	    }
 		})
@@ -266,31 +272,28 @@ $(function(){
 				})
 				
 				timer = setInterval(function(){
-				time--;
-				$(obj).html(time + '&nbsp;S');
-				$(obj).css('background','#ccc');
-				// 按钮禁用
-				
-				if(time < 0){
-						$(obj).html('重新发送');
-						$(obj).css('background','red');
-						time = 0;
-						clearInterval(timer);
-						on = true;
-					}else{
-						on = false;
-					}
-				},1000)
-		}
+					time--;
+					$(obj).html(time + '&nbsp;S');
+					$(obj).css('background','#ccc');
+					// 按钮禁用
+					
+					if(time < 0){
+							$(obj).html('重新发送');
+							$(obj).css('background','red');
+							time = 0;
+							clearInterval(timer);
+							on = true;
+						}else{
+							on = false;
+						}
+					},1000)
+				}
+			}
+		})
 	}
 })
-	}
-	
-	
-	
-	
-	
-})
+$('.sinate1-cont img').attr('src',localStorage.getItem('signatureMine1'))
+$('.sinate2-cont img').attr('src',localStorage.getItem('signatureMine2'))
 </script>
 
 </body>
