@@ -48,6 +48,10 @@ var getAccidentTypeUrl = host + '/kyp/app/currencyController/getAccidentType';
 // 获取车牌简称
 var getCarNoUrl = host + '/kyp/app/currencyController/getCarNo';
 
+// 上传base64图片
+var base64ImgUploadUrl = host + '/kyp/app/image/base64ImgUpload';
+
+
 //图片识别
 // 身份证、驾驶证识别
 var AnalysisUrl = host + '/kyp/app/image/Analysis';

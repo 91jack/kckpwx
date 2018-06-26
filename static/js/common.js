@@ -48,3 +48,34 @@ h = h < 10 ? '0' + h : h;
 minutes = minutes < 10 ? '0' + minutes : minutes; 
 var nowTime = h + ':' + minutes;
 console.log(nowTime)
+
+
+
+
+
+//建立一個可存取到該file的url  
+function getObjectURL(file) {
+	var url = '';
+	if(window.createObjectURL != undefined) {
+		url = window.createObjectURL(file);
+	} else if(window.URL != undefined) {
+		url = window.URL.createObjectURL(file);
+	} else if(window.webkitURL != undefined) {
+		url = window.webkitURL.createObjectURL(file);
+	}
+	return url;
+}
+
+// 压缩图片
+function compress(img, width, height, ratio) {        
+   var canvas, ctx, img64;   
+   canvas = document.createElement('canvas');        
+   canvas.width = width;
+   canvas.height = height;
+        
+   ctx = canvas.getContext("2d");        
+   ctx.drawImage(img, 0, 0, width, height);
+        
+   img64 = canvas.toDataURL("image/jpeg", ratio);  
+   return img64;
+}
