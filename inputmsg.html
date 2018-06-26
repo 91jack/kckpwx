@@ -162,31 +162,29 @@
 						$('.btn').addClass('active');
 						localStorage.setItem('accidentpersonId1',data.list[0].id);
 						localStorage.setItem('accidentpersonId2',data.list[1].id);
+						$('#finished').click(function(){
+							$.ajax({
+								type:"post",
+								url:addAccidentUserFinishUrl,
+								data:{
+									token:localStorage.getItem('token'),
+									accidentId:localStorage.getItem('accidentId')
+								},
+								success:function(data){
+									console.log(data);
+									if (data.status==2000) {
+										window.location.href='uploadpicture.html';
+									}
+								}
+							})
+						})
 					}
 				}
 			}
 		});
 	})
 	//添加对方当事人信息
-	
-	$('#finished').click(function(){
-		$.ajax({
-			type:"post",
-			url:addAccidentUserFinishUrl,
-			data:{
-				token:localStorage.getItem('token'),
-				accidentId:localStorage.getItem('accidentId')
-			},
-			success:function(data){
-				console.log(data);
-				if (data.status==2000) {
-					window.location.href='uploadpicture.html';
-				}
-			}
-		})
-		
-		//
-	})
+
 </script>
 
 </body>

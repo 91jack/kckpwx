@@ -465,7 +465,18 @@
 	font-size: 1rem;
 	color: #48B4FF;
 }
-
+#deal .tab-content-item{
+	position: relative;
+}
+#deal .accident-status{
+	position: absolute;
+	right: 3.333333rem;
+	top: 50%;
+	margin-top: -3.125rem;
+}
+#deal .accident-status img{
+	margin: 0;
+}
 
 
 /*安全提示safetip.html*/
@@ -1761,3 +1772,15 @@ canvas {
 .accident-list-page .msg-certification-content .form .form-group span{
 	margin-left: 0;
 }
+
+.login-page .yzm-btn{
+	width: 6.666666rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
+}
+.editphone-page .yzm-btn{
+	width: 6.666666rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
+}
+

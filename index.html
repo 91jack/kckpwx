@@ -64,7 +64,7 @@
 	<!--快速处理事件-->
 	<div class="content-deal">
 		<div class="deal-accident">
-			<a href="safetip.html">
+			<a href="javascript:;">
 			 	<img src="static/images/index/accident.png"/>
 			 	<p>快速事故处理</p>
 			</a>
@@ -94,7 +94,13 @@ $(function(){
 		 localStorage.clear(); 
 	})
 });
-	
+	$('.deal-accident').click(function(){
+		if (localStorage.getItem('undealId')) {
+			window.location.href='undeal.html'
+		} else{
+			window.location.href='safetip.html'
+		}
+	})
 </script>
 
 </body>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-  <title>事故查询</title>
+  <title>未完成事故</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  	<link rel="stylesheet" href="static/css/app.css" />
 	
@@ -18,18 +18,12 @@
 				<span class="goback-text">返回</span>
 			</a>
 		</div>
-		<h2 class="header-top-title">事故查询</h2>
+		<h2 class="header-top-title">未完成事故</h2>
 	</div>
 	
-	<!--tab切换-->
-	<div class="tab-btn">
-		<a href="#undeal" data='2' class="active fl">未完成事故</a>
-		<a href="#deal" data='1' class="fr">已完成事故</a>
-	</div>
 	
 	<!--tab切换内容-->
 	<!--已完成事故-->
-	<div class="tab-content" id="deal"></div>
 	
 	<!--未完成事故-->
 	<div class="tab-content active" id="undeal"></div>
@@ -37,7 +31,7 @@
 	<!--录入事件-->
 	<div class="tab-content-btn">
 		<a href="safetip.html">
-			 <span>录入事故</span>
+			 <span>录入新事故</span>
 		</a>
 		
 	</div>
@@ -56,88 +50,68 @@ $(function(){
 	}
 		
 		
-		var num=1;
-	// tab页的跳转
-		loadmsg(2);
-		$('.tab-btn a').click(function(){
-			$(this).siblings('a').removeClass('active')
-			$(this).addClass('active');
-			var state = $('.tab-btn a.active').attr('data');
-			loadmsg(state);
-			var type = $(this).attr('href');
-			$('.tab-content').removeClass('active');
-			$(type).addClass('active');
-			if($('#undeal').hasClass('active')){
-				$('.tab-content-btn').css('display','block')
-			}else{
-				$('.tab-content-btn').css('display','none')
-			}
-		});
+//		var num=1;
+//	// tab页的跳转
+//		loadmsg(2);
+//		$('.tab-btn a').click(function(){
+//			$(this).siblings('a').removeClass('active')
+//			$(this).addClass('active');
+//			var state = $('.tab-btn a.active').attr('data');
+//			loadmsg(state);
+//			var type = $(this).attr('href');
+//			$('.tab-content').removeClass('active');
+//			$(type).addClass('active');
+//			if($('#undeal').hasClass('active')){
+//				$('.tab-content-btn').css('display','block')
+//			}else{
+//				$('.tab-content-btn').css('display','none')
+//			}
+//		});
 		
-		function loadmsg(state){
+//		function loadmsg(state){
 			$.ajax({
 			type:"post",
 			url:accidentsDealInfoUrl,
 			data:{
 				pageSize:30,
 				pageNo:1,
-				state:state,
+				state:2,
 				token:token
 			},
-			success:function(data){
-					if (data.status==2000) {
-						
-						console.log(data)
+			success:function(res){
+					if (res.status==2000) {
+						console.log(res)
 						var str='';
 						var linkhrefs ='';
-						var Len = data.list.length;
+						var Len = res.list.length;
 						for (var i=0;i<Len;i++) {
-							linkhrefs = linkhref(data.list[i].status);
-							hrefinfos = hrefinfo(data.list[i].status);
-							console.log(linkhrefs)
-							if (data.list[i].statusStr=='未定责') {
+							linkhrefs = linkhref(res.list[i].status);
+							hrefinfos = hrefinfo(res.list[i].status);
+//							console.log(linkhrefs)
+							if (res.list[i].statusStr=='未定责') {
 								str+='<div class="tab-content-item clearfix">'
 												+'<ul class="fl">'
-													+'<li><span>事故编号：</span><span class="accident-info">'+data.list[i].id+'</span></li>'
-													+'<li><span>事故时间：</span><span class="accident-info">'+data.list[i].datetime+'</span></li>'
-													+'<li><span>事故地点：</span><span class="accident-info">'+data.list[i].address+'</span></li>'
-													+'<li><span>事故形态：</span><span class="accident-info">'+data.list[i].statusStr+'</span></li>'
+													+'<li><span>事故编号：</span><span class="accident-info">'+res.list[i].id+'</span></li>'
+													+'<li><span>事故时间：</span><span class="accident-info">'+res.list[i].datetime+'</span></li>'
+													+'<li><span>事故地点：</span><span class="accident-info">'+res.list[i].address+'</span></li>'
+													+'<li><span>事故形态：</span><span class="accident-info">'+res.list[i].statusStr+'</span></li>'
 												+'</ul>'
 												+'<div class="accident-status fr">'
-													+'<a class="returnto" href="javascript:;" data-accidentId="'+data.list[i].id+'" data-href="'+ linkhrefs +'">'+hrefinfos+'</a>'
-
+													+'<a class="returnto" href="javascript:;" data-accidentId="'+res.list[i].id+'" data-href="'+ linkhrefs +'">'+hrefinfos+'</a>'
 												+'</div>'	
-											+'</div>'
-							}else{
-								str+='<div class="tab-content-item clearfix" data="'+data.list[i].id+'">'
-												+'<ul class="fl">'
-													+'<li><span>事故编号：</span><span class="accident-info">'+data.list[i].id+'</span></li>'
-													+'<li><span>事故时间：</span><span class="accident-info">'+data.list[i].datetime+'</span></li>'
-													+'<li><span>事故地点：</span><span class="accident-info">'+data.list[i].address+'</span></li>'
-													+'<li><span>事故形态：</span><span class="accident-info">'+data.list[i].statusStr+'</span></li>'
-												+'</ul>'
-												+'<div class="accident-status">'
-													+'<img src="static/images/already.png" alt="" />'
-												+'</div>'
 											+'</div>'
 							}
 						}
-						$('.tab-content.active').html('');
-						$('.tab-content.active').html(str);
-						
+						$('#undeal').html('');
+						$('#undeal').html(str);
 						$('.returnto').on('click', function(){
 							localStorage.setItem('accidentId',$(this).attr('data-accidentId'));
 							window.location.href = $(this).attr('data-href')
 						})
-						$('#deal .tab-content-item').on('click',function(){
-							localStorage.setItem('serachId',$(this).attr('data'));
-							console.log(localStorage.getItem('serachId'));
-							window.location.href='accimsg_list.html';
-						})
 					}
 				}
 			});
-		}
+//		}
 		
 		function linkhref(status){
 			var href = '';
