@@ -465,7 +465,18 @@
 	font-size: 1rem;
 	color: #48B4FF;
 }
-
+#deal .tab-content-item{
+	position: relative;
+}
+#deal .accident-status{
+	position: absolute;
+	right: 3.333333rem;
+	top: 50%;
+	margin-top: -3.125rem;
+}
+#deal .accident-status img{
+	margin: 0;
+}
 
 
 /*安全提示safetip.html*/
