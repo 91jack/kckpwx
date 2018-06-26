@@ -1,0 +1,236 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>未完成事故</title>
+  <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+ 	<link rel="stylesheet" href="static/css/app.css" />
+	
+</head>
+<body class="bg-f4 accident-search-page">
+	<!--顶部标题栏-->
+	<div class="header-top">
+		<div class="fl">
+			<a href="index.html" class="goback">
+				<em class="icon-goback"></em>
+				<span class="goback-text">返回</span>
+			</a>
+		</div>
+		<h2 class="header-top-title">未完成事故</h2>
+	</div>
+	
+	
+	<!--tab切换内容-->
+	<!--已完成事故-->
+	
+	<!--未完成事故-->
+	<div class="tab-content active" id="undeal"></div>
+	
+	<!--录入事件-->
+	<div class="tab-content-btn">
+		<a href="safetip.html">
+			 <span>录入新事故</span>
+		</a>
+		
+	</div>
+
+<script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
+<!--当前页面交互-->
+<script type="text/javascript">
+$(function(){
+		
+
+	if(!token){
+		// 如果token不存在 则跳转至登录页面
+		window.location.href = 'login.html';
+	}
+		
+		
+//		var num=1;
+//	// tab页的跳转
+//		loadmsg(2);
+//		$('.tab-btn a').click(function(){
+//			$(this).siblings('a').removeClass('active')
+//			$(this).addClass('active');
+//			var state = $('.tab-btn a.active').attr('data');
+//			loadmsg(state);
+//			var type = $(this).attr('href');
+//			$('.tab-content').removeClass('active');
+//			$(type).addClass('active');
+//			if($('#undeal').hasClass('active')){
+//				$('.tab-content-btn').css('display','block')
+//			}else{
+//				$('.tab-content-btn').css('display','none')
+//			}
+//		});
+		
+//		function loadmsg(state){
+			$.ajax({
+			type:"post",
+			url:accidentsDealInfoUrl,
+			data:{
+				pageSize:30,
+				pageNo:1,
+				state:2,
+				token:token
+			},
+			success:function(res){
+					if (res.status==2000) {
+						console.log(res)
+						var str='';
+						var linkhrefs ='';
+						var Len = res.list.length;
+						for (var i=0;i<Len;i++) {
+							linkhrefs = linkhref(res.list[i].status);
+							hrefinfos = hrefinfo(res.list[i].status);
+//							console.log(linkhrefs)
+							if (res.list[i].statusStr=='未定责') {
+								str+='<div class="tab-content-item clearfix">'
+												+'<ul class="fl">'
+													+'<li><span>事故编号：</span><span class="accident-info">'+res.list[i].id+'</span></li>'
+													+'<li><span>事故时间：</span><span class="accident-info">'+res.list[i].datetime+'</span></li>'
+													+'<li><span>事故地点：</span><span class="accident-info">'+res.list[i].address+'</span></li>'
+													+'<li><span>事故形态：</span><span class="accident-info">'+res.list[i].statusStr+'</span></li>'
+												+'</ul>'
+												+'<div class="accident-status fr">'
+													+'<a class="returnto" href="javascript:;" data-accidentId="'+res.list[i].id+'" data-href="'+ linkhrefs +'">'+hrefinfos+'</a>'
+												+'</div>'	
+											+'</div>'
+							}
+						}
+						$('#undeal').html('');
+						$('#undeal').html(str);
+						$('.returnto').on('click', function(){
+							localStorage.setItem('accidentId',$(this).attr('data-accidentId'));
+							window.location.href = $(this).attr('data-href')
+						})
+					}
+				}
+			});
+//		}
+		
+		function linkhref(status){
+			var href = '';
+			switch(status){
+				case 1:
+				 	href = 'upload.html'
+				 	
+				  break;
+				case 2:
+				  href = 'accidentstatus.html'
+				  break;
+				case 3:
+				 	href = 'choosetype.html'
+				  break;
+				case -3:
+				 	href = 'upload.html'
+				  break;
+				case 4:
+				  href = 'mymsg.html'
+				  break;
+				case 5:
+				 	href = 'uploadpicture.html'
+				  break;
+				case 6:
+				  href = 'accidentstatus.html'
+				  break;
+				case 7:
+				 	href = 'accidentaudit_pass.html'
+				  break;
+				case -7:
+				 	href = 'uploadpicture.html'
+				  break;
+				case 8:
+				  href = 'chooseaccident.html'
+				  break;
+				case 9:
+				 	href = 'fix-duty.html'
+				  break;
+				case 10:
+				  href = 'msg-certification.html'
+				  break;
+				case 11:
+				 	href = 'police_audit.html'
+				  break;
+				case -11:
+				 	href = 'msg-certification.html'
+				  break;
+				default:
+			}
+			return href;
+		}
+		
+		function hrefinfo(status){
+			var msg = '';
+			switch(status){
+				case 1:
+				 	msg = '上传事故图片'
+				  break;
+				case 2:
+				  msg = '事故图片审核中'
+				  break;
+				case 3:
+				 	msg = '选择处理方式'
+				  break;
+				case -3:
+				 	msg = '事故图片审核失败'
+				  break;
+				case 4:
+				  msg = '添加当事人'
+				  break;
+				case 5:
+				 	msg = '提交证件信息'
+				  break;
+				case 6:
+				  msg = '证件信息审核中'
+				  break;
+				case 7:
+				 	msg = '证件审核成功'
+				  break;
+				case -7:
+				 	msg = '证件审核失败'
+				  break;
+				case 8:
+				  msg = '请选择事故情形'
+				  break;
+				case 9:
+				 	msg = '事故定责成功'
+				  break;
+				case 10:
+				  msg = '请进行短信验证'
+				  break;
+				case 11:
+				 	msg = '交警在线审核中'
+				  break;
+				case -11:
+				 	msg = '交警审核失败'
+				  break;
+				default:
+			}
+			return msg;
+		}
+})
+</script>
+
+</body>
+</html>
+
+<!--状态（事故完成状态
+1 创建事故成功 --开始上传事故照片 
+2、上传事故照片成功 --开始审核照片 
+3、事故照片审核成功 --选择处理方式 -
+3、事故照片审核失败 不通过照片序号
+4、选择处理方式成功 --开始添加当事人 
+5、添加当事人成功  --添加成功 开始提交证件照 
+6、提交证件照片审核成功   --开始审核中 
+7、证件照片审核成功 -
+7、证件照片审核失败 
+8、选择事故情形成功 
+9、事故定责成功（自行协商，在线定责跳过该步骤）
+10、验证操作成功 提交审核中
+11、后台审核成功-
+11、后台审核失败-->
