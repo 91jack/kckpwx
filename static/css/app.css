@@ -1772,3 +1772,14 @@ canvas {
 .accident-list-page .msg-certification-content .form .form-group span{
 	margin-left: 0;
 }
+
+.login-page .yzm-btn{
+	width: 6.666666rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
+}
+.editphone-page .yzm-btn{
+	width: 6.666666rem;
+	height: 2.5rem;
+	line-height: 2.5rem;
+}
