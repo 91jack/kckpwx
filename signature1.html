@@ -7,31 +7,55 @@
   <title>签字</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  <link rel="stylesheet" href="static/css/app.css" />
-	
+	<style type="text/css">
+		/*.js-signature{
+			transform: rotate(90deg) translate(161px, 161px);
+		    width: 736px;
+		    height: 414px;
+		    transform-origin: center center 0px;
+		}*/
+	</style>
 </head>
-<body>
+<body class="signature">
+	<!--顶部标题栏-->
+		<div class="header-top">
+			<div class="fl">
+				<a href="javascript:;" class="goback">
+					<em class="icon-goback"></em>
+					<span class="goback-text">返回</span>
+				</a>
+			</div>
+			<h2 class="header-top-title">
+				<a class="reset" href="javascript:;" onclick="clearCanvas();">重置</a>
+				<a class="sure" href="javascript:;" onclick="saveSignature();">确定</a>
+			</h2>
+		</div>
+		
 	<div class="js-signature"
 	     data-width="375"
-	     data-height="200"
+	     data-height="400"
 	     data-border="1px solid #1ABC9C"
 	     data-background="#16A085"
 	     data-line-color="#fff"
 	     data-auto-fit="true">
 	</div>      
 	
-	<button id="clearBtn" onclick="clearCanvas();">Clear Canvas</button>
-	<button id="saveBtn" onclick="saveSignature();" disabled>Save Signature</button>    
+	<!--<button id="clearBtn" onclick="clearCanvas();">Clear Canvas</button>
+	<button id="saveBtn" onclick="saveSignature();" disabled>Save Signature</button>    -->
 	
 	
-	<div id="signature" style="background: #159957;"></div>        
+	<!--<div id="signature" style="background: #159957;"></div>    -->    
 
 <script src="static/js/jquery-1.11.0.min.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/jq-signature.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-	$(document).on('ready', function() {
+$(document).on('ready', function() {
   $('.js-signature').jqSignature();
+  var deviceWidth = document.documentElement.clientWidth;
+  $('.js-signature').css('width',deviceWidth)
+  
 });
  
 function clearCanvas() {
@@ -43,9 +67,36 @@ function clearCanvas() {
 function saveSignature() {
   $('#signature').empty();
   var dataUrl = $('.js-signature').jqSignature('getDataURL');
-  var img = $('<img>').attr('src', dataUrl);
-  $('#signature').append($('<p>').text("Here's your signature:"));
-  $('#signature').append(img);
+//var img = $('<img>').attr('src', dataUrl);
+//$('#signature').append($('<p>').text("Here's your signature:"));
+//$('#signature').append(img);
+//console.log(dataUrl)
+  $.ajax({
+	type:"post",
+	url:base64ImgUploadUrl,
+	data: {
+		imgfile: dataUrl,
+		accidentId: accidentId,
+	},
+    dataType: "json",
+	success: function(data){
+		if(data.status == 2000){
+
+			console.log(data)
+			// 将图片存储到本地
+			var url = location.search;
+			var userid = url.slice(6);
+			console.log(userid)
+			if(userid == 1){
+				localStorage.setItem('signatureMine1',data.list[0] );
+				window.location.href = 'msg_certification.html';
+			}else if(userid == 2){
+				localStorage.setItem('signatureMine2',data.list[0] );
+				window.location.href = 'msg_certification.html';
+			}
+		}
+	}
+});
 }
  
 $('.js-signature').on('jq.signature.changed', function() {
