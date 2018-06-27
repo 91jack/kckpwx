@@ -1501,6 +1501,9 @@
 }
 .msg-certification-content .form .form-group em{
 	margin-right: 1rem;
+	font-size: 1.25rem;
+	/*line-height: 1.25rem;*/
+	vertical-align: middle;
 }
 .msg-certification-content .form .form-group:first-child em{
 	margin-left: 0.416666rem;
