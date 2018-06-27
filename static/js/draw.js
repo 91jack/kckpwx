@@ -97,7 +97,7 @@ function Draw(canvas, degree, config = {}) {
   }
 
   // 重置画布坐标系
-  var degree = 90;
+  //var degree = 90;
   if (typeof degree === 'number') {
     this.degree = degree;
     context.rotate((degree * Math.PI) / 180);
