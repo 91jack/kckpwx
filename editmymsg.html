@@ -302,15 +302,16 @@
 	})
 
 
-		$('.msg-modal.drive .modal-btn a').click(function(){
-			$('.msg-modal.drive').hide();
-		})
+		
 	//上传证件(驾驶证)照片  1
 	$('.form-group .yzm-btn').eq(0).click(function(){
 		$('.msg-modal.drive').eq(0).show();
+		$('.msg-modal.drive .modal-btn a').click(function(){
+			$('.msg-modal.drive').hide();
+		})
 		$('.camera input[type="file"]').click(function(){
-			$(this).parent().siblings('.loading-cover').show();
 			$(this).change(function(){
+				$(this).parent().siblings('.loading-cover').show();
 				var that = $(this);
 				uploadImg1(that);
 			});
@@ -320,11 +321,11 @@
 	$('.form-group .yzm-btn').eq(1).click(function(){
 		$('.msg-modal.drive').eq(1).show();
 		$('.msg-modal.drive .modal-btn a').click(function(){
-			$(this).parent().siblings('.loading-cover').show();
 			$('.msg-modal.drive').hide();
 		})
 		$('.camera input[type="file"]').click(function(){
 			$(this).change(function(){
+				$(this).parent().siblings('.loading-cover').show();
 				var that = $(this);
 				uploadImg2(that);
 			});
@@ -333,7 +334,7 @@
 
 	//驾驶证
 	function uploadImg1(that){
-   	var objUrl = getObjectURL(that[0].files[0]);
+		var objUrl = getObjectURL(that[0].files[0]);
     var file = that[0].files[0]; 	
 		var image = new Image();
 		image.src = objUrl;
@@ -347,6 +348,7 @@
 				data: {
 					imgfile: img64,
 					imgType: '1',
+					accidentId: accidentId,
 				},
 		    dataType: "json",
 				success: function(data){
@@ -355,7 +357,7 @@
 						that.parent().css('background','none');
 						$('#name').val(data.obj.name);
 						$('#sfzcode').val(data.obj.id_card_number)
-				  	that.parent().siblings('.loading-cover').hide();
+						that.parent().siblings('.loading-cover').hide();
 					}else{
 						$('.upload-error').show();
 						setTimeout(function(){
@@ -368,7 +370,6 @@
 		}
 	}
 	
-	// 行驶证
 	function uploadImg2(that){
 		var objUrl = getObjectURL(that[0].files[0]);
     var file = that[0].files[0]; 	
@@ -383,6 +384,7 @@
 				url:base64ImgUploadUrl,
 				data: {
 					imgfile: img64,
+					accidentId: accidentId,
 					imgType: '2',
 				},
 		    dataType: "json",
@@ -392,7 +394,7 @@
 	        	$('#picdrive').attr("src",data.list[0]);
 						$('#cpcode').val(data.obj.plate_no);
 						$('#cartype').html(data.obj.vehicle_type)
-				  	that.parent().siblings('.loading-cover').hide();
+						that.parent().siblings('.loading-cover').hide();
 					}else{
 						$('.upload-error').show();
 						setTimeout(function(){
@@ -403,6 +405,7 @@
 				}
 			});
 		}
+
 	}
 	
 	

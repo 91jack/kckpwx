@@ -1631,26 +1631,41 @@
 	height: 100%;
 }*/
 .map-page .info li{
+	position: relative;
 	width: 100%;
-	height: 4.166666rem;
+	/*height: 4.166666rem;*/
 	font-size: 1.25rem;
 	border-bottom: 1px solid #F4F4F4;
 }
 .map-page .info li strong{
+	display: block;
 	color: #333333;
-	line-height: 4.166666rem;
-	margin-left: 1.666666rem;
+	position: absolute;
+	line-height: 1.25rem;
+	/*line-height: 4.166666rem;*/
+	height: 1.25rem;
+	left: 1.666666rem;
+	top: 50%;
+	margin-top: -0.625rem;
 }
-.map-page .info li>span{
+.map-page .info li>p{
+	display: inline-block;
 	color: #666;
-	line-height: 4.166666rem;
-	margin-left: 3.75rem;
+	width: 20.666666rem;
+	text-align: center;
+	line-height: 1.25rem;
+	margin-left: 7.375rem;
+	margin-top: 1.458333rem;
+	margin-bottom: 1.458333rem;
+	/*margin-left: 3.75rem;*/
 }
 .map-page .info li a{
+	position: absolute;
 	width: 0.708333rem;
 	height: 1.25rem;
-	margin-top: 1.458333rem;
-	margin-right: 1.666666rem;
+	top: 50%;
+	margin-top: -0.625rem;
+	right: 1.666666rem;
 }
 .map-page .info li a span{
 	display: block;

@@ -306,15 +306,16 @@
 	})
 	
 	
-	$('.msg-modal.drive .modal-btn a').click(function(){
-		$('.msg-modal.drive').hide();
-	})
+	
 	//上传证件(驾驶证)照片  1
 	$('.form-group .yzm-btn').eq(0).click(function(){
 		$('.msg-modal.drive').eq(0).show();
+		$('.msg-modal.drive .modal-btn a').click(function(){
+			$('.msg-modal.drive').hide();
+		})
 		$('.camera input[type="file"]').click(function(){
-			$(this).parent().siblings('.loading-cover').show();
 			$(this).change(function(){
+				$(this).parent().siblings('.loading-cover').show();
 				var that = $(this);
 				uploadImg1(that);
 			});
@@ -327,8 +328,8 @@
 			$('.msg-modal.drive').hide();
 		})
 		$('.camera input[type="file"]').click(function(){
-			$(this).parent().siblings('.loading-cover').show();
 			$(this).change(function(){
+				$(this).parent().siblings('.loading-cover').show();
 				var that = $(this);
 				uploadImg2(that);
 			});
@@ -339,70 +340,78 @@
 
 	// 证件识别
 	function uploadImg1(that){
-		var accidentId = localStorage.getItem('accidentId');
-		var formData = new FormData();
-		console.log(that[0].files)
-		formData.append('files',that[0].files[0]);
-		formData.append('accidentId',accidentId);
-		formData.append('imgType',1);
-		formData.append('token',localStorage.getItem('token'));
-		$.ajax({
-			type:"post",
-			url:AnalysisUrl,
-			data: formData,
-			processData: false,
-	        contentType: false,
-	        dataType: "json",
-			success: function(data){
-				console.log(data);
-				if(data.status == 2000){
-        	$('#picrun').attr("src",data.list[0]);
-					that.parent().css('background','none');
-					$('#name').val(data.obj.name);
-					$('#sfzcode').val(data.obj.id_card_number)
-					that.parent().siblings('.loading-cover').hide();
-				}else{
-					$('.upload-error').show();
-					setTimeout(function(){
-						$('.upload-error').hide();
-					},500)
-			  	that.parent().siblings('.loading-cover').hide();
+		var objUrl = getObjectURL(that[0].files[0]);
+    var file = that[0].files[0]; 	
+		var image = new Image();
+		image.src = objUrl;
+			      
+		image.onload = function(){
+		 	var img64 = compress(image, 500, 400, 0.7);
+		  
+		  $.ajax({
+				type:"post",
+				url:base64ImgUploadUrl,
+				data: {
+					imgfile: img64,
+					imgType: '1',
+					accidentId: accidentId,
+				},
+		    dataType: "json",
+				success: function(data){
+					if(data.status == 2000){
+	        	$('#picrun').attr("src",data.list[0]);
+						that.parent().css('background','none');
+						$('#name').val(data.obj.name);
+						$('#sfzcode').val(data.obj.id_card_number)
+						that.parent().siblings('.loading-cover').hide();
+					}else{
+						$('.upload-error').show();
+						setTimeout(function(){
+							$('.upload-error').hide();
+						},500)
+				  	that.parent().siblings('.loading-cover').hide();
+					}
 				}
-			}
-		});
+			});
+		}
 	}
+	
 	function uploadImg2(that){
-		var accidentId = localStorage.getItem('accidentId');
-		var formData = new FormData();
-		console.log(that[0].files)
-		formData.append('files',that[0].files[0]);
-		formData.append('accidentId',accidentId);
-		formData.append('imgType',2);
-		formData.append('token',localStorage.getItem('token'));
-		$.ajax({
-			type:"post",
-			url:AnalysisUrl,
-			data: formData,
-			processData: false,
-	        contentType: false,
-	        dataType: "json",
-			success: function(data){
-				console.log(data);
-				if(data.status == 2000){
-					that.parent().css('background','none');
-        	$('#picdrive').attr("src",data.list[0]);
-					$('#cpcode').val(data.obj.plate_no);
-					$('#cartype').html(data.obj.vehicle_type)
-					that.parent().siblings('.loading-cover').hide();
-				}else{
-					$('.upload-error').show();
-					setTimeout(function(){
-						$('.upload-error').hide();
-					},500)
-			  	that.parent().siblings('.loading-cover').hide();
+		var objUrl = getObjectURL(that[0].files[0]);
+    var file = that[0].files[0]; 	
+		var image = new Image();
+		image.src = objUrl;
+			      
+		image.onload = function(){
+		 	var img64 = compress(image, 500, 400, 0.7);
+		  
+		  $.ajax({
+				type:"post",
+				url:base64ImgUploadUrl,
+				data: {
+					imgfile: img64,
+					accidentId: accidentId,
+					imgType: '2',
+				},
+		    dataType: "json",
+				success: function(data){
+					if(data.status == 2000){
+						that.parent().css('background','none');
+	        	$('#picdrive').attr("src",data.list[0]);
+						$('#cpcode').val(data.obj.plate_no);
+						$('#cartype').html(data.obj.vehicle_type)
+						that.parent().siblings('.loading-cover').hide();
+					}else{
+						$('.upload-error').show();
+						setTimeout(function(){
+							$('.upload-error').hide();
+						},500)
+				  	that.parent().siblings('.loading-cover').hide();
+					}
 				}
-			}
-		});
+			});
+		}
+
 	}
 </script>
 
