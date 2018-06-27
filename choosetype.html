@@ -63,9 +63,8 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 
-	$('.choose-type-content span').click(function(){
-		console.log($(this).attr('data'));
-		var handleType = $(this).attr('data');
+	$('.choose-type-content>div').click(function(){
+		var handleType = $(this).children('div').children('a').children('span').attr('data');
 		localStorage.setItem('handleType',handleType)
 		$.ajax({
 			type:'POST',
