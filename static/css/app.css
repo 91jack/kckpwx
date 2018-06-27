@@ -1535,6 +1535,39 @@
 	left: 50%;
 	margin-left: -8.333333rem;
 }
+
+/*.signature-content {
+	position: relative;
+	display: none;
+}
+.signature-content p {
+	position: absolute;
+	z-index: 999;
+	text-align: center;
+}
+.signature-content p a {
+	display: inline-block;
+    height: 2.5rem;
+    /* width: 6.666666rem; */
+    /*padding: 0 2rem;
+    text-align: center;
+    background: #F56954;
+    line-height: 2.5rem;
+    color: #fff;
+    font-size: 1rem;
+    border-radius: 0.333333rem;
+}
+.signature-content p a.sure {
+	background: #38ADFF;
+}*/
+
+
+
+
+
+
+
+
 /*基本信息basic_msg.html*/
 .basic-msg-page .basic-msg-content .form{
 	padding-left: 1.666666rem;

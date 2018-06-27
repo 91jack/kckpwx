@@ -25,12 +25,6 @@
 		
 		<!--签字区域-->
 		<div class="signature-content">
-			
-			<!--<div class="container">
-				<div class="js-signature" data-width="750" data-height="200" data-border="1px solid black" data-line-color="#bc0000" data-auto-fit="true">
-					
-				</div>
-			</div>-->
 			<canvas></canvas>
 		</div>            
 		
@@ -60,12 +54,8 @@
 				console.log(image)
       			var blob = draw.dataURLtoBlob(image);
       			
-      			
-      			
       			console.log(blob)
-      			
-      			
-				
+ 
 				$.ajax({
 					type:"post",
 					url:base64ImgUploadUrl,
@@ -76,13 +66,23 @@
 				    dataType: "json",
 					success: function(data){
 						if(data.status == 2000){
-							if (window.localStorage.getItem('signatureMine1')) {
-								window.localStorage.setItem('signatureMine2',data.src)
-							} else{
-								window.localStorage.setItem('signatureMine1',data.src)
-							}
+//							if (window.localStorage.getItem('signatureMine1')) {
+//								window.localStorage.setItem('signatureMine2',data.src)
+//							} else{
+//								window.localStorage.setItem('signatureMine1',data.src)
+//							}
 							console.log(data)
 							// 将图片存储到本地
+							var url = location.search;
+							var userid = url.slice(6);
+							console.log(userid)
+							if(userid == 1){
+								localStorage.setItem('signatureMine1',data.list[0] );
+								window.location.href = 'msg_certification.html';
+							}else if(userid == 2){
+								localStorage.setItem('signatureMine2',data.list[0] );
+								window.location.href = 'msg_certification.html';
+							}
 							
 		 				}else{
 							
