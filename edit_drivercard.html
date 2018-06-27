@@ -32,7 +32,7 @@
 				<p>驾驶证拍摄</p>
 				<div class="ocr-wrap-imginner">
 					<img src="" alt="" onerror="this.src='static/images/common/card_driver.png'" class="ocr-img"/>
-					<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
+					<div class="loading-cover"><div class="cover-cont"></div><p>图片识别中</p></div>
 					<em class="icon-takephoto"></em>
 					<input type="file" accept="image/*"  id="takephoto"/>
 				</div>
@@ -157,41 +157,46 @@
 		
 		// 驾驶证拍照识别
 	$('#takephoto').change(function(){
-		$(this).siblings('.loading-cover').show();
-		var that = $(this)
-		var token = localStorage.getItem('token')
-		var formData = new FormData();	
-		formData.append('files',that[0].files[0]);
-		formData.append('imgType','1');
-		formData.append('token',token);
-		
-//	$('.ocr-img').attr('src','static/images/loading.gif')
-//	$('.ocr-img').css({'width':'64px'},{'height':'64px'},{'margin':'0 auto'})
-		
-		$.ajax({
-			type:"post",
-			url:AnalysisUrl,
-			data: formData,
-			processData: false,
-	    contentType: false,
-	    dataType: "json",
-			success: function(data){
-				if(data.status == 2000){
-					console.log(data)
-					$('.ocr-img').attr('src',data.list[0])
-					$('.name').val(data.obj.name);
-					$('.cardnum').val(data.obj.id_card_number);
-					$('.select em').text(data.obj.id_card_date);
-					that.siblings('.loading-cover').hide();
-   			}else{
-					$('.upload-error').show();
-					setTimeout(function(){
-						$('.upload-error').hide();
-					},500)
-			  	that.siblings('.loading-cover').hide();
+		var that = $(this);
+   	var objUrl = getObjectURL(this.files[0]);
+		if(objUrl) {
+			$(".ocr-img").attr("src", objUrl);
+		}
+		// 图片地址
+
+    var file = that[0].files[0]; 	
+		var image = new Image();
+		image.src = objUrl;
+			      
+		image.onload = function(){
+		 	var img64 = compress(image, 500, 400, 0.7);
+		  
+		  $.ajax({
+				type:"post",
+				url:base64ImgUploadUrl,
+				data: {
+					imgfile: img64,
+					imgType: '1',
+				},
+		    dataType: "json",
+				success: function(data){
+					if(data.status == 2000){
+						console.log(data)
+						$('.ocr-img').attr('src',data.list[0])
+						$('.name').val(data.obj.name);
+						$('.cardnum').val(data.obj.id_card_number);
+						$('.select em').text(data.obj.id_card_date);
+						that.siblings('.loading-cover').hide();
+	   			}else{
+						$('.upload-error').show();
+						setTimeout(function(){
+							$('.upload-error').hide();
+						},500)
+				  	that.siblings('.loading-cover').hide();
+					}
 				}
-			}
-		});
+			});
+		}
 	});
 	
 	
