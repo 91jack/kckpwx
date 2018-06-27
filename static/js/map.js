@@ -43,6 +43,33 @@ function position(e) {
 //	localStorage.setItem('lng',p.lng);
 	
 	localStorage.setItem('address_xy',JSON.stringify(e.point))
+	
+	// 编写自定义函数,创建标注
+	function addMarker(point,label){
+		var marker = new BMap.Marker(point);
+		map.addOverlay(marker);
+		marker.setLabel(label);
+	}
+	// 随机向地图添加25个标注
+//	var bounds = map.getBounds();
+//	var sw = bounds.getSouthWest();
+//	var ne = bounds.getNorthEast();
+//	var lngSpan = Math.abs(sw.lng - ne.lng);
+//	var latSpan = Math.abs(ne.lat - sw.lat);
+//	for (var i = 0; i < 10; i++) {
+//		var point = new BMap.Point(sw.lng + lngSpan * (Math.random() * 0.7), ne.lat - latSpan * (Math.random() * 0.7));
+//		var label = new BMap.Label("我是id="+i,{offset:new BMap.Size(20,-10)});
+//		addMarker(point,label);
+//	}
+	function deletePoint(){
+		var allOverlay = map.getOverlays();
+		for (var i = 0; i < allOverlay.length -1; i++){
+			if(allOverlay[i].getLabel().content == "我是id=1"){
+				map.removeOverlay(allOverlay[i]);
+				return false;
+			}
+		}
+	}
 }
 
 //	获取地址
@@ -53,3 +80,12 @@ $('#submap').click(function() {
 })
 
 // 小米手机下 地图点击
+
+
+
+//var map = new BMap.Map("allmap");
+//	var point = new BMap.Point(116.404, 39.915);
+//	map.centerAndZoom(point, 15);
+//	map.disableDoubleClickZoom(true);
+		
+	
