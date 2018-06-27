@@ -291,15 +291,16 @@
 	})
 
 
-		$('.msg-modal.drive .modal-btn a').click(function(){
-			$('.msg-modal.drive').hide();
-		})
+		
 	//上传证件(驾驶证)照片  1
 	$('.form-group .yzm-btn').eq(0).click(function(){
 		$('.msg-modal.drive').eq(0).show();
+		$('.msg-modal.drive .modal-btn a').click(function(){
+			$('.msg-modal.drive').hide();
+		})
 		$('.camera input[type="file"]').click(function(){
-			$(this).parent().siblings('.loading-cover').show();
 			$(this).change(function(){
+				$(this).parent().siblings('.loading-cover').show();
 				var that = $(this);
 				uploadImg1(that);
 			});
@@ -309,11 +310,11 @@
 	$('.form-group .yzm-btn').eq(1).click(function(){
 		$('.msg-modal.drive').eq(1).show();
 		$('.msg-modal.drive .modal-btn a').click(function(){
-			$(this).parent().siblings('.loading-cover').show();
 			$('.msg-modal.drive').hide();
 		})
 		$('.camera input[type="file"]').click(function(){
 			$(this).change(function(){
+				$(this).parent().siblings('.loading-cover').show();
 				var that = $(this);
 				uploadImg2(that);
 			});
