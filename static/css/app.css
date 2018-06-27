@@ -1070,6 +1070,9 @@
 	margin-left: 0;
 }
 .fix-duty-content .mymsg-content .form .form-group span{
+	display: inline-block;
+	height: 4.166666rem;
+	line-height: 4.166666rem;
 	margin-left: 0;
 	font-size: 1.25rem;
 	color: #333;
@@ -1377,6 +1380,8 @@
 }
 .fix-duty-content .mymsg-content .form .form-group em{
 	margin-right: 1rem;
+	height: 4.166666rem;
+	line-height: 4.166666rem;
 }
 .fix-duty-content .mymsg-content .form .form-group strong{
 	width: 0.708333rem;
