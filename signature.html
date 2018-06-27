@@ -57,6 +57,9 @@
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
+    var touchPageYStart=0;try{if($.isFunction(eval(etouch))){var touch=etouch}}catch(e){var touch=function(event){var event=event||window.event;var eot=event.touches[0];switch(event.type){case"touchstart":touchPageYStart=eot.clientY;break;case"touchend":break;case"touchmove":var stTmp=$("body").scrollTop();$("body").scrollTop(stTmp+(touchPageYStart-eot.clientY));touchPageYStart=eot.clientY;event.preventDefault();break}}}document.addEventListener("touchstart",touch,false);document.addEventListener("touchend",touch,false);document.addEventListener("touchmove",touch,false); 	
+	
+	
 document.body.addEventListener('touchmove' , function(e){
     e.preventDefault();
 })
