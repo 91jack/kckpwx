@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>签字</title>
+  <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+ <link rel="stylesheet" href="static/css/app.css" />
+	
+</head>
+<body>
+	<div class="js-signature"
+	     data-width="375"
+	     data-height="200"
+	     data-border="1px solid #1ABC9C"
+	     data-background="#16A085"
+	     data-line-color="#fff"
+	     data-auto-fit="true">
+	</div>      
+	
+	<button id="clearBtn" onclick="clearCanvas();">Clear Canvas</button>
+	<button id="saveBtn" onclick="saveSignature();" disabled>Save Signature</button>    
+	
+	
+	<div id="signature" style="background: #159957;"></div>        
+
+<script src="static/js/jquery-1.11.0.min.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/jq-signature.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	$(document).on('ready', function() {
+  $('.js-signature').jqSignature();
+});
+ 
+function clearCanvas() {
+  $('#signature').html('<p><em>Your signature will appear here when you click "Save Signature"</em></p>');
+  $('.js-signature').jqSignature('clearCanvas');
+  $('#saveBtn').attr('disabled', true);
+}
+ 
+function saveSignature() {
+  $('#signature').empty();
+  var dataUrl = $('.js-signature').jqSignature('getDataURL');
+  var img = $('<img>').attr('src', dataUrl);
+  $('#signature').append($('<p>').text("Here's your signature:"));
+  $('#signature').append(img);
+}
+ 
+$('.js-signature').on('jq.signature.changed', function() {
+  $('#saveBtn').attr('disabled', false);
+});                
+</script>
+
+</body>
+</html>
