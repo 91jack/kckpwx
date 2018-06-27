@@ -44,6 +44,21 @@
 		<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 		
 		<script type="text/javascript">
+			(function(defaultFontSize, defaultScreenWidth) {
+	            var htmlNode = document.getElementsByTagName('html')[0];
+	            function resize() {
+	                var screenWidth = document.body.offsetWidth;
+	                var fontSize = (screenWidth / defaultScreenWidth) * defaultFontSize;
+	                htmlNode.style.fontSize = fontSize + 'px';
+	            }
+	            document.addEventListener('DOMContentLoaded', function() {
+	                resize();
+	            });
+	            window.addEventListener('resize', resize);
+	        })(10, 375);
+        
+			
+			
 			const canvas = document.querySelector('canvas');
       		var draw = new Draw(canvas, 0);
       		
