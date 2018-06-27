@@ -1,14 +1,29 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="UTF-8">
-		<title>电子签名</title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link rel="stylesheet" type="text/css" href="static/css/common.css"/>
-		<link rel="stylesheet" type="text/css" href="static/css/app.css"/>
-	</head>
-	<body class="signature">
-		<!--顶部标题栏-->
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>签字</title>
+  <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+ <link rel="stylesheet" href="static/css/app.css" />
+	<style type="text/css">
+		/*.js-signature{
+			transform: rotate(90deg) translate(161px, 161px);
+		    width: 736px;
+		    height: 414px;
+		    transform-origin: center center 0px;
+		}*/
+		.signature {
+			width:100%;
+			height: 100%;
+			overflow-x:hidden;
+			overflow-y: hidden;
+		}
+	</style>
+</head>
+<body class="signature">
+	<!--顶部标题栏-->
 		<div class="header-top">
 			<div class="fl">
 				<a href="javascript:;" class="goback">
@@ -17,97 +32,87 @@
 				</a>
 			</div>
 			<h2 class="header-top-title">
-				<a class="reset" href="javascript:;">重置</a>
-				<a class="sure" href="javascript:;">确定</a>
+				<a class="reset" href="javascript:;" onclick="clearCanvas();">重置</a>
+				<a class="sure" href="javascript:;" onclick="saveSignature();">确定</a>
 			</h2>
 		</div>
 		
-		
-		<!--签字区域-->
-		<div class="signature-content">
-			<canvas></canvas>
-		</div>            
-		
-		
-		<script src="static/js/jquery-1.11.0.min.js"  type="text/javascript" charset="utf-8"></script>
-		<!--<script src="static/js/jq-signature.js" type="text/javascript" charset="utf-8"></script>-->
-		<script src="static/js/draw.js" type="text/javascript" charset="utf-8"></script>
-		<script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
-		<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
-		
-		<script type="text/javascript">
-			const canvas = document.querySelector('canvas');
-      		var draw = new Draw(canvas, 0);
-      		
-      		
-      		//const d = document;
-//		    const w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-//		    const h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
-//		    let length = (h - w) / 2;
-//		    let width = w;
-//		    let height = h;
-      
-//    		transform: `rotate(${this.degree}deg) translate(${length}px,${length}px)`,
-//	        width: `${width}px`,
-//	        height: `${height}px`,
-//	        transformOrigin: 'center center',
-	        
-	        
-			console.log(draw)
-			
-			// 重置
-			$('.reset').on('click', function(){
-				// 清除画布
-				draw.clear()
-			})
-			
-			// 确定
-			$('.sure').on('click', function(){
-				// 生成图片 
-				var image = draw.getPNGImage();
-				// base64转图片
-				console.log(image)
-      			var blob = draw.dataURLtoBlob(image);
-      			
-      			console.log(blob)
- 
-				$.ajax({
-					type:"post",
-					url:base64ImgUploadUrl,
-					data: {
-						imgfile: image,
-						accidentId: accidentId,
-					},
-				    dataType: "json",
-					success: function(data){
-						if(data.status == 2000){
-//							if (window.localStorage.getItem('signatureMine1')) {
-//								window.localStorage.setItem('signatureMine2',data.src)
-//							} else{
-//								window.localStorage.setItem('signatureMine1',data.src)
-//							}
-							console.log(data)
-							// 将图片存储到本地
-							var url = location.search;
-							var userid = url.slice(6);
-							console.log(userid)
-							if(userid == 1){
-								localStorage.setItem('signatureMine1',data.list[0] );
-								window.location.href = 'msg_certification.html';
-							}else if(userid == 2){
-								localStorage.setItem('signatureMine2',data.list[0] );
-								window.location.href = 'msg_certification.html';
-							}
-							
-		 				}else{
-							
-						}
-					}
-				});
-					
-			});
-		
-		</script>
-	</body>
+	<div class="js-signature"
+	     data-width="375"
+	     data-height="400"
+	     data-border="1px solid #1ABC9C"
+	     data-background="#16A085"
+	     data-line-color="#fff"
+	     data-auto-fit="true">
+	</div>      
+	
+	<!--<button id="clearBtn" onclick="clearCanvas();">Clear Canvas</button>
+	<button id="saveBtn" onclick="saveSignature();" disabled>Save Signature</button>    -->
+	
+	
+	<!--<div id="signature" style="background: #159957;"></div>    -->    
 
+<script src="static/js/jquery-1.11.0.min.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/jq-signature.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+document.body.addEventListener('touchmove' , function(e){
+    e.preventDefault();
+})
+	
+$(document).on('ready', function() {
+  $('.js-signature').jqSignature();
+  var deviceWidth = document.documentElement.clientWidth;
+  $('.js-signature').css('width',deviceWidth)
+  
+});
+ 
+function clearCanvas() {
+  $('#signature').html('<p><em>Your signature will appear here when you click "Save Signature"</em></p>');
+  $('.js-signature').jqSignature('clearCanvas');
+  $('#saveBtn').attr('disabled', true);
+}
+ 
+function saveSignature() {
+  $('#signature').empty();
+  var dataUrl = $('.js-signature').jqSignature('getDataURL');
+//var img = $('<img>').attr('src', dataUrl);
+//$('#signature').append($('<p>').text("Here's your signature:"));
+//$('#signature').append(img);
+//console.log(dataUrl)
+  $.ajax({
+	type:"post",
+	url:base64ImgUploadUrl,
+	data: {
+		imgfile: dataUrl,
+		accidentId: accidentId,
+	},
+    dataType: "json",
+	success: function(data){
+		if(data.status == 2000){
+
+			console.log(data)
+			// 将图片存储到本地
+			var url = location.search;
+			var userid = url.slice(6);
+			console.log(userid)
+			if(userid == 1){
+				localStorage.setItem('signatureMine1',data.list[0] );
+				window.location.href = 'msg_certification.html';
+			}else if(userid == 2){
+				localStorage.setItem('signatureMine2',data.list[0] );
+				window.location.href = 'msg_certification.html';
+			}
+		}
+	}
+});
+}
+ 
+$('.js-signature').on('jq.signature.changed', function() {
+  $('#saveBtn').attr('disabled', false);
+});                
+</script>
+
+</body>
 </html>
