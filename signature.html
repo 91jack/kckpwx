@@ -6,14 +6,6 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="static/css/common.css"/>
 		<link rel="stylesheet" type="text/css" href="static/css/app.css"/>
-		<style type="text/css">
-			.signature {
-				transform: rotate(90deg) translate(161px, 161px);
-			    width: 736px;
-			    height: 414px;
-			    transform-origin: center center 0px;
-			}
-		</style>
 	</head>
 	<body class="signature">
 		<!--顶部标题栏-->
@@ -42,28 +34,10 @@
 		<script src="static/js/draw.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 		<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
-		<script src="static/js/manifest..js" type="text/javascript" charset="utf-8"></script>
-		<script src="static/js/vendor.js" type="text/javascript" charset="utf-8"></script>
-		<script src="static/js/signature.js"  type="text/javascript" charset="utf-8"></script>
 		
 		<script type="text/javascript">
-			(function(defaultFontSize, defaultScreenWidth) {
-	            var htmlNode = document.getElementsByTagName('html')[0];
-	            function resize() {
-	                var screenWidth = document.body.offsetWidth;
-	                var fontSize = (screenWidth / defaultScreenWidth) * defaultFontSize;
-	                htmlNode.style.fontSize = fontSize + 'px';
-	            }
-	            document.addEventListener('DOMContentLoaded', function() {
-	                resize();
-	            });
-	            window.addEventListener('resize', resize);
-	        })(10, 375);
-        
-			
-			
 			const canvas = document.querySelector('canvas');
-      		var draw = new Draw(canvas, 90);
+      		var draw = new Draw(canvas, 0);
       		
       		
       		//const d = document;
