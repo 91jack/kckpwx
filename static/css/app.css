@@ -924,8 +924,12 @@
 	width: 100%;
 } */
 .map-page #map{
+	position: relative;
 	height: 34.916666rem;
 	width: 100%;
+}
+.map-page .map-content{
+	position: relative;
 }
 .map-page .map-content .accident-address{
 	height: 4.166666rem;
@@ -1791,4 +1795,13 @@ canvas {
 	height: 2.5rem;
 	line-height: 2.5rem;
 }
-
+.map-content .icon{
+	width: 2.875rem;
+	height: 2.875rem;
+	position: absolute;
+	top: 31.125rem;
+	left: 0.833333rem;
+	/*background: url('../images/return.png');
+	background-size: 100% 100%;*/
+	z-index: 10000;
+}
