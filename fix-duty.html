@@ -188,8 +188,8 @@
 				$('.mymsg-content .form').eq(1).children('.form-group').eq(5).children('em').html(data.list[0].dutyname);
 				$('.chooseaccident-page .btn').click(function(){
 					var user = [
-						{'id': data.list[0].id,'damagecode': '01','dutycode': data.list[0].dutycode},
-						{'id': data.list[1].id,'damagecode': '02','dutycode': data.list[1].dutycode}
+						{'id': data.list[1].id,'damagecode': '01','dutycode': data.list[1].dutycode},
+						{'id': data.list[0].id,'damagecode': '02','dutycode': data.list[0].dutycode}
 					]
 					user = JSON.stringify(user)
 					console.log(user)
