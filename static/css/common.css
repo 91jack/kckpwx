@@ -320,10 +320,11 @@ input[type=file] {
 	height: 100%;
 	width: 100%;
 	background: rgba(0,0,0,0.1);
-	position: absolute;
+	position: fixed;
 	top: 0;
 	left: 0;
 	display: none;
+	z-index: 10;
 }
 .msg-modal .modal-content{
 	box-sizing: border-box;
