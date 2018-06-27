@@ -57,7 +57,38 @@
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
-    var touchPageYStart=0;try{if($.isFunction(eval(etouch))){var touch=etouch}}catch(e){var touch=function(event){var event=event||window.event;var eot=event.touches[0];switch(event.type){case"touchstart":touchPageYStart=eot.clientY;break;case"touchend":break;case"touchmove":var stTmp=$("body").scrollTop();$("body").scrollTop(stTmp+(touchPageYStart-eot.clientY));touchPageYStart=eot.clientY;event.preventDefault();break}}}document.addEventListener("touchstart",touch,false);document.addEventListener("touchend",touch,false);document.addEventListener("touchmove",touch,false); 	
+var overscroll = function(el) {
+  el.addEventListener('touchstart', function() {
+    var top = el.scrollTop
+      , totalScroll = el.scrollHeight
+      , currentScroll = top + el.offsetHeight;
+    //If we're at the top or the bottom of the containers
+    //scroll, push up or down one pixel.
+    //
+    //this prevents the scroll from "passing through" to
+    //the body.
+    if(top === 0) {
+      el.scrollTop = 1;
+    } else if(currentScroll === totalScroll) {
+      el.scrollTop = top - 1;
+    }
+  });
+  el.addEventListener('touchmove', function(evt) {
+    //if the content is actually scrollable, i.e. the content is long enough
+    //that scrolling can occur
+    if(el.offsetHeight < el.scrollHeight)
+      evt._isScroller = true;
+  });
+}
+overscroll(document.querySelector('.scroll'));
+document.body.addEventListener('touchmove', function(evt) {
+  //In this case, the default behavior is scrolling the body, which
+  //would result in an overflow.  Since we don't want that, we preventDefault.
+  if(!evt._isScroller) {
+    evt.preventDefault();
+  }
+});
+
 	
 	
 document.body.addEventListener('touchmove' , function(e){
