@@ -131,8 +131,12 @@
 <script type="text/javascript">
 	// 获取事故人信息
 		if (localStorage.getItem('serachId')) {
-			accidentId = localStorage.getItem('serachId');
+			var accidentId = localStorage.getItem('serachId');
+		}else{
+			var accidentId = localStorage.getItem('accidentId');
 		}
+		console.log(token)
+
 		$.ajax({
 			type:"post",
 			url:getAccidentUserInfoUrl,
@@ -185,6 +189,8 @@
 				$('.modal-btn a').click(function(){
 					$('.modal').hide();
 				})
+				
+				
 			}
 		}
 	});

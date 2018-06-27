@@ -60,24 +60,39 @@ $(function(){
 	
 	// 四合一照片拍照上传
 	$('#uploadImage').change(function(){
+		
+		
 		var that = $(this)
-		var formData = new FormData();	
-		formData.append('files',that[0].files[0]);
-		formData.append('accidentId',accidentId)
-	
-		$.ajax({
-			type:"post",
-			url:uploadImgUrl,
-			data: formData,
-			processData: false,
-	    contentType: false,
-	    dataType: "json",
-			success: function(data){
-				if(data.status == 2000){
-					$('#fourImg').attr('src',data.list[0])
+		
+		
+		var objUrl = getObjectURL(that[0].files[0]);// 临时地址
+
+
+    var file = that[0].files[0]; 	
+		var image = new Image();
+		image.src = objUrl;
+		      
+		image.onload = function(){
+		  var img64 = compress(image, 500, 400, 0.7);
+		  //console.log(img64)
+		  
+		  $.ajax({
+				type:"post",
+				url:base64ImgUploadUrl,
+				data: {
+					imgfile: img64,
+					accidentId: accidentId
+				},
+		    dataType: "json",
+				success: function(data){
+					if(data.status == 2000){
+						$('#fourImg').attr('src',data.list[0])
+					}
 				}
-			}
-		});
+			});
+		}
+		
+
 	})
 	
 	// 提交照片

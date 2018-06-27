@@ -56,20 +56,22 @@
 				<em class="fr phone1">18716288752</em>
 			</div>
 			
+		
+			
+			<div class="form-group">
+				<span>签字</span>
+				<em class="fr msg-btn" data-user='1'>签字</em>
+				<div class="fr sinate1">
+					<div class="sinate1-cont">
+						
+					</div>
+				</div>
+			</div>
+			
 			<div class="form-group">
 				<span>验证码</span>
 				<em class="fr msg-btn getcode1">获取验证码</em>
 				<input type="text" class="fr yzmcode1" placeholder="请输入验证码">
-			</div>
-			
-			<div class="form-group">
-				<span>签字</span>
-				<em class="fr msg-btn">签字</em>
-				<div class="fr sinate1">
-					<div class="sinate1-cont">
-						<img src="static/images/common/card_xingshizheng.png"/>
-					</div>
-				</div>
 			</div>
 		</form>
 			
@@ -93,22 +95,24 @@
 				<em class="fr phone2">13650543568</em>
 			</div>
 			
+		
+			
+			<div class="form-group">
+				<span>签字</span>
+				<em class="fr msg-btn" data-user='2'>签字</em>
+				<div class="fr sinate2">
+					<div class="sinate2-cont">
+						
+					</div>
+				</div>
+			</div>
+			
+			
 			<div class="form-group">
 				<span>验证码</span>
 				<em class="fr msg-btn getcode2">获取验证码</em>
 				<input type="text" class="fr yzmcode2" placeholder="请输入验证码">
 			</div>
-			
-			<div class="form-group">
-				<span>签字</span>
-				<em class="fr msg-btn">签字</em>
-				<div class="fr sinate2">
-					<div class="sinate2-cont">
-						<img src="static/images/common/card_xingshizheng.png"/>
-					</div>
-				</div>
-			</div>
-			
 		</form>
 	</div>
 	
@@ -121,9 +125,15 @@
 		<p>您的手机号有误，请重新输入！</p>
 	</div>
 	<div class="footer-cover"></div>
+	
+	
+   
+		
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
+	
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
+
 <!--当前页面交互-->
 <script type="text/javascript">
 $(function(){
@@ -174,8 +184,10 @@ $(function(){
 
 	// 点击签字
 	$('.form').each(function(){
-		$(this).children('.form-group').eq(5).children('em').click(function(){
-			//window.location.href='signature.html';
+		$(this).children('.form-group').eq(4).children('em').click(function(){
+			console.log($(this).attr('data-user'))
+			var user = $(this).attr('data-user');
+			window.location.href='signature.html?user='+ user;
 		})
 	})
 	
@@ -212,8 +224,10 @@ $(function(){
 					}else{
 						window.location.href = 'msg_certification.html'
 					}
-					localStorage.clear('signatureMine1');
-					localStorage.clear('signatureMine2');
+					//localStorage.clear('signatureMine1');
+					//localStorage.clear('signatureMine2');
+					localStorage.removeItem('signatureMine1');
+					localStorage.removeItem('signatureMine2');
 				}
 	    }
 		})
@@ -292,8 +306,19 @@ $(function(){
 		})
 	}
 })
-$('.sinate1-cont img').attr('src',localStorage.getItem('signatureMine1'))
-$('.sinate2-cont img').attr('src',localStorage.getItem('signatureMine2'))
+
+// 签字图片显示
+if(localStorage.getItem('signatureMine1')){
+	var str = '<img src='+ localStorage.getItem('signatureMine1') + '>'
+	$('.sinate1-cont').html(str)
+}
+
+if(localStorage.getItem('signatureMine2')){
+	var str = '<img src='+ localStorage.getItem('signatureMine2') + '>';
+	$('.sinate2-cont').html(str)
+}
+
+
 </script>
 
 </body>
