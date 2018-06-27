@@ -26,7 +26,7 @@
 		<div class="user-avatar">
 			<img src="" onerror="this.src='static/images/user_avatar.png'"/>
 		</div>
-		<p>MOON</p>
+		<p class="nickname">MOON</p>
 		<div class="user-info-footer">
 			<p>您当前已经绑定<span class="carcount">0</span>辆车</p>
 		</div>
@@ -121,6 +121,9 @@ $(function(){
 			if(res.status == 2000){
 				var data = res.pagination;
 				console.log(data)
+				$('.user-avatar img').attr('src',data.headimg );
+				$('.nickname').html(data.name)
+				
 				if(data.phone){
 					$('.phone').show().text(data.phone);
 					$('.phone-status').text('修改').css('color','#ccc')
