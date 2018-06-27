@@ -1080,10 +1080,10 @@
 	color: #333;
 }
 .mymsg-content .form .form-group>input{
-	margin-top: 1.458333rem;
-	height: 1.25rem;
-	line-height: 1.25rem;
-	margin-bottom: 1.458333rem;
+	margin-top: 1.333333rem;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	margin-bottom: 1.333333rem;
 }
 .mymsg-content .form .form-group:nth-child(6) em,
 .mymsg-content .form .form-group:nth-child(7) em{

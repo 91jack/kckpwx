@@ -136,6 +136,17 @@
 
 <!--当前页面交互-->
 <script type="text/javascript">
+	if(localStorage.getItem('code1')){
+			$('.yzmcode1').val(localStorage.getItem('code1'))
+		}else{
+			$('.yzmcode1').val('')
+		}
+		
+	if(localStorage.getItem('code2')){
+		$('.yzmcode2').val(localStorage.getItem('code2'))
+	}else{
+		$('.yzmcode2').val('')
+	}
 $(function(){
 	// 获取事故信息
 	$.ajax({
@@ -281,6 +292,11 @@ $(function(){
 			   		//服务器返回响应，根据响应结果，分析是否登录成功；
 						if(data.status == 2000){
 							$(item2).val(data.obj)
+							if(!localStorage.getItem('code1')){
+								localStorage.setItem('code1',data.obj)
+							}else{
+								localStorage.setItem('code2',data.obj)
+							}
 						}
 			    }
 				})
