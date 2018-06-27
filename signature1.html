@@ -54,6 +54,10 @@
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
+document.body.addEventListener('touchmove' , function(e){
+    e.preventDefault();
+})
+	
 $(document).on('ready', function() {
   $('.js-signature').jqSignature();
   var deviceWidth = document.documentElement.clientWidth;
