@@ -158,13 +158,6 @@
 				console.log(data);
 				if (data.status==2000) {
 					for (var i=0;i<data.list.length;i++) {
-							
-							if (data.list[i].dutycode=='5') {
-								$('.form').eq(i).children('.form-group').eq(5).children('em').css('background','#38ADFF');
-							} else if(data.list[i].dutycode=='1'){
-								$('.form').eq(i).children('.form-group').eq(5).children('em').css('background','#F43C3C');
-							}
-						
 						if(data.list[i].type == 1){
 							$('.form').eq(0).children('.form-group').eq(1).children('em').html(data.list[i].name);
 							$('.form').eq(0).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
@@ -172,9 +165,11 @@
 							$('.form').eq(0).children('.form-group').eq(4).children('em').html(data.list[i].id_card);
 							$('.form').eq(0).children('.form-group').eq(5).children('em').html(data.list[i].dutyname);
 							$('.form').eq(0).children('.form-group').eq(6).children('em').html(data.list[i].insurancename);
-							
-							
-							
+							if (data.list[i].dutycode=='5') {
+								$('.form').eq(0).children('.form-group').eq(5).children('em').css('background','#38ADFF');
+							} else if(data.list[i].dutycode=='1'){
+								$('.form').eq(0).children('.form-group').eq(5).children('em').css('background','#F43C3C');
+							}
 						}else{
 							$('.form').eq(1).children('.form-group').eq(1).children('em').html(data.list[i].name);
 							$('.form').eq(1).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
@@ -182,12 +177,20 @@
 							$('.form').eq(1).children('.form-group').eq(4).children('em').html(data.list[i].id_card);
 							$('.form').eq(1).children('.form-group').eq(5).children('em').html(data.list[i].dutyname);
 							$('.form').eq(1).children('.form-group').eq(6).children('em').html(data.list[i].insurancename);
+							if (data.list[i].dutycode=='5') {
+								$('.form').eq(1).children('.form-group').eq(5).children('em').css('background','#38ADFF');
+							} else if(data.list[i].dutycode=='1'){
+								$('.form').eq(1).children('.form-group').eq(5).children('em').css('background','#F43C3C');
+							}
 						}
 					}
+<<<<<<< HEAD
 					
 					
 					 
 				
+=======
+>>>>>>> 63a8c0252b4397c3d464afa08a832f4a14c364c4
 				}
 			}
 		});
