@@ -93,6 +93,7 @@
 			'onSubmit':function(){/*确认时触发事件*/
 				console.log(calendar.value);
 				$('.select em').text(calendar.value);
+				$('.select em').css('color', '#000');
 			},
 			'onClose':function(){/*取消时触发事件*/
 			}
@@ -136,6 +137,7 @@
 						$('.vin').val(carinfo.vin)			// 车辆识别号码
 						$('.motor-num').val(carinfo.motor_num); // 发动机号
 						$('.select em').text(carinfo.register_date); // 注册日期
+						$('.select em').css('color', '#000');
 						that.siblings('.loading-cover').hide();
 	 				}else{
 						$('.upload-error').show();
