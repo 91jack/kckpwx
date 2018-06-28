@@ -1865,6 +1865,7 @@ canvas {
 }
 /*挪车页面movecar.html*/
 .movecar-content img{
+	display: block;
 	width: 21.958333rem;
 	height: 13.666666rem;
 	margin-top: 5.25rem;
