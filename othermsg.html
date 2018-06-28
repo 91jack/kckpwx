@@ -102,7 +102,7 @@
 				<img id="picrun" data='1' src="static/images/common/card_driver.png"/>
 				<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
 				<div class="camera">
-					<input type="file"/>
+					<input id="drivecards" type="file"/>
 				</div>
 			</div>
 			<div class="modal-btn clearfix">
@@ -125,7 +125,7 @@
 				<img id="picdrive" data='2' src="static/images/common/card_xingshizheng.png"/>
 				<div class="loading-cover"><div class="cover-cont"></div><p>图片上传中</p></div>
 				<div class="camera">
-					<input type="file"/>
+					<input id="carcards" type="file"/>
 				</div>
 			</div>
 			<div class="modal-btn clearfix">
@@ -308,7 +308,7 @@
 		$('.msg-modal.drive .modal-btn a').click(function(){
 			$('.msg-modal.drive').hide();
 		})
-		$('.camera input[type="file"]').click(function(){
+		$('#drivecards').click(function(){
 			$(this).change(function(){
 				$(this).parent().siblings('.loading-cover').show();
 				var that = $(this);
@@ -322,7 +322,7 @@
 		$('.msg-modal.drive .modal-btn a').click(function(){
 			$('.msg-modal.drive').hide();
 		})
-		$('.camera input[type="file"]').click(function(){
+		$('#carcards').click(function(){
 			$(this).change(function(){
 				$(this).parent().siblings('.loading-cover').show();
 				var that = $(this);
