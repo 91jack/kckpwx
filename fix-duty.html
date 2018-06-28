@@ -173,19 +173,44 @@
 				for (var i=0;i<Len;i++) {
 					// 事故责任判定
 					if(data.list[i].dutycode == 5){
-						$('.mymsg-content .form').eq(i).children('.form-group').eq(5).children('em').css('background','#38ADFF');
-					}else if(data.list[i].dutycode == 1){
 						$('.mymsg-content .form').eq(i).children('.form-group').eq(5).children('em').css('background','#F43C3C');
+					}else if(data.list[i].dutycode == 1){
+						$('.mymsg-content .form').eq(i).children('.form-group').eq(5).children('em').css('background','#38ADFF');
+					}
+					
+					if(data.list[i].type == 1){
+						$('.mymsg-content .form').eq(0).children('.form-group').eq(1).children('em').html(data.list[0].name);
+						$('.mymsg-content .form').eq(0).children('.form-group').eq(2).children('em').html(data.list[0].car_no);
+						$('.mymsg-content .form').eq(0).children('.form-group').eq(3).children('em').html(data.list[0].phone);
+						$('.mymsg-content .form').eq(0).children('.form-group').eq(5).children('em').html(data.list[0].dutyname);
+						
+						if(data.list[i].dutycode == 1){
+							$('.mymsg-content .form').eq(0).children('.form-group').eq(5).children('em').css('background','#F43C3C');
+						}else{
+							$('.mymsg-content .form').eq(0).children('.form-group').eq(5).children('em').css('background','#38ADFF');
+						}
+						
+						
+					}else{
+					
+						
+						$('.mymsg-content .form').eq(1).children('.form-group').eq(1).children('em').html(data.list[1].name);
+						$('.mymsg-content .form').eq(1).children('.form-group').eq(2).children('em').html(data.list[1].car_no);
+						$('.mymsg-content .form').eq(1).children('.form-group').eq(3).children('em').html(data.list[1].phone);
+						$('.mymsg-content .form').eq(1).children('.form-group').eq(5).children('em').html(data.list[1].dutyname);
+						
+						
+						if(data.list[i].dutycode == 1){
+							$('.mymsg-content .form').eq(1).children('.form-group').eq(5).children('em').css('background','#F43C3C');
+						}else{
+							$('.mymsg-content .form').eq(1).children('.form-group').eq(5).children('em').css('background','#38ADFF');
+						}
 					}
 				}
-				$('.mymsg-content .form').eq(0).children('.form-group').eq(1).children('em').html(data.list[1].name);
-				$('.mymsg-content .form').eq(0).children('.form-group').eq(2).children('em').html(data.list[1].car_no);
-				$('.mymsg-content .form').eq(0).children('.form-group').eq(3).children('em').html(data.list[1].phone);
-				$('.mymsg-content .form').eq(0).children('.form-group').eq(5).children('em').html(data.list[1].dutyname);
-				$('.mymsg-content .form').eq(1).children('.form-group').eq(1).children('em').html(data.list[0].name);
-				$('.mymsg-content .form').eq(1).children('.form-group').eq(2).children('em').html(data.list[0].car_no);
-				$('.mymsg-content .form').eq(1).children('.form-group').eq(3).children('em').html(data.list[0].phone);
-				$('.mymsg-content .form').eq(1).children('.form-group').eq(5).children('em').html(data.list[0].dutyname);
+				
+			
+				
+				
 				$('.chooseaccident-page .btn').click(function(){
 					var user = [
 						{'id': data.list[1].id,'damagecode': '01','dutycode': data.list[1].dutycode},

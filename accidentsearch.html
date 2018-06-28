@@ -114,6 +114,7 @@ $(function(){
 											+'</div>'
 							}
 						}
+						
 						$('.tab-content.active').html('');
 						$('.tab-content.active').html(str);
 						
@@ -178,6 +179,12 @@ $(function(){
 				case -11:
 				 	href = 'msg_certification.html'
 				  break;
+				case 12:
+				 	href = 'inputmsg.html'
+				  break;
+//				case 13:
+//				 	href = 'msg_certification.html'
+//				  break;
 				default:
 			}
 			return href;
@@ -227,6 +234,9 @@ $(function(){
 				  break;
 				case -11:
 				 	msg = '交警审核失败'
+				  break;
+				case 12:
+				 	msg = '添加对方信息'
 				  break;
 				default:
 			}
