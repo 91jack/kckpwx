@@ -139,11 +139,11 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 获取事故人信息
-//		if (localStorage.getItem('serachId')) {
-//			var accidentId = localStorage.getItem('serachId');
-//		}else{
-//			var accidentId = localStorage.getItem('accidentId');
-//		}
+		if (localStorage.getItem('serachId')) {
+			var accidentId = localStorage.getItem('serachId');
+		}else{
+			var accidentId = localStorage.getItem('accidentId');
+		}
 //		console.log(token)
 
 		$.ajax({
@@ -160,7 +160,7 @@
 					for (var i=0;i<data.list.length;i++) {
 						if(data.list[i].type == 1){
 							$('.form').eq(0).children('.form-group').eq(1).children('em').html(data.list[i].name);
-							$('.form').eq(0).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
+							$('.form').eq(0).children('.form-group').eq(2).children('em').html(data.list[i].carno);
 							$('.form').eq(0).children('.form-group').eq(3).children('em').html(data.list[i].phone);
 							$('.form').eq(0).children('.form-group').eq(4).children('em').html(data.list[i].id_card);
 							$('.form').eq(0).children('.form-group').eq(5).children('em').html(data.list[i].dutyname);
@@ -172,7 +172,7 @@
 							}
 						}else{
 							$('.form').eq(1).children('.form-group').eq(1).children('em').html(data.list[i].name);
-							$('.form').eq(1).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
+							$('.form').eq(1).children('.form-group').eq(2).children('em').html(data.list[i].carno);
 							$('.form').eq(1).children('.form-group').eq(3).children('em').html(data.list[i].phone);
 							$('.form').eq(1).children('.form-group').eq(4).children('em').html(data.list[i].id_card);
 							$('.form').eq(1).children('.form-group').eq(5).children('em').html(data.list[i].dutyname);
@@ -184,13 +184,6 @@
 							}
 						}
 					}
-<<<<<<< HEAD
-					
-					
-					 
-				
-=======
->>>>>>> 63a8c0252b4397c3d464afa08a832f4a14c364c4
 				}
 			}
 		});
