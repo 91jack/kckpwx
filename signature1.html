@@ -15,23 +15,20 @@
 		    height: 414px;
 		    transform-origin: center center 0px;
 		}*/
-		.js-signature {
-			width:100%;
-			height: 100%;
-			overflow-x:hidden;
-			overflow-y: hidden;
+		.scroll{
 			position:absolute; 
-		overflow:scroll; 
-		-webkit-overflow-scrolling: touch; 
-		top:0; 
-		left:0; 
-		bottom:0; 
-		right:0;
+			overflow:scroll; 
+			-webkit-overflow-scrolling: touch; 
+			top:0; 
+			left:0; 
+			bottom:0; 
+			right:0;
 		}
 	</style>
 </head>
 <body class="signature">
-	<!--顶部标题栏-->
+	<div class="scroll">
+		<!--顶部标题栏-->
 		<div class="header-top">
 			<div class="fl">
 				<a href="javascript:;" class="goback">
@@ -45,14 +42,16 @@
 			</h2>
 		</div>
 		
-	<div class="js-signature"
-	     data-width="375"
-	     data-height="400"
-	     data-border="1px solid #1ABC9C"
-	     data-background="#16A085"
-	     data-line-color="#000"
-	     data-auto-fit="true">
-	</div>      
+		<div class="js-signature"
+		     data-width="375"
+		     data-height="400"
+		     data-border="1px solid #1ABC9C"
+		     data-background="#16A085"
+		     data-line-color="#000"
+		     data-auto-fit="true">
+		</div>      
+	</div>
+	
 	
 
 
@@ -85,7 +84,7 @@ var overscroll = function(el) {
       evt._isScroller = true
   })
 }
-overscroll(document.querySelector('.js-signature'));
+overscroll(document.querySelector('.scroll'));
 document.body.addEventListener('touchmove', function(evt) {
   //In this case, the default behavior is scrolling the body, which
   //would result in an overflow.  Since we don't want that, we preventDefault.
