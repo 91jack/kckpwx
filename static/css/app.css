@@ -913,6 +913,17 @@
 	margin-left: -1.25rem;
 	margin-top: -1.125rem;
 }
+.upload-page .upload-content .uploadpicture .upload-msg.active{
+	position: absolute;
+	width: 2.5rem;
+	height: 2.25rem;
+	background: url('../images/main/bluecamare.png');
+	background-size: 100% 100%;
+	top: 50%;
+	left: 50%;
+	margin-left: -1.25rem;
+	margin-top: -1.125rem;
+}
 .upload-page .upload-content .uploadpicture .upload-msg input{
 	opacity: 0;
 }
