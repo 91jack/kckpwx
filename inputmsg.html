@@ -122,7 +122,7 @@
 						var str2 = '';
 						str1 =`<div class="form-group">
 											<a href="editmymsg.html">
-												<span>对方信息</span>
+												<span>本方信息</span>
 												<em class="fr"></em>
 											</a>
 										</div>`
@@ -140,7 +140,7 @@
 										+'</div>'	;
 						str2 = `<div class="form-group">
 											<a href="editothermsg.html">
-												<span>本方信息</span>
+												<span>对方信息</span>
 												<em class="fr"></em>
 											</a>
 										</div>`
@@ -157,8 +157,8 @@
 											+'<p class="fr">'+data.list[1].phone+'</p>'
 										+'</div>';
 										
-						$('.input-msg-content .form').eq(0).html(str2);
-						$('.input-msg-content .form').eq(1).html(str1);
+						$('.input-msg-content .form').eq(0).html(str1);
+						$('.input-msg-content .form').eq(1).html(str2);
 						
 						$('.inputmsg-btn').addClass('active');
 						$('.btn').addClass('active');

@@ -179,10 +179,10 @@
 					}
 					
 					if(data.list[i].type == 1){
-						$('.mymsg-content .form').eq(0).children('.form-group').eq(1).children('em').html(data.list[0].name);
-						$('.mymsg-content .form').eq(0).children('.form-group').eq(2).children('em').html(data.list[0].car_no);
-						$('.mymsg-content .form').eq(0).children('.form-group').eq(3).children('em').html(data.list[0].phone);
-						$('.mymsg-content .form').eq(0).children('.form-group').eq(5).children('em').html(data.list[0].dutyname);
+						$('.mymsg-content .form').eq(0).children('.form-group').eq(1).children('em').html(data.list[i].name);
+						$('.mymsg-content .form').eq(0).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
+						$('.mymsg-content .form').eq(0).children('.form-group').eq(3).children('em').html(data.list[i].phone);
+						$('.mymsg-content .form').eq(0).children('.form-group').eq(5).children('em').html(data.list[i].dutyname);
 						
 						if(data.list[i].dutycode == 1){
 							$('.mymsg-content .form').eq(0).children('.form-group').eq(5).children('em').css('background','#F43C3C');
@@ -194,10 +194,10 @@
 					}else{
 					
 						
-						$('.mymsg-content .form').eq(1).children('.form-group').eq(1).children('em').html(data.list[1].name);
-						$('.mymsg-content .form').eq(1).children('.form-group').eq(2).children('em').html(data.list[1].car_no);
-						$('.mymsg-content .form').eq(1).children('.form-group').eq(3).children('em').html(data.list[1].phone);
-						$('.mymsg-content .form').eq(1).children('.form-group').eq(5).children('em').html(data.list[1].dutyname);
+						$('.mymsg-content .form').eq(1).children('.form-group').eq(1).children('em').html(data.list[i].name);
+						$('.mymsg-content .form').eq(1).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
+						$('.mymsg-content .form').eq(1).children('.form-group').eq(3).children('em').html(data.list[i].phone);
+						$('.mymsg-content .form').eq(1).children('.form-group').eq(5).children('em').html(data.list[i].dutyname);
 						
 						
 						if(data.list[i].dutycode == 1){
