@@ -429,7 +429,28 @@
 
 	}
 	
-	
+	//判断页面跳转
+	var href = '';
+	$(function(){
+		$.ajax({
+			type:"post",
+			data: {
+				token: token,
+				accidentId: accidentId
+			},
+			url:getAccidentUserInfoUrl,
+			success:function(response){
+				console.log(response);
+				if (response.status==2000) {
+					if(response.list.length==2){
+						href = 'inputmsg2.html';
+					}else{
+						href = 'entrymsg.html';
+					}
+				}
+			}
+		});
+	})
 	//删除自己信息
 	$('.mymsg-btn .box').eq(0).children('a').eq(0).click(function(){
 		$('.exit-modal').show();
@@ -445,16 +466,15 @@
 					id:localStorage.getItem('accidentpersonId1')
 				},
 				success:function(res){
-					console.log(res);
 					if(res.status==2000){
-						//window.location.href = 'entrymsg.html';
-						
-						window.location.href = 'inputmsg2.html';
+						console.log(href)
+						window.location.href = href;
 					}
 				}
 			});
 		})
 	})
+	
 </script>
 
 </body>
