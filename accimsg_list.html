@@ -198,41 +198,18 @@
 	
 	// 点击完成 获取事故认证状态
 	$('.finished').on('click', function(){
-		$.ajax({
-		type:"post",
-		url:accidentAuthStatusUrl,
-		async:true,
-		data:{
-			accidentId:accidentId,
-			token:token
-		},
-		success:function(data){
-			console.log(data);
-			if (data.status==2000) {
-				$('.modal').show();
-				$('.modal-btn a').eq(1).click(function(){
-					window.location.href = 'index.html';
-				})
-				$('.modal-btn a').click(function(){
-					$('.modal').hide();
-				})
-				
-				
-			}
-		}
+		$('.modal').show();
+		$('.modal-btn a').eq(1).click(function(){
+			window.location.href = 'index.html';
+		})
+		$('.modal-btn a').click(function(){
+			$('.modal').hide();
+		})
 	});
+//	
 	
-	
-//	$('#goback').on('click', function(){
-//		$('.modal').show();
-//		$('.modal-btn a').eq(1).click(function(){
-//			window.location.href = 'index.html';
-//		})
-//		$('.modal-btn a').click(function(){
-//			$('.modal').hide();
-//		})
-//	})
-})
+
+//})
 </script>
 
 </body>

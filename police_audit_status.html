@@ -39,29 +39,29 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 // 交警在线定责
-//	setInterval(function(){
-//		$.ajax({
-//	    type: "POST",
-//	    url:  getFourInOneStatusUrl,
-//	  	data:{
-//				token: token,
-//				accidentId: accidentId
-//			},
-//	    success: function(data){
-//	   		
-//				if(data.status == 2000){
-//					if(data.obj == 0 ){
-//						// 审核失败
-//						window.location.href = 'police_audit_unpass.html';
-//					}else if(data.obj == 1){
-//						// 审核成功
-//						window.location.href = 'police_audit_pass.html';
-//					}
-//					
-//				}
-//	  	}
-//		})	
-//	},5000)
+	setInterval(function(){
+		$.ajax({
+	    type: "POST",
+	    url:  accidentAuthStatusUrl,//获取事故认证状态
+	  	data:{
+				token: token,
+				accidentId: accidentId
+			},
+	    success: function(data){
+	   		console.log(data)
+				if(data.status == 2000){
+					if(data.obj == 0 ){
+						// 审核失败
+						window.location.href = 'police_audit_unpass.html';
+					}else if(data.obj == 1){
+						// 审核成功
+						window.location.href = 'police_audit_pass.html';
+					}
+					
+				}
+	  	}
+		})	
+	},3000)
 
 
 
