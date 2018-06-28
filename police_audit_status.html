@@ -38,6 +38,7 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <!--当前页面交互-->
 <script type="text/javascript">
+// 交警在线定责
 //	setInterval(function(){
 //		$.ajax({
 //	    type: "POST",
@@ -51,10 +52,10 @@
 //				if(data.status == 2000){
 //					if(data.obj == 0 ){
 //						// 审核失败
-//						window.location.href = 'certificate_unpass.html';
+//						window.location.href = 'police_audit_unpass.html';
 //					}else if(data.obj == 1){
 //						// 审核成功
-//						window.location.href = 'certificate_pass.html';
+//						window.location.href = 'police_audit_pass.html';
 //					}
 //					
 //				}
@@ -62,9 +63,7 @@
 //		})	
 //	},5000)
 
-setTimeout(function(){
-	window.location.href = 'police_audit_pass.html';
-},2000)
+
 
 </script>
 
