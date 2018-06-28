@@ -210,28 +210,28 @@ Draw.prototype = {
     }
     this.context.clearRect(0, 0, width, height);
   },
-  upload(blob, url, success, failure) {
-    const formData = new FormData();
-    const xhr = new XMLHttpRequest();
-    xhr.withCredentials = true;
-    formData.append('image', blob, 'sign');
-
-    xhr.open('POST', url, true);
-    xhr.onload = () => {
-      if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
-        success(xhr.responseText);
-      } else {
-        failure();
-      }
-    };
-    xhr.onerror = (e) => {
-      if (typeof failure === 'function') {
-        failure(e);
-      } else {
-        console.log(`upload img error: ${e}`);
-      }
-    };
-    xhr.send(formData);
-  },
+//upload(blob, url, success, failure) {
+//  const formData = new FormData();
+//  const xhr = new XMLHttpRequest();
+//  xhr.withCredentials = true;
+//  formData.append('image', blob, 'sign');
+//
+//  xhr.open('POST', url, true);
+//  xhr.onload = () => {
+//    if ((xhr.status >= 200 && xhr.status < 300) || xhr.status === 304) {
+//      success(xhr.responseText);
+//    } else {
+//      failure();
+//    }
+//  };
+//  xhr.onerror = (e) => {
+//    if (typeof failure === 'function') {
+//      failure(e);
+//    } else {
+//      console.log(`upload img error: ${e}`);
+//    }
+//  };
+//  xhr.send(formData);
+//},
 };
 

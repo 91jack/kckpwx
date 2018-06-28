@@ -28,6 +28,7 @@
 canvas {
   flex: 1;
   cursor: crosshair;
+  border: 2px dashed #d3d3d3;
 }
 </style>
 </head>
@@ -148,13 +149,13 @@ var vm = new Vue({
       const blob = this.draw.dataURLtoBlob(image);
 
       const url = '';
-      const successCallback = (response) => {
-        console.log(response);
-      };
-      const failureCallback = (error) => {
-        console.log(error);
-      };
-      this.draw.upload(blob, url, successCallback, failureCallback);
+//    const successCallback = (response) => {
+//      console.log(response);
+//    };
+//    const failureCallback = (error) => {
+//      console.log(error);
+//    };
+//    this.draw.upload(blob, url, successCallback, failureCallback);
     },
   },
 });
