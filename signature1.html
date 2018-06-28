@@ -58,6 +58,13 @@
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 
+var touchTarget,
+    touchScreenX,
+    touchScreenY,
+    conditionParentUntilTrue,
+    disableScroll,
+    scrollMap;
+
 conditionParentUntilTrue = function (element, condition) {
     var outcome;
 
@@ -132,11 +139,7 @@ window.addEventListener('touchmove', function (e) {
     }
 });
 
-	
-	
-document.body.addEventListener('touchmove' , function(e){
-    e.preventDefault();
-})
+
 	
 $(document).on('ready', function() {
   $('.js-signature').jqSignature();
