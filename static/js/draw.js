@@ -16,7 +16,7 @@ function Draw(canvas, degree, config = {}) {
   height = height.replace('px', '');
  console.log(width,height)
  width = width-20;
- 
+ height = height -20;
   this.canvas = canvas;
   this.context = canvas.getContext('2d');
   this.width = width;
