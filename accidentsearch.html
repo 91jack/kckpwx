@@ -84,7 +84,7 @@ $(function(){
 						var linkhrefs ='';
 						var Len = data.list.length;
 						for (var i=0;i<Len;i++) {
-							linkhrefs = linkhref(data.list[i].status);
+							linkhrefs = linkhref(data.list[i].status,data.list[i].handle);
 							hrefinfos = hrefinfo(data.list[i].status);
 							console.log(linkhrefs)
 							if (data.list[i].statusStr=='未定责') {
@@ -134,7 +134,7 @@ $(function(){
 			});
 		}
 		
-		function linkhref(status){
+		function linkhref(status,handel){
 			var href = '';
 			switch(status){
 				case 1:
@@ -165,13 +165,18 @@ $(function(){
 				 	href = 'uploadpicture.html'
 				  break;
 				case 8:
-				  href = 'chooseaccident.html'
+					if(handel == 1){
+						href = 'chooseaccident.html'
+					}else{
+						href = 'msg_certification.html'
+					}
+				 
 				  break;
 				case 9:
 				 	href = 'msg_certification.html'
 				  break;
 				case 10:
-				  href = '11msg_certification.html'
+				  href = 'msg_certification.html'
 				  break;
 				case 11:
 				 	href = 'police_audit.html'
