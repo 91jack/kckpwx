@@ -49,6 +49,7 @@
 <script type="text/javascript">
 	var token =localStorage.getItem('token');
 	loadcard();
+	var driveLen = ''
 	
 	$('.info-list').on('click','.icon-select',function(){
 		$('.icon-select').css({
@@ -61,30 +62,8 @@
 		});
 	})
 	
-	$('.info-list').on('click','.del',function(){
-		$('.modal').show();
-		$('.modal').click(function(){
-			$(this).hide();
-		})
-		var driverId =$(this).attr('data-id');
-		$('.modal-btn a.active').click(function(){
-			console.log(driverId);
-			$.ajax({
-				type:"post",
-				url:removeBindingDriverUrl,
-				data:{
-					token:token,
-					driverId:driverId
-				},
-				success:function(data){
-					console.log(data);
-					if (data.status==2000) {
-						window.location.href='my_drivercard.html'
-					}
-				}
-			});
-		})
-	})
+	
+	
 	function loadcard(){
 		$.ajax({
 		type:"post",
@@ -95,6 +74,7 @@
 		success:function(data){
 			console.log(data)
 			var Len = data.list.length;
+			driveLen = data.list.length;
 			var listData =data.list;
 			if(data.status==2000){
 				var str='';
@@ -154,6 +134,35 @@
 			}
 		});
 	}
+	
+	$('.info-list').on('click','.del',function(){
+		$('.modal').show();
+		$('.modal').click(function(){
+			$(this).hide();
+		})
+		var driverId =$(this).attr('data-id');
+		$('.modal-btn a.active').click(function(){
+			console.log(driverId);
+			$.ajax({
+				type:"post",
+				url:removeBindingDriverUrl,
+				data:{
+					token:token,
+					driverId:driverId
+				},
+				success:function(data){
+					console.log(data);
+					if (data.status==2000) {
+						if (driveLen==1) {
+							window.location.href='user.html'
+						} else{
+							window.location.href='my_drivercard.html'
+						}
+					}
+				}
+			});
+		})
+	})
 </script>
 
 </body>

@@ -51,30 +51,8 @@
 		var token =localStorage.getItem('token');
 		loaddrive();
 		
-		$('.info-list').on('click','.del',function(){
-			$('.modal').show();
-			$('.modal').click(function(){
-				$(this).hide();
-			})
-			var carId = $(this).attr('data-carid');
-			$('.modal-btn a.active').click(function(){
-				console.log(carId);
-				$.ajax({
-					type:"post",
-					url:removeBindingCarUrl,
-					data:{
-						token:token,
-						carId:carId
-					},
-					success:function(data){
-						console.log(data);
-						if (data.status==2000) {
-							window.location.href="my_carinfo.html"
-						}
-					}
-				});
-			})
-		})
+		var carLen;
+		
 		
 		
 		function loaddrive(){
@@ -87,6 +65,7 @@
 			success:function(data){
 				console.log(data);
 				var Len = data.list.length;
+				carLen = data.list.length;
 				var listData =data.list;
 				if(data.status==2000){
 					console.log(listData[0])
@@ -147,6 +126,35 @@
 			}
 		});
 	}
+		
+		$('.info-list').on('click','.del',function(){
+			$('.modal').show();
+			$('.modal').click(function(){
+				$(this).hide();
+			})
+			var carId = $(this).attr('data-carid');
+			$('.modal-btn a.active').click(function(){
+				console.log(carId);
+				$.ajax({
+					type:"post",
+					url:removeBindingCarUrl,
+					data:{
+						token:token,
+						carId:carId
+					},
+					success:function(data){
+						console.log(data);
+						if (data.status==2000) {
+							if (carLen==1) {
+								window.location.href='user.html'
+							} else{
+								window.location.href="my_carinfo.html"
+							}
+						}
+					}
+				});
+			})
+		})
 </script>
 
 </body>
