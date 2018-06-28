@@ -24,12 +24,12 @@
 	<!--内容区-->
 	<div class="input-msg-content">
 		<form class="form">
-			<div class="form-group">
+			<!--<div class="form-group">
 				<a href="editmymsg.html">
 					<span>本方信息</span>
 					<em class="fr"></em>
 				</a>
-			</div>
+			</div>-->
 			
 			<!--<div class="form-group">
 				<span>姓名</span>
@@ -47,13 +47,13 @@
 		</form>
 		
 		<form class="form">
-			<div class="form-group">
+			<!--<div class="form-group">
 				<a href="editothermsg.html">
 					<span>对方信息</span>
 					<em class="fr"></em>
 				</a>
 			
-			</div>
+			</div>-->
 			
 		</form>
 	</div>
@@ -79,8 +79,8 @@
 	//获取当事人信息
 	
 	$(function(){
-		var token = localStorage.getItem('token');
-		var accidentId = localStorage.getItem('accidentId');
+//		var token = localStorage.getItem('token');
+//		var accidentId = localStorage.getItem('accidentId');
 		$.ajax({
 			type:"post",
 			data: {
@@ -156,8 +156,10 @@
 											+'<span>手机号码</span>'
 											+'<p class="fr">'+data.list[1].phone+'</p>'
 										+'</div>';
-						$('.input-msg-content .form').eq(0).html(str2);
-						$('.input-msg-content .form').eq(1).html(str1);
+										
+						$('.input-msg-content .form').eq(0).html(str1);
+						$('.input-msg-content .form').eq(1).html(str2);
+						
 						$('.inputmsg-btn').addClass('active');
 						$('.btn').addClass('active');
 						localStorage.setItem('accidentpersonId1',data.list[0].id);

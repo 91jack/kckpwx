@@ -1,0 +1,142 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>绑定手机号</title>
+  <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+ <link rel="stylesheet" href="static/css/app.css" />
+	
+</head>
+<body class="bg-f4 login-page">
+	<!--顶部标题栏-->
+	<div class="header-top">
+		<div class="fl">
+			<a href="javascript:;" class="goback">
+				<em class="icon-goback"></em>
+				<span class="goback-text">返回</span>
+			</a>
+		</div>
+		<h2 class="header-top-title">绑定手机号</h2>
+	</div>
+	
+	<div class="content-wrap">
+		<form class="form">
+			
+			<div class="form-group">
+				<span>手机号码</span>
+				<input type="text" placeholder="请输入手机号码" id="phone"/>
+			</div>
+			
+			<div class="form-group">
+				<span>验证码</span>
+				
+				<input type="text" placeholder="请输入验证码"   id="yzmcode" />
+				<a href="javascript:;" class="yzm-btn">获取验证码</a>
+			</div>
+			
+		</form>
+	</div>
+	
+	<div class="blue-btn-default">
+		<a href="javascript:;" id="login-btn">立即绑定</a>
+	</div>
+	
+	<div class="action-modal">
+		<p>您的手机号有误，请重新输入！</p>
+	</div>
+	
+	
+
+<script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	// 获取验证码
+	var on = true;
+	
+
+	$('.yzm-btn').on('click',function(){
+	if(on){
+		// 手机号验证
+		var phone = $('#phone').val();
+		var regphone = /^1\d{10}$/;
+		if(!regphone.test(phone)){
+			$('.action-modal').show()
+			$('.action-modal p').html('您的手机号有误，请重新输入！')
+			setTimeout(function(){
+				$('.action-modal').hide()
+			},500)	
+		}else{
+			// 倒计时60s
+			var time = 60;
+			var timer = null;
+			clearInterval(timer);
+		
+				// 获取验证码
+				$.ajax({
+			    type: "POST",
+			    url: yzcodeUrl,
+			  	data:{
+						phone:$('#phone').val(),
+						type:'4'
+					},
+			    success: function(data){
+			    	//alert(data)
+			   		//服务器返回响应，根据响应结果，分析是否登录成功；
+						if(data.status == 2000){
+							$('#yzmcode').val(data.obj)
+						}
+			    }
+				})
+				
+				timer = setInterval(function(){
+				time--;
+				$('.yzm-btn').html(time + '&nbsp;S');
+				$('.yzm-btn').css('background','#ccc');
+				// 按钮禁用
+				
+				if(time < 0){
+						$('.yzm-btn').html('重新发送');
+						$('.yzm-btn').css('background','red');
+						time = 0;
+						clearInterval(timer);
+						on = true;
+					}else{
+						on = false;
+					}
+				},1000)
+		}
+	}
+})
+
+
+// 登录
+$('#login-btn').on('click', function(){
+		// 
+		$.ajax({
+		    type: "POST",
+		    url: loginUrl,
+		  	data:{
+					loginType:'2',
+					phoneType:'2',
+					userName:$('#phone').val(),
+					yzcode: $('#yzmcode').val()
+				},
+		    success: function(data){
+		   		//服务器返回响应，根据响应结果，分析是否登录成功；
+				if(data.status == 2000){
+					// 登录后 将token存在本地
+					localStorage.setItem('token',data.obj);
+					window.location.href = 'index.html';
+				}else{
+					//console.log(data)
+				}
+		  }
+		})	
+})
+</script>
+
+</body>
+</html>

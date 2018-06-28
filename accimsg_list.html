@@ -66,7 +66,7 @@
 			
 		<form class="form">
 			<div class="form-group">
-				<em>本方信息</em>
+				<em>对方信息</em>
 			</div>
 			
 			<div class="form-group">
@@ -130,12 +130,12 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 获取事故人信息
-		if (localStorage.getItem('serachId')) {
-			var accidentId = localStorage.getItem('serachId');
-		}else{
-			var accidentId = localStorage.getItem('accidentId');
-		}
-		console.log(token)
+//		if (localStorage.getItem('serachId')) {
+//			var accidentId = localStorage.getItem('serachId');
+//		}else{
+//			var accidentId = localStorage.getItem('accidentId');
+//		}
+//		console.log(token)
 
 		$.ajax({
 			type:"post",
@@ -150,9 +150,9 @@
 				if (data.status==2000) {
 					for (var i=0;i<data.list.length;i++) {
 						if (data.list[i].dutycode=='5') {
-							$('.form').eq(i).children('.form-group').eq(5).children('em').css('background','#38ADFF');
-						} else if(data.list[i].dutycode=='1'){
 							$('.form').eq(i).children('.form-group').eq(5).children('em').css('background','#F43C3C');
+						} else if(data.list[i].dutycode=='1'){
+							$('.form').eq(i).children('.form-group').eq(5).children('em').css('background','#38ADFF');
 						}
 					}
 					$('.form').eq(0).children('.form-group').eq(1).children('em').html(data.list[1].name);

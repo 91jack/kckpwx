@@ -236,7 +236,7 @@
 		var name = $('#name').val();
 		var cardNo = $('#sfzcode').val();
 		//验证身份证号码位数
-		var regsfzcode = /^[\d]{16}|[\d]{18}$/
+		var regsfzcode = /^[\d]{15}|[\d]{18}$/
 		if(!regsfzcode.test(cardNo)){
 			cardNo='您的身份号码有误!'
 		}
@@ -269,7 +269,7 @@
 
 
 		$('.msg-modal.total .modal-btn').children('a').eq(1).click(function(){
-			$('.msg-modal.total .modal-btn').children('a').eq(1).click(function(){
+		
 			if(phone!='您的手机号码有误!'&&cardNo!='您的身份号码有误!'){
 				$.ajax({
 					type:"post",
@@ -297,7 +297,7 @@
 					});
 				}
 			})
-		})
+		
 	})
 
 

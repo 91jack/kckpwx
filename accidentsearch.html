@@ -48,14 +48,6 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 $(function(){
-		
-//
-//	if(!token){
-//		// 如果token不存在 则跳转至登录页面
-//		window.location.href = 'login.html';
-//	}
-//		
-		
 		var num=1;
 	// tab页的跳转
 		loadmsg(2);
@@ -96,7 +88,7 @@ $(function(){
 							hrefinfos = hrefinfo(data.list[i].status);
 							console.log(linkhrefs)
 							if (data.list[i].statusStr=='未定责') {
-								str+='<div class="tab-content-item clearfix">'
+								str+='<div class="tab-content-item clearfix" data-accidentId="'+data.list[i].id+'" data-href="'+ linkhrefs +'">'
 												+'<ul class="fl">'
 													+'<li><span>事故编号：</span><span class="accident-info">'+data.list[i].id+'</span></li>'
 													+'<li><span>事故时间：</span><span class="accident-info">'+data.list[i].datetime+'</span></li>'
@@ -109,7 +101,7 @@ $(function(){
 												+'</div>'	
 											+'</div>'
 							}else{
-								str+='<div class="tab-content-item clearfix" data="'+data.list[i].id+'">'
+								str+='<div class="tab-content-item clearfix" data-accidentId="'+data.list[i].id+'">'
 												+'<ul class="fl">'
 													+'<li><span>事故编号：</span><span class="accident-info">'+data.list[i].id+'</span></li>'
 													+'<li><span>事故时间：</span><span class="accident-info">'+data.list[i].datetime+'</span></li>'
@@ -125,13 +117,15 @@ $(function(){
 						$('.tab-content.active').html('');
 						$('.tab-content.active').html(str);
 						
-						$('.returnto').on('click', function(){
+
+						
+						$('#undeal .tab-content-item').on('click', function(){
 							localStorage.setItem('accidentId',$(this).attr('data-accidentId'));
 							window.location.href = $(this).attr('data-href')
 						})
+						
 						$('#deal .tab-content-item').on('click',function(){
-							localStorage.setItem('serachId',$(this).attr('data'));
-							console.log(localStorage.getItem('serachId'));
+							localStorage.setItem('accidentId',$(this).attr('data-accidentId'));
 							window.location.href='accimsg_list.html';
 						})
 					}
