@@ -15,11 +15,15 @@
 $('.goback').on('click', function(){
 	window.history.back();
 })
+
 $('#goback').on('click', function(){
-	window.history.href='index.html';
+	
 	$('.exit-modal').show();
 	$('.exit-modal a').eq(0).on('click',function(){
 		$('.exit-modal').hide();
+	})
+	$('.exit-modal a').eq(1).on('click',function(){
+		window.location.href='index.html';
 	})
 })
 

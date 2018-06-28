@@ -12,7 +12,7 @@
 	<!--顶部标题栏-->
 	<div class="header-top">
 		<div class="fl">
-			<a href="index.html" class="goback">
+			<a href="javascript:;"  id="goback">
 				<em class="icon-goback"></em>
 				<span class="goback-text">返回</span>
 			</a>
@@ -124,6 +124,15 @@
 	</div>
 	<div class="footer-cover"></div>
 	
+	
+	<div class="exit-modal">
+		<div class="exit-cont">
+			<p>亲，你是否要暂时退出进程！</p>
+			<a href="javascript:;">取消</a>
+			<a href="index.html" class="active">确定</a>
+		</div>
+	</div>
+	
 <script src="static/js/jquery-3.1.1.min.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
@@ -149,11 +158,12 @@
 				console.log(data);
 				if (data.status==2000) {
 					for (var i=0;i<data.list.length;i++) {
-						if (data.list[i].dutycode=='5') {
-							$('.form').eq(i).children('.form-group').eq(5).children('em').css('background','#38ADFF');
-						} else if(data.list[i].dutycode=='1'){
-							$('.form').eq(i).children('.form-group').eq(5).children('em').css('background','#F43C3C');
-						}
+							
+							if (data.list[i].dutycode=='5') {
+								$('.form').eq(i).children('.form-group').eq(5).children('em').css('background','#38ADFF');
+							} else if(data.list[i].dutycode=='1'){
+								$('.form').eq(i).children('.form-group').eq(5).children('em').css('background','#F43C3C');
+							}
 						
 						if(data.list[i].type == 1){
 							$('.form').eq(0).children('.form-group').eq(1).children('em').html(data.list[i].name);
@@ -162,6 +172,9 @@
 							$('.form').eq(0).children('.form-group').eq(4).children('em').html(data.list[i].id_card);
 							$('.form').eq(0).children('.form-group').eq(5).children('em').html(data.list[i].dutyname);
 							$('.form').eq(0).children('.form-group').eq(6).children('em').html(data.list[i].insurancename);
+							
+							
+							
 						}else{
 							$('.form').eq(1).children('.form-group').eq(1).children('em').html(data.list[i].name);
 							$('.form').eq(1).children('.form-group').eq(2).children('em').html(data.list[i].car_no);
@@ -208,7 +221,18 @@
 			}
 		}
 	});
-	})
+	
+	
+//	$('#goback').on('click', function(){
+//		$('.modal').show();
+//		$('.modal-btn a').eq(1).click(function(){
+//			window.location.href = 'index.html';
+//		})
+//		$('.modal-btn a').click(function(){
+//			$('.modal').hide();
+//		})
+//	})
+})
 </script>
 
 </body>
