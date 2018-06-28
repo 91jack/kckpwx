@@ -1602,8 +1602,14 @@
 }
 .basic-msg-page .basic-msg-content .form .form-group em{
 	margin-right: 1rem;
+	text-align: right;
 	font-size: 1.25rem;
 	color: #333;
+	display:block;
+	width:18.75rem;
+	word-break:keep-all;
+	white-space:nowrap;
+	overflow:hidden;
 }
 .basic-msg-page .basic-msg-content .form .form-group span{
 	font-size: 1.25rem;

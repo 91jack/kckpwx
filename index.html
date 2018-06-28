@@ -88,7 +88,10 @@ $(function(){
 //		// 如果token不存在 则跳转至登录页面
 //		window.location.href = 'login.html';
 //	}
-	
+	localStorage.removeItem('signatureMine1');
+	localStorage.removeItem('signatureMine2');
+	localStorage.removeItem('code1');
+	localStorage.removeItem('code2');
 	// 清除缓存
 	$('#clear').on('click',function(){
 		 localStorage.clear(); 
