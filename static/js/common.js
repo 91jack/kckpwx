@@ -21,7 +21,6 @@ $('#goback').on('click', function(){
 	if(handleType == 2){
 		window.location.href='chooseaccident.html';
 	}else{
-		
 		$('.exit-modal').show();
 		$('.exit-modal a').eq(0).on('click',function(){
 			$('.exit-modal').hide();
