@@ -441,13 +441,15 @@
 				type:"post",
 				url:removeAccidentUserUrl,
 				data:{
-					token:localStorage.getItem('token'),
+					token:token,
 					id:localStorage.getItem('accidentpersonId1')
 				},
 				success:function(res){
 					console.log(res);
 					if(res.status==2000){
-						window.location.href = 'entrymsg.html';
+						//window.location.href = 'entrymsg.html';
+						
+						window.location.href = 'inputmsg2.html';
 					}
 				}
 			});

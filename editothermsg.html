@@ -321,13 +321,13 @@
 				type:"post",
 				url:removeAccidentUserUrl,
 				data:{
-					token:localStorage.getItem('token'),
-					id:localStorage.getItem('accidentpersonId1')
+					token:token,
+					id:localStorage.getItem('accidentpersonId2')
 				},
 				success:function(res){
 					console.log(res);
 					if(res.status==2000){
-						window.location.href = 'inputmsg2.html';
+						window.location.href = 'inputmsg.html';
 					}
 				}
 			});

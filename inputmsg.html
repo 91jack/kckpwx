@@ -120,50 +120,64 @@
 					}else if(Len==2){
 						var str1 = '';
 						var str2 = '';
-						str1 =`<div class="form-group">
-											<a href="editmymsg.html">
-												<span>本方信息</span>
-												<em class="fr"></em>
-											</a>
-										</div>`
-										+'<div class="form-group">'
-											+'<span>姓名</span>'
-											+'<p class="fr">'+data.list[0].name+'</p>'
-										+'</div>'
-										+'<div class="form-group">'
-											+'<span>号牌号码</span>'
-											+'<p class="fr">'+data.list[0].carno+'</p>'
-										+'</div>'
-										+'<div class="form-group">'
-											+'<span>手机号码</span>'
-											+'<p class="fr">'+data.list[0].phone+'</p>'
-										+'</div>'	;
-						str2 = `<div class="form-group">
-											<a href="editothermsg.html">
-												<span>对方信息</span>
-												<em class="fr"></em>
-											</a>
-										</div>`
-										+'<div class="form-group">'
-											+'<span>姓名</span>'
-											+'<p class="fr">'+data.list[1].name+'</p>'
-										+'</div>'
-										+'<div class="form-group">'
-											+'<span>号牌号码</span>'
-											+'<p class="fr">'+data.list[1].carno+'</p>'
-										+'</div>'
-										+'<div class="form-group">'
-											+'<span>手机号码</span>'
-											+'<p class="fr">'+data.list[1].phone+'</p>'
-										+'</div>';
+						for(var i=0; i< Len; i++){
+							if(data.list[i].type == 1){
+								
+								str1 =`<div class="form-group">
+													<a href="editmymsg.html">
+														<span>本方信息</span>
+														<em class="fr"></em>
+													</a>
+												</div>`
+												+'<div class="form-group">'
+													+'<span>姓名</span>'
+													+'<p class="fr">'+data.list[i].name+'</p>'
+												+'</div>'
+												+'<div class="form-group">'
+													+'<span>号牌号码</span>'
+													+'<p class="fr">'+data.list[i].carno+'</p>'
+												+'</div>'
+												+'<div class="form-group">'
+													+'<span>手机号码</span>'
+													+'<p class="fr">'+data.list[i].phone+'</p>'
+												+'</div>'	;
+												
+									localStorage.setItem('accidentpersonId1',data.list[i].id);				
+							}else {
+								
+								str2 = `<div class="form-group">
+													<a href="editothermsg.html">
+														<span>对方信息</span>
+														<em class="fr"></em>
+													</a>
+												</div>`
+												+'<div class="form-group">'
+													+'<span>姓名</span>'
+													+'<p class="fr">'+data.list[i].name+'</p>'
+												+'</div>'
+												+'<div class="form-group">'
+													+'<span>号牌号码</span>'
+													+'<p class="fr">'+data.list[i].carno+'</p>'
+												+'</div>'
+												+'<div class="form-group">'
+													+'<span>手机号码</span>'
+													+'<p class="fr">'+data.list[i].phone+'</p>'
+												+'</div>';
+												
+								localStorage.setItem('accidentpersonId2',data.list[i].id);
+							}
+											
+						}
 										
 						$('.input-msg-content .form').eq(0).html(str1);
 						$('.input-msg-content .form').eq(1).html(str2);
 						
 						$('.inputmsg-btn').addClass('active');
 						$('.btn').addClass('active');
-						localStorage.setItem('accidentpersonId1',data.list[0].id);
-						localStorage.setItem('accidentpersonId2',data.list[1].id);
+						
+					
+						
+						
 						$('#finished').click(function(){
 							$.ajax({
 								type:"post",

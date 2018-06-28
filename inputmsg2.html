@@ -95,6 +95,11 @@
 				console.log(data)
 				if (data.status==2000) {
 					var Len = data.list.length;
+					
+					
+						
+					
+					
 					if(Len==1){
 						var str1 = '';
 						str1 =`<div class="form-group">
@@ -184,6 +189,8 @@
 							})
 						})
 					}
+				}else{
+					window.location.href = 'entrymsg.html'
 				}
 			}
 		});
