@@ -17,14 +17,19 @@ $('.goback').on('click', function(){
 })
 
 $('#goback').on('click', function(){
-	
-	$('.exit-modal').show();
-	$('.exit-modal a').eq(0).on('click',function(){
-		$('.exit-modal').hide();
-	})
-	$('.exit-modal a').eq(1).on('click',function(){
-		window.location.href='index.html';
-	})
+	var handleType = localStorage.getItem('handleType');
+	if(handleType == 2){
+		window.location.href='chooseaccident.html';
+	}else{
+		
+		$('.exit-modal').show();
+		$('.exit-modal a').eq(0).on('click',function(){
+			$('.exit-modal').hide();
+		})
+		$('.exit-modal a').eq(1).on('click',function(){
+			window.location.href='index.html';
+		})
+	}
 })
 
 // 判断是否存在token

@@ -1,0 +1,195 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>签字</title>
+  <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
+ <link rel="stylesheet" href="static/css/app.css" />
+	<style type="text/css">
+		/*.js-signature{
+			transform: rotate(90deg) translate(161px, 161px);
+		    width: 736px;
+		    height: 414px;
+		    transform-origin: center center 0px;
+		}*/
+		.signature {
+			width:100%;
+			height: 100%;
+			overflow-x:hidden;
+			overflow-y: hidden;
+		}
+	</style>
+</head>
+<body class="signature">
+	<!--顶部标题栏-->
+		<div class="header-top">
+			<div class="fl">
+				<a href="javascript:;" class="goback">
+					<em class="icon-goback"></em>
+					<span class="goback-text">返回</span>
+				</a>
+			</div>
+			<h2 class="header-top-title">
+				<a class="reset" href="javascript:;" onclick="clearCanvas();">重置</a>
+				<a class="sure" href="javascript:;" onclick="saveSignature();">确定</a>
+			</h2>
+		</div>
+		
+	<div class="js-signature"
+	     data-width="375"
+	     data-height="400"
+	     data-border="1px solid #1ABC9C"
+	     data-background="#16A085"
+	     data-line-color="#000"
+	     data-auto-fit="true">
+	</div>      
+	
+	<!--<button id="clearBtn" onclick="clearCanvas();">Clear Canvas</button>
+	<button id="saveBtn" onclick="saveSignature();" disabled>Save Signature</button>    -->
+	
+	
+	<!--<div id="signature" style="background: #159957;"></div>    -->    
+
+<script src="static/js/jquery-1.11.0.min.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/jq-signature.js"  type="text/javascript" charset="utf-8"></script>
+<script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
+<script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+
+conditionParentUntilTrue = function (element, condition) {
+    var outcome;
+
+    if (element === document.body) {
+        return false;
+    }
+
+    outcome = condition(element);
+
+    if (outcome) {
+        return true;
+    } else {
+        return conditionParentUntilTrue(element.parentNode, condition);
+    }
+};
+
+window.addEventListener('touchstart', function (e) {
+    touchTarget = e.targetTouches[0].target;
+    // a boolean map indicating if the element (or either of element parents, excluding the document.body) can be scrolled to the X direction.
+    scrollMap = {}
+
+    scrollMap.left = conditionParentUntilTrue(touchTarget, function (element) {
+        return element.scrollLeft > 0;
+    });
+
+    scrollMap.top = conditionParentUntilTrue(touchTarget, function (element) {
+        return element.scrollTop > 0;
+    });
+
+    scrollMap.right = conditionParentUntilTrue(touchTarget, function (element) {
+        return element.scrollWidth > element.clientWidth &&
+               element.scrollWidth - element.clientWidth > element.scrollLeft;
+    });
+
+    scrollMap.bottom =conditionParentUntilTrue(touchTarget, function (element) {
+        return element.scrollHeight > element.clientHeight &&
+               element.scrollHeight - element.clientHeight > element.scrollTop;
+    });
+
+    touchScreenX = e.targetTouches[0].screenX;
+    touchScreenY = e.targetTouches[0].screenY;
+    disableScroll = false;
+});
+
+window.addEventListener('touchmove', function (e) {
+    var moveScreenX,
+        moveScreenY;
+
+    if (disableScroll) {
+        e.preventDefault();
+
+        return;
+    }
+
+    moveScreenX = e.targetTouches[0].screenX;
+    moveScreenY = e.targetTouches[0].screenY;
+
+    if (
+        moveScreenX > touchScreenX && scrollMap.left ||
+        moveScreenY < touchScreenY && scrollMap.bottom ||
+        moveScreenX < touchScreenX && scrollMap.right ||
+        moveScreenY > touchScreenY && scrollMap.top
+    ) {
+        // You are scrolling either the element or its parent.
+        // This will not affect document.body scroll.
+    } else {
+        // This will affect document.body scroll.
+
+        e.preventDefault();
+
+        disableScroll = true;
+    }
+});
+
+	
+	
+document.body.addEventListener('touchmove' , function(e){
+    e.preventDefault();
+})
+	
+$(document).on('ready', function() {
+  $('.js-signature').jqSignature();
+  var deviceWidth = document.documentElement.clientWidth;
+  $('.js-signature').css('width',deviceWidth)
+  
+});
+ 
+function clearCanvas() {
+  $('#signature').html('<p><em>Your signature will appear here when you click "Save Signature"</em></p>');
+  $('.js-signature').jqSignature('clearCanvas');
+  $('#saveBtn').attr('disabled', true);
+}
+ 
+function saveSignature() {
+  $('#signature').empty();
+  var dataUrl = $('.js-signature').jqSignature('getDataURL');
+//var img = $('<img>').attr('src', dataUrl);
+//$('#signature').append($('<p>').text("Here's your signature:"));
+//$('#signature').append(img);
+//console.log(dataUrl)
+  $.ajax({
+	type:"post",
+	url:base64ImgUploadUrl,
+	data: {
+		imgfile: dataUrl,
+		accidentId: accidentId,
+	},
+    dataType: "json",
+	success: function(data){
+		if(data.status == 2000){
+
+			console.log(data)
+			// 将图片存储到本地
+			var url = location.search;
+			var userid = url.slice(6);
+			console.log(userid)
+			if(userid == 1){
+				localStorage.setItem('signatureMine1',data.list[0] );
+				window.location.href = 'msg_certification.html';
+			}else if(userid == 2){
+				localStorage.setItem('signatureMine2',data.list[0] );
+				window.location.href = 'msg_certification.html';
+			}
+		}
+	}
+});
+}
+ 
+$('.js-signature').on('jq.signature.changed', function() {
+  $('#saveBtn').attr('disabled', false);
+});                
+</script>
+
+</body>
+</html>
