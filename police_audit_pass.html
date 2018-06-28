@@ -41,9 +41,29 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 	// 
-	setTimeout(function(){
-		window.location.href = 'accimsg_list.html'
-	}, 2000)
+	var token = localStorage.getItem('token');
+	var accidentId = localStorage.getItem('accidentId');
+	var str = '';
+	$(function(){
+		$.ajax({
+			type:"post",
+			url:getAccidentUserInfoUrl,
+			data:{
+				token:token,
+				accidentId:accidentId
+			},
+			success:function(data){
+				console.log(data);
+				if (data.status==2000) {
+					str+=data.list[1].name+data.list[1].dutyname+','+data.list[0].name+data.list[0].dutyname;
+					$('.pla').html(str)
+					setTimeout(function(){
+						window.location.href = 'accimsg_list.html'
+					}, 2000)
+				}
+			}
+		});
+	})
 </script>
 
 </body>
