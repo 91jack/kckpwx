@@ -1862,5 +1862,21 @@ canvas {
 	background-size: 100% 100%;*/
 	z-index: 10000;
 }
-
-
+/*挪车页面movecar.html*/
+.movecar-content img{
+	width: 21.958333rem;
+	height: 13.666666rem;
+	margin-top: 5.25rem;
+	margin-left: 3.166666rem;
+} 
+.movecar-content p{
+	margin: auto;
+	text-align: center;
+	width: 24.25rem;
+	margin-top: 0.833333rem;
+	font-size: 1.166666rem;
+	color: #333;
+}
+.movecar-btn{
+	margin-top: 8.083333rem;
+}
