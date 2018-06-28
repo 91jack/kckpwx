@@ -4,26 +4,43 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
   <title>签字</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  <link rel="stylesheet" href="static/css/app.css" />
-	<style type="text/css">
-		/*.js-signature{
-			transform: rotate(90deg) translate(161px, 161px);
-		    width: 736px;
-		    height: 414px;
-		    transform-origin: center center 0px;
-		}*/
-		.signature {
-			width:100%;
-			height: 100%;
-			overflow-x:hidden;
-			overflow-y: hidden;
-		}
-	</style>
+	<style>
+#canvasBox {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+}
+.header-top {
+
+}
+/*.greet {
+  padding: 20px;
+  font-size: 20px;
+  user-select: none;
+}
+.greet a {
+  cursor: pointer;
+}
+.greet select {
+  font-size: 18px;
+}*/
+canvas {
+  flex: 1;
+  cursor: crosshair;
+  border: 10px dashed #d3d3d3;
+}
+</style>
 </head>
 <body class="signature">
-	<!--顶部标题栏-->
+	
+		
+	 <div id="canvasBox" :style="getHorizontalStyle">
+	 	<!--顶部标题栏-->
 		<div class="header-top">
 			<div class="fl">
 				<a href="javascript:;" class="goback">
@@ -32,97 +49,145 @@
 				</a>
 			</div>
 			<h2 class="header-top-title">
-				<a class="reset" href="javascript:;" onclick="clearCanvas();">重置</a>
-				<a class="sure" href="javascript:;" onclick="saveSignature();">确定</a>
+				<a class="reset" @touchstart="clear" @mousedown="clear">清屏</a>
+				<a class="sure" @touchstart="download" @mousedown="save">确定</a>
 			</h2>
 		</div>
 		
-	<div class="js-signature"
-	     data-width="375"
-	     data-height="400"
-	     data-border="1px solid #1ABC9C"
-	     data-background="#16A085"
-	     data-line-color="#000"
-	     data-auto-fit="true">
-	</div>      
+    <!--<div class="greet">
+      <select v-model="degree">
+        <option v-for="item in scope" :value="item.value">{{item.title}}</option>
+      </select>
+    </div>-->
+    <canvas></canvas>
+  </div>
 	
-	<!--<button id="clearBtn" onclick="clearCanvas();">Clear Canvas</button>
-	<button id="saveBtn" onclick="saveSignature();" disabled>Save Signature</button>    -->
-	
-	
-	<!--<div id="signature" style="background: #159957;"></div>    -->    
+
 
 <script src="static/js/jquery-1.11.0.min.js"  type="text/javascript" charset="utf-8"></script>
-<script src="static/js/jq-signature.js"  type="text/javascript" charset="utf-8"></script>
 <script src="static/js/config.js" type="text/javascript" charset="utf-8"></script>
 <script src="static/js/common.js"  type="text/javascript" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script src="static/js/draw.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
+var vm = new Vue({
+  el: '#canvasBox',
+  data() {
+    return {
+     // msg: 'Just use canvas to draw',
+      degree: 90, // 屏幕整体旋转的角度, 可取 -90,90,180等值
+      scope: [
+        {
+          value: 0,
+          title: '正常',
+        },
+        {
+          value: 90,
+          title: '顺时针旋转90°',
+        },
+        {
+          value: 180,
+          title: '顺时针旋转180°',
+        },
+        {
+          value: -90,
+          title: '逆时针旋转90°',
+        },
+      ],
+    };
+  },
+  components: {
+    Draw,
+  },
+  mounted() {
+    this.canvasBox = document.getElementById('canvasBox');
+    this.initCanvas();
+  },
+  computed: {
+    getHorizontalStyle() {
+      const d = document;
+      const w = window.innerWidth || d.documentElement.clientWidth || d.body.clientWidth;
+      const h = window.innerHeight || d.documentElement.clientHeight || d.body.clientHeight;
+      let length = (h - w) / 2;
+      let width = w;
+      let height = h;
 
-document.body.addEventListener('touchmove', function(evt) {
-  //In this case, the default behavior is scrolling the body, which
-  //would result in an overflow.  Since we don't want that, we preventDefault.
-  if(!evt._isScroller) {
-    evt.preventDefault();
-  }
+      switch (this.degree) {
+        case -90:
+          length = -length;
+        case 90:
+          width = h;
+          height = w;
+          break;
+        default:
+          length = 0;
+      }
+      if (this.canvasBox) {
+        this.canvasBox.removeChild(document.querySelector('canvas'));
+        this.canvasBox.appendChild(document.createElement('canvas'));
+        setTimeout(() => {
+          this.initCanvas();
+        }, 200);
+      }
+      return {
+        transform: `rotate(${this.degree}deg) translate(${length}px,${length}px)`,
+        width: `${width}px`,
+        height: `${height}px`,
+        transformOrigin: 'center center',
+      };
+    },
+  },
+  methods: {
+    initCanvas() {
+      const canvas = document.querySelector('canvas');
+      this.draw = new Draw(canvas, -this.degree);
+    },
+    clear() {
+      this.draw.clear();
+    },
+    download() {
+      this.draw.downloadPNGImage(this.draw.getPNGImage());
+    },
+    save() {
+      const image = this.draw.getPNGImage();
+      console.log(image)
+      $.ajax({
+				type:"post",
+				url:base64ImgUploadUrl,
+				data: {
+					imgfile: image,
+					accidentId: accidentId,
+				},
+			    dataType: "json",
+				success: function(data){
+					if(data.status == 2000){
+			
+						console.log(data)
+						// 将图片存储到本地
+						var url = location.search;
+						var userid = url.slice(6);
+						console.log(userid)
+						if(userid == 1){
+							localStorage.setItem('signatureMine1',data.list[0] );
+							window.location.href = 'msg_certification.html';
+						}else if(userid == 2){
+							localStorage.setItem('signatureMine2',data.list[0] );
+							window.location.href = 'msg_certification.html';
+						}
+					}
+				}
+			});
+//    const url = '';
+//    const successCallback = (response) => {
+//      console.log(response);
+//    };
+//    const failureCallback = (error) => {
+//      console.log(error);
+//    };
+//    this.draw.upload(blob, url, successCallback, failureCallback);
+    },
+  },
 });
-
-	
-	
-document.body.addEventListener('touchmove' , function(e){
-    e.preventDefault();
-})
-	
-$(document).on('ready', function() {
-  $('.js-signature').jqSignature();
-  var deviceWidth = document.documentElement.clientWidth;
-  $('.js-signature').css('width',deviceWidth)
-  
-});
- 
-function clearCanvas() {
-  $('#signature').html('<p><em>Your signature will appear here when you click "Save Signature"</em></p>');
-  $('.js-signature').jqSignature('clearCanvas');
-  $('#saveBtn').attr('disabled', true);
-}
- 
-function saveSignature() {
-  $('#signature').empty();
-  var dataUrl = $('.js-signature').jqSignature('getDataURL');
-//var img = $('<img>').attr('src', dataUrl);
-//$('#signature').append($('<p>').text("Here's your signature:"));
-//$('#signature').append(img);
-//console.log(dataUrl)
-  $.ajax({
-	type:"post",
-	url:base64ImgUploadUrl,
-	data: {
-		imgfile: dataUrl,
-		accidentId: accidentId,
-	},
-    dataType: "json",
-	success: function(data){
-		if(data.status == 2000){
-
-			console.log(data)
-			// 将图片存储到本地
-			var url = location.search;
-			var userid = url.slice(6);
-			console.log(userid)
-			if(userid == 1){
-				localStorage.setItem('signatureMine1',data.list[0] );
-				window.location.href = 'msg_certification.html';
-			}else if(userid == 2){
-				localStorage.setItem('signatureMine2',data.list[0] );
-				window.location.href = 'msg_certification.html';
-			}
-		}
-	}
-});
-}
- 
-$('.js-signature').on('jq.signature.changed', function() {
-  $('#saveBtn').attr('disabled', false);
-});                
 </script>
 
 </body>
