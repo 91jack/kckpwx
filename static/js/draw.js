@@ -10,9 +10,13 @@ function Draw(canvas, degree, config = {}) {
     return;
   }
   let { width, height } = window.getComputedStyle(canvas, null);
+  console.log(width,height)
+  
   width = width.replace('px', '');
   height = height.replace('px', '');
-
+ console.log(width,height)
+ width = width-20;
+ height = height -20;
   this.canvas = canvas;
   this.context = canvas.getContext('2d');
   this.width = width;
@@ -32,7 +36,7 @@ function Draw(canvas, degree, config = {}) {
     canvas.height = height;
   }
 
-  context.lineWidth = 6;
+  context.lineWidth =3;
   context.strokeStyle = 'black';
   context.lineCap = 'round';
   context.lineJoin = 'round';

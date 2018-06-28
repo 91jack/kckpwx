@@ -50,7 +50,7 @@ canvas {
 			</div>
 			<h2 class="header-top-title">
 				<a class="reset" @touchstart="clear" @mousedown="clear">清屏</a>
-				<a class="sure" @touchstart="download" @mousedown="download">确定</a>
+				<a class="sure" @touchstart="download" @mousedown="save">确定</a>
 			</h2>
 		</div>
 		
@@ -148,11 +148,36 @@ var vm = new Vue({
     download() {
       this.draw.downloadPNGImage(this.draw.getPNGImage());
     },
-    upload() {
+    save() {
       const image = this.draw.getPNGImage();
-      const blob = this.draw.dataURLtoBlob(image);
-
-      const url = '';
+      console.log(image)
+      $.ajax({
+				type:"post",
+				url:base64ImgUploadUrl,
+				data: {
+					imgfile: image,
+					accidentId: accidentId,
+				},
+			    dataType: "json",
+				success: function(data){
+					if(data.status == 2000){
+			
+						console.log(data)
+						// 将图片存储到本地
+						var url = location.search;
+						var userid = url.slice(6);
+						console.log(userid)
+						if(userid == 1){
+							localStorage.setItem('signatureMine1',data.list[0] );
+							window.location.href = 'msg_certification.html';
+						}else if(userid == 2){
+							localStorage.setItem('signatureMine2',data.list[0] );
+							window.location.href = 'msg_certification.html';
+						}
+					}
+				}
+			});
+//    const url = '';
 //    const successCallback = (response) => {
 //      console.log(response);
 //    };

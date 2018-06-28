@@ -67,20 +67,16 @@ text-decoration: none;
 	padding:  0 1rem;
 	background: #fff;
 }
-.header-top .goback {
+.header-top .goback,
+.header-top #goback,
+.header-top #goprev {
 	display: block;
 	height: 3.666666rem;
 	line-height: 3.666666rem;
 	position: relative;
 	z-index: 999;
 }
-.header-top #goback {
-	display: block;
-	height: 3.666666rem;
-	line-height: 3.666666rem;
-	position: relative;
-	z-index: 999;
-}
+
 .header-top .icon-goback {
 	display: inline-block;
 	width: 0.833333rem;
