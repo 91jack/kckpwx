@@ -90,8 +90,14 @@
 
 /*修改手机号 editpw.html
  ------------------------------*/
+.editphone-page .form-group span{
+	margin-left: 0;
+}
 .editphone-page .form-group em {
 	display: inline-block;
+}
+.editphone-page .form-group #yzmcode{
+	margin-left: 1.666666rem;
 }
 .editphone-page .icon-phone {
 	display: inline-block;
@@ -1443,22 +1449,6 @@
 }
 
 /*短信认证msg_certificati.html*/
-/*.msg-certificati-page .police{
-	min-height: 10.833333rem;
-}
-.msg-certificati-page .police .police-content li{
-	font-size: 1.166666rem;
-	color: #333;
-	height: 1.166666rem;
-	line-height: 1.166666rem;
-	margin-bottom: 1.25rem;
-}
-.msg-certificati-page .police .police-content li:last-child{
-	min-height: 1.166666rem;
-}
-.msg-certificati-page .police .police-content li:first-child{
-	margin-top: 1rem;
-}*/
 .msg-certificati-page .police-msg{
 	border-bottom: 0.041666rem solid #F56954;
 }
@@ -1480,8 +1470,19 @@
 	margin-bottom: 1.25rem;
 	color: #333;
 }
+.msg-certificati-page .police-msg .police-content li:nth-child{
+	margin-bottom: 0.958333rem;
+}
 .msg-certificati-page .police-msg .police-content li:first-child{
 	margin-top: 1rem;
+}
+.msg-certificati-page .police-msg .police-content ul li:last-child span{
+	line-height: 1.75rem;
+}
+.msg-certificati-page .police-msg .police-content ul li:last-child p{
+	width: 16.25rem;
+	font-size: 1.166666rem;
+	line-height: 1.75rem;
 }
 
 .msg-certification-content .form{
@@ -1861,3 +1862,5 @@ canvas {
 	background-size: 100% 100%;*/
 	z-index: 10000;
 }
+
+

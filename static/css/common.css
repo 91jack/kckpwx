@@ -535,6 +535,8 @@ input[type=file] {
 	text-align: center;
 	height: 7.041666rem;
 	line-height: 7.041666rem;
+	font-size: 1.25rem;
+	color: #333;
 	border-bottom: 1px solid #f4f4f4;
 }
 .exit-modal a{

@@ -28,7 +28,10 @@
 				<li>事故时间：2017-01-11 17：30</li>
 				<li>事故地点：渝北区</li>
 				<li>事故天气：雪</li>
-				<li>事故情形：</li>
+				<li class="clearfix">
+					<span class="fl">事故情形：</span>
+					<p class="fr">在变更车道时候</p>
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -38,7 +41,6 @@
 		<form class="form">
 			<div class="form-group">
 				<em>本方信息</em>
-				<div class="fr"></div>
 			</div>
 			
 			<div class="form-group">
@@ -164,7 +166,7 @@ $(function(){
 				$('.police-content ul li').eq(0).html('事故时间：' + data.create_time);
 				$('.police-content ul li').eq(1).html('事故地点：' + data.address);
 				$('.police-content ul li').eq(2).html('事故天气：' + data.weather);
-				$('.police-content ul li').eq(3).html('事故情形：' + data.viewname);
+				$('.police-content ul li').eq(3).children('p').html(data.viewname);
 			}
     }
 	})

@@ -146,6 +146,15 @@ $(function(){
 		}
 	})
 })
+
+修改头像
+$('.user-avatar').click(function(){
+	$.ajax({
+		type:"post",
+		url:modifyHeadUrl,
+		async:true
+	});
+})
 </script>
 
 </body>

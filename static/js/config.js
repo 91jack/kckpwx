@@ -155,7 +155,8 @@ var removeAccidentUserUrl = host + '/kyp/applogin/accidentController/removeAccid
 //获取事故信息及当事人列表
 var AccidentsInfoDetailUrl = host + '/kyp/applogin/userController/AccidentsInfoDetail'
 
-
+//修改用户头像
+var modifyHeadUrl = host + '/kyp/app/userController/modifyHead';
 
 
 
