@@ -100,7 +100,7 @@
 							if(data.list[i].id==cardId){
 								$('.name').val(data.list[i].name);
 								$('.cardnum').val(data.list[i].card);
-								$('.select em').html(data.list[i].date);
+								$('.select em').html(data.list[i].date).css('color', '#000');
 								$('.ocr-wrap-imgbox img').attr('src',data.list[i].imgurl)
 								
 								
@@ -147,7 +147,8 @@
 			'maxDate':'2100-12-31',/*最大日期*/
 			'onSubmit':function(){/*确认时触发事件*/
 				console.log(calendar.value);
-				$('.select em').text(calendar.value);
+				$('.select em').text(calendar.value).css('color', '#000');
+				
 			},
 			'onClose':function(){/*取消时触发事件*/
 			}

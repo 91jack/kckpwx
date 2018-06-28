@@ -7,7 +7,6 @@
   <title>绑定驾驶证</title>
   <link rel="stylesheet" type="text/css" href="static/css/common.css"/>
  <link rel="stylesheet" href="static/css/app.css" />
-	
 </head>
 <body class="bg-f4 bind">
 	<!--顶部标题栏-->
@@ -98,8 +97,8 @@
 							if(data.list[i].id==cardId){
 								$('.name').val(data.list[i].name);
 								$('.cardnum').val(data.list[i].card);
-								$('.select em').html(data.list[i].date);
-								$('.select em').css('color', '#000');
+						$('.select em').html(data.list[i].date).css('color', '#000');
+							
 								$('.ocr-img').attr('src',data.list[i].imgurl)
 							}
 						}
@@ -116,8 +115,8 @@
 			'maxDate':'2100-12-31',/*最大日期*/
 			'onSubmit':function(){/*确认时触发事件*/
 				console.log(calendar.value);
-				$('.select em').text(calendar.value);
-				$('.select em').css('color', '#000');
+				$('.select em').text(calendar.value).css('color', '#000');
+			
 			},
 			'onClose':function(){/*取消时触发事件*/
 			}
@@ -155,7 +154,7 @@
 						$('.ocr-img').attr('src',data.list[0])
 						$('.name').val(data.obj.name);
 						$('.cardnum').val(data.obj.id_card_number);
-						$('.select em').text(data.obj.id_card_date);
+						$('.select em').text(data.obj.id_card_date).css('color', '#000');
 						that.siblings('.loading-cover').hide();
 	   			}else{
 						$('.upload-error').show();
