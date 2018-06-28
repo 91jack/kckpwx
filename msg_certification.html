@@ -12,7 +12,7 @@
 	<!--顶部标题栏-->
 	<div class="header-top">
 		<div class="fl">
-			<a href="javascript:;" id="goback">
+			<a href="javascript:;"  id="goprev">
 				<em class="icon-goback"></em>
 				<span class="goback-text">返回</span>
 			</a>
@@ -146,6 +146,23 @@
 
 <!--当前页面交互-->
 <script type="text/javascript">
+	$('#goprev').on('click', function(){
+	var handleType = localStorage.getItem('handleType');
+	if(handleType == 2){
+		window.location.href='chooseaccident.html';
+	}else{
+		
+		$('.exit-modal').show();
+		$('.exit-modal a').eq(0).on('click',function(){
+			$('.exit-modal').hide();
+		})
+		$('.exit-modal a').eq(1).on('click',function(){
+			window.location.href='index.html';
+		})
+	}
+})
+	
+	
 	if(localStorage.getItem('code1')){
 			$('.yzmcode1').val(localStorage.getItem('code1'))
 		}else{
