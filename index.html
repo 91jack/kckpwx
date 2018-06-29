@@ -83,27 +83,36 @@
 <script type="text/javascript">
 $(function(){
 	$('.indextime').html(indexTime)
-	
-//	if(!token){
-//		// 如果token不存在 则跳转至登录页面
-//		window.location.href = 'login.html';
-//	}
+
 	localStorage.removeItem('signatureMine1');
 	localStorage.removeItem('signatureMine2');
 	localStorage.removeItem('code1');
 	localStorage.removeItem('code2');
-	// 清除缓存
-	$('#clear').on('click',function(){
-		 localStorage.clear(); 
-	})
-});
+
 	$('.deal-accident').click(function(){
-		if (localStorage.getItem('undealId')) {
-			window.location.href='undeal.html'
-		} else{
-			window.location.href='safetip.html'
-		}
+		$.ajax({
+			type:"post",
+			url:accidentsDealInfoUrl,
+			data:{
+				pageSize:30,
+				pageNo:1,
+				state:2,
+				token:token
+			},
+			success:function(res){
+				if (res.status==2000) {
+					if(res.list.length >0){
+						window.location.href='undeal.html'
+					}else{
+						window.location.href='safetip.html'
+					}
+				}else{
+					window.location.href='safetip.html'
+				}
+			}
+		});
 	})
+})
 </script>
 
 </body>
