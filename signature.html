@@ -16,7 +16,8 @@
   
 }
 .header-top {
-
+	position: relative;
+	z-index: 9999!important;
 }
 /*.greet {
   padding: 20px;
@@ -43,7 +44,7 @@ canvas {
 	 	<!--顶部标题栏-->
 		<div class="header-top">
 			<div class="fl">
-				<a href="javascript:;" class="goback">
+				<a href="javascript:;" class="goback" @touchstart="goback" @mousedown="goback">
 					<em class="icon-goback"></em>
 					<span class="goback-text">返回</span>
 				</a>
@@ -177,15 +178,10 @@ var vm = new Vue({
 					}
 				}
 			});
-//    const url = '';
-//    const successCallback = (response) => {
-//      console.log(response);
-//    };
-//    const failureCallback = (error) => {
-//      console.log(error);
-//    };
-//    this.draw.upload(blob, url, successCallback, failureCallback);
     },
+    goback() {
+    	window.history.back();
+    }
   },
 });
 </script>

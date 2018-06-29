@@ -1495,7 +1495,8 @@
 }
 .msg-certificati-page .police-msg .police-content ul li:last-child p,
 .msg-certificati-page .police-msg .police-content ul li:nth-child(2) p{
-	width: 22.083333rem;
+	width: 21rem;
+	display: flex;
 	font-size: 1.166666rem;
 	line-height: 1.75rem;
 }
