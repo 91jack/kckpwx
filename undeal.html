@@ -42,33 +42,6 @@
 <!--当前页面交互-->
 <script type="text/javascript">
 $(function(){
-		
-
-	if(!token){
-		// 如果token不存在 则跳转至登录页面
-		window.location.href = 'login.html';
-	}
-		
-		
-//		var num=1;
-//	// tab页的跳转
-//		loadmsg(2);
-//		$('.tab-btn a').click(function(){
-//			$(this).siblings('a').removeClass('active')
-//			$(this).addClass('active');
-//			var state = $('.tab-btn a.active').attr('data');
-//			loadmsg(state);
-//			var type = $(this).attr('href');
-//			$('.tab-content').removeClass('active');
-//			$(type).addClass('active');
-//			if($('#undeal').hasClass('active')){
-//				$('.tab-content-btn').css('display','block')
-//			}else{
-//				$('.tab-content-btn').css('display','none')
-//			}
-//		});
-		
-//		function loadmsg(state){
 			$.ajax({
 			type:"post",
 			url:accidentsDealInfoUrl,
